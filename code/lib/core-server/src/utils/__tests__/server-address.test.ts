@@ -1,12 +1,23 @@
-import ip from 'ip';
+import os from 'os';
 import { getServerAddresses } from '../server-address';
 
-jest.mock('ip');
-const mockedIp = ip as jest.Mocked<typeof ip>;
+jest.mock('os');
+const mockedOs = os as jest.Mocked<typeof os>;
 
 describe('getServerAddresses', () => {
   beforeEach(() => {
-    mockedIp.address.mockReturnValue('192.168.0.5');
+    mockedOs.networkInterfaces.mockReturnValue({
+      eth0: [
+        {
+          address: '192.168.0.5',
+          netmask: '255.255.255.0',
+          family: 'IPv4',
+          mac: '01:02:03:0a:0b:0c',
+          internal: false,
+          cidr: '192.168.1.108/24',
+        },
+      ],
+    });
   });
 
   it('builds addresses with a specified host', () => {

@@ -1,7 +1,6 @@
 import detectPort from 'detect-port';
 import { getServerAddresses, getServerPort, getServerChannelUrl } from './server-address';
 
-jest.mock('ip');
 jest.mock('detect-port');
 jest.mock('@storybook/node-logger');
 
