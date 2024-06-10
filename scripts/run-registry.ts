@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+import { execa, execaCommand } from 'execa';
 import { remove, pathExists, readJSON } from 'fs-extra';
 import chalk from 'chalk';
 import path from 'path';
@@ -80,7 +80,7 @@ const publish = async (packages: { name: string; location: string }[], url: stri
     packages.map(({ name, location }) =>
       limit(
         () =>
-          new Promise((res, rej) => {
+          new Promise<void>(async (res, rej) => {
             logger.log(
               `🛫 publishing ${name} (${location.replace(
                 path.resolve(path.join(__dirname, '..')),
@@ -89,19 +89,28 @@ const publish = async (packages: { name: string; location: string }[], url: stri
             );
 
             const tarballFilename = `${name.replace('@', '').replace('/', '-')}.tgz`;
-            const command = `cd ${path.resolve(
-              '../code',
-              location
-            )} && yarn pack --out=${PACKS_DIRECTORY}/${tarballFilename} && cd ${PACKS_DIRECTORY} && npm publish ./${tarballFilename} --registry ${url} --force --access restricted --ignore-scripts`;
-            exec(command, (e) => {
-              if (e) {
-                rej(e);
-              } else {
-                i += 1;
-                logger.log(`${i}/${packages.length} 🛬 successful publish of ${name}!`);
-                res(undefined);
-              }
-            });
+            const pathLocation = path.resolve('../code', location);
+            try {
+              await execaCommand(`yarn pack --out ${PACKS_DIRECTORY}/${tarballFilename}`, {
+                cwd: pathLocation,
+              });
+              // Restricted packages have to be scoped packages, and sb isn't a scoped package
+              const isRestricted =
+                tarballFilename !== 'sb.tgz' && tarballFilename !== 'storybook.tgz';
+              await execaCommand(
+                `npm publish ${tarballFilename} --registry ${url} --force ${
+                  isRestricted ? '--access restricted' : ''
+                } --ignore-scripts`,
+                {
+                  cwd: PACKS_DIRECTORY,
+                }
+              );
+              i += 1;
+              logger.log(`${i}/${packages.length} 🛬 successful publish of ${name}!`);
+              res();
+            } catch (e) {
+              rej(e as any);
+            }
           })
       )
     )
@@ -109,16 +118,20 @@ const publish = async (packages: { name: string; location: string }[], url: stri
 };
 
 const addUser = (url: string) =>
-  new Promise<void>((res, rej) => {
+  new Promise<void>(async (res, rej) => {
     logger.log(`👤 add temp user to verdaccio`);
 
-    exec(`npx npm-cli-adduser -r "${url}" -a -u user -p password -e user@example.com`, (e) => {
-      if (e) {
-        rej(e);
-      } else {
-        res();
-      }
-    });
+    try {
+      await execaCommand(
+        `npx npm-cli-adduser -r ${url} -a -u user -p password -e user@example.com`,
+        {
+          timeout: 3000,
+        }
+      );
+      res();
+    } catch (e) {
+      rej(e);
+    }
   });
 
 const run = async () => {
@@ -160,7 +173,12 @@ const run = async () => {
   }
 
   if (!program.open) {
-    verdaccioServer.close();
+    verdaccioServer.unref();
+    verdaccioServer.close(() => {
+      process.exit(0);
+    });
+  } else {
+    process.exit(0);
   }
 };
 
