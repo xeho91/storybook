@@ -123,10 +123,7 @@ const addUser = (url: string) =>
 
     try {
       await execaCommand(
-        `npx npm-cli-adduser -r ${url} -a -u user -p password -e user@example.com`,
-        {
-          timeout: 3000,
-        }
+        `npx npm-cli-adduser -r ${url} -a -u user -p password -e user@example.com`
       );
       res();
     } catch (e) {
