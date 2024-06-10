@@ -17,7 +17,7 @@ describe('normalizeProjectAnnotations', () => {
           globals: { a: 'b' },
         })
       ).toMatchObject({
-        initialGlobals: { a: 'b' },
+        globals: { a: 'b' },
       });
     });
   });
@@ -27,7 +27,7 @@ describe('normalizeProjectAnnotations', () => {
         initialGlobals: { a: 'b' },
       })
     ).toMatchObject({
-      initialGlobals: { a: 'b' },
+      globals: { a: 'b' },
     });
   });
 });
