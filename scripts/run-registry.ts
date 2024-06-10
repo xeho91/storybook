@@ -119,47 +119,13 @@ const publish = async (packages: { name: string; location: string }[], url: stri
 
 const addUser = (url: string) =>
   new Promise<void>(async (res, rej) => {
-    const username = 'username';
-    const password = 'password';
-    const email = 'user@example.com';
-
     logger.log(`👤 add temp user to verdaccio`);
 
     try {
-      const npmExec = execa(`npm add user --registry ${url}`, { shell: true });
-
-      function checkStep(step: number, count: number) {
-        if (count > step) {
-          process.exit(1);
-        }
-      }
-
-      let count = 0;
-
-      npmExec.stdout.on('data', (data) => {
-        const str = data.toString();
-        process.stdout.write(str);
-        if (str.match(/username/i)) {
-          checkStep(0, count);
-          process.stdout.write(`${username}\n`);
-          npmExec.stdin.write(username + '\n');
-        } else if (str.match(/password/i)) {
-          checkStep(1, count);
-          process.stdout.write('\n');
-          npmExec.stdin.write(password + '\n');
-        } else if (str.match(/email/i)) {
-          checkStep(2, count);
-          process.stdout.write(`${email}\n`);
-          npmExec.stdin.write(email + '\n');
-          npmExec.stdin.end();
-        } else if (str.match(/.*err.*/i)) {
-          npmExec.stdin.end();
-        }
-        count++;
-      });
-      npmExec.on('exit', () => {
-        res();
-      });
+      await execaCommand(
+        `npx npm-cli-adduser -r ${url} -a -u user -p password -e user@example.com -t legacy`
+      );
+      res();
     } catch (e) {
       rej(e);
     }
@@ -203,8 +169,9 @@ const run = async () => {
     await publish(packages, verdaccioUrl);
   }
 
+  verdaccioServer.unref();
+
   if (!program.open) {
-    verdaccioServer.unref();
     verdaccioServer.close(() => {
       process.exit(0);
     });
