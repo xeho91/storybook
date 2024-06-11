@@ -11,7 +11,7 @@ import {
   resetAllMocks,
   restoreAllMocks,
 } from './spy';
-import type { Renderer } from '@storybook/types';
+import type { Renderer, WebRenderer } from '@storybook/types';
 import type { queries } from './testing-library';
 import { within } from './testing-library';
 export * from './spy';
@@ -19,9 +19,7 @@ export * from './spy';
 type Queries = ReturnType<typeof within<typeof queries>>;
 
 declare module '@storybook/types' {
-  interface StoryContext {
-    mount(): Promise<Queries>;
-  }
+  interface MountReturnType extends Queries {}
 }
 
 export const { expect } = instrument(
@@ -97,11 +95,11 @@ const nameSpiesAndWrapActionsInSpies: LoaderFunction<Renderer> = ({ initialArgs 
   traverseArgs(initialArgs);
 };
 
-const enhanceMount: LoaderFunction<Renderer> = (context) => {
+const enhanceMount: LoaderFunction<WebRenderer> = (context) => {
   if ('mount' in context) {
     const mount = context.mount.bind(null);
-    context.mount = async () => {
-      await mount();
+    context.mount = async (...args) => {
+      await mount(...args);
       return within(context.canvasElement);
     };
   }

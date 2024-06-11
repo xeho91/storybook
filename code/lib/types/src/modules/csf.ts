@@ -25,6 +25,7 @@ export type {
   LegacyStoryAnnotationsOrFn,
   LegacyStoryFn,
   LoaderFunction,
+  MountReturnType,
   Parameters,
   PartialStoryFn,
   PlayFunction,

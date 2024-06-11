@@ -195,6 +195,7 @@ export class StoryRender<TRenderer extends Renderer> implements Render<TRenderer
           const teardown = await this.renderToScreen(renderContext, canvasElement);
           this.teardownRender = teardown || (() => {});
         });
+        return {};
       },
       step: (label: StepLabel, play: PlayFunction<TRenderer>) => runStep!(label, play, context),
     };
