@@ -66,7 +66,7 @@ orbs:
   browser-tools: circleci/browser-tools@1.4.1
   discord: antonioned/discord@0.1.0
   codecov: codecov/codecov@3.2.4
-  bun-orb: cmgriffing/bun-orb@0.0.28
+  bun-orb: cmgriffing/bun-orb@0.0.29
   node: circleci/node@5.2.0
   nx: nrwl/nx@1.6.2
 
@@ -277,6 +277,8 @@ jobs:
     steps:
       # switched this to the CircleCI helper to get the full git history for TurboSnap
       - checkout
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -300,6 +302,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -327,6 +331,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -391,6 +397,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -411,6 +419,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -430,6 +440,8 @@ jobs:
     parallelism: << parameters.parallelism >>
     steps:
       - checkout
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -450,6 +462,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -473,6 +487,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -496,6 +512,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
@@ -518,6 +536,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - when:
@@ -608,6 +628,8 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
+      - bun-orb/setup:
+          version: 1.1.12
       - attach_workspace:
           at: .
       - run:
