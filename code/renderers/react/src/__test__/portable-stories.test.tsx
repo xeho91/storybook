@@ -1,11 +1,10 @@
+// @vitest-environment happy-dom
+
 /* eslint-disable import/namespace */
 import React from 'react';
 import { vi, it, expect, afterEach, describe } from 'vitest';
 import { render, screen, cleanup } from '@testing-library/react';
 import { addons } from '@storybook/preview-api';
-//@ts-expect-error our tsconfig.jsn#moduleResolution is set to 'node', which doesn't support this import
-
-import * as addonInteractionsPreview from '@storybook/addon-interactions/preview';
 
 import * as addonActionsPreview from '@storybook/addon-actions/preview';
 import type { Meta } from '@storybook/react';
@@ -84,15 +83,16 @@ describe('projectAnnotations', () => {
 
   it('renders with custom projectAnnotations via composeStory params', () => {
     const WithPortugueseText = composeStory(stories.CSF2StoryWithLocale, stories.default, {
-      globals: { locale: 'pt' },
+      initialGlobals: { locale: 'pt' },
     });
     const { getByText } = render(<WithPortugueseText />);
     const buttonElement = getByText('Olá!');
     expect(buttonElement).not.toBeNull();
   });
 
-  it('has spies when addon-interactions annotations are added', async () => {
-    const Story = composeStory(stories.WithActionArg, stories.default, addonInteractionsPreview);
+  it('explicit action are spies when the test loader is loaded', async () => {
+    const Story = composeStory(stories.WithActionArg, stories.default);
+    await Story.load();
     expect(vi.mocked(Story.args.someActionArg!).mock).toBeDefined();
 
     const { container } = render(<Story />);

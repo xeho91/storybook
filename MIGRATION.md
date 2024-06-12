@@ -1,7 +1,16 @@
 <h1>Migration</h1>
 
-- [From version 7.x to 8.0.0](#from-version-7x-to-800)
+- [From version 8.1.x to 8.2.x](#from-version-81x-to-82x)
+  - [Preview.js globals renamed to initialGlobals](#previewjs-globals-renamed-to-initialglobals)
+- [From version 8.0.x to 8.1.x](#from-version-80x-to-81x)
   - [Portable stories](#portable-stories)
+    - [@storybook/nextjs requires specific path aliases to be setup](#storybooknextjs-requires-specific-path-aliases-to-be-setup)
+  - [main.js `docs.autodocs` is deprecated](#mainjs-docsautodocs-is-deprecated)
+  - [`docs` and `story` system tags removed](#docs-and-story-system-tags-removed)
+  - [Subtitle block and `parameters.componentSubtitle`](#subtitle-block-and-parameterscomponentsubtitle)
+  - [Title block `of` prop](#title-block-of-prop)
+- [From version 7.x to 8.0.0](#from-version-7x-to-800)
+  - [Portable stories](#portable-stories-1)
     - [Project annotations are now merged instead of overwritten in composeStory](#project-annotations-are-now-merged-instead-of-overwritten-in-composestory)
     - [Type change in `composeStories` API](#type-change-in-composestories-api)
     - [Composed Vue stories are now components instead of functions](#composed-vue-stories-are-now-components-instead-of-functions)
@@ -10,6 +19,7 @@
   - [Manager addons are now rendered with React 18](#manager-addons-are-now-rendered-with-react-18)
   - [Removal of `storiesOf`-API](#removal-of-storiesof-api)
   - [Removed deprecated shim packages](#removed-deprecated-shim-packages)
+  - [Deprecated `@storybook/testing-library` package](#deprecated-storybooktesting-library-package)
   - [Framework-specific Vite plugins have to be explicitly added](#framework-specific-vite-plugins-have-to-be-explicitly-added)
     - [For React:](#for-react)
     - [For Vue:](#for-vue)
@@ -403,6 +413,93 @@
   - [Packages renaming](#packages-renaming)
   - [Deprecated embedded addons](#deprecated-embedded-addons)
 
+## From version 8.1.x to 8.2.x
+
+### Preview.js globals renamed to initialGlobals
+
+Starting in 8.2 `preview.js` `globals` are deprecated and have been renamed to `initialGlobals`. We will remove `preview.js` `globals` in 9.0.
+
+```diff
+// .storybook/preview.js
+export default {
+-  globals: [ a: 1, b: 2 ],
++  initiaGlobals: [ a: 1, b: 2 ],
+}
+```
+
+## From version 8.0.x to 8.1.x
+
+### Portable stories
+
+#### @storybook/nextjs requires specific path aliases to be setup
+
+In order to properly mock the `next/router`, `next/header`, `next/navigation` and `next/cache` APIs, the `@storybook/nextjs` framework includes internal Webpack aliases to those modules. If you use portable stories in your Jest tests, you should set the aliases in your Jest config files `moduleNameMapper` property using the `getPackageAliases` helper from `@storybook/nextjs/export-mocks`:
+
+```js
+const nextJest = require("next/jest.js");
+const { getPackageAliases } = require("@storybook/nextjs/export-mocks");
+const createJestConfig = nextJest();
+const customJestConfig = {
+  moduleNameMapper: {
+    ...getPackageAliases(), // Add aliases for @storybook/nextjs mocks
+  },
+};
+module.exports = createJestConfig(customJestConfig);
+```
+
+This will make sure you end using the correct implementation of the packages and avoid having issues in your tests.
+
+### main.js `docs.autodocs` is deprecated
+
+The `docs.autodocs` setting in `main.js` is deprecated in 8.1 and will be removed in 9.0.
+
+It has been replaced with a tags-based system which is more flexible than before.
+
+`docs.autodocs` takes three values:
+
+- `true`: generate autodocs for every component
+- `false`: don't generate autodocs at all
+- `tag`: generate autodocs for components that have been tagged `'autodocs'`.
+
+Starting in 8.1, to generate autodocs for every component (`docs.autodocs = true`), add the following code to `.storybook/preview.js`:
+
+```js
+// .storybook/preview.js
+export default {
+  tags: ["autodocs"],
+};
+```
+
+Tags cascade, so setting `'autodocs'` at the project level automatically propagates to every component and story. If you set autodocs globally and want to opt-out for a particular component, you can remove the `'autodocs'` tag for a component like this:
+
+```js
+// Button.stories.ts
+export default {
+  component: Button,
+  tags: ["!autodocs"],
+};
+```
+
+If you had set `docs.autodocs = 'tag'`, the default setting, you can remove the setting from `.storybook/main.js`. That is now the default behavior.
+
+If you had set `docs.autodocs = false`, this still works in 8.x, but will go away in 9.0 as a breaking change. If you don't want autodocs at all, simply remove the `'autodocs'` tag throughout your Storybook and autodocs will not be created.
+
+### `docs` and `story` system tags removed
+
+Storybook automatically added the tag `'docs'` to any docs entry in the index and `'story'` to any story entry in the index. This behavior was undocumented, and in an effort to reduce the number of tags we've removed them in 8.1. If you depended on these tags, please file an issue on the [Storybook monorepo](https://github.com/storybookjs/storybook) and let us know!
+
+### Subtitle block and `parameters.componentSubtitle`
+
+The `Subtitle` block now accepts an `of` prop, which can be a reference to a CSF file or a default export (meta).
+
+`parameters.componentSubtitle` has been deprecated to be consistent with other parameters related to autodocs, instead use `parameters.docs.subtitle`.
+
+### Title block `of` prop
+
+The `Title` block now accepts an `of` prop, which can be a reference to a CSF file or a default export (meta).
+
+It still accepts being passed `children`.
+
 ## From version 7.x to 8.0.0
 
 ### Portable stories
@@ -522,6 +619,19 @@ These sections explain the rationale, and the required changes you might have to
 
 - [New Addons API](#new-addons-api)
 - [`addons.setConfig` should now be imported from `@storybook/manager-api`.](#addonssetconfig-should-now-be-imported-from-storybookmanager-api)
+
+### Deprecated `@storybook/testing-library` package
+
+In Storybook 8, `@storybook/testing-library` has been integrated to a new package called `@storybook/test`, which uses Vitest APIs for an improved experience. When upgrading to Storybook 8 with 'npx storybook@latest upgrade', you will get prompted and will get an automigration for the new package. Please migrate when you can.
+
+To migrate by hand, install `@storybook/test` and replace `@storybook/testing-libary` imports globally:
+
+```ts
+- import { userEvent } from '@storybook/testing-library';
++ import { userEvent } from '@storybook/test';
+```
+
+For more information on the change, see the [announcement post](https://storybook.js.org/blog/storybook-test/).
 
 ### Framework-specific Vite plugins have to be explicitly added
 
@@ -3820,7 +3930,7 @@ export default {
 We are replacing `@storybook/addon-knobs` with `@storybook/addon-controls`.
 
 - [Rationale & discussion](https://github.com/storybookjs/storybook/discussions/15060)
-- [Migration notes](https://github.com/storybookjs/storybook/blob/next/addons/controls/README.md#how-do-i-migrate-from-addon-knobs)
+- [Migration notes](https://github.com/storybookjs/storybook/blob/next/code/addons/controls/README.md#how-do-i-migrate-from-addon-knobs)
 
 #### Deprecated scoped blocks imports
 
@@ -4177,7 +4287,7 @@ For more information, [see the documentation](https://github.com/storybookjs/sto
 
 Storybook has built-in Typescript support in 6.0. That means you should remove your complex Typescript configurations from your `.storybook` config. We've tried to pick sensible defaults that work out of the box, especially for nice prop table generation in `@storybook/addon-docs`.
 
-To migrate from an old setup, we recommend deleting any typescript-specific webpack/babel configurations in your project. You should also remove `@storybook/preset-typescript`, which is superceded by the built-in configuration.
+To migrate from an old setup, we recommend deleting any typescript-specific webpack/babel configurations in your project. You should also remove `@storybook/preset-typescript`, which is superseded by the built-in configuration.
 
 If you want to override the defaults, see the [typescript configuration docs](https://storybook.js.org/docs/react/configure/typescript).
 
@@ -5049,7 +5159,7 @@ SB 5.1.0 added [support for project root `babel.config.js` files](https://github
 
 ### React native server
 
-Storybook 5.1 contains a major overhaul of `@storybook/react-native` as compared to 4.1 (we didn't ship a version of RN in 5.0 due to timing constraints). Storybook for RN consists of an an UI for browsing stories on-device or in a simulator, and an optional webserver which can also be used to browse stories and web addons.
+Storybook 5.1 contains a major overhaul of `@storybook/react-native` as compared to 4.1 (we didn't ship a version of RN in 5.0 due to timing constraints). Storybook for RN consists of an UI for browsing stories on-device or in a simulator, and an optional webserver which can also be used to browse stories and web addons.
 
 5.1 refactors both pieces:
 
@@ -5477,7 +5587,7 @@ Currently there is no recommended way of accessing the component options of a st
 
 ## From version 4.0.x to 4.1.x
 
-There are are a few migrations you should be aware of in 4.1, including one unintentionally breaking change for advanced addon usage.
+There are a few migrations you should be aware of in 4.1, including one unintentionally breaking change for advanced addon usage.
 
 ### Private addon config
 
@@ -5570,7 +5680,7 @@ The `@storybook/react-native` had built-in addons (`addon-actions` and `addon-li
 
 1. `imageSnapshot` test function was extracted from `addon-storyshots`
    and moved to a new package - `addon-storyshots-puppeteer` that now will
-   be dependant on puppeteer. [README](https://github.com/storybookjs/storybook/tree/master/addons/storyshots/storyshots-puppeteer)
+   be dependent on puppeteer. [README](https://github.com/storybookjs/storybook/tree/master/addons/storyshots/storyshots-puppeteer)
 2. `getSnapshotFileName` export was replaced with the `Stories2SnapsConverter`
    class that now can be overridden for a custom implementation of the
    snapshot-name generation. [README](https://github.com/storybookjs/storybook/tree/master/addons/storyshots/storyshots-core#stories2snapsconverter)

@@ -19,9 +19,12 @@ describe('composeConfigs', () => {
       argTypes: {},
       argTypesEnhancers: [],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: [],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -43,9 +46,12 @@ describe('composeConfigs', () => {
       argTypes: {},
       argTypesEnhancers: [],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: [],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -71,9 +77,12 @@ describe('composeConfigs', () => {
       argTypes: {},
       argTypesEnhancers: [],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: [],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -105,9 +114,12 @@ describe('composeConfigs', () => {
       argTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
       argTypesEnhancers: [],
       globals: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
+      initialGlobals: {},
       globalTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
       loaders: [],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -142,9 +154,12 @@ describe('composeConfigs', () => {
       argTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
       argTypesEnhancers: [],
       globals: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
+      initialGlobals: {},
       globalTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
       loaders: [],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -170,9 +185,12 @@ describe('composeConfigs', () => {
       argTypes: {},
       argTypesEnhancers: ['1', '2', '3', '4'],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: ['1', '2', '3', '4'],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -198,9 +216,12 @@ describe('composeConfigs', () => {
       argTypes: {},
       argTypesEnhancers: ['1', '2', '3'],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: ['1', '2', '3'],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -222,9 +243,12 @@ describe('composeConfigs', () => {
       argTypes: {},
       argTypesEnhancers: [],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: [],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -247,9 +271,12 @@ describe('composeConfigs', () => {
         { a: '4', secondPass: true },
       ],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: [],
+      beforeEach: [],
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 
@@ -275,12 +302,15 @@ describe('composeConfigs', () => {
       argTypes: {},
       argTypesEnhancers: [],
       globals: {},
+      initialGlobals: {},
       globalTypes: {},
       loaders: [],
+      beforeEach: [],
       render: 'render-2',
       renderToCanvas: 'renderToCanvas-2',
       applyDecorators: 'applyDecorators-2',
       runStep: expect.any(Function),
+      tags: [],
     });
   });
 

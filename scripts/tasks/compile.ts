@@ -5,7 +5,10 @@ import { maxConcurrentTasks } from '../utils/maxConcurrentTasks';
 import { exec } from '../utils/exec';
 import type { Task } from '../task';
 
-const parallel = `--parallel=${process.env.CI ? 8 : maxConcurrentTasks}`;
+// The amount of VCPUs for the check task on CI is 4 (large resource)
+const amountOfVCPUs = 4;
+
+const parallel = `--parallel=${process.env.CI ? amountOfVCPUs - 1 : maxConcurrentTasks}`;
 
 const linkedContents = `export * from '../src/index';`;
 const linkCommand = `nx run-many -t build ${parallel}`;
@@ -30,9 +33,9 @@ export const compile: Task = {
       return false;
     }
   },
-  async run({ codeDir }, { link, dryRun, debug }) {
+  async run({ codeDir }, { link, dryRun, debug, prod }) {
     return exec(
-      link ? linkCommand : noLinkCommand,
+      link && !prod ? linkCommand : noLinkCommand,
       { cwd: codeDir },
       {
         startMessage: '🥾 Bootstrapping',
