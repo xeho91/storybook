@@ -30,6 +30,7 @@ import { vta } from './vta';
 import { upgradeStorybookRelatedDependencies } from './upgrade-storybook-related-dependencies';
 import { autodocsTags } from './autodocs-tags';
 import { initialGlobals } from './initial-globals';
+import { coreDependency } from './core-dependency';
 
 export * from '../types';
 
@@ -64,6 +65,7 @@ export const allFixes: Fix[] = [
   vta,
   autodocsTags,
   initialGlobals,
+  coreDependency,
 ];
 
 export const initFixes: Fix[] = [eslintPlugin];
