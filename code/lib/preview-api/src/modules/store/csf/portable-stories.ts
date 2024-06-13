@@ -97,6 +97,8 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
 
   const globalsFromGlobalTypes = getValuesFromArgTypes(normalizedProjectAnnotations.globalTypes);
 
+  const abortController = new AbortController();
+
   const context: StoryContext<TRenderer> = {
     hooks: new HooksContext(),
     globals: {
@@ -106,8 +108,8 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
     args: { ...story.initialArgs },
     viewMode: 'story',
     loaded: {},
-    abortSignal: null as unknown as AbortSignal,
-    canvasElement: null,
+    abortSignal: abortController.signal,
+    canvasElement: globalThis.document?.body,
     mount: async () => {
       throw new Error('mount not provided.');
     },

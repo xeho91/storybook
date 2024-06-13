@@ -30,7 +30,8 @@ export const BeforeEachOrder = {
       console.log('5 - [from onClick]');
     },
   },
-  async play({ canvasElement }: any) {
+  async play({ canvasElement, mount }: any) {
+    await mount();
     await userEvent.click(getByRole(canvasElement, 'button'));
 
     await expect(mocked(console.log).mock.calls).toEqual([
