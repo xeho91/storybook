@@ -23,6 +23,7 @@ import { combineParameters } from '../parameters';
 import { defaultDecorateStory } from '../decorators';
 import { groupArgsByTarget, UNTARGETED } from '../args';
 import { normalizeArrays } from './normalizeArrays';
+import { getUsedProps } from '../../../modules/preview-web/render/mount-utils';
 
 // Combine all the metadata about a story (both direct and inherited from the component/global scope)
 // into a "renderable" story function, with all decorators applied, parameters passed as context etc
@@ -79,7 +80,7 @@ export function prepareStory<TRenderer extends Renderer>(
   };
 
   const undecoratedStoryFn = (context: StoryContext<TRenderer>) =>
-    (render as ArgsStoryFn<TRenderer>)(context.args, context);
+    (context.originalStoryFn as ArgsStoryFn<TRenderer>)(context.args, context);
 
   // Currently it is only possible to set these globally
   const { applyDecorators = defaultDecorateStory, runStep } = projectAnnotations;
@@ -97,12 +98,16 @@ export function prepareStory<TRenderer extends Renderer>(
     storyAnnotations?.render ||
     componentAnnotations.render ||
     projectAnnotations.render;
-  if (!render) throw new Error(`No render function available for storyId '${id}'`);
 
   const decoratedStoryFn = applyHooks<TRenderer>(applyDecorators)(undecoratedStoryFn, decorators);
   const unboundStoryFn = (context: StoryContext<TRenderer>) => decoratedStoryFn(context);
 
   const playFunction = storyAnnotations?.play || componentAnnotations.play;
+
+  const mountUsed = playFunction && getUsedProps(playFunction).includes('mount');
+  if (!render && !mountUsed) {
+    throw new Error(`No render function available for storyId '${id}'`);
+  }
 
   return {
     ...partialAnnotations,
@@ -110,7 +115,7 @@ export function prepareStory<TRenderer extends Renderer>(
     id,
     name,
     story: name,
-    originalStoryFn: render,
+    originalStoryFn: render!,
     undecoratedStoryFn,
     unboundStoryFn,
     applyLoaders,
