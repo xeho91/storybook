@@ -109,7 +109,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
     viewMode: 'story',
     loaded: {},
     abortSignal: abortController.signal,
-    canvasElement: globalThis.document?.body,
+    canvasElement: null,
     mount: async () => {
       throw new Error('mount not provided.');
     },
