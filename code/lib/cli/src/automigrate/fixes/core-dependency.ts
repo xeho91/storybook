@@ -13,13 +13,17 @@ export const coreDependency: Fix<Options> = {
   versionRange: ['<8.2.0', '>=8.2.0'],
 
   async check({ packageManager, storybookVersion }) {
-    const version = await packageManager.getInstalledVersion('@storybook/core');
+    try {
+      const version = await packageManager.getInstalledVersion('@storybook/core');
 
-    if (version !== null) {
-      return null;
+      if (version !== null) {
+        return null;
+      }
+
+      return { storybookVersion };
+    } catch (e) {
+      return { storybookVersion };
     }
-
-    return { storybookVersion };
   },
 
   prompt() {
