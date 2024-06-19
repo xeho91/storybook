@@ -18,7 +18,7 @@ It's straightforward to write components to be fully presentational up to the sc
 The benefits:
 
 * Easy to write stories once components are in this form.
-* All the data for the story is encoded in the args of the story, which works well with other parts of Storybook's tooling (e.g. [controls](../essentials/controls.md)).
+* All the data for the story is encoded in the args of the story, which works well with other parts of Storybook's tooling (e.g. [controls](../essentials/controls.mdx)).
 
 The downsides:
 
@@ -38,7 +38,7 @@ When you are building screens in this way, it is typical that the inputs of a co
 
 {/* prettier-ignore-end */}
 
-In such cases, it is natural to use [args composition](./args.md#args-composition) to build the stories for the page based on the stories of the sub-components:
+In such cases, it is natural to use [args composition](./args.mdx#args-composition) to build the stories for the page based on the stories of the sub-components:
 
 {/* prettier-ignore-start */}
 
@@ -74,7 +74,7 @@ Run the following commands to install MSW, the addon, and generate a mock servic
   If you're working with Angular, you'll need to adjust the command to save the mock service worker file in a different directory (e.g., `src`).
 </Callout>
 
-Update your `.storybook/preview.js` file and enable the addon via a [global decorator](./decorators.md#global-decorators).
+Update your `.storybook/preview.js` file and enable the addon via a [global decorator](./decorators.mdx#global-decorators).
 
 {/* prettier-ignore-start */}
 
@@ -82,7 +82,7 @@ Update your `.storybook/preview.js` file and enable the addon via a [global deco
 
 {/* prettier-ignore-end */}
 
-Finally, update your [`.storybook/main.js|ts`](../configure/index.md#using-storybook-api) to allow Storybook to load the generated mock service worker file as follows:
+Finally, update your [`.storybook/main.js|ts`](../api/main-config-static-dirs.mdx) to allow Storybook to load the generated mock service worker file as follows:
 
 {/* prettier-ignore-start */}
 
@@ -92,7 +92,7 @@ Finally, update your [`.storybook/main.js|ts`](../configure/index.md#using-story
 
 #### Mocking REST requests with MSW addon
 
-If you're working with pure presentational screens, adding stories through [args composition](#args-composition-for-presentational-screens) is recommended. You can easily encode all the data via [args](../writing-stories/args.md), removing the need for handling it with "wrapper components". However, this approach loses its flexibility if the screen's data is retrieved from a RESTful endpoint within the screen itself. For instance, if your screen had a similar implementation to retrieve a list of documents:
+If you're working with pure presentational screens, adding stories through [args composition](#args-composition-for-presentational-screens) is recommended. You can easily encode all the data via [args](./args.mdx), removing the need for handling it with "wrapper components". However, this approach loses its flexibility if the screen's data is retrieved from a RESTful endpoint within the screen itself. For instance, if your screen had a similar implementation to retrieve a list of documents:
 
 {/* prettier-ignore-start */}
 
@@ -112,7 +112,7 @@ To test your screen with the mocked data, you could write a similar set of stori
   This example details how you can mock the REST request with fetch. Similar HTTP clients such as [`axios`](https://axios-http.com/) can be used as well.
 </Callout>
 
-The mocked data (i.e., `TestData`) will be injected via [parameters](./parameters.md), enabling you to configure it per-story basis.
+The mocked data (i.e., `TestData`) will be injected via [parameters](./parameters.mdx), enabling you to configure it per-story basis.
 
 #### Mocking GraphQL queries with MSW addon
 
@@ -147,7 +147,7 @@ Inside a directory called `__mocks__`, create a new file called
 
 {/* prettier-ignore-end */}
 
-The code above creates a decorator which reads story-specific data off the story's [parameters](./parameters.md), enabling you to configure the mock on a per-story basis.
+The code above creates a decorator which reads story-specific data off the story's [parameters](./parameters.mdx), enabling you to configure the mock on a per-story basis.
 
 To use the mock in place of the real import, we use [Webpack aliasing](https://webpack.js.org/configuration/resolve/#resolvealias):
 
@@ -157,7 +157,7 @@ To use the mock in place of the real import, we use [Webpack aliasing](https://w
 
 {/* prettier-ignore-end */}
 
-Add the decorator you've just implemented to your [`storybook/preview.js`](../configure/index.md#configure-story-rendering):
+Add the decorator you've just implemented to your [`storybook/preview.js`](../configure/index.mdx#configure-story-rendering):
 
 {/* prettier-ignore-start */}
 
@@ -177,7 +177,7 @@ Finally, we can set the mock values in a specific story. Let's borrow an example
 
 Another mocking approach is to use libraries that intercept calls at a lower level. For instance, you can use [`fetch-mock`](https://www.npmjs.com/package/fetch-mock) to mock fetch requests specifically.
 
-Like the [import mocking](##mocking-imports) above, once you have a mock, you’ll still want to set the return value of the mock per-story basis. Do this in Storybook with a [decorator](./decorators.md) that reads the story's [parameters](./parameters.md).
+Like the [import mocking](#mocking-imports) above, once you have a mock, you’ll still want to set the return value of the mock per-story basis. Do this in Storybook with a [decorator](./decorators.mdx) that reads the story's [parameters](./parameters.mdx).
 
 <IfRenderer renderer={['react', 'solid']}>
   ### Avoiding mocking dependencies
@@ -230,7 +230,7 @@ Like the [import mocking](##mocking-imports) above, once you have a mock, you’
   {/* prettier-ignore-end */}
 
   <Callout variant="info">
-    If the same context applies to all `ProfilePage` stories, we can use a [decorator](./decorators.md).
+    If the same context applies to all `ProfilePage` stories, we can use a [decorator](./decorators.mdx).
   </Callout>
 
   #### Providing containers to your application
