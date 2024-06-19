@@ -139,8 +139,9 @@ export function prepareMeta<TRenderer extends Renderer>(
   projectAnnotations: NormalizedProjectAnnotations<TRenderer>,
   moduleExport: ModuleExport
 ): PreparedMeta<TRenderer> {
+  const bla = preparePartialAnnotations(undefined, componentAnnotations, projectAnnotations);
   return {
-    ...preparePartialAnnotations(undefined, componentAnnotations, projectAnnotations),
+    ...bla,
     moduleExport,
   };
 }

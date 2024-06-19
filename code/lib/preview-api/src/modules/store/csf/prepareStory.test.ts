@@ -292,10 +292,17 @@ describe('prepareStory', () => {
       );
 
       expect(argTypes).toEqual({
-        a: { name: 'a-story', type: booleanType },
-        b: { name: 'b-component', type: stringType },
-        c: { name: 'c-global', type: numberType },
-        nested: { name: 'nested', type: booleanType, a: 'story', b: 'component', c: 'global' },
+        a: { name: 'a-story', type: booleanType, control: { type: 'boolean' } },
+        b: { name: 'b-component', type: stringType, control: { type: 'text' } },
+        c: { name: 'c-global', type: numberType, control: { type: 'number' } },
+        nested: {
+          name: 'nested',
+          type: booleanType,
+          a: 'story',
+          b: 'component',
+          c: 'global',
+          control: { type: 'boolean' },
+        },
       });
     });
     describe('argTypesEnhancers', () => {
@@ -753,7 +760,8 @@ describe('prepareMeta', () => {
       },
     };
     const preparedStory = prepareStory({ id, name, moduleExport }, meta, { render });
-    const preparedMeta = prepareMeta(meta, { render, runStep: vi.fn() }, {});
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const { argTypes: _, ...preparedMeta } = prepareMeta(meta, composeConfigs([{ render }]), {});
 
     // omitting the properties from preparedStory that are not in preparedMeta
     const {
@@ -767,6 +775,9 @@ describe('prepareMeta', () => {
       playFunction,
       // eslint-disable-next-line @typescript-eslint/naming-convention
       parameters: { __isArgsStory, ...parameters },
+      argTypes,
+      mount,
+      runStep,
       ...expectedPreparedMeta
     } = preparedStory;
 
