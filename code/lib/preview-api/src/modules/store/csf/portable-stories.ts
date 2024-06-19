@@ -89,7 +89,9 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
     composeConfigs([defaultConfig ?? {}, globalProjectAnnotations, projectAnnotations ?? {}])
   );
 
-  const story = prepareStory<TRenderer>(
+  // We don't use the mount from prepareStory yet for portable stories.
+  // mount needs to be provided by the user (e.g. using testing-library)
+  const { mount, ...story } = prepareStory<TRenderer>(
     normalizedStory,
     normalizedComponentAnnotations,
     normalizedProjectAnnotations
