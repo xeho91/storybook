@@ -4,14 +4,14 @@ title: 'MDX'
 
 <YouTubeCallout id="YeIvFke5_5Y" title="MDX Storybook Quick Tips" />
 
-[MDX](https://mdxjs.com/) files mix Markdown and Javascript/JSX to create rich interactive documentation. You can use Markdown’s readable syntax (such as `# heading`) for your documentation, include stories defined in [Component Story Format (CSF)](../api/csf.md), and freely embed JSX component blocks at any point in the file. All at once.
+[MDX](https://mdxjs.com/) files mix Markdown and Javascript/JSX to create rich interactive documentation. You can use Markdown’s readable syntax (such as `# heading`) for your documentation, include stories defined in [Component Story Format (CSF)](../api/csf.mdx), and freely embed JSX component blocks at any point in the file. All at once.
 
 In addition, you can write pure documentation pages in MDX and add them to Storybook alongside your stories.
 
 ![MDX simple example result](./mdx-hero.png)
 
 <Callout variant="info">
-  Writing stories directly in MDX was deprecated in Storybook 7. Please reference the [previous documentation](../../../release-6-5/docs/writing-docs/mdx.md) for guidance on that feature.
+  Writing stories directly in MDX was deprecated in Storybook 7. Please reference the [previous documentation](../../../release-6-5/docs/writing-docs/mdx.mdx) for guidance on that feature.
 </Callout>
 
 ## Basic example
@@ -24,7 +24,7 @@ Let's start with an example, `Checkbox.mdx`, combining Markdown with a single st
 
 {/* prettier-ignore-end */}
 
-This MDX file references a story file, `Checkbox.stories.js|ts`, that is written in [Component Story Format (CSF)](../api/csf.md):
+This MDX file references a story file, `Checkbox.stories.js|ts`, that is written in [Component Story Format (CSF)](../api/csf.mdx):
 
 {/* prettier-ignore-start */}
 
@@ -53,7 +53,7 @@ The first thing you'll notice is that the component documentation is divided int
 
 ### Anatomy of MDX
 
-Assuming you’re already familiar with writing stories with [CSF](../writing-stories/index.md), we can dissect the MDX side of things in greater detail.
+Assuming you’re already familiar with writing stories with [CSF](../writing-stories/index.mdx), we can dissect the MDX side of things in greater detail.
 
 The document consists of a number of blocks separated by blank lines. Since MDX mixes a few different languages together, it uses those blank lines to help distinguish where one starts, and the next begins. Failing to separate blocks by whitespace can cause (sometimes cryptic) parse errors.
 
@@ -84,7 +84,7 @@ Imports the components and stories that will be used in the JSX throughout the r
 {/* prettier-ignore-end */}
 
 <Callout variant="info">
-  When providing the `of` prop to the `Meta` block, make sure that you're referencing the [**default export**](../api/csf.md#default-export) of the story file and not the component itself to prevent render issues with the generated documentation.
+  When providing the `of` prop to the `Meta` block, make sure that you're referencing the [**default export**](../api/csf.mdx#default-export) of the story file and not the component itself to prevent render issues with the generated documentation.
 </Callout>
 
 The `Meta` block defines where the document will be placed in the sidebar. In this case, it is adjacent to the Checkbox’s stories. By default, the docs sidebar node is titled `"Docs"`, but this can be customized by passing a `name` prop (e.g., `<Meta of={CheckboxStories} name="Info" />`). If you want to place a docs node at an arbitrary point in the navigation hierarchy, you can use the `title` prop (e.g., `<Meta title="path/to/node" />`).
@@ -181,7 +181,7 @@ Create an MDX file to add your custom documentation. Depending on how you want y
 
 ### Using the `Meta` Doc Block
 
-If you need to match the component documentation to an existing story, you can configure the [`Meta`](../api/doc-block-meta.md) Doc Block to control how the documentation gets rendered. Out of the box, it allows you to define a custom title or a reference to the story you need to document (i.e., via the `of` prop). For example:
+If you need to match the component documentation to an existing story, you can configure the [`Meta`](../api/doc-block-meta.mdx) Doc Block to control how the documentation gets rendered. Out of the box, it allows you to define a custom title or a reference to the story you need to document (i.e., via the `of` prop). For example:
 
 {/* prettier-ignore-start */}
 
@@ -203,7 +203,7 @@ Suppose you're documenting an existing component and only provide the `Meta` Doc
 
 ### Using the File System
 
-However, providing the `Meta` Doc Block may not be required for certain use cases, such as standalone pages or even as guidelines for testing your components. In that case, you can safely omit it. Storybook will instead rely on the file's physical location to place the documentation in the sidebar, overriding any pre-existent [auto-generated](./autodocs.md) documentation with your own. For example:
+However, providing the `Meta` Doc Block may not be required for certain use cases, such as standalone pages or even as guidelines for testing your components. In that case, you can safely omit it. Storybook will instead rely on the file's physical location to place the documentation in the sidebar, overriding any pre-existent [auto-generated](./autodocs.mdx) documentation with your own. For example:
 
 {/* prettier-ignore-start */}
 
@@ -212,10 +212,10 @@ However, providing the `Meta` Doc Block may not be required for certain use case
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-  If you're overriding an existing auto-generated documentation page enabled via [`tags`](./autodocs.md#setup-automated-docs) configuration property, we recommend removing it to avoid errors.
+  If you're overriding an existing auto-generated documentation page enabled via [`tags`](./autodocs.mdx#setup-automated-documentation) configuration property, we recommend removing it to avoid errors.
 </Callout>
 
-Once the custom MDX documentation is loaded, Storybook will infer the title and location using the same heuristic rules to generate [auto-title stories](../configure/sidebar-and-urls.md#csf-30-auto-titles) and render it in the sidebar as a `Docs` entry.
+Once the custom MDX documentation is loaded, Storybook will infer the title and location using the same heuristic rules to generate [auto-title stories](../configure/sidebar-and-urls.mdx#csf-30-auto-titles) and render it in the sidebar as a `Docs` entry.
 
 #### Working with standalone documentation pages
 
@@ -262,7 +262,7 @@ If you need to extend your documentation with additional content written in Mark
 {/* prettier-ignore-end */}
 
 <Callout variant="info">
-  The `Markdown` Doc Block provides additional configuration options to customize the rendering of your documentation. For more information, refer to the [API documentation](../api/doc-block-markdown.md).
+  The `Markdown` Doc Block provides additional configuration options to customize the rendering of your documentation. For more information, refer to the [API documentation](../api/doc-block-markdown.mdx).
 </Callout>
 
 ![Changelog markdown in an MDX story](./mdx-markdown-docs-import.png)
@@ -307,7 +307,7 @@ If you run into a situation where Storybook is not able to detect and render the
 
 #### The documentation doesn't render using `stories.mdx`
 
-Starting with Storybook 7.0, we've deprecated documenting stories with the `.stories.mdx` file extension. If you're still using the `stories.mdx` extension, we recommend [migrating](#automigration) as soon as possible to avoid any issues, as the majority of APIs and [Doc Blocks](./doc-blocks.md) used by Storybook were overhauled to support MDX 2 and the new MDX compiler (e.g., the [`Meta`](../api/doc-block-meta.md) block).
+Starting with Storybook 7.0, we've deprecated documenting stories with the `.stories.mdx` file extension. If you're still using the `stories.mdx` extension, we recommend [migrating](#automigration) as soon as possible to avoid any issues, as the majority of APIs and [Doc Blocks](./doc-blocks.mdx) used by Storybook were overhauled to support MDX 2 and the new MDX compiler (e.g., the [`Meta`](../api/doc-block-meta.mdx) block).
 
 #### MDX 1 fallback
 
@@ -357,11 +357,11 @@ If you're still encountering issues, we recommend reaching out to the community 
 
 ### The controls are not updating the story within the MDX documentation page
 
-If you turned off inline rendering for your stories via the [`inline`](../api/doc-block-story.md#inline) configuration option, you would run into a situation where the associated controls are not updating the story within the documentation page. This is a known limitation of the current implementation and will be addressed in a future release.
+If you turned off inline rendering for your stories via the [`inline`](../api/doc-block-story.mdx#inline) configuration option, you would run into a situation where the associated controls are not updating the story within the documentation page. This is a known limitation of the current implementation and will be addressed in a future release.
 
 #### Learn more about Storybook documentation
 
-* [Autodocs](./autodocs.md) for creating documentation for your stories
+* [Autodocs](./autodocs.mdx) for creating documentation for your stories
 * MDX for customizing your documentation
-* [Doc Blocks](./doc-blocks.md) for authoring your documentation
-* [Publishing docs](./build-documentation.md) to automate the process of publishing your documentation
+* [Doc Blocks](./doc-blocks.mdx) for authoring your documentation
+* [Publishing docs](./build-documentation.mdx) to automate the process of publishing your documentation
