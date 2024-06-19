@@ -22,10 +22,10 @@ import type {
   Globals,
   ModuleImportFn,
   StoryIndex,
-  ProjectAnnotations,
   StoryId,
   ViewMode,
   DocsIndexEntry,
+  NormalizedProjectAnnotations,
 } from '@storybook/types';
 
 import {
@@ -93,7 +93,7 @@ export class PreviewWithSelection<TRenderer extends Renderer> extends Preview<TR
   constructor(
     public importFn: ModuleImportFn,
 
-    public getProjectAnnotations: () => MaybePromise<ProjectAnnotations<TRenderer>>,
+    public getProjectAnnotations: () => MaybePromise<NormalizedProjectAnnotations<TRenderer>>,
 
     public selectionStore: SelectionStore,
 
@@ -183,7 +183,7 @@ export class PreviewWithSelection<TRenderer extends Renderer> extends Preview<TR
   async onGetProjectAnnotationsChanged({
     getProjectAnnotations,
   }: {
-    getProjectAnnotations: () => MaybePromise<ProjectAnnotations<TRenderer>>;
+    getProjectAnnotations: () => MaybePromise<NormalizedProjectAnnotations<TRenderer>>;
   }) {
     await super.onGetProjectAnnotationsChanged({ getProjectAnnotations });
 
