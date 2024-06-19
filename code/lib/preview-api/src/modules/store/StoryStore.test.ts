@@ -308,6 +308,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne-new.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
