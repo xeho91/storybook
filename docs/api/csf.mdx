@@ -2,7 +2,7 @@
 title: 'Component Story Format (CSF)'
 ---
 
-Component Story Format (CSF) is the recommended way to [write stories](../writing-stories/introduction.md). It's an [open standard](https://github.com/ComponentDriven/csf) based on ES6 modules that is portable beyond Storybook.
+Component Story Format (CSF) is the recommended way to [write stories](../writing-stories/introduction.mdx). It's an [open standard](https://github.com/ComponentDriven/csf) based on ES6 modules that is portable beyond Storybook.
 
 <div class="aside">
 
@@ -16,7 +16,7 @@ CSF is supported in all frameworks except React Native, where you should use the
 
 ## Default export
 
-The default export defines metadata about your component, including the `component` itself, its `title` (where it will show up in the [navigation UI story hierarchy](../writing-stories/naming-components-and-hierarchy.md#sorting-stories)), [decorators](../writing-stories/decorators.md), and [parameters](../writing-stories/parameters.md).
+The default export defines metadata about your component, including the `component` itself, its `title` (where it will show up in the [navigation UI story hierarchy](../writing-stories/naming-components-and-hierarchy.mdx#sorting-stories)), [decorators](../writing-stories/decorators.mdx), and [parameters](../writing-stories/parameters.mdx).
 
 The `component` field is required and used by addons for automatic prop table generation and display of other component metadata. The `title` field is optional and should be unique (i.e., not re-used across files).
 
@@ -30,7 +30,7 @@ The `component` field is required and used by addons for automatic prop table ge
 
 {/* prettier-ignore-end */}
 
-For more examples, see [writing stories](../writing-stories/introduction.md).
+For more examples, see [writing stories](../writing-stories/introduction.mdx).
 
 ## Named story exports
 
@@ -63,7 +63,7 @@ The exported identifiers will be converted to "start case" using Lodash's [start
 
 We recommend that all export names to start with a capital letter.
 
-Story objects can be annotated with a few different fields to define story-level [decorators](../writing-stories/decorators.md) and [parameters](../writing-stories/parameters.md), and also to define the `name` of the story.
+Story objects can be annotated with a few different fields to define story-level [decorators](../writing-stories/decorators.mdx) and [parameters](../writing-stories/parameters.mdx), and also to define the `name` of the story.
 
 Storybook's `name` configuration element is helpful in specific circumstances. Common use cases are names with special characters or Javascript restricted words. If not specified, Storybook defaults to the named export.
 
@@ -81,7 +81,7 @@ Storybook's `name` configuration element is helpful in specific circumstances. C
 
 Starting in SB 6.0, stories accept named inputs called Args. Args are dynamic data that are provided (and possibly updated by) Storybook and its addons.
 
-Consider Storybook’s ["Button" example](../writing-stories/introduction.md#defining-stories) of a text button that logs its click events:
+Consider Storybook’s ["Button" example](../writing-stories/introduction.mdx#defining-stories) of a text button that logs its click events:
 
 {/* prettier-ignore-start */}
 
@@ -133,7 +133,7 @@ Or even more simply:
 
 Not only are these versions shorter and more accessible to write than their no-args counterparts, but they are also more portable since the code doesn't depend on the actions addon specifically.
 
-For more information on setting up [Docs](../writing-docs/introduction.md) and [Actions](../essentials/actions.md), see their respective documentation.
+For more information on setting up [Docs](../writing-docs/introduction.mdx) and [Actions](../essentials/actions.mdx), see their respective documentation.
 
 ## Play function
 
