@@ -26,6 +26,7 @@ function tryFindCore() {
     const projectPackageJsonPath = findUp.sync('package.json', { cwd: TopLevelNodeModulesPath });
 
     if (!projectPackageJsonPath) {
+      // Unknown how this could happen.. a users uses our package, and has `node_modules` in the path, but no `package.json`?
       return false;
     }
 
