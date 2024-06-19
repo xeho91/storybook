@@ -24,12 +24,12 @@ The main configuration file is `main.js`. This file controls the Storybook serve
 
 {/* prettier-ignore-end */}
 
-The `main.js` configuration file is a [preset](../addons/addon-types.md) and, as such, has a powerful interface, but the key fields within it are:
+The `main.js` configuration file is a [preset](../addons/addon-types.mdx) and, as such, has a powerful interface, but the key fields within it are:
 
 - `stories` - an array of globs that indicates the [location of your story files](#configure-story-loading), relative to `main.js`.
 - `addons` - a list of the [addons](https://storybook.js.org/addons/) you are using.
-- `webpackFinal` - custom [webpack configuration](../builders/webpack.md#extending-storybooks-webpack-config).
-- `babel` - custom [babel configuration](./babel.md).
+- `webpackFinal` - custom [webpack configuration](../builders/webpack.mdx#extending-storybooks-webpack-config).
+- `babel` - custom [babel configuration](./babel.mdx).
 - `framework` - framework specific configurations to help the loading and building process.
 
 <div class="aside">
@@ -42,15 +42,15 @@ See all the [available](#using-storybook-api) fields below if you need further c
 
 Additionally, you can also provide additional feature flags to your Storybook configuration. Below is an abridged list of available features that are currently available.
 
-| Configuration element | Description                                                                                                                                                                                                                          |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `storyStoreV7`        | Configures Storybook to load stories [on demand](#on-demand-story-loading), rather than during boot up. <br/> `features: { storyStoreV7: true }`                                                                                     |
-| `buildStoriesJson`    | Generates a `stories.json` file to help story loading with the on demand mode. <br/> `features: { buildStoriesJson: true }`                                                                                                          |
-| `emotionAlias`        | Provides backwards compatibility for Emotion. See the [migration documentation](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#emotion11-quasi-compatibility) for context.<br/> `features: { emotionAlias: false }` |
-| `babelModeV7`         | Enables the new [Babel configuration](./babel.md#v7-mode) mode for Storybook. <br/> `features: { babelModeV7: true }`                                                                                                                |
-| `postcss`             | Disables the implicit PostCSS warning. See the [migration documentation](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-implicit-postcss-loader) for context. <br/> `features: { postcss: false }`       |
-| `modernInlineRender`  | Enables Storybook's modern inline rendering mode. <br/> `features: { modernInlineRender: false }`                                                                                                                                    |
-| `previewMdx2`         | Enables experimental support for [MDX 2](../writing-docs/mdx.md#mdx-2).<br/>`features: { previewMdx2: true }`                                                                                                                        |
+| Configuration element | Description                                                                                                                                                                                                                           |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `storyStoreV7`        | Configures Storybook to load stories [on demand](#on-demand-story-loading), rather than during boot up. <br/> `features: { storyStoreV7: true }`                                                                                      |
+| `buildStoriesJson`    | Generates a `stories.json` file to help story loading with the on demand mode. <br/> `features: { buildStoriesJson: true }`                                                                                                           |
+| `emotionAlias`        | Provides backwards compatibility for Emotion. See the [migration documentation](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#emotion11-quasi-compatibility) for context.<br/> `features: { emotionAlias: false }`  |
+| `babelModeV7`         | Enables the new [Babel configuration](./babel.mdx#v7-mode) mode for Storybook. <br/> `features: { babelModeV7: true }`                                                                                                                |
+| `postcss`             | Disables the implicit PostCSS warning. See the [migration documentation](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-implicit-postcss-loader) for context. <br/> `features: { postcss: false }`        |
+| `modernInlineRender`  | Enables Storybook's modern inline rendering mode. <br/> `features: { modernInlineRender: false }`                                                                                                                                     |
+| `previewMdx2`         | Enables experimental support for [MDX 2](../writing-docs/mdx.mdx#mdx-2).<br/>`features: { previewMdx2: true }`                                                                                                                        |
 
 ## Configure story loading
 
@@ -141,7 +141,7 @@ Once you've restarted your Storybook, you'll see an almost immediate performance
 
 This feature is experimental, and it has some limitations on what you can and cannot do in your stories files. If you plan to use it, you'll need to take into consideration the following limitations:
 
-- [CSF formats](../api/csf.md) from version 1 to version 3 are supported. The `storiesOf` construct is not.
+- [CSF formats](../api/csf.mdx) from version 1 to version 3 are supported. The `storiesOf` construct is not.
 - Custom`storySort` functions are allowed based on a restricted API.
 
 ## Configure your project with TypeScript
@@ -174,34 +174,34 @@ You can also use Storybook's API to configure your project with TypeScript. Unde
 
 {/* prettier-ignore-end */}
 
-| Configuration element | Description                                                                                                                                                                      |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `stories`             | The array of globs that indicates the [location of your story files](#configure-story-loading), relative to `main.ts`                                                            |
-| `staticDirs`          | Sets a list of directories of [static files](./images-and-assets.md#serving-static-files-via-storybook-configuration) to be loaded by Storybook <br/> `staticDirs:['../public']` |
-| `addons`              | Sets the list of [addons](https://storybook.js.org/addons/) loaded by Storybook <br/> `addons:['@storybook/addon-essentials']`                                                   |
-| `typescript`          | Configures how Storybook handles [TypeScript files](./typescript.md) <br/> `typescript: { check: false, checkOptions: {} }`                                                      |
-| `framework`           | Configures Storybook based on a set of framework-specific settings <br/> `framework:'@storybook/svelte'`                                                                         |
-| `core`                | Configures Storybook's internal features.<br/> `core: { builder: 'webpack5' }`                                                                                                   |
-| `features`            | Enables Storybook's additional features.<br/> See table below for a list of available features `features: { storyStoreV7: true }`                                                |
-| `refs`                | Configures [Storybook composition](../sharing/storybook-composition.md) <br/> `refs:{ example: { title: 'ExampleStorybook', url:'https://your-url.com' } }`                      |
-| `logLevel`            | Configures Storybook's logs in the browser terminal. Useful for debugging <br/> `logLevel: 'debug'`                                                                              |
-| `webpackFinal`        | Customize Storybook's [Webpack](../builders/webpack.md) setup <br/> `webpackFinal: async (config:any) => { return config; }`                                                     |
-| `env`                 | Defines custom Storybook [environment variables](./environment-variables.md#using-storybook-configuration). <br/> `env: (config) => ({...config, EXAMPLE_VAR: 'Example var' }),` |
+| Configuration element | Description                                                                                                                                                                       |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `stories`             | The array of globs that indicates the [location of your story files](#configure-story-loading), relative to `main.ts`                                                             |
+| `staticDirs`          | Sets a list of directories of [static files](./images-and-assets.mdx#serving-static-files-via-storybook-configuration) to be loaded by Storybook <br/> `staticDirs:['../public']` |
+| `addons`              | Sets the list of [addons](https://storybook.js.org/addons/) loaded by Storybook <br/> `addons:['@storybook/addon-essentials']`                                                    |
+| `typescript`          | Configures how Storybook handles [TypeScript files](./typescript.mdx) <br/> `typescript: { check: false, checkOptions: {} }`                                                      |
+| `framework`           | Configures Storybook based on a set of framework-specific settings <br/> `framework:'@storybook/svelte'`                                                                          |
+| `core`                | Configures Storybook's internal features.<br/> `core: { builder: 'webpack5' }`                                                                                                    |
+| `features`            | Enables Storybook's additional features.<br/> See table below for a list of available features `features: { storyStoreV7: true }`                                                 |
+| `refs`                | Configures [Storybook composition](../sharing/storybook-composition.mdx) <br/> `refs:{ example: { title: 'ExampleStorybook', url:'https://your-url.com' } }`                      |
+| `logLevel`            | Configures Storybook's logs in the browser terminal. Useful for debugging <br/> `logLevel: 'debug'`                                                                               |
+| `webpackFinal`        | Customize Storybook's [Webpack](../builders/webpack.mdx) setup <br/> `webpackFinal: async (config:any) => { return config; }`                                                     |
+| `env`                 | Defines custom Storybook [environment variables](./environment-variables.mdx#using-storybook-configuration). <br/> `env: (config) => ({...config, EXAMPLE_VAR: 'Example var' }),` |
 
 ## Configure story rendering
 
-To control the way stories are rendered and add global [decorators](../writing-stories/decorators.md#global-decorators) and [parameters](../writing-stories/parameters.md#global-parameters), create a `.storybook/preview.js` file. This is loaded in the Canvas tab, the “preview” iframe that renders your components in isolation. Use `preview.js` for global code (such as [CSS imports](../get-started/setup.md#render-component-styles) or JavaScript mocks) that applies to all stories.
+To control the way stories are rendered and add global [decorators](../writing-stories/decorators.mdx#global-decorators) and [parameters](../writing-stories/parameters.mdx#global-parameters), create a `.storybook/preview.js` file. This is loaded in the Canvas tab, the “preview” iframe that renders your components in isolation. Use `preview.js` for global code (such as [CSS imports](../get-started/setup.mdx#render-component-styles) or JavaScript mocks) that applies to all stories.
 
 The `preview.js` file can be an ES module and export the following keys:
 
-- `decorators` - an array of global [decorators](../writing-stories/decorators.md#global-decorators)
-- `parameters` - an object of global [parameters](../writing-stories/parameters.md#global-parameters)
-- `globalTypes` - definition of [globalTypes](../essentials/toolbars-and-globals.md#global-types-and-the-toolbar-annotation)
+- `decorators` - an array of global [decorators](../writing-stories/decorators.mdx#global-decorators)
+- `parameters` - an object of global [parameters](../writing-stories/parameters.mdx#global-parameters)
+- `globalTypes` - definition of [globalTypes](../essentials/toolbars-and-globals.mdx#global-types-and-the-toolbar-annotation)
 
-If you’re looking to change how to order your stories, read about [sorting stories](../writing-stories/naming-components-and-hierarchy.md#sorting-stories).
+If you’re looking to change how to order your stories, read about [sorting stories](../writing-stories/naming-components-and-hierarchy.mdx#sorting-stories).
 
 ## Configure Storybook’s UI
 
 To control the behavior of Storybook’s UI (the **“manager”**), you can create a `.storybook/manager.js` file.
 
-This file does not have a specific API but is the place to set [UI options](./features-and-behavior.md) and to configure Storybook’s [theme](./theming.md).
+This file does not have a specific API but is the place to set [UI options](./features-and-behavior.mdx) and to configure Storybook’s [theme](./theming.mdx).
