@@ -4,7 +4,7 @@ import { global } from '@storybook/global';
 import { combineParameters } from '../parameters';
 import { composeStepRunners } from './stepRunners';
 import { normalizeArrays } from './normalizeArrays';
-import { normalizeProjectAnnotations } from 'lib/preview-api/src/modules/store/csf/normalizeProjectAnnotations';
+import { normalizeProjectAnnotations } from './normalizeProjectAnnotations';
 
 export function getField<TFieldType = any>(
   moduleExportList: ModuleExports[],
