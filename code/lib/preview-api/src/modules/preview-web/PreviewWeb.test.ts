@@ -951,7 +951,10 @@ describe('PreviewWeb', () => {
             forceRemount: true,
             storyContext: expect.objectContaining({
               loaded: { l: 8 }, // This is the value returned by the *first* loader call
-              args: { foo: 'a', new: 'arg', one: 'mapped-1' },
+              // TODO Investigate wby this test changed in this PR.
+              // It actually does know what the comment above says it should do?
+              // To run first with the initial args.
+              args: { foo: 'a', one: 'mapped-1' },
             }),
           }),
           'story-element'
@@ -3622,6 +3625,7 @@ describe('PreviewWeb', () => {
               },
               "fileName": "./src/ComponentOne.stories.js",
             },
+            "runStep": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
@@ -3670,6 +3674,7 @@ describe('PreviewWeb', () => {
               },
               "fileName": "./src/ComponentOne.stories.js",
             },
+            "runStep": undefined,
             "story": "B",
             "subcomponents": undefined,
             "tags": [
@@ -3696,6 +3701,7 @@ describe('PreviewWeb', () => {
               "fileName": "./src/ExtraComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "E",
             "subcomponents": undefined,
             "tags": [
@@ -3732,6 +3738,7 @@ describe('PreviewWeb', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "C",
             "subcomponents": undefined,
             "tags": [

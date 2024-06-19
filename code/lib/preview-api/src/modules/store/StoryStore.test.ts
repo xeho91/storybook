@@ -475,6 +475,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
@@ -514,6 +515,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "B",
             "subcomponents": undefined,
             "tags": [
@@ -553,6 +555,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "C",
             "subcomponents": undefined,
             "tags": [
@@ -654,6 +657,7 @@ describe('StoryStore', () => {
                 "foo": "a",
               },
             },
+            "mount": [Function],
             "name": "A",
             "originalStoryFn": [MockFunction spy],
             "parameters": {
@@ -661,6 +665,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "A",
             "storyFn": [Function],
             "subcomponents": undefined,
@@ -701,6 +706,7 @@ describe('StoryStore', () => {
                 "foo": "b",
               },
             },
+            "mount": [Function],
             "name": "B",
             "originalStoryFn": [MockFunction spy],
             "parameters": {
@@ -708,6 +714,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "B",
             "storyFn": [Function],
             "subcomponents": undefined,
@@ -748,6 +755,7 @@ describe('StoryStore', () => {
                 "foo": "c",
               },
             },
+            "mount": [Function],
             "name": "C",
             "originalStoryFn": [MockFunction spy],
             "parameters": {
@@ -755,6 +763,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
+            "runStep": undefined,
             "story": "C",
             "storyFn": [Function],
             "subcomponents": undefined,
@@ -818,6 +827,7 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentOne.stories.js",
               },
               "playFunction": undefined,
+              "runStep": undefined,
               "story": "A",
               "subcomponents": undefined,
               "tags": [
@@ -857,6 +867,7 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentOne.stories.js",
               },
               "playFunction": undefined,
+              "runStep": undefined,
               "story": "B",
               "subcomponents": undefined,
               "tags": [
@@ -896,6 +907,7 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentTwo.stories.js",
               },
               "playFunction": undefined,
+              "runStep": undefined,
               "story": "C",
               "subcomponents": undefined,
               "tags": [
