@@ -10,20 +10,20 @@ Storybook addons are distributed via npm. The catalog is populated by querying n
 
 Add your addon to the catalog by publishing a npm package that follows these requirements:
 
-- `package.json` with [module information](./writing-addons.md#get-started) and [addon metadata](#addon-metadata)
+- `package.json` with [module information](./writing-addons.mdx#get-started) and [addon metadata](#addon-metadata)
 - `README.md` file with installation and configuration instructions
 - `/dist` directory containing transpiled ES5 code
 - `preset.js` file written as an ES5 module at the root level
 
 <div class="aside">
 
-Get a refresher on how to [write a Storybook addon](./writing-addons.md).
+Get a refresher on how to [write a Storybook addon](./writing-addons.mdx).
 
 </div>
 
 ### Addon metadata
 
-We rely on metadata to organize your addon in the catalog. You must add the <code>storybook-addons</code> as the first keyword, followed by your addon's category. Additional keywords will be used in search and as tags.
+We rely on metadata to organize your addon in the catalog. You must add the `storybook-addons` as the first keyword, followed by your addon's category. Additional keywords will be used in search and as tags.
 
 | Property      | Description                            | Example                                                                   |
 | ------------- | -------------------------------------- | ------------------------------------------------------------------------- |
