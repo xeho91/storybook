@@ -90,7 +90,7 @@ export async function check() {
     return false;
   }
 
-  await execa('npx', [`storybook@${packageJson.version}`, 'automigrate'], { stdio: 'inherit' });
+  await execa('npx', [`sb@${packageJson.version}`, 'automigrate'], { stdio: 'inherit' });
 
   console.log(dedent`
     Success! The migration has been completed. Please commit the changes to your project.
