@@ -28,12 +28,7 @@ Generates a `index.json` and `stories.json` files to help story loading with the
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/main-config-features-build-stories-json.js.mdx',
-    'common/main-config-features-build-stories-json.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="main-config-features-build-stories-json.md" />
 
 {/* prettier-ignore-end */}
 
@@ -45,12 +40,7 @@ Apply decorators from preview.js before decorators from addons or frameworks. [M
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/main-config-features-legacy-decorator-file-order.js.mdx',
-    'common/main-config-features-legacy-decorator-file-order.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="main-config-features-legacy-decorator-file-order.md" />
 
 {/* prettier-ignore-end */}
 
@@ -62,12 +52,7 @@ Enables support for MDX version 1 as a fallback. Requires [@storybook/mdx1-csf](
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/main-config-features-legacy-mdx-1.js.mdx',
-    'common/main-config-features-legacy-mdx-1.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="main-config-features-legacy-mdx-1.md" />
 
 {/* prettier-ignore-end */}
 
@@ -81,12 +66,7 @@ Opts out of [on-demand story loading](#on-demand-story-loading); loads all stori
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/main-config-features-story-store-v7.js.mdx',
-    'common/main-config-features-story-store-v7.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="main-config-features-story-store-v7.md" />
 
 {/* prettier-ignore-end */}
 
@@ -100,12 +80,7 @@ Filter args with a "target" on the type from the render function.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/main-config-features-arg-type-targets-v7.js.mdx',
-    'common/main-config-features-arg-type-targets-v7.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="main-config-features-arg-type-targets-v7.md" />
 
 {/* prettier-ignore-end */}
 
@@ -115,12 +90,7 @@ As your Storybook grows, it gets challenging to load all of your stories perform
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/main-config-features-story-store-v7.js.mdx',
-    'common/main-config-features-story-store-v7.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="main-config-features-story-store-v7.md" />
 
 {/* prettier-ignore-end */}
 
@@ -128,5 +98,5 @@ As your Storybook grows, it gets challenging to load all of your stories perform
 
 Because of the way stories are currently indexed in Storybook, loading stories on demand with `storyStoreV7` has a couple of minor limitations at the moment:
 
-- [CSF formats](../api/csf.md) from version 1 to version 3 are supported. The `storiesOf` construct is not.
-- Custom [`storySort` functions](../writing-stories/naming-components-and-hierarchy.md#sorting-stories) receive more limited arguments.
+* [CSF formats](../api/csf.md) from version 1 to version 3 are supported. The `storiesOf` construct is not.
+* Custom [`storySort` functions](../writing-stories/naming-components-and-hierarchy.md#sorting-stories) receive more limited arguments.

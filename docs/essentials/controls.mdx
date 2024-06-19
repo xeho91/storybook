@@ -7,120 +7,70 @@ title: 'Controls'
 Storybook Controls gives you a graphical UI to interact with a component's arguments dynamically without needing to code. It creates an addon panel next to your component examples ("stories"), so you can edit them live.
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="addon-controls-demo-optimized.mp4"
-    type="video/mp4"
-  />
+  <source src="addon-controls-demo-optimized.mp4" type="video/mp4" />
 </video>
 
 Controls do not require any modification to your components. Stories for controls are:
 
-- Convenient. Auto-generate controls based on React/Vue/Angular/etc. components.
-- Portable. Reuse your interactive stories in documentation, tests, and even in designs.
-- Rich. Customize the controls and interactive data to suit your exact needs.
+* Convenient. Auto-generate controls based on React/Vue/Angular/etc. components.
+* Portable. Reuse your interactive stories in documentation, tests, and even in designs.
+* Rich. Customize the controls and interactive data to suit your exact needs.
 
 To use the Controls addon, you need to write your stories using [args](../writing-stories/args.md). Storybook will automatically generate UI controls based on your args and what it can infer about your component. Still, you can configure the controls further using [argTypes](../api/arg-types.md), see below.
 
 <Callout variant="info" icon="💡">
-
-If you have stories in the older pre-Storybook 6 style, check the [args & controls migration guide](https://medium.com/storybookjs/storybook-6-migration-guide-200346241bb5) to learn how to convert your existing stories for args.
-
+  If you have stories in the older pre-Storybook 6 style, check the [args & controls migration guide](https://medium.com/storybookjs/storybook-6-migration-guide-200346241bb5) to learn how to convert your existing stories for args.
 </Callout>
 
 ## Choosing the control type
 
-<IfRenderer renderer='angular'>
+<IfRenderer renderer="angular">
+  By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file, and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component using [Compodoc](https://compodoc.app/) if you opt-in to use it, including first-class support for Angular's `inputs`, `outputs`, `properties`, `methods` and `view/content child/children`.
 
-By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file, and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component using [Compodoc](https://compodoc.app/) if you opt-in to use it, including first-class support for Angular's `inputs`, `outputs`, `properties`, `methods` and `view/content child/children`.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="button-story-default-export-with-component.md" />
 
-<CodeSnippets
-  paths={[
-    'angular/button-story-default-export-with-component.ts.mdx',
-  ]}
-/>
-
-{/* prettier-ignore-end */}
-
+  {/* prettier-ignore-end */}
 </IfRenderer>
 
-<IfRenderer renderer='react'>
+<IfRenderer renderer="react">
+  By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component using [`react-docgen`](https://github.com/reactjs/react-docgen) or [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript) for TypeScript.
 
-By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component using [`react-docgen`](https://github.com/reactjs/react-docgen) or [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript) for TypeScript.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="button-story-default-export-with-component.md" />
 
-<CodeSnippets
-  paths={[
-    'react/button-story-default-export-with-component.js.mdx',
-    'react/button-story-default-export-with-component.ts.mdx',
-  ]}
-/>
-
-{/* prettier-ignore-end */}
-
+  {/* prettier-ignore-end */}
 </IfRenderer>
 
-<IfRenderer renderer='vue'>
+<IfRenderer renderer="vue">
+  By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file, and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component using [`vue-docgen-api`](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api), including first-class support for Vue's `props`, `events`, and `slots`.
 
-By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file, and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component using [`vue-docgen-api`](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api), including first-class support for Vue's `props`, `events`, and `slots`.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="button-story-default-export-with-component.md" />
 
-<CodeSnippets
-  paths={[
-    'vue/button-story-default-export-with-component.js.mdx',
-    'vue/button-story-default-export-with-component.ts.mdx',
-  ]}
-/>
-
-{/* prettier-ignore-end */}
-
+  {/* prettier-ignore-end */}
 </IfRenderer>
 
 <IfRenderer renderer={['ember', 'html', 'svelte', 'preact', 'qwik', 'solid', 'web-components' ]}>
+  By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file, and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component provided by the framework you've chosen to use.
 
-By default, Storybook will choose a control for each arg based on its initial value. This will work well with specific arg types (e.g., `boolean` or `string`). To enable them, add the `component` annotation to the default export of your story file, and it will be used to infer the controls and auto-generate the matching [`argTypes`](../api/arg-types.md) for your component provided by the framework you've chosen to use.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="button-story-default-export-with-component.md" />
 
-<CodeSnippets
-  paths={[
-    'ember/button-story-default-export-with-component.js.mdx',
-    'preact/button-story-default-export-with-component.js.mdx',
-    'svelte/button-story-default-export-with-component.js.mdx',
-    'svelte/button-story-default-export-with-component.ts.mdx',
-    'solid/button-story-default-export-with-component.js.mdx',
-    'solid/button-story-default-export-with-component.ts.mdx',
-    'web-components/button-story-default-export-with-component.js.mdx',
-    'web-components/button-story-default-export-with-component.ts.mdx',
-  ]}
-/>
-
-<Callout variant="info">
-
-If you're using a framework that doesn't support this feature, you'll need to define the `argTypes` for your component [manually](#fully-custom-args).
-
-</Callout>
-
+  <Callout variant="info">
+    If you're using a framework that doesn't support this feature, you'll need to define the `argTypes` for your component [manually](#fully-custom-args).
+  </Callout>
 </IfRenderer>
 
 For instance, suppose you have a `variant` arg on your story that should be `primary` or `secondary`:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/button-story-controls-primary-variant.ts.mdx',
-    'web-components/button-story-controls-primary-variant.js.mdx',
-    'web-components/button-story-controls-primary-variant.ts.mdx',
-    'common/button-story-controls-primary-variant.js.mdx',
-    'common/button-story-controls-primary-variant.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="essentials/controls#snippet-button-story-controls-primary-variant"
-/>
+<CodeSnippets path="button-story-controls-primary-variant.md" usesCsf3 csf2Path="essentials/controls#snippet-button-story-controls-primary-variant" />
 
 {/* prettier-ignore-end */}
 
@@ -136,23 +86,12 @@ We can specify which controls get used by declaring a custom [argType](../api/ar
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/button-story-controls-radio-group.ts.mdx',
-    'web-components/button-story-controls-radio-group.js.mdx',
-    'web-components/button-story-controls-radio-group.ts.mdx',
-    'common/button-story-controls-radio-group.js.mdx',
-    'common/button-story-controls-radio-group.ts.mdx',
-  ]}
-/>
-
+<CodeSnippets path="button-story-controls-radio-group.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-ArgTypes are a powerful feature that can be used to customize the controls for your stories. For more information, see the documentation about [customizing controls](#annotation) with `argTypes` annotation.
-
+  ArgTypes are a powerful feature that can be used to customize the controls for your stories. For more information, see the documentation about [customizing controls](#annotation) with `argTypes` annotation.
 </Callout>
 
 This replaces the input with a radio group for a more intuitive experience.
@@ -165,60 +104,37 @@ Controls can automatically be inferred from arg's name with [regex](https://deve
 
 |  Control  |              Default regex               |                        Description                        |
 | :-------: | :--------------------------------------: | :-------------------------------------------------------: |
-| **color** | <code>/(background&#124;color)$/i</code> | Will display a color picker UI for the args that match it |
+| **color** | <code>/(background|color)$/i</code> | Will display a color picker UI for the args that match it |
 | **date**  |                `/Date$/`                 | Will display a date picker UI for the args that match it  |
 
 If you haven't used the CLI to set the configuration, or if you want to define your patterns, use the `matchers` property in the `controls` parameter:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addon-controls-custom-matchers.js.mdx',
-    'common/storybook-addon-controls-custom-matchers.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addon-controls-custom-matchers.md" />
 
 {/* prettier-ignore-end */}
 
 <IfRenderer renderer={['angular', 'ember', 'html', 'preact', 'qwik', 'react', 'solid', 'vue', 'web-components' ]}>
+  {/* Uncomment once frameworks that support custom templates are enabled to prevent misinformation about the example */}
 
-{/* Uncomment once frameworks that support custom templates are enabled to prevent misinformation about the example */}
+  ## Fully custom args
 
-## Fully custom args
+  Until now, we only used auto-generated controls based on the component for which we're writing stories. If we are writing [complex stories](../writing-stories/stories-for-multiple-components.md), we may want to add controls for args that aren’t part of the component. For example, here's how you could use a `footer` arg to populate a child component:
 
-Until now, we only used auto-generated controls based on the component for which we're writing stories. If we are writing [complex stories](../writing-stories/stories-for-multiple-components.md), we may want to add controls for args that aren’t part of the component. For example, here's how you could use a `footer` arg to populate a child component:
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="page-story-slots.md" usesCsf3 csf2Path="writing-stories/args#snippet-page-story-slots" />
 
-<CodeSnippets
-  paths={[
-    'react/page-story-slots.js.mdx',
-    'react/page-story-slots.ts.mdx',
-    'vue/page-story-slots.2.js.mdx',
-    'vue/page-story-slots.2.ts.mdx',
-    'vue/page-story-slots.3.js.mdx',
-    'vue/page-story-slots.3.ts.mdx',
-    'angular/page-story-slots.ts.mdx',
-    'web-components/page-story-slots.js.mdx',
-    'web-components/page-story-slots.ts.mdx',
-    'solid/page-story-slots.js.mdx',
-    'solid/page-story-slots.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="writing-stories/args#snippet-page-story-slots"
-/>
+  {/* prettier-ignore-end */}
 
-{/* prettier-ignore-end */}
+  By default, Storybook will add controls for all args that:
 
-By default, Storybook will add controls for all args that:
+  * It infers from the component definition [if your framework supports it](../configure/frameworks-feature-support.md).
 
-- It infers from the component definition [if your framework supports it](../configure/frameworks-feature-support.md).
+  * Appear in the list of args for your story.
 
-- Appear in the list of args for your story.
-
-Using `argTypes`, you can change the display and behavior of each control.
-
+  Using `argTypes`, you can change the display and behavior of each control.
 </IfRenderer>
 
 ### Dealing with complex values
@@ -229,23 +145,7 @@ One way to deal with this is to use primitive values (e.g., strings) as arg valu
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/component-story-custom-args-complex.js.mdx',
-    'react/component-story-custom-args-complex.ts.mdx',
-    'vue/component-story-custom-args-complex.js.mdx',
-    'vue/component-story-custom-args-complex.ts.mdx',
-    'angular/component-story-custom-args-complex.ts.mdx',
-    'svelte/component-story-custom-args-complex.js.mdx',
-    'svelte/component-story-custom-args-complex.ts.mdx',
-    'web-components/component-story-custom-args-complex.js.mdx',
-    'web-components/component-story-custom-args-complex.ts.mdx',
-    'solid/component-story-custom-args-complex.js.mdx',
-    'solid/component-story-custom-args-complex.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="essentials/controls#snippet-component-story-custom-args-complex"
-/>
+<CodeSnippets path="component-story-custom-args-complex.md" usesCsf3 csf2Path="essentials/controls#snippet-component-story-custom-args-complex" />
 
 {/* prettier-ignore-end */}
 
@@ -253,15 +153,7 @@ Unless you need the flexibility of a function, an easier way to map primitives t
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/component-story-custom-args-mapping.ts.mdx',
-    'web-components/component-story-custom-args-mapping.js.mdx',
-    'web-components/component-story-custom-args-mapping.ts.mdx',
-    'common/component-story-custom-args-mapping.js.mdx',
-    'common/component-story-custom-args-mapping.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-custom-args-mapping.md" />
 
 {/* prettier-ignore-end */}
 
@@ -271,8 +163,8 @@ Note that both `mapping` and `control.labels` don't have to be exhaustive. If th
 
 The Controls addon can be configured in two ways:
 
-- Individual controls can be configured via control annotations.
-- The addon's appearance can be configured via parameters.
+* Individual controls can be configured via control annotations.
+* The addon's appearance can be configured via parameters.
 
 ### Annotation
 
@@ -280,47 +172,34 @@ As shown above, you can configure individual controls with the “control" annot
 
 | Data Type   | Control        | Description                                                                                                                                                                                                               |
 | ----------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **boolean** | `boolean`      | Provides a toggle for switching between possible states.<br/> `argTypes: { active: { control: 'boolean' }}`                                                                                                               |
-| **number**  | `number`       | Provides a numeric input to include the range of all possible values.<br/> `argTypes: { even: { control: { type: 'number', min:1, max:30, step: 2 } }}`                                                                   |
-|             | `range`        | Provides a range slider component to include all possible values.<br/> `argTypes: { odd: { control: { type: 'range', min: 1, max: 30, step: 3 } }}`                                                                       |
-| **object**  | `object`       | Provides a JSON-based editor component to handle the object's values.<br/> Also allows edition in raw mode.<br/> `argTypes: { user: { control: 'object' }}`                                                               |
-| **array**   | `object`       | Provides a JSON-based editor component to handle the values of the array.<br/> Also allows edition in raw mode.<br/> `argTypes: { odd: { control: 'object' }}`                                                            |
-|             | `file`         | Provides a file input component that returns an array of URLs.<br/> Can be further customized to accept specific file types.<br/> `argTypes: { avatar: { control: { type: 'file', accept: '.png' } }}`                    |
-| **enum**    | `radio`        | Provides a set of radio buttons based on the available options.<br/> `argTypes: { contact: { control: 'radio', options: ['email', 'phone', 'mail'] }}`                                                                    |
-|             | `inline-radio` | Provides a set of inlined radio buttons based on the available options.<br/> `argTypes: { contact: { control: 'inline-radio', options: ['email', 'phone', 'mail'] }}`                                                     |
-|             | `check`        | Provides a set of checkbox components for selecting multiple options.<br/> `argTypes: { contact: { control: 'check', options: ['email', 'phone', 'mail'] }}`                                                              |
-|             | `inline-check` | Provides a set of inlined checkbox components for selecting multiple options.<br/> `argTypes: { contact: { control: 'inline-check', options: ['email', 'phone', 'mail'] }}`                                               |
+| **boolean** | `boolean`      | Provides a toggle for switching between possible states.<br /> `argTypes: { active: { control: 'boolean' }}`                                                                                                               |
+| **number**  | `number`       | Provides a numeric input to include the range of all possible values.<br /> `argTypes: { even: { control: { type: 'number', min:1, max:30, step: 2 } }}`                                                                   |
+|             | `range`        | Provides a range slider component to include all possible values.<br /> `argTypes: { odd: { control: { type: 'range', min: 1, max: 30, step: 3 } }}`                                                                       |
+| **object**  | `object`       | Provides a JSON-based editor component to handle the object's values.<br /> Also allows edition in raw mode.<br /> `argTypes: { user: { control: 'object' }}`                                                               |
+| **array**   | `object`       | Provides a JSON-based editor component to handle the values of the array.<br /> Also allows edition in raw mode.<br /> `argTypes: { odd: { control: 'object' }}`                                                            |
+|             | `file`         | Provides a file input component that returns an array of URLs.<br /> Can be further customized to accept specific file types.<br /> `argTypes: { avatar: { control: { type: 'file', accept: '.png' } }}`                    |
+| **enum**    | `radio`        | Provides a set of radio buttons based on the available options.<br /> `argTypes: { contact: { control: 'radio', options: ['email', 'phone', 'mail'] }}`                                                                    |
+|             | `inline-radio` | Provides a set of inlined radio buttons based on the available options.<br /> `argTypes: { contact: { control: 'inline-radio', options: ['email', 'phone', 'mail'] }}`                                                     |
+|             | `check`        | Provides a set of checkbox components for selecting multiple options.<br /> `argTypes: { contact: { control: 'check', options: ['email', 'phone', 'mail'] }}`                                                              |
+|             | `inline-check` | Provides a set of inlined checkbox components for selecting multiple options.<br /> `argTypes: { contact: { control: 'inline-check', options: ['email', 'phone', 'mail'] }}`                                               |
 |             | `select`       | Provides a drop-down list component to handle single value selection. `argTypes: { age: { control: 'select', options: [20, 30, 40, 50] }}`                                                                                |
 |             | `multi-select` | Provides a drop-down list that allows multiple selected values. `argTypes: { countries: { control: 'multi-select', options: ['USA', 'Canada', 'Mexico'] }}`                                                               |
-| **string**  | `text`         | Provides a freeform text input. <br/> `argTypes: { label: { control: 'text' }}`                                                                                                                                           |
-|             | `color`        | Provides a color picker component to handle color values.<br/> Can be additionally configured to include a set of color presets.<br/> `argTypes: { color: { control: { type: 'color', presetColors: ['red', 'green']} }}` |
+| **string**  | `text`         | Provides a freeform text input. <br /> `argTypes: { label: { control: 'text' }}`                                                                                                                                           |
+|             | `color`        | Provides a color picker component to handle color values.<br /> Can be additionally configured to include a set of color presets.<br /> `argTypes: { color: { control: { type: 'color', presetColors: ['red', 'green']} }}` |
 |             | `date`         | Provides a datepicker component to handle date selection. `argTypes: { startDate: { control: 'date' }}`                                                                                                                   |
 
 <Callout variant="info" icon="💡">
-
-The `date` control will convert the date into a UNIX timestamp when the value changes. It's a known limitation that will be fixed in a future release. If you need to represent the actual date, you'll need to update the story's implementation and convert the value into a date object.
-
+  The `date` control will convert the date into a UNIX timestamp when the value changes. It's a known limitation that will be fixed in a future release. If you need to represent the actual date, you'll need to update the story's implementation and convert the value into a date object.
 </Callout>
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/gizmo-story-controls-customization.ts.mdx',
-    'web-components/gizmo-story-controls-customization.js.mdx',
-    'web-components/gizmo-story-controls-customization.ts.mdx',
-    'common/gizmo-story-controls-customization.js.mdx',
-    'common/gizmo-story-controls-customization.ts.mdx',
-  ]}
-/>
-
+<CodeSnippets path="gizmo-story-controls-customization.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-Numeric data types will default to a `number` control unless additional configuration is provided.
-
+  Numeric data types will default to a `number` control unless additional configuration is provided.
 </Callout>
 
 ### Parameters
@@ -335,12 +214,7 @@ To enable expanded mode globally, add the following to [`.storybook/preview.js`]
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-expanded-controls.js.mdx',
-    'common/storybook-preview-expanded-controls.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-expanded-controls.md" />
 
 {/* prettier-ignore-end */}
 
@@ -354,12 +228,7 @@ For `color` controls, you can specify an array of `presetColors`, either on the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-parameters-color-swatches.js.mdx',
-    'common/storybook-preview-parameters-color-swatches.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-parameters-color-swatches.md" />
 
 {/* prettier-ignore-end */}
 
@@ -375,17 +244,7 @@ Consider the following story snippets:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/component-story-disable-controls-regex.ts.mdx',
-    'web-components/component-story-disable-controls-regex.js.mdx',
-    'web-components/component-story-disable-controls-regex.ts.mdx',
-    'common/component-story-disable-controls-regex.js.mdx',
-    'common/component-story-disable-controls-regex.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="essentials/controls#snippet-component-story-disable-controls-regex"
-/>
+<CodeSnippets path="component-story-disable-controls-regex.md" usesCsf3 csf2Path="essentials/controls#snippet-component-story-disable-controls-regex" />
 
 {/* prettier-ignore-end */}
 
@@ -397,15 +256,7 @@ Consider the following snippet to force required args first:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/component-story-sort-controls.ts.mdx',
-    'web-components/component-story-sort-controls.js.mdx',
-    'web-components/component-story-sort-controls.ts.mdx',
-    'common/component-story-sort-controls.js.mdx',
-    'common/component-story-sort-controls.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-sort-controls.md" />
 
 {/* prettier-ignore-end */}
 
@@ -415,17 +266,7 @@ If you don't plan to handle the control args inside your story, you can remove t
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-   'angular/button-story-hide-nocontrols-warning.ts.mdx',
-   'web-components/button-story-hide-nocontrols-warning.js.mdx',
-   'web-components/button-story-hide-nocontrols-warning.ts.mdx',
-   'common/button-story-hide-nocontrols-warning.js.mdx',
-   'common/button-story-hide-nocontrols-warning.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="essentials/controls#snippet-button-story-hide-nocontrols-warning"
-/>
+<CodeSnippets path="button-story-hide-nocontrols-warning.md" usesCsf3 csf2Path="essentials/controls#snippet-button-story-hide-nocontrols-warning" />
 
 {/* prettier-ignore-end */}
 
@@ -437,47 +278,26 @@ Suppose you want to turn off Controls for a property called `foo` in a component
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/component-story-disable-controls.ts.mdx',
-    'web-components/component-story-disable-controls.js.mdx',
-    'web-components/component-story-disable-controls.ts.mdx',
-    'common/component-story-disable-controls.js.mdx',
-    'common/component-story-disable-controls.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-disable-controls.md" />
 
 {/* prettier-ignore-end */}
 
 Resulting in the following change in Storybook UI:
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="addon-controls-disable-specific-prop-optimized.mp4"
-    type="video/mp4"
-  />
+  <source src="addon-controls-disable-specific-prop-optimized.mp4" type="video/mp4" />
 </video>
 
 The previous example also removed the prop documentation from the table. In some cases, this is fine. However, sometimes you might want to render the prop documentation without a control. The following example illustrates how:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/component-story-disable-controls-alt.ts.mdx',
-    'web-components/component-story-disable-controls-alt.js.mdx',
-    'web-components/component-story-disable-controls-alt.ts.mdx',
-    'common/component-story-disable-controls-alt.js.mdx',
-    'common/component-story-disable-controls-alt.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-disable-controls-alt.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-As with other Storybook properties, such as [decorators](../writing-stories/decorators.md), you can apply the same pattern at a story level for more granular cases.
-
+  As with other Storybook properties, such as [decorators](../writing-stories/decorators.md), you can apply the same pattern at a story level for more granular cases.
 </Callout>
 
 ### Conditional controls
@@ -488,15 +308,7 @@ Consider a collection of "advanced" settings only visible when the user toggles 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/component-story-conditional-controls-toggle.ts.mdx',
-    'web-components/component-story-conditional-controls-toggle.js.mdx',
-    'web-components/component-story-conditional-controls-toggle.ts.mdx',
-    'common/component-story-conditional-controls-toggle.js.mdx',
-    'common/component-story-conditional-controls-toggle.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-conditional-controls-toggle.md" />
 
 {/* prettier-ignore-end */}
 
@@ -504,15 +316,7 @@ Or consider a constraint where if the user sets one control value, it doesn't ma
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/component-story-conditional-controls-mutual-exclusion.ts.mdx',
-    'web-components/component-story-conditional-controls-mutual-exclusion.js.mdx',
-    'web-components/component-story-conditional-controls-mutual-exclusion.ts.mdx',
-    'common/component-story-conditional-controls-mutual-exclusion.js.mdx',
-    'common/component-story-conditional-controls-mutual-exclusion.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-conditional-controls-mutual-exclusion.md" />
 
 {/* prettier-ignore-end */}
 
@@ -534,118 +338,78 @@ It may also contain at most one of the following operators:
 
 If no operator is provided, that is equivalent to `{ truthy: true }`.
 
-<IfRenderer renderer='angular'>
+<IfRenderer renderer="angular">
+  ## Troubleshooting
 
-## Troubleshooting
+  ### Controls are not automatically generated for my component
 
-### Controls are not automatically generated for my component
+  Out of the box, Storybook will try to infer the required argTypes and associated controls for your stories based on the component's definition and the initial value of the args. However, in some cases, this may not be enough, and you may need to provide additional information to Storybook. To solve this, you can opt-in to use [Compodoc](https://compodoc.app/), a documentation generator for Angular applications that can extract the metadata of your components and generate the required argTypes and controls for your stories.
 
-Out of the box, Storybook will try to infer the required argTypes and associated controls for your stories based on the component's definition and the initial value of the args. However, in some cases, this may not be enough, and you may need to provide additional information to Storybook. To solve this, you can opt-in to use [Compodoc](https://compodoc.app/), a documentation generator for Angular applications that can extract the metadata of your components and generate the required argTypes and controls for your stories.
+  Run the following command to install the tooling.
 
-Run the following command to install the tooling.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="compodoc-install.md" />
 
-<CodeSnippets
-  paths={[
-   'angular/compodoc-install.yarn.js.mdx',
-   'angular/compodoc-install.npm.js.mdx',
-   'angular/compodoc-install.pnpm.js.mdx',
-  ]}
-/>
+  {/* prettier-ignore-end */}
 
-{/* prettier-ignore-end */}
+  Update your `angular.json` file to include the following configuration to include it in the Storybook's inbuilt builder configuration.
 
-Update your `angular.json` file to include the following configuration to include it in the Storybook's inbuilt builder configuration.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="angular-project-compodoc-config.md" />
 
-<CodeSnippets
-  paths={[
-   'angular/angular-project-compodoc-config.json.mdx',
-  ]}
-/>
+  {/* prettier-ignore-end */}
 
+  Finally, update your `.storybook/preview.ts` file to include the following configuration to import the metadata generated by Compodoc and use it to generate the controls and argTypes for your stories.
 
-{/* prettier-ignore-end */}
+  {/* prettier-ignore-start */}
 
-Finally, update your `.storybook/preview.ts` file to include the following configuration to import the metadata generated by Compodoc and use it to generate the controls and argTypes for your stories.
+  <CodeSnippets path="storybook-preview-compodoc-config.md" />
 
-{/* prettier-ignore-start */}
-
-<CodeSnippets
-  paths={[
-   'angular/storybook-preview-compodoc-config.ts.mdx',
-  ]}
-/>
-
-
-{/* prettier-ignore-end */}
-
+  {/* prettier-ignore-end */}
 </IfRenderer>
 
-<IfRenderer renderer='web-components'>
+<IfRenderer renderer="web-components">
+  ## Troubleshooting
 
-## Troubleshooting
+  ### Controls are not automatically generated for my component
 
-### Controls are not automatically generated for my component
+  Out of the box, Storybook will try to infer the required argTypes and associated controls for your stories based on the component's definition and the initial value of the args. However, in some cases, this may not be enough, and you may need to provide additional information to Storybook. To solve this, you can generate a [`custom-elements.json`](https://github.com/webcomponents/custom-elements-json) file with [`@custom-elements-manifest/analyzer`](https://github.com/open-wc/custom-elements-manifest) if you're using the `pre-v1.0.0` version of the elements file or [`@custom-elements-manifest/analyzer`](https://github.com/open-wc/custom-elements-manifest) for newer versions and configure it in your Storybook UI configuration file (i.e., `.storybook/preview.js|ts`) to enable it.
 
-Out of the box, Storybook will try to infer the required argTypes and associated controls for your stories based on the component's definition and the initial value of the args. However, in some cases, this may not be enough, and you may need to provide additional information to Storybook. To solve this, you can generate a [`custom-elements.json`](https://github.com/webcomponents/custom-elements-json) file with [`@custom-elements-manifest/analyzer`](https://github.com/open-wc/custom-elements-manifest) if you're using the `pre-v1.0.0` version of the elements file or [`@custom-elements-manifest/analyzer`](https://github.com/open-wc/custom-elements-manifest) for newer versions and configure it in your Storybook UI configuration file (i.e., `.storybook/preview.js|ts`) to enable it.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="storybook-preview-custom-elements-config.md" />
 
-<CodeSnippets
-  paths={[
-   'web-components/storybook-preview-custom-elements-config.js.mdx',
-   'web-components/storybook-preview-custom-elements-config.ts.mdx',
-  ]}
-/>
-
-
-{/* prettier-ignore-end */}
-
+  {/* prettier-ignore-end */}
 </IfRenderer>
 
-<IfRenderer renderer='ember'>
+<IfRenderer renderer="ember">
+  ## Troubleshooting
 
-## Troubleshooting
+  ### Controls are not automatically generated for my component
 
-### Controls are not automatically generated for my component
+  Out of the box, Storybook will try to infer the required argTypes and associated controls for your stories based on the metadata provided by the [`@storybook/ember-cli-storybook`](https://github.com/storybookjs/ember-cli-storybook) addon. However, in some cases, this may not be enough, and you may need to customize your project configuration to provide additional information to Storybook to generate the required argTypes and controls for your stories.
 
-Out of the box, Storybook will try to infer the required argTypes and associated controls for your stories based on the metadata provided by the [`@storybook/ember-cli-storybook`](https://github.com/storybookjs/ember-cli-storybook) addon. However, in some cases, this may not be enough, and you may need to customize your project configuration to provide additional information to Storybook to generate the required argTypes and controls for your stories.
+  Update your `ember-cli-build.js` configuration file to include the addon.
 
-Update your `ember-cli-build.js` configuration file to include the addon.
+  {/* prettier-ignore-start */}
 
-{/* prettier-ignore-start */}
+  <CodeSnippets path="storybook-ember-cli-build.md" />
 
-<CodeSnippets
-  paths={[
-   'ember/storybook-ember-cli-build.js.mdx',
-  ]}
-/>
+  {/* prettier-ignore-end */}
 
+  Restart your application to generate the metadata file (i.e., `storybook-docgen/index.json`) and update your `.storybook/preview.js` file to include it, which will be used to create the controls and argTypes for your stories.
 
-{/* prettier-ignore-end */}
+  {/* prettier-ignore-start */}
 
-Restart your application to generate the metadata file (i.e., `storybook-docgen/index.json`) and update your `.storybook/preview.js` file to include it, which will be used to create the controls and argTypes for your stories.
+  <CodeSnippets path="storybook-preview-custom-metadata.md" />
 
-{/* prettier-ignore-start */}
+  {/* prettier-ignore-end */}
 
-<CodeSnippets
-  paths={[
-   'ember/storybook-preview-custom-metadata.js.mdx',
-  ]}
-/>
-
-
-{/* prettier-ignore-end */}
-
-<Callout variant="info">
-
-Enabling this feature will generate a `storybook-docgen/index.json` automatically with each build. For more information on how the metadata is generated, refer to [documentation](https://github.com/storybookjs/storybook/tree/next/code/frameworks/ember) for the Ember framework.
-
-</Callout>
-
+  <Callout variant="info">
+    Enabling this feature will generate a `storybook-docgen/index.json` automatically with each build. For more information on how the metadata is generated, refer to [documentation](https://github.com/storybookjs/storybook/tree/next/code/frameworks/ember) for the Ember framework.
+  </Callout>
 </IfRenderer>
 
 ## API
@@ -700,6 +464,6 @@ Default: `'none'`
 
 Specifies how the controls are sorted.
 
-- **none**: Unsorted, displayed in the same order the arg types are processed in
-- **alpha**: Sorted alphabetically, by the arg type's name
-- **requiredFirst**: Same as `alpha`, with any required arg types displayed first
+* **none**: Unsorted, displayed in the same order the arg types are processed in
+* **alpha**: Sorted alphabetically, by the arg type's name
+* **requiredFirst**: Same as `alpha`, with any required arg types displayed first

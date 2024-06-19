@@ -10,23 +10,7 @@ The simplest approach we can take is to reuse the stories of the `ListItem` in t
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/list-story-unchecked.js.mdx',
-    'react/list-story-unchecked.ts.mdx',
-    'vue/list-story-unchecked.2.js.mdx',
-    'vue/list-story-unchecked.2.ts.mdx',
-    'vue/list-story-unchecked.3.js.mdx',
-    'vue/list-story-unchecked.3.ts.mdx',
-    'angular/list-story-unchecked.ts.mdx',
-    'web-components/list-story-unchecked.js.mdx',
-    'web-components/list-story-unchecked.ts.mdx',
-    'solid/list-story-unchecked.js.mdx',
-    'solid/list-story-unchecked.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="writing-stories/stories-for-multiple-components#snippet-list-story-unchecked"
-/>
+<CodeSnippets path="list-story-unchecked.md" usesCsf3 csf2Path="writing-stories/stories-for-multiple-components#snippet-list-story-unchecked" />
 
 {/* prettier-ignore-end */}
 
@@ -40,14 +24,7 @@ One way we improve that situation is by pulling the rendered subcomponent out in
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/list-story-with-unchecked-children.js.mdx',
-    'react/list-story-with-unchecked-children.ts.mdx',    
-  ]}
-  usesCsf3
-  csf2Path="writing-stories/stories-for-multiple-components#snippet-list-story-with-unchecked-children"
-/>
+<CodeSnippets path="list-story-with-unchecked-children.md" usesCsf3 csf2Path="writing-stories/stories-for-multiple-components#snippet-list-story-with-unchecked-children" />
 
 {/* prettier-ignore-end */}
 
@@ -57,15 +34,13 @@ However, there are some caveats when using this approach that you should be awar
 
 The `children` `args` as any other arg needs to be JSON serializable. It means that you should:
 
-- Avoid using empty values
-- Use caution with components that include third party libraries
+* Avoid using empty values
+* Use caution with components that include third party libraries
 
 As they could lead into errors with your Storybook.
 
 <Callout variant="info">
-
-We're currently working on improving the overall experience for the children arg and allow you to edit children arg in a control and allow you to use other types of components in the near future. But for now you need to factor in this caveat when you're implementing your stories.
-
+  We're currently working on improving the overall experience for the children arg and allow you to edit children arg in a control and allow you to use other types of components in the near future. But for now you need to factor in this caveat when you're implementing your stories.
 </Callout>
 
 ## Creating a Template Component
@@ -74,23 +49,7 @@ Another option that is more “data”-based is to create a special “story-gen
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/list-story-template.js.mdx',
-    'react/list-story-template.ts.mdx',
-    'vue/list-story-template.2.js.mdx',
-    'vue/list-story-template.2.ts.mdx',
-    'vue/list-story-template.3.js.mdx',
-    'vue/list-story-template.3.ts.mdx',
-    'angular/list-story-template.ts.mdx',
-    'web-components/list-story-template.js.mdx',
-    'web-components/list-story-template.ts.mdx',
-    'solid/list-story-template.js.mdx',
-    'solid/list-story-template.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="writing-stories/stories-for-multiple-components#snippet-list-story-template"
-/>
+<CodeSnippets path="list-story-template.md" usesCsf3 csf2Path="writing-stories/stories-for-multiple-components#snippet-list-story-template" />
 
 {/* prettier-ignore-end */}
 

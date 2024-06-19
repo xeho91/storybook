@@ -11,9 +11,7 @@ In addition, you can write pure documentation pages in MDX and add them to Story
 ![MDX simple example result](./mdx-hero.png)
 
 <Callout variant="info">
-
-Writing stories directly in MDX was deprecated in Storybook 7. Please reference the [previous documentation](../../../release-6-5/docs/writing-docs/mdx.md) for guidance on that feature.
-
+  Writing stories directly in MDX was deprecated in Storybook 7. Please reference the [previous documentation](../../../release-6-5/docs/writing-docs/mdx.md) for guidance on that feature.
 </Callout>
 
 ## Basic example
@@ -22,11 +20,7 @@ Let's start with an example, `Checkbox.mdx`, combining Markdown with a single st
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/checkbox-story.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="checkbox-story.md" />
 
 {/* prettier-ignore-end */}
 
@@ -34,17 +28,7 @@ This MDX file references a story file, `Checkbox.stories.js|ts`, that is written
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/checkbox-story-csf.ts.mdx',
-    'web-components/checkbox-story-csf.js.mdx',
-    'web-components/checkbox-story-csf.ts.mdx',
-    'common/checkbox-story-csf.js.mdx',
-    'common/checkbox-story-csf.ts.mdx',
-  ]}
-  usesCsf3
-  csf2Path="writing-docs/mdx#snippet-checkbox-story-csf"
-/>
+<CodeSnippets path="checkbox-story-csf.md" usesCsf3 csf2Path="writing-docs/mdx#snippet-checkbox-story-csf" />
 
 {/* prettier-ignore-end */}
 
@@ -60,13 +44,11 @@ Let’s break it down.
 
 The first thing you'll notice is that the component documentation is divided into distinct formats: one for writing component stories describing each possible component state and the second one for documenting how to use them. This split leverages the best qualities of each format:
 
-- **CSF** is great for succinctly defining stories (component examples). If you use TypeScript, it also provides type safety and auto-completion.
-- **MDX** is great for writing structured documentation and composing it with interactive JSX elements.
+* **CSF** is great for succinctly defining stories (component examples). If you use TypeScript, it also provides type safety and auto-completion.
+* **MDX** is great for writing structured documentation and composing it with interactive JSX elements.
 
 <Callout variant="info" icon="💡">
-
-If you’re coming from a previous version of Storybook, you might be accustomed to using MDX both for **documentation** and for defining **stories** in the same `.stories.mdx` file. We’ve deprecated this functionality and plan to remove it in a future version of Storybook. We provide [migration](#automigration) scripts to help you onto the new format.
-
+  If you’re coming from a previous version of Storybook, you might be accustomed to using MDX both for **documentation** and for defining **stories** in the same `.stories.mdx` file. We’ve deprecated this functionality and plan to remove it in a future version of Storybook. We provide [migration](#automigration) scripts to help you onto the new format.
 </Callout>
 
 ### Anatomy of MDX
@@ -89,11 +71,7 @@ Comments in MDX are JSX blocks that contain JS comments.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-mdx-docs-imports.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-mdx-docs-imports.md" />
 
 {/* prettier-ignore-end */}
 
@@ -101,29 +79,19 @@ Imports the components and stories that will be used in the JSX throughout the r
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-mdx-docs-meta-block.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-mdx-docs-meta-block.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info">
-
-When providing the `of` prop to the `Meta` block, make sure that you're referencing the [**default export**](../api/csf.md#default-export) of the story file and not the component itself to prevent render issues with the generated documentation.
-
+  When providing the `of` prop to the `Meta` block, make sure that you're referencing the [**default export**](../api/csf.md#default-export) of the story file and not the component itself to prevent render issues with the generated documentation.
 </Callout>
 
 The `Meta` block defines where the document will be placed in the sidebar. In this case, it is adjacent to the Checkbox’s stories. By default, the docs sidebar node is titled `"Docs"`, but this can be customized by passing a `name` prop (e.g., `<Meta of={CheckboxStories} name="Info" />`). If you want to place a docs node at an arbitrary point in the navigation hierarchy, you can use the `title` prop (e.g., `<Meta title="path/to/node" />`).
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-mdx-docs-definition.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-mdx-docs-definition.md" />
 
 {/* prettier-ignore-end */}
 
@@ -131,11 +99,7 @@ MDX2 supports standard markdown ([”commonmark”](https://commonmark.org/)) by
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-mdx-docs-story.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-mdx-docs-story.md" />
 
 {/* prettier-ignore-end */}
 
@@ -147,11 +111,7 @@ In addition to Doc Blocks, MDX can incorporate arbitrary React components, makin
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-mdx-docs-dos-donts.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-mdx-docs-dos-donts.md" />
 
 {/* prettier-ignore-end */}
 
@@ -191,19 +151,12 @@ In Storybook, you can apply MDX options, including plugins, in the main configur
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-paths={[
-  'common/storybook-main-config-remark-options.js.mdx',
-  'common/storybook-main-config-remark-options.ts.mdx',
-]}
-/>
+<CodeSnippets path="storybook-main-config-remark-options.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-The [`remark-gfm`](https://github.com/remarkjs/remark-gfm) package isn't provided by default during migration. We recommend installing it as a development dependency if you use its features.
-
+  The [`remark-gfm`](https://github.com/remarkjs/remark-gfm) package isn't provided by default during migration. We recommend installing it as a development dependency if you use its features.
 </Callout>
 
 ### Automigration
@@ -220,12 +173,7 @@ In addition, to document your components with MDX, you can also extend it to wri
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-main-mdx-config.js.mdx',
-    'common/storybook-auto-docs-main-mdx-config.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-main-mdx-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -237,12 +185,7 @@ If you need to match the component documentation to an existing story, you can c
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-baseline-example.custom-title.mdx.mdx',
-    'common/storybook-auto-docs-baseline-example.of-prop.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-baseline-example.md" />
 
 {/* prettier-ignore-end */}
 
@@ -252,11 +195,7 @@ Suppose you're documenting an existing component and only provide the `Meta` Doc
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-paths={[
-  'common/storybook-auto-docs-mdx-docs-docs-only-page.mdx.mdx',
-]}
-/>
+<CodeSnippets path="storybook-auto-docs-mdx-docs-docs-only-page.md" />
 
 {/* prettier-ignore-end */}
 
@@ -268,18 +207,12 @@ However, providing the `Meta` Doc Block may not be required for certain use case
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-custom-file.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-custom-file.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-If you're overriding an existing auto-generated documentation page enabled via [`tags`](./autodocs.md#setup-automated-docs) configuration property, we recommend removing it to avoid errors.
-
+  If you're overriding an existing auto-generated documentation page enabled via [`tags`](./autodocs.md#setup-automated-docs) configuration property, we recommend removing it to avoid errors.
 </Callout>
 
 Once the custom MDX documentation is loaded, Storybook will infer the title and location using the same heuristic rules to generate [auto-title stories](../configure/sidebar-and-urls.md#csf-30-auto-titles) and render it in the sidebar as a `Docs` entry.
@@ -290,11 +223,7 @@ Writing standalone documentation pages is a common use case that applies not onl
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-standalone-page.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-standalone-page.md" />
 
 {/* prettier-ignore-end */}
 
@@ -308,11 +237,7 @@ Documentation can be expensive to maintain and keep up to date when applied to e
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-starter-example.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-starter-example.md" />
 
 {/* prettier-ignore-end */}
 
@@ -322,11 +247,7 @@ If you need to document multiple components in a single documentation page, you 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-mdx-file.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-mdx-file.md" />
 
 {/* prettier-ignore-end */}
 
@@ -336,18 +257,12 @@ If you need to extend your documentation with additional content written in Mark
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-custom-docs-markdown.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-custom-docs-markdown.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info">
-
-The `Markdown` Doc Block provides additional configuration options to customize the rendering of your documentation. For more information, refer to the [API documentation](../api/doc-block-markdown.md).
-
+  The `Markdown` Doc Block provides additional configuration options to customize the rendering of your documentation. For more information, refer to the [API documentation](../api/doc-block-markdown.md).
 </Callout>
 
 ![Changelog markdown in an MDX story](./mdx-markdown-docs-import.png)
@@ -377,9 +292,7 @@ However, cross-linking documentation isn't restricted to documentation pages. Yo
 {/*You can also use anchors to target a specific section of a page: */}
 
 <Callout variant="info" icon="💡">
-
-By applying this pattern with the Controls addon, all anchors will be ignored in Canvas based on how Storybook handles URLs to track the args values.
-
+  By applying this pattern with the Controls addon, all anchors will be ignored in Canvas based on how Storybook handles URLs to track the args values.
 </Callout>
 
 ## Troubleshooting
@@ -404,13 +317,7 @@ Run the following command to install the required dependency.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-fallback-mdx-install.yarn.js.mdx',
-    'common/storybook-fallback-mdx-install.npm.js.mdx',
-    'common/storybook-fallback-mdx-install.pnpm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-fallback-mdx-install.md" />
 
 {/* prettier-ignore-end */}
 
@@ -418,12 +325,7 @@ Update your Storybook configuration (in `.storybook/main.js|ts`), and provide th
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/main-config-features-legacy-mdx-1.js.mdx',
-    'common/main-config-features-legacy-mdx-1.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="main-config-features-legacy-mdx-1.md" />
 
 {/* prettier-ignore-end */}
 
@@ -438,9 +340,7 @@ npx @hipster/mdx2-issue-checker
 ```
 
 <Callout variant="info" icon="💡">
-
-Depending on the volume, you may be required to run the command multiple times to fix all the issues.
-
+  Depending on the volume, you may be required to run the command multiple times to fix all the issues.
 </Callout>
 
 When it finishes, it will output the list of files causing issues. You can then use this information to fix the problems manually.
@@ -461,7 +361,7 @@ If you turned off inline rendering for your stories via the [`inline`](../api/do
 
 #### Learn more about Storybook documentation
 
-- [Autodocs](./autodocs.md) for creating documentation for your stories
-- MDX for customizing your documentation
-- [Doc Blocks](./doc-blocks.md) for authoring your documentation
-- [Publishing docs](./build-documentation.md) to automate the process of publishing your documentation
+* [Autodocs](./autodocs.md) for creating documentation for your stories
+* MDX for customizing your documentation
+* [Doc Blocks](./doc-blocks.md) for authoring your documentation
+* [Publishing docs](./build-documentation.md) to automate the process of publishing your documentation

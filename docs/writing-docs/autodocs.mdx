@@ -12,19 +12,7 @@ To enable auto-generated documentation for your stories, you'll need to add the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-story-auto-docs.js.mdx',
-    'react/button-story-auto-docs.ts.mdx',
-    'vue/button-story-auto-docs.js.mdx',
-    'vue/button-story-auto-docs.ts.mdx',
-    'angular/button-story-auto-docs.ts.mdx',
-    'svelte/button-story-auto-docs.js.mdx',
-    'svelte/button-story-auto-docs.ts.mdx',
-    'web-components/button-story-auto-docs.js.mdx',
-    'web-components/button-story-auto-docs.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-auto-docs.md" />
 
 {/* prettier-ignore-end */}
 
@@ -38,19 +26,14 @@ By default, Storybook offers zero-config support for documentation and automatic
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-auto-docs-full-config.js.mdx',
-    'common/storybook-auto-docs-full-config.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-auto-docs-full-config.md" />
 
 {/* prettier-ignore-end */}
 
 | Option        | Description                                                                                                                                                                                                                                                                                                              |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `autodocs`    | Configures auto-generated documentation pages. Available options: `true`, `false`,`tag` (default). `true`/`false` enable/disable autodocs globally. `tag` allows you to opt in per component by adding the `tags: ['autodocs']` annotation in the component's default export. <br/> Default: `docs: { autodocs: 'tag' }` |
-| `defaultName` | Renames the auto-generated documentation page<br/> Default: `docs: { defaultName: 'Documentation' }`                                                                                                                                                                                                                     |
+| `autodocs`    | Configures auto-generated documentation pages. Available options: `true`, `false`,`tag` (default). `true`/`false` enable/disable autodocs globally. `tag` allows you to opt in per component by adding the `tags: ['autodocs']` annotation in the component's default export. <br /> Default: `docs: { autodocs: 'tag' }` |
+| `defaultName` | Renames the auto-generated documentation page<br /> Default: `docs: { defaultName: 'Documentation' }`                                                                                                                                                                                                                     |
 
 ### Write a custom template
 
@@ -60,19 +43,12 @@ To replace the default documentation template used by Storybook, you can extend 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-auto-docs-custom-template-function.js.mdx',
-    'common/storybook-preview-auto-docs-custom-template-function.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-auto-docs-custom-template-function.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-Internally, Storybook uses a similar implementation to generate the default template. See the Doc Blocks [API reference](./doc-blocks.md#available-blocks) to learn more about how Doc Blocks work.
-
+  Internally, Storybook uses a similar implementation to generate the default template. See the Doc Blocks [API reference](./doc-blocks.md#available-blocks) to learn more about how Doc Blocks work.
 </Callout>
 
 Going over the code snippet in more detail. When Storybook starts up, it will override the default template with the custom one composed of the following:
@@ -88,11 +64,7 @@ You can also use MDX to generate the documentation template. This is useful in n
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-mdx-template-with-prop.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-mdx-template-with-prop.md" />
 
 {/* prettier-ignore-end */}
 
@@ -100,18 +72,12 @@ Then you can use it in your `.storybook/preview.js` or an individual story file 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-auto-docs-custom-mdx-template.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-auto-docs-custom-mdx-template.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-If you only need to override the documentation page for a single component, we recommend creating an MDX file and referencing it directly via the `<Meta of={} />` Doc Block.
-
+  If you only need to override the documentation page for a single component, we recommend creating an MDX file and referencing it directly via the `<Meta of={} />` Doc Block.
 </Callout>
 
 ### Generate a table of contents
@@ -120,12 +86,7 @@ Storybook's auto-generated documentation pages can be quite long and difficult t
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-enable-toc.js.mdx',
-    'common/storybook-preview-enable-toc.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-enable-toc.md" />
 
 {/* prettier-ignore-end */}
 
@@ -135,27 +96,20 @@ By default, the table of contents on the documentation page will only show the `
 
 | Option                | Description                                                                                                                                                                                                     |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `contentsSelector`    | Defines the container's CSS selector for search for the headings <br/> `toc: { contentsSelector: '.sbdocs-content' }`                                                                                           |
-| `disable`             | Hides the table of contents for the documentation pages <br/> `toc: { disable: true }`                                                                                                                          |
-| `headingSelector`     | Defines the list of headings to feature in the table of contents <br/> `toc: { headingSelector: 'h1, h2, h3' }`                                                                                                 |
-| `ignoreSelector`      | Configures the table of contents to ignore specific headings or stories. By default, the table of contents will ignore all content placed within Story blocks <br/> `toc: { ignoreSelector: '.docs-story h2' }` |
-| `title`               | Defines a title caption for the table of contents. <br/>Accepts one of: `string`, `null`, React element <br/> `toc: { title: 'Table of Contents' }`                                                             |
-| `unsafeTocbotOptions` | Provides additional [`TocBot`](https://tscanlin.github.io/tocbot/) configuration options <br/> `toc: { unsafeTocbotOptions: { orderedList: true } }`                                                            |
+| `contentsSelector`    | Defines the container's CSS selector for search for the headings <br /> `toc: { contentsSelector: '.sbdocs-content' }`                                                                                           |
+| `disable`             | Hides the table of contents for the documentation pages <br /> `toc: { disable: true }`                                                                                                                          |
+| `headingSelector`     | Defines the list of headings to feature in the table of contents <br /> `toc: { headingSelector: 'h1, h2, h3' }`                                                                                                 |
+| `ignoreSelector`      | Configures the table of contents to ignore specific headings or stories. By default, the table of contents will ignore all content placed within Story blocks <br /> `toc: { ignoreSelector: '.docs-story h2' }` |
+| `title`               | Defines a title caption for the table of contents. <br />Accepts one of: `string`, `null`, React element <br /> `toc: { title: 'Table of Contents' }`                                                             |
+| `unsafeTocbotOptions` | Provides additional [`TocBot`](https://tscanlin.github.io/tocbot/) configuration options <br /> `toc: { unsafeTocbotOptions: { orderedList: true } }`                                                            |
 
 <Callout variant="info">
-
-The `contentsSelector`, `headingSelector`, and `ignoreSelector` properties allow additional customization. For more information on using them, see the [`Tocbot` documentation](https://tscanlin.github.io/tocbot/).
-
+  The `contentsSelector`, `headingSelector`, and `ignoreSelector` properties allow additional customization. For more information on using them, see the [`Tocbot` documentation](https://tscanlin.github.io/tocbot/).
 </Callout>
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-custom-toc.js.mdx',
-    'common/storybook-preview-custom-toc.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-custom-toc.md" />
 
 {/* prettier-ignore-end */}
 
@@ -165,15 +119,7 @@ If you want to customize the table of contents for a specific story, you can inc
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'angular/my-component-disable-toc.ts.mdx',
-    'web-components/my-component-disable-toc.js.mdx',
-    'web-components/my-component-disable-toc.ts.mdx',
-    'common/my-component-disable-toc.js.mdx',
-    'common/my-component-disable-toc.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="my-component-disable-toc.md" />
 
 {/* prettier-ignore-end */}
 
@@ -189,12 +135,7 @@ The Docs Container is the component that wraps up the documentation page. It's r
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-auto-docs-custom-docs-container.js.mdx',
-    'common/storybook-preview-auto-docs-custom-docs-container.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-auto-docs-custom-docs-container.md" />
 
 {/* prettier-ignore-end */}
 
@@ -204,12 +145,7 @@ By default, Storybook provides two themes for the UI: `light` and `dark`. If you
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-auto-docs-override-theme.js.mdx',
-    'common/storybook-preview-auto-docs-override-theme.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-auto-docs-override-theme.md" />
 
 {/* prettier-ignore-end */}
 
@@ -219,19 +155,12 @@ Out of the box, Storybook has a set of components that you can use to customize 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-auto-docs-override-mdx-container.js.mdx',
-    'common/storybook-preview-auto-docs-override-mdx-container.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-auto-docs-override-mdx-container.md" />
 
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
-
-This is not a Storybook issue but a breaking change introduced with MDX 2. For more information on this and other breaking changes, see our [MDX documentation](./mdx.md#breaking-changes).
-
+  This is not a Storybook issue but a breaking change introduced with MDX 2. For more information on this and other breaking changes, see our [MDX documentation](./mdx.md#breaking-changes).
 </Callout>
 
 ## Troubleshooting
@@ -260,13 +189,7 @@ Update your import statements to reference the component directly instead of the
 
 {/* prettier-ignore-start */}
 
-
-<CodeSnippets
-  paths={[
-    'common/storybook-fix-imports-autodocs-monorepo.js.mdx',
-    'common/storybook-fix-imports-autodocs-monorepo.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-fix-imports-autodocs-monorepo.md" />
 
 {/* prettier-ignore-end */}
 
@@ -274,13 +197,7 @@ Additionally, if you're developing using TypeScript, you may need to update Stor
 
 {/* prettier-ignore-start */}
 
-
-<CodeSnippets
-  paths={[
-    'common/storybook-main-fix-imports-autodocs-monorepo.js.mdx',
-    'common/storybook-main-fix-imports-autodocs-monorepo.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-fix-imports-autodocs-monorepo.md" />
 
 {/* prettier-ignore-end */}
 
@@ -292,7 +209,7 @@ If you turned off inline rendering for your stories via the [`inline`](../api/do
 
 #### Learn more about Storybook documentation
 
-- Autodocs for creating documentation for your stories
-- [MDX](./mdx.md) for customizing your documentation
-- [Doc Blocks](./doc-blocks.md) for authoring your documentation
-- [Publishing docs](./build-documentation.md) to automate the process of publishing your documentation
+* Autodocs for creating documentation for your stories
+* [MDX](./mdx.md) for customizing your documentation
+* [Doc Blocks](./doc-blocks.md) for authoring your documentation
+* [Publishing docs](./build-documentation.md) to automate the process of publishing your documentation

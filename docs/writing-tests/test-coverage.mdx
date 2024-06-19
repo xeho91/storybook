@@ -9,10 +9,7 @@ Test coverage is the practice of measuring whether existing tests fully cover yo
 Coverage tests examine the instrumented code against a set of industry-accepted best practices. They act as the last line of QA to improve the quality of your test suite.
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="component-test-coverage-whitebg.mp4"
-    type="video/mp4"
-  />
+  <source src="component-test-coverage-whitebg.mp4" type="video/mp4" />
 </video>
 
 ## Code instrumentation with the coverage addon
@@ -27,13 +24,7 @@ Run the following command to install the addon.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-addon-install.yarn.js.mdx',
-    'common/storybook-coverage-addon-install.npm.js.mdx',
-    'common/storybook-coverage-addon-install.pnpm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-addon-install.md" />
 
 {/* prettier-ignore-end */}
 
@@ -41,12 +32,7 @@ Update your Storybook configuration (in `.storybook/main.js|ts`) to include the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-addon-registration.js.mdx',
-    'common/storybook-coverage-addon-registration.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-addon-registration.md" />
 
 {/* prettier-ignore-end */}
 
@@ -54,13 +40,7 @@ Start your Storybook with:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-run-dev.yarn.js.mdx',
-    'common/storybook-run-dev.npm.js.mdx',
-    'common/storybook-run-dev.pnpm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-run-dev.md" />
 
 {/* prettier-ignore-end */}
 
@@ -68,13 +48,7 @@ Finally, open a new terminal window and run the test-runner with:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/test-runner-coverage.yarn.js.mdx',
-    'common/test-runner-coverage.npm.js.mdx',
-    'common/test-runner-coverage.pnpm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="test-runner-coverage.md" />
 
 {/* prettier-ignore-end */}
 
@@ -86,31 +60,26 @@ By default, the [`@storybook/addon-coverage`](https://storybook.js.org/addons/@s
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-addon-config-options.js.mdx',
-    'common/storybook-coverage-addon-config-options.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-addon-config-options.md" />
 
 {/* prettier-ignore-end */}
 
 | Option                 | Description                                                                                                                                            | Plugin      |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| `cwd`                  | Defines the current working directory <br/>`options: { istanbul: { cwd: process.cwd(),}}`                                                              | Babel, Vite |
-| `include`              | Select the files to collect coverage <br/>`options: { istanbul: { include: ['**/stories/**'],}}`                                                       | Babel, Vite |
-| `exclude`              | Select the files to exclude from coverage <br/>`options: { istanbul: { exclude: ['**/stories/**'],}}`                                                  | Babel, Vite |
-| `extension`            | Sets additional file extensions for coverage <br/>`options: { istanbul: { extension: ['.js', '.cjs', '.mjs'],}}`                                       | Babel, Vite |
-| `nycrcPath`            | Defines the relative path for the existing nyc configuration file <br/>`options: { istanbul: { nycrcPath: '../nyc.config.js',}}`                       | Babel, Vite |
-| `excludeNodeModules`   | Disables `node_modules` directory introspection <br/>`options: { istanbul: { excludeNodeModules:false,}}`                                              | Babel       |
-| `ignoreClassMethods`   | Configures a set of method names to ignore from being collected <br/>`options: { istanbul: { ignoreClassMethods: ['example', 'myMethod'],}}`           | Babel       |
-| `useInlineSourceMaps`  | Enables coverage collection on source maps <br/>`options: { istanbul: { useInlineSourceMaps: false,}}`                                                 | Babel       |
-| `inputSourceMap`       | Sets the value to store the source map.<br/> Useful for instrumenting code programmatically <br/>`options: { istanbul: { inputSourceMap: sourceMap,}}` | Babel       |
-| `onCover`              | Hook to monitor coverage collection for all tests <br/>`options: { istanbul: { onCover: (fileName, fileCoverage) => {},}}`                             | Babel       |
-| `requireEnv`           | Overrides the `VITE_COVERAGE` environment variable's value by granting access to the `env` variables <br/>`options: { istanbul: { requireEnv: true,}}` | Vite        |
-| `cypress`              | Replaces the `VITE_COVERAGE` environment variable with `CYPRESS_COVERAGE`. <br/>Requires Cypress <br/>`options: { istanbul: { cypress: true,}}`        | Vite        |
-| `checkProd`            | Configures the plugin to skip instrumentation in production environments <br/>`options: { istanbul: { checkProd: true,}}`                              | Vite        |
-| `forceBuildInstrument` | Configures the plugin to add instrumentation in build mode <br/>`options: { istanbul: { forceBuildInstrument: true,}}`                                 | Vite        |
+| `cwd`                  | Defines the current working directory <br />`options: { istanbul: { cwd: process.cwd(),}}`                                                              | Babel, Vite |
+| `include`              | Select the files to collect coverage <br />`options: { istanbul: { include: ['**/stories/**'],}}`                                                       | Babel, Vite |
+| `exclude`              | Select the files to exclude from coverage <br />`options: { istanbul: { exclude: ['**/stories/**'],}}`                                                  | Babel, Vite |
+| `extension`            | Sets additional file extensions for coverage <br />`options: { istanbul: { extension: ['.js', '.cjs', '.mjs'],}}`                                       | Babel, Vite |
+| `nycrcPath`            | Defines the relative path for the existing nyc configuration file <br />`options: { istanbul: { nycrcPath: '../nyc.config.js',}}`                       | Babel, Vite |
+| `excludeNodeModules`   | Disables `node_modules` directory introspection <br />`options: { istanbul: { excludeNodeModules:false,}}`                                              | Babel       |
+| `ignoreClassMethods`   | Configures a set of method names to ignore from being collected <br />`options: { istanbul: { ignoreClassMethods: ['example', 'myMethod'],}}`           | Babel       |
+| `useInlineSourceMaps`  | Enables coverage collection on source maps <br />`options: { istanbul: { useInlineSourceMaps: false,}}`                                                 | Babel       |
+| `inputSourceMap`       | Sets the value to store the source map.<br /> Useful for instrumenting code programmatically <br />`options: { istanbul: { inputSourceMap: sourceMap,}}` | Babel       |
+| `onCover`              | Hook to monitor coverage collection for all tests <br />`options: { istanbul: { onCover: (fileName, fileCoverage) => {},}}`                             | Babel       |
+| `requireEnv`           | Overrides the `VITE_COVERAGE` environment variable's value by granting access to the `env` variables <br />`options: { istanbul: { requireEnv: true,}}` | Vite        |
+| `cypress`              | Replaces the `VITE_COVERAGE` environment variable with `CYPRESS_COVERAGE`. <br />Requires Cypress <br />`options: { istanbul: { cypress: true,}}`        | Vite        |
+| `checkProd`            | Configures the plugin to skip instrumentation in production environments <br />`options: { istanbul: { checkProd: true,}}`                              | Vite        |
+| `forceBuildInstrument` | Configures the plugin to add instrumentation in build mode <br />`options: { istanbul: { forceBuildInstrument: true,}}`                                 | Vite        |
 
 ## What about other coverage reporting tools?
 
@@ -118,15 +87,11 @@ Out of the box, code coverage tests work seamlessly with Storybook's test-runner
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-report-lcov.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-report-lcov.md" />
 
 {/* prettier-ignore-end */}
 
----
+***
 
 ## Troubleshooting
 
@@ -136,12 +101,7 @@ If you intend on running coverage tests in frameworks with special files like Vu
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-report-vue.json.mdx',
-    'common/storybook-coverage-report-vue.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-report-vue.md" />
 
 {/* prettier-ignore-end */}
 
@@ -151,12 +111,7 @@ If you generated a production build optimized for performance with the [`--test`
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-addon-optimized-config.js.mdx',
-    'common/storybook-coverage-addon-optimized-config.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-addon-optimized-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -166,11 +121,11 @@ As the [coverage addon](https://storybook.js.org/addons/@storybook/addon-coverag
 
 #### Learn about other UI tests
 
-- [Test runner](./test-runner.md) to automate test execution
-- [Visual tests](./visual-testing.md) for appearance
-- [Accessibility tests](./accessibility-testing.md) for accessibility
-- [Interaction tests](./interaction-testing.md) for user behavior simulation
-- Coverage tests for measuring code coverage
-- [Snapshot tests](./snapshot-testing.md) for rendering errors and warnings
-- [End-to-end tests](./stories-in-end-to-end-tests.md) for simulating real user scenarios
-- [Unit tests](./stories-in-unit-tests.md) for functionality
+* [Test runner](./test-runner.md) to automate test execution
+* [Visual tests](./visual-testing.md) for appearance
+* [Accessibility tests](./accessibility-testing.md) for accessibility
+* [Interaction tests](./interaction-testing.md) for user behavior simulation
+* Coverage tests for measuring code coverage
+* [Snapshot tests](./snapshot-testing.md) for rendering errors and warnings
+* [End-to-end tests](./stories-in-end-to-end-tests.md) for simulating real user scenarios
+* [Unit tests](./stories-in-unit-tests.md) for functionality
