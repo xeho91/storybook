@@ -1,6 +1,8 @@
+import { join } from 'node:path';
 import prompts from 'prompts';
 import { dedent } from 'ts-dedent';
 import execa from 'execa';
+import { readJSON } from 'fs-extra';
 
 function tryFindCore() {
   try {
@@ -38,6 +40,8 @@ async function maybePrompt() {
 }
 
 export async function check() {
+  const packageJson = await readJSON(join(__dirname, '..', 'package.json'));
+
   const core = tryFindCore();
 
   if (core) {
@@ -56,7 +60,7 @@ export async function check() {
     return false;
   }
 
-  await execa('npx', ['storybook@latest', 'upgrade'], { stdio: 'inherit' });
+  await execa('npx', [`storybook@${packageJson.version}`, 'automigrate'], { stdio: 'inherit' });
 
   console.log(dedent`
     Success! The migration has been completed. Please commit the changes to your project.
