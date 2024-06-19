@@ -17,8 +17,13 @@ function tryFindCore() {
     const found = require.resolve('@storybook/core');
 
     if (!found.includes('node_modules')) {
-      // We're either in PNP-mode, linked-mode or in npx-mode. There's nothing left to check...
+      // We're either in PNP-mode or linked-mode.
       // We were able to find the core package, so let's hope for the best.
+      return true;
+    }
+
+    if (found.includes('npx')) {
+      // We're in npx-mode. Good to proceed.
       return true;
     }
 
