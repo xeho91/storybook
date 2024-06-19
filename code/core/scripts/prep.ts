@@ -192,7 +192,7 @@ async function generateDistFiles() {
               process: require.resolve('process/browser.js'),
               assert: require.resolve('browser-assert'),
               util: require.resolve('util/util.js'),
-              '@storybook/core/dist': join(cwd, 'src'),
+              '@storybook/core': join(cwd, 'src'),
               react: dirname(require.resolve('react/package.json')),
               'react-dom': dirname(require.resolve('react-dom/package.json')),
             },
@@ -220,7 +220,7 @@ async function generateDistFiles() {
             },
             plugins: [globalExternals(globalsModuleInfoMap)],
             alias: {
-              '@storybook/core/dist': join(cwd, 'src'),
+              '@storybook/core': join(cwd, 'src'),
               react: dirname(require.resolve('react/package.json')),
               'react-dom/client': join(
                 dirname(require.resolve('react-dom/package.json')),
@@ -427,6 +427,12 @@ async function generatePackageJsonFile() {
     if (main === './dist/index.ts' || main === './dist/index.tsx') {
       main = '.';
     }
+    acc[
+      main
+        .replace(/\/index\.tsx?/, '')
+        .replace(/\.tsx?/, '')
+        .replace('dist/', '')
+    ] = content;
     acc[main.replace(/\/index\.tsx?/, '').replace(/\.tsx?/, '')] = content;
     return acc;
   }, {});
@@ -448,6 +454,7 @@ async function generatePackageJsonFile() {
         }
 
         const content = ['./' + main.replace(/\.tsx?/, '.d.ts')];
+        acc[key.replace('dist/', '')] = content;
         acc[key] = content;
         return acc;
       }, {}),

@@ -319,7 +319,7 @@ export default {
     'useStorybookApi',
     'useStorybookState',
   ],
-  '@storybook/core/dist/manager-api': [
+  '@storybook/core/manager-api': [
     'ActiveTabs',
     'Consumer',
     'ManagerContext',
@@ -423,7 +423,7 @@ export default {
     'resetComponents',
     'withReset',
   ],
-  '@storybook/core/dist/components': [
+  '@storybook/core/components': [
     'A',
     'ActionBar',
     'AddonPanel',
@@ -499,7 +499,7 @@ export default {
     'WebsocketTransport',
     'createBrowserChannel',
   ],
-  '@storybook/core/dist/channels': [
+  '@storybook/core/channels': [
     'Channel',
     'PostMessageTransport',
     'WebsocketTransport',
@@ -561,7 +561,7 @@ export default {
     'UPDATE_QUERY_PARAMS',
     'UPDATE_STORY_ARGS',
   ],
-  '@storybook/core/dist/core-events': [
+  '@storybook/core/core-events': [
     'ARGTYPES_INFO_REQUEST',
     'ARGTYPES_INFO_RESPONSE',
     'CHANNEL_CREATED',
@@ -622,7 +622,7 @@ export default {
     'ProviderDoesNotExtendBaseProviderError',
     'UncaughtManagerError',
   ],
-  '@storybook/core/dist/manager-errors': [
+  '@storybook/core/manager-errors': [
     'Category',
     'ProviderDoesNotExtendBaseProviderError',
     'UncaughtManagerError',
@@ -644,7 +644,7 @@ export default {
     'stringifyQuery',
     'useNavigate',
   ],
-  '@storybook/core/dist/router': [
+  '@storybook/core/router': [
     'BaseLocationProvider',
     'DEEPLY_EQUAL',
     'Link',
@@ -687,7 +687,7 @@ export default {
     'useTheme',
     'withTheme',
   ],
-  '@storybook/core/dist/theming': [
+  '@storybook/core/theming': [
     'CacheProvider',
     'ClassNames',
     'Global',
@@ -714,9 +714,9 @@ export default {
     'withTheme',
   ],
   '@storybook/theming/create': ['create', 'themes'],
-  '@storybook/core/dist/theming/create': ['create', 'themes'],
+  '@storybook/core/theming/create': ['create', 'themes'],
   '@storybook/client-logger': ['deprecate', 'logger', 'once', 'pretty'],
-  '@storybook/core/dist/client-logger': ['deprecate', 'logger', 'once', 'pretty'],
+  '@storybook/core/client-logger': ['deprecate', 'logger', 'once', 'pretty'],
   '@storybook/types': ['Addon_TypesEnum'],
-  '@storybook/core/dist/types': ['Addon_TypesEnum'],
+  '@storybook/core/types': ['Addon_TypesEnum'],
 } as const;
