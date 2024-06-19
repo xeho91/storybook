@@ -1,0 +1,11 @@
+```md renderer="common" language="mdx"
+{/* MyComponent.stories.mdx */}
+
+import { Story } from '@storybook/addon-docs';
+
+# Some header
+
+And Markdown here
+
+<Story id="some--id" />
+```
