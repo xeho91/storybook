@@ -167,8 +167,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
 
         previousCleanupsDone = true;
 
-        const loadedContext = await story.applyLoaders(context);
-        context.loaded = loadedContext.loaded;
+        context.loaded = await story.applyLoaders(context);
 
         cleanups.push(
           ...(await story.applyBeforeEach(context))
