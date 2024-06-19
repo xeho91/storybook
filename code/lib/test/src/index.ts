@@ -96,7 +96,7 @@ const nameSpiesAndWrapActionsInSpies: LoaderFunction<Renderer> = ({ initialArgs 
 };
 
 const enhanceMount: LoaderFunction<WebRenderer> = (context) => {
-  if ('mount' in context) {
+  if ('mount' in context && typeof context.mount === 'function') {
     const mount = context.mount.bind(null);
     context.mount = async (...args) => {
       await mount(...args);
