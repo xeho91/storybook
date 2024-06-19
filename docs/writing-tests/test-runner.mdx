@@ -4,8 +4,8 @@ title: 'Test runner'
 
 Storybook test runner turns all of your stories into executable tests. It is powered by [Jest](https://jestjs.io/) and [Playwright](https://playwright.dev/).
 
-- For those [without a play function](../writing-stories/introduction.md): it verifies whether the story renders without any errors.
-- For those [with a play function](../writing-stories/play-function.md): it also checks for errors in the play function and that all assertions passed.
+- For those [without a play function](../writing-stories/introduction.mdx): it verifies whether the story renders without any errors.
+- For those [with a play function](../writing-stories/play-function.mdx): it also checks for errors in the play function and that all assertions passed.
 
 These tests run in a live browser and can be executed via the [command line](#cli-options) or your [CI server](#set-up-ci-to-run-tests).
 
@@ -91,7 +91,7 @@ If you're already using any of those flags in your project, you should be able t
 | `--verbose`                     | Display individual test results with the test suite hierarchy <br/>`test-storybook --verbose`                                    |
 | `-u`, `--updateSnapshot`        | Use this flag to re-record every snapshot that fails during this test run <br/>`test-storybook -u`                               |
 | `--eject`                       | Creates a local configuration file to override defaults of the test-runner <br/>`test-storybook --eject`                         |
-| `--coverage`                    | Runs [coverage tests](./test-coverage.md) on your stories and components <br/> `test-storybook --coverage`                       |
+| `--coverage`                    | Runs [coverage tests](./test-coverage.mdx) on your stories and components <br/> `test-storybook --coverage`                      |
 
 {/* prettier-ignore-start */}
 
@@ -160,7 +160,7 @@ You can use your CI provider (for example, [GitHub Actions](https://github.com/f
 
 <div class="aside">
 
-💡 By default Storybook outputs the [build](../sharing/publish-storybook.md#build-storybook-as-a-static-web-application) to the `storybook-static` directory. If you're using a different build directory, you'll need to adjust the recipe accordingly.
+💡 By default Storybook outputs the [build](../sharing/publish-storybook.mdx#build-storybook-as-a-static-web-application) to the `storybook-static` directory. If you're using a different build directory, you'll need to adjust the recipe accordingly.
 
 </div>
 
@@ -168,7 +168,7 @@ You can use your CI provider (for example, [GitHub Actions](https://github.com/f
 
 The test-runner is a generic testing tool that can run locally or on CI and be configured or extended to run all kinds of tests.
 
-[Chromatic](https://www.chromatic.com/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook) is a cloud-based service that runs [visual](./visual-testing.md) and [interaction tests](./interaction-testing.md) (and soon accessibility tests) without setting up the test runner. It also syncs with your git provider and manages access control for private projects.
+[Chromatic](https://www.chromatic.com/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook) is a cloud-based service that runs [visual](./visual-testing.mdx) and [interaction tests](./interaction-testing.mdx) (and soon accessibility tests) without setting up the test runner. It also syncs with your git provider and manages access control for private projects.
 
 However, you might want to pair the test runner and Chromatic in some cases.
 
@@ -179,7 +179,7 @@ However, you might want to pair the test runner and Chromatic in some cases.
 
 ### Test hook API (experimental)
 
-The test-runner renders a story and executes its [play function](../writing-stories/play-function.md) if one exists. However, certain behaviors are impossible to achieve via the play function, which executes in the browser. For example, if you want the test-runner to take visual snapshots for you, this is possible via Playwright/Jest but must be executed in Node.
+The test-runner renders a story and executes its [play function](../writing-stories/play-function.mdx) if one exists. However, certain behaviors are impossible to achieve via the play function, which executes in the browser. For example, if you want the test-runner to take visual snapshots for you, this is possible via Playwright/Jest but must be executed in Node.
 
 The test-runner exports test hooks that can be overridden globally to enable use cases like visual or DOM snapshots. These hooks give you access to the test lifecycle _before_ and _after_ the story is rendered.
 Listed below are the available hooks and an overview of how to use them.
@@ -192,7 +192,7 @@ Listed below are the available hooks and an overview of how to use them.
 
 <div class="aside">
 
-💡 These test hooks are experimental and may be subject to breaking changes. We encourage you to test as much as possible within the story's [play function](../writing-stories/play-function.md).
+💡 These test hooks are experimental and may be subject to breaking changes. We encourage you to test as much as possible within the story's [play function](../writing-stories/play-function.mdx).
 
 </div>
 
@@ -241,7 +241,7 @@ The test-runner exports a few helpers that can be used to make your tests more r
 
 ### Stories.json mode
 
-The test-runner transforms your story files into tests when testing a local Storybook. For a remote Storybook, it uses the Storybook's [stories.json](../configure/overview.md#feature-flags) file (a static index of all the stories) to run the tests.
+The test-runner transforms your story files into tests when testing a local Storybook. For a remote Storybook, it uses the Storybook's [stories.json](../configure/overview.mdx#feature-flags) file (a static index of all the stories) to run the tests.
 
 #### Why?
 
@@ -279,7 +279,7 @@ If you need to disable it, use the `--no-stories-json` flag:
 
 #### How do I check if my Storybook has a `stories.json` file?
 
-Stories.json mode requires a `stories.json` file. Open a browser window and navigate to your deployed Storybook instance (for example, `https://your-storybook-url-here.com/stories.json`). You should see a JSON file that starts with a `"v": 3` key, immediately followed by another key called "stories", which contains a map of story IDs to JSON objects. If that is the case, your Storybook supports [stories.json mode](../configure/overview.md#feature-flags).
+Stories.json mode requires a `stories.json` file. Open a browser window and navigate to your deployed Storybook instance (for example, `https://your-storybook-url-here.com/stories.json`). You should see a JSON file that starts with a `"v": 3` key, immediately followed by another key called "stories", which contains a map of story IDs to JSON objects. If that is the case, your Storybook supports [stories.json mode](../configure/overview.mdx#feature-flags).
 
 ---
 
@@ -314,9 +314,9 @@ As the test runner is based on Playwright, you might need to use specific docker
 #### Learn about other UI tests
 
 - Test runner to automate test execution
-- [Visual tests](./visual-testing.md) for appearance
-- [Accessibility tests](./accessibility-testing.md) for accessibility
-- [Interaction tests](./interaction-testing.md) for user behavior simulation
-- [Coverage tests](./test-coverage.md) for measuring code coverage
-- [Snapshot tests](./snapshot-testing.md) for rendering errors and warnings
-- [Import stories in other tests](./importing-stories-in-tests.md) for other tools
+- [Visual tests](./visual-testing.mdx) for appearance
+- [Accessibility tests](./accessibility-testing.mdx) for accessibility
+- [Interaction tests](./interaction-testing.mdx) for user behavior simulation
+- [Coverage tests](./test-coverage.mdx) for measuring code coverage
+- [Snapshot tests](./snapshot-testing.mdx) for rendering errors and warnings
+- [Import stories in other tests](./importing-stories-in-tests.mdx) for other tools
