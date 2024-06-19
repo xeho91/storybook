@@ -14,7 +14,7 @@ Storybook's configuration file (i.e., `main.ts`) is defined as an ESM module wri
 
 {/* prettier-ignore-end */}
 
-See the [main configuration API reference](../api/main-config) for more details and additional properties.
+See the [main configuration API reference](../api/main-config.mdx) for more details and additional properties.
 
 <Callout variant="info" icon="💡">
   See the Vite builder [TypeScript documentation](https://github.com/storybookjs/builder-vite#typescript) if using `@storybook/builder-vite`.
@@ -22,7 +22,7 @@ See the [main configuration API reference](../api/main-config) for more details 
 
 ### Extending the default configuration
 
-Out of the box, Storybook is built to work with a wide range of third-party libraries, enabling you to safely access and document metadata (e.g., props, inputs) from your components without any additional configuration. It relies on [`babel-loader`](https://webpack.js.org/loaders/babel-loader/) for TypeScript support and optionally [`fork-ts-checker-webpack-plugin`](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/blob/v4.1.6/README.md#options) for type checking. Since Storybook supports multiple frameworks, it also includes a set of third-party packages to support each framework (e.g., `ts-loader` and `ngx-template-loader` for Angular, `react-docgen-typescript-plugin` for React). If you need to customize the default configuration for a specific use case scenario, refer to the [`config.typescript` API reference](../api/main-config-typescript.md).
+Out of the box, Storybook is built to work with a wide range of third-party libraries, enabling you to safely access and document metadata (e.g., props, inputs) from your components without any additional configuration. It relies on [`babel-loader`](https://webpack.js.org/loaders/babel-loader/) for TypeScript support and optionally [`fork-ts-checker-webpack-plugin`](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/blob/v4.1.6/README.md#options) for type checking. Since Storybook supports multiple frameworks, it also includes a set of third-party packages to support each framework (e.g., `ts-loader` and `ngx-template-loader` for Angular, `react-docgen-typescript-plugin` for React). If you need to customize the default configuration for a specific use case scenario, refer to the [`config.typescript` API reference](../api/main-config-typescript.mdx).
 
 The above example extends the baseline configuration to remove existing props from third-party libraries. Useful if you want to document only your components. However, if you need to include them, you can do so by adjusting your configuration as follows:
 
@@ -54,7 +54,7 @@ Assuming that you're working on a project that uses TypeScript 4.9+, you can upd
 
 {/* prettier-ignore-end */}
 
-Now, when you define a story or update an existing one, you'll automatically get notified that you're missing a required [`arg`](../writing-stories/args). However, you're not limited to using the `satisfies` operator at the component level. If you need, you can also use it at the story level. For example:
+Now, when you define a story or update an existing one, you'll automatically get notified that you're missing a required [`arg`](../writing-stories/args.mdx). However, you're not limited to using the `satisfies` operator at the component level. If you need, you can also use it at the story level. For example:
 
 {/* prettier-ignore-start */}
 
