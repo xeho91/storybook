@@ -1,12 +1,41 @@
 import { join } from 'node:path';
 import prompts from 'prompts';
+import findUp from 'find-up';
 import { dedent } from 'ts-dedent';
 import execa from 'execa';
-import { readJSON } from 'fs-extra';
+import { readJSON, readJsonSync } from 'fs-extra';
 
+/** Try to find the `@storybook/core` package
+ * Just resolving it is not enough.
+ *
+ * Due to how some package manager do auto-install missing peerDependencies, `@storybook/cli` might be able to find `@storybook/core`, without it being in the user's `package.json` file.
+ * So what we do is, try to resolve it, then find the top level `node_modules` path, and then find the `package.json` file in the parent directories.
+ * This should reliably tell us if the user has `@storybook/core` in their project as a top-level dependency or not.
+ */
 function tryFindCore() {
   try {
-    return require.resolve('@storybook/core');
+    const found = require.resolve('@storybook/core');
+
+    if (!found.includes('node_modules')) {
+      // We're either in PNP-mode, linked-mode or in npx-mode. There's nothing left to check...
+      // We were able to find the core package, so let's hope for the best.
+      return true;
+    }
+
+    const TopLevelNodeModulesPath = found.split('node_modules')[0];
+    const projectPackageJsonPath = findUp.sync('package.json', { cwd: TopLevelNodeModulesPath });
+
+    if (!projectPackageJsonPath) {
+      return false;
+    }
+
+    const projectPackageJsonContents = readJsonSync(projectPackageJsonPath);
+
+    return (
+      projectPackageJsonContents.dependencies['@storybook/core'] ||
+      projectPackageJsonContents.devDependencies['@storybook/core'] ||
+      projectPackageJsonContents.peerDependencies['@storybook/core']
+    );
   } catch (e) {
     return false;
   }
