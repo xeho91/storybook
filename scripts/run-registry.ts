@@ -1,5 +1,5 @@
-import { execa, execaCommand } from 'execa';
-import { remove, pathExists, readJSON } from 'fs-extra';
+import { execaCommand } from 'execa';
+import fsExtra from 'fs-extra';
 import chalk from 'chalk';
 import path from 'path';
 import program from 'commander';
@@ -21,13 +21,15 @@ program.parse(process.argv);
 
 const logger = console;
 
+const dirname = path.dirname(new URL(import.meta.url).pathname);
+
 const startVerdaccio = async () => {
   let resolved = false;
   return Promise.race([
     new Promise((resolve) => {
-      const cache = path.join(__dirname, '..', '.verdaccio-cache');
+      const cache = path.join(dirname, '..', '.verdaccio-cache');
       const config = {
-        ...parseConfigFile(path.join(__dirname, 'verdaccio.yaml')),
+        ...parseConfigFile(path.join(dirname, 'verdaccio.yaml')),
         self_path: cache,
       };
 
@@ -51,7 +53,7 @@ const startVerdaccio = async () => {
 };
 
 const currentVersion = async () => {
-  const { version } = await readJSON(path.join(__dirname, '..', 'code', 'package.json'));
+  const { version } = await fsExtra.readJSON(path.join(dirname, '..', 'code', 'package.json'));
   return version;
 };
 
@@ -83,7 +85,7 @@ const publish = async (packages: { name: string; location: string }[], url: stri
           new Promise<void>(async (res, rej) => {
             logger.log(
               `🛫 publishing ${name} (${location.replace(
-                path.resolve(path.join(__dirname, '..')),
+                path.resolve(path.join(dirname, '..')),
                 '.'
               )})`
             );
@@ -123,7 +125,7 @@ const addUser = (url: string) =>
 
     try {
       await execaCommand(
-        `npx npm-cli-adduser -r ${url} -a -u user -p password -e user@example.com -t legacy`
+        `npx npm-cli-adduser -r ${url} -a -u foo -p s3cret -e user@example.com -t legacy`
       );
       res();
     } catch (e) {
@@ -139,10 +141,10 @@ const run = async () => {
 
   if (!process.env.CI) {
     // when running e2e locally, clear cache to avoid EPUBLISHCONFLICT errors
-    const verdaccioCache = path.resolve(__dirname, '..', '.verdaccio-cache');
-    if (await pathExists(verdaccioCache)) {
+    const verdaccioCache = path.resolve(dirname, '..', '.verdaccio-cache');
+    if (await fsExtra.pathExists(verdaccioCache)) {
       logger.log(`🗑 cleaning up cache`);
-      await remove(verdaccioCache);
+      await fsExtra.remove(verdaccioCache);
     }
   }
 
@@ -169,15 +171,15 @@ const run = async () => {
     await publish(packages, verdaccioUrl);
   }
 
-  verdaccioServer.unref();
-
-  if (!program.open) {
-    verdaccioServer.close(() => {
-      process.exit(0);
-    });
-  } else {
-    process.exit(0);
-  }
+  return new Promise<void>((res) => {
+    if (!program.open) {
+      verdaccioServer.close(() => {
+        res();
+      });
+    } else {
+      res();
+    }
+  });
 };
 
 run().catch((e) => {
