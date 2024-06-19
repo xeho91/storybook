@@ -26,7 +26,7 @@ You may wish to read the [full migration notes](https://github.com/storybookjs/s
 
 To upgrade your Storybook:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -36,7 +36,7 @@ To upgrade your Storybook:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This will:
 
@@ -50,7 +50,7 @@ This will:
 
 To add Storybook to a project that isn’t currently using Storybook:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -60,7 +60,7 @@ To add Storybook to a project that isn’t currently using Storybook:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This will:
 
@@ -110,7 +110,7 @@ To use MDX1:
 1. Install `@storybook/mdx1-csf` as a dev dependency
 2. Add the `legacyMdx1` feature flag to your `.storybook/main.js`:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -119,7 +119,7 @@ To use MDX1:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### storiesOf support discontinued by default
 
@@ -131,7 +131,7 @@ If you can’t upgrade to CSF, or want to get your project working with Storyboo
 
 To opt out, add the `storyStoreV7` feature flag in `.storybook/main.js`:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -140,7 +140,7 @@ To opt out, add the `storyStoreV7` feature flag in `.storybook/main.js`:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 For more information on this change, see the [migration notes](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#storystorev7-enabled-by-default).
 
@@ -243,7 +243,7 @@ module.exports = {
 
 Your MDX files should be updated to reference the CSF story export, which is safer and cleaner than referencing the string ID:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 ```mdx
 {/* Button.mdx */}
 
@@ -255,7 +255,7 @@ import * as ButtonStories from './Button.stories';
 
 <Story of={ButtonStories.Basic} />
 ```
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 You should also remove the MDX imports from your story files:
 

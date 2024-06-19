@@ -26,7 +26,7 @@ Default: `true`, when [`storyStoreV7`](#storystorev7) is `true`
 
 Generates a `index.json` and `stories.json` files to help story loading with the on-demand mode.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -35,7 +35,7 @@ Generates a `index.json` and `stories.json` files to help story loading with the
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## `legacyDecoratorFileOrder`
 
@@ -43,7 +43,7 @@ Type: `boolean`
 
 Apply decorators from preview.js before decorators from addons or frameworks. [More information](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#changed-decorator-order-between-previewjs-and-addonsframeworks).
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -52,7 +52,7 @@ Apply decorators from preview.js before decorators from addons or frameworks. [M
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## `legacyMdx1`
 
@@ -60,7 +60,7 @@ Type: `boolean`
 
 Enables support for MDX version 1 as a fallback. Requires [@storybook/mdx1-csf](https://github.com/storybookjs/mdx1-csf) to be installed.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -69,7 +69,7 @@ Enables support for MDX version 1 as a fallback. Requires [@storybook/mdx1-csf](
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## `storyStoreV7`
 
@@ -79,7 +79,7 @@ Default: `true`
 
 Opts out of [on-demand story loading](#on-demand-story-loading); loads all stories at build time.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -88,7 +88,7 @@ Opts out of [on-demand story loading](#on-demand-story-loading); loads all stori
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## `argTypeTargetsV7`
 
@@ -98,7 +98,7 @@ Type: `boolean`
 
 Filter args with a "target" on the type from the render function.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -107,13 +107,13 @@ Filter args with a "target" on the type from the render function.
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## On-demand story loading
 
 As your Storybook grows, it gets challenging to load all of your stories performantly, slowing down the loading times and yielding a large bundle. Out of the box, Storybook loads your stories on demand rather than during boot-up to improve the performance of your Storybook. If you need to load all of your stories during boot-up, you can disable this feature by setting the `storyStoreV7` feature flag to `false` in your configuration as follows:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -122,7 +122,7 @@ As your Storybook grows, it gets challenging to load all of your stories perform
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Known limitations
 
