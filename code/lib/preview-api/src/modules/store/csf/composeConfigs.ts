@@ -4,6 +4,7 @@ import { global } from '@storybook/global';
 import { combineParameters } from '../parameters';
 import { composeStepRunners } from './stepRunners';
 import { normalizeArrays } from './normalizeArrays';
+import { normalizeProjectAnnotations } from 'lib/preview-api/src/modules/store/csf/normalizeProjectAnnotations';
 
 export function getField<TFieldType = any>(
   moduleExportList: ModuleExports[],
@@ -43,7 +44,7 @@ export function composeConfigs<TRenderer extends Renderer>(
   const allArgTypeEnhancers = getArrayField(moduleExportList, 'argTypesEnhancers');
   const stepRunners = getField(moduleExportList, 'runStep');
 
-  return {
+  return normalizeProjectAnnotations({
     parameters: combineParameters(...getField(moduleExportList, 'parameters')),
     decorators: getArrayField(moduleExportList, 'decorators', {
       reverseFileOrder: !(global.FEATURES?.legacyDecoratorFileOrder ?? false),
@@ -66,5 +67,5 @@ export function composeConfigs<TRenderer extends Renderer>(
     runStep: composeStepRunners<TRenderer>(stepRunners),
     tags: getArrayField(moduleExportList, 'tags'),
     mount: getSingletonField(moduleExportList, 'mount'),
-  };
+  });
 }

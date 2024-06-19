@@ -5,7 +5,6 @@ import type {
   ComponentTitle,
   Parameters,
   Path,
-  ProjectAnnotations,
   BoundStory,
   CSFFile,
   ModuleExports,
@@ -72,7 +71,7 @@ export class StoryStore<TRenderer extends Renderer> {
 
     public importFn: ModuleImportFn,
 
-    projectAnnotations: ProjectAnnotations<TRenderer>
+    projectAnnotations: NormalizedProjectAnnotations<TRenderer>
   ) {
     this.storyIndex = new StoryIndexStore(storyIndex);
 
@@ -92,7 +91,7 @@ export class StoryStore<TRenderer extends Renderer> {
     this.prepareStoryWithCache = memoize(STORY_CACHE_SIZE)(prepareStory) as typeof prepareStory;
   }
 
-  setProjectAnnotations(projectAnnotations: ProjectAnnotations<TRenderer>) {
+  setProjectAnnotations(projectAnnotations: NormalizedProjectAnnotations<TRenderer>) {
     // By changing `this.projectAnnotations, we implicitly invalidate the `prepareStoryWithCache`
     this.projectAnnotations = normalizeProjectAnnotations(projectAnnotations);
     const { globals, globalTypes } = projectAnnotations;

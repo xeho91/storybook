@@ -1,9 +1,4 @@
-import type {
-  Renderer,
-  ArgTypes,
-  ProjectAnnotations,
-  NormalizedProjectAnnotations,
-} from '@storybook/types';
+import type { ArgTypes, NormalizedProjectAnnotations, Renderer } from '@storybook/types';
 
 import { inferArgTypes } from '../inferArgTypes';
 import { inferControls } from '../inferControls';
@@ -18,7 +13,7 @@ export function normalizeProjectAnnotations<TRenderer extends Renderer>({
   loaders,
   beforeEach,
   ...annotations
-}: ProjectAnnotations<TRenderer>): NormalizedProjectAnnotations<TRenderer> {
+}: NormalizedProjectAnnotations<TRenderer>): NormalizedProjectAnnotations<TRenderer> {
   return {
     ...(argTypes && { argTypes: normalizeInputTypes(argTypes as ArgTypes) }),
     ...(globalTypes && { globalTypes: normalizeInputTypes(globalTypes) }),

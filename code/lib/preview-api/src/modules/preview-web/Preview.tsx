@@ -30,10 +30,10 @@ import type {
   RenderToCanvas,
   PreparedStory,
   StoryIndex,
-  ProjectAnnotations,
   StoryId,
   StoryRenderOptions,
   SetGlobalsPayload,
+  NormalizedProjectAnnotations,
 } from '@storybook/types';
 import {
   CalledPreviewMethodBeforeInitializationError,
@@ -70,7 +70,7 @@ export class Preview<TRenderer extends Renderer> {
 
   // While we wait for the index to load (note it may error for a while), we need to store the
   // project annotations. Once the index loads, it is stored on the store and this will get unset.
-  private projectAnnotationsBeforeInitialization?: ProjectAnnotations<TRenderer>;
+  private projectAnnotationsBeforeInitialization?: NormalizedProjectAnnotations<TRenderer>;
 
   protected storeInitializationPromise: Promise<void>;
 
@@ -81,7 +81,7 @@ export class Preview<TRenderer extends Renderer> {
   constructor(
     public importFn: ModuleImportFn,
 
-    public getProjectAnnotations: () => MaybePromise<ProjectAnnotations<TRenderer>>,
+    public getProjectAnnotations: () => MaybePromise<NormalizedProjectAnnotations<TRenderer>>,
 
     protected channel: Channel = addons.getChannel(),
 
@@ -143,7 +143,7 @@ export class Preview<TRenderer extends Renderer> {
     this.channel.on(FORCE_REMOUNT, this.onForceRemount.bind(this));
   }
 
-  async getProjectAnnotationsOrRenderError(): Promise<ProjectAnnotations<TRenderer>> {
+  async getProjectAnnotationsOrRenderError(): Promise<NormalizedProjectAnnotations<TRenderer>> {
     try {
       const projectAnnotations = await this.getProjectAnnotations();
 
@@ -160,7 +160,9 @@ export class Preview<TRenderer extends Renderer> {
   }
 
   // If initialization gets as far as project annotations, this function runs.
-  async initializeWithProjectAnnotations(projectAnnotations: ProjectAnnotations<TRenderer>) {
+  async initializeWithProjectAnnotations(
+    projectAnnotations: NormalizedProjectAnnotations<TRenderer>
+  ) {
     this.projectAnnotationsBeforeInitialization = projectAnnotations;
     try {
       const storyIndex = await this.getStoryIndexFromServer();
@@ -220,7 +222,7 @@ export class Preview<TRenderer extends Renderer> {
   async onGetProjectAnnotationsChanged({
     getProjectAnnotations,
   }: {
-    getProjectAnnotations: () => MaybePromise<ProjectAnnotations<TRenderer>>;
+    getProjectAnnotations: () => MaybePromise<NormalizedProjectAnnotations<TRenderer>>;
   }) {
     delete this.previewEntryError;
     this.getProjectAnnotations = getProjectAnnotations;
