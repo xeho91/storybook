@@ -1,0 +1,17 @@
+```js filename="ProfilePage.js|jsx" renderer="react" language="js"
+import { useContext } from 'react';
+
+import ProfilePageContext from './ProfilePageContext';
+
+export const ProfilePage = ({ name, userId }) => {
+  const { UserPostsContainer, UserFriendsContainer } = useContext(ProfilePageContext);
+
+  return (
+    <div>
+      <h1>{name}</h1>
+      <UserPostsContainer userId={userId} />
+      <UserFriendsContainer userId={userId} />
+    </div>
+  );
+};
+```

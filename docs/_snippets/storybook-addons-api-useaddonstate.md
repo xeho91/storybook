@@ -1,0 +1,16 @@
+```js filename="/my-addon/manager.js" renderer="common" language="js"
+import React from 'react';
+
+import { useAddonState } from '@storybook/api';
+
+export const Panel = () => {
+  const [state, setState] = useAddonState('my/addon-id', 'initial state');
+
+  return <button onClick={() => setState('a new value')}>the state = "{state}"</button>;
+};
+export const Tool = () => {
+  const [state, setState] = useAddonState('my/addon-id', 'initial state');
+
+  return <button onClick={() => setState('a new value')}>the state = "{state}"</button>;
+};
+```

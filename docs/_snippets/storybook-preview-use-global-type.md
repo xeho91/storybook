@@ -1,0 +1,21 @@
+```js filename=".storybook/preview.js" renderer="common" language="js"
+import { ThemeProvider } from 'styled-components';
+
+import { MyThemes } from '../my-theme-folder/my-theme-file'
+
+// Function to obtain the intended theme
+const getTheme = (themeName) => {
+  return MyThemes[themeName]
+}
+
+const withThemeProvider=(Story,context)=>{
+  const theme = getTheme(context.globals.theme);
+  return (
+    <ThemeProvider theme={theme}>
+      <Story />
+    </ThemeProvider>
+  )
+}
+export const decorators = [withThemeProvider];
+```
+

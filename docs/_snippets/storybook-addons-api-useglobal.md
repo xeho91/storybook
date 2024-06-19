@@ -1,0 +1,17 @@
+```js filename="/my-addon/manager.js" renderer="common" language="js"
+import React from 'react';
+
+import { useGlobals } from '@storybook/api';
+
+export const Panel = () => {
+  const [globals, updateGlobals] = useGlobals();
+
+  const isActive = globals['my-param-key'] || false;
+
+  return (
+    <button onClick={() => updateGlobals({ ['my-param-key']: !isActive })}>
+      {isActive ? 'Hide me!' : 'Show me!'}
+    </button>
+  );
+};
+```
