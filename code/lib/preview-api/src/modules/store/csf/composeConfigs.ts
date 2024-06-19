@@ -1,4 +1,4 @@
-import type { Renderer, ModuleExports, ProjectAnnotations } from '@storybook/types';
+import type { Renderer, ModuleExports, NormalizedProjectAnnotations } from '@storybook/types';
 import { global } from '@storybook/global';
 
 import { combineParameters } from '../parameters';
@@ -39,7 +39,7 @@ export function getSingletonField<TFieldType = any>(
 
 export function composeConfigs<TRenderer extends Renderer>(
   moduleExportList: ModuleExports[]
-): ProjectAnnotations<TRenderer> {
+): NormalizedProjectAnnotations<TRenderer> {
   const allArgTypeEnhancers = getArrayField(moduleExportList, 'argTypesEnhancers');
   const stepRunners = getField(moduleExportList, 'runStep');
 

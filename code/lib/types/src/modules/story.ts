@@ -58,12 +58,13 @@ export type NamedOrDefaultProjectAnnotations<TRenderer extends Renderer = Render
 
 export type NormalizedProjectAnnotations<TRenderer extends Renderer = Renderer> = Omit<
   ProjectAnnotations<TRenderer>,
-  'decorators' | 'loaders'
+  'decorators' | 'loaders' | 'runStep'
 > & {
   argTypes?: StrictArgTypes;
   globalTypes?: StrictGlobalTypes;
   decorators?: DecoratorFunction<TRenderer>[];
   loaders?: LoaderFunction<TRenderer>[];
+  runStep: StepRunner<TRenderer>;
 };
 
 export type NormalizedComponentAnnotations<TRenderer extends Renderer = Renderer> = Omit<
@@ -109,7 +110,7 @@ export type PreparedStory<TRenderer extends Renderer = Renderer> =
     ) => Promise<StoryContext<TRenderer>['loaded']>;
     applyBeforeEach: (context: StoryContext<TRenderer>) => Promise<CleanupCallback[]>;
     playFunction?: (context: PlayFunctionContext<TRenderer>) => Promise<void> | void;
-    runStep?: StepRunner<TRenderer>;
+    runStep: StepRunner<TRenderer>;
     mount: (context: StoryContext<TRenderer>) => () => Promise<MountReturnType>;
   };
 

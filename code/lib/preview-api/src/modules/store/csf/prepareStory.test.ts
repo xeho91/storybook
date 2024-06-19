@@ -1,10 +1,23 @@
 import { describe, beforeEach, it, expect, vi } from 'vitest';
 import { global } from '@storybook/global';
-import type { Renderer, ArgsEnhancer, PlayFunctionContext, SBScalarType } from '@storybook/types';
+import type {
+  Renderer,
+  ArgsEnhancer,
+  PlayFunctionContext,
+  SBScalarType,
+  StoryContext,
+  ProjectAnnotations,
+} from '@storybook/types';
 import { addons, HooksContext } from '../../addons';
 
 import { UNTARGETED } from '../args';
-import { prepareStory, prepareMeta, prepareContext } from './prepareStory';
+import { prepareStory as realPrepareStory, prepareMeta, prepareContext } from './prepareStory';
+import type {
+  NormalizedComponentAnnotations,
+  NormalizedStoryAnnotations,
+  PreparedStory,
+} from '@storybook/types/src';
+import { composeConfigs } from './composeConfigs';
 
 vi.mock('@storybook/global', async (importOriginal) => ({
   global: {
@@ -22,6 +35,17 @@ const stringType: SBScalarType = { name: 'string' };
 const numberType: SBScalarType = { name: 'number' };
 const booleanType: SBScalarType = { name: 'boolean' };
 
+export function prepareStory<TRenderer extends Renderer>(
+  storyAnnotations: NormalizedStoryAnnotations<TRenderer>,
+  componentAnnotations: NormalizedComponentAnnotations<TRenderer>,
+  projectAnnotations: ProjectAnnotations<TRenderer>
+): PreparedStory<TRenderer> {
+  return realPrepareStory(
+    storyAnnotations,
+    componentAnnotations,
+    composeConfigs([projectAnnotations])
+  );
+}
 // Extra fields that must be added to the story context after enhancers
 const storyContextExtras = () => ({
   hooks: new HooksContext(),
@@ -29,6 +53,8 @@ const storyContextExtras = () => ({
   loaded: {},
   abortSignal: new AbortController().signal,
   canvasElement: {},
+  step: vi.fn(),
+  mount: vi.fn(),
 });
 
 describe('prepareStory', () => {
@@ -327,17 +353,23 @@ describe('prepareStory', () => {
       const { applyLoaders } = prepareStory(
         { id, name, loaders: [loader as any], moduleExport },
         { id, title },
-        { render }
+        { render, runStep: vi.fn() }
       );
 
-      const storyContext = { context: 'value' } as any;
-      const loadedContext = await applyLoaders({ ...storyContext });
+      const storyContext = {
+        context: 'value',
+        abortSignal: new AbortController().signal,
+        loaded: {},
+      } as any;
+      storyContext.loaded = await applyLoaders({ ...storyContext });
 
       expect(loader).toHaveBeenCalledWith({ ...storyContext, loaded: {} });
-      expect(loadedContext).toEqual({
-        context: 'value',
-        loaded: { foo: 7 },
-      });
+      expect(storyContext).toEqual(
+        expect.objectContaining({
+          context: 'value',
+          loaded: { foo: 7 },
+        })
+      );
     });
 
     it('loaders are composed in the right order', async () => {
@@ -351,13 +383,15 @@ describe('prepareStory', () => {
         { render, loaders: [globalLoader] }
       );
 
-      const storyContext = { context: 'value' } as any;
-      const loadedContext = await applyLoaders(storyContext);
+      const storyContext = { context: 'value', abortSignal: new AbortController().signal } as any;
+      storyContext.loaded = await applyLoaders(storyContext);
 
-      expect(loadedContext).toEqual({
-        context: 'value',
-        loaded: { foo: 5, bar: 3, baz: 1 },
-      });
+      expect(storyContext).toEqual(
+        expect.objectContaining({
+          context: 'value',
+          loaded: { foo: 5, bar: 3, baz: 1 },
+        })
+      );
     });
 
     it('later loaders override earlier loaders', async () => {
@@ -372,13 +406,15 @@ describe('prepareStory', () => {
         { render }
       );
 
-      const storyContext = { context: 'value' } as any;
-      const loadedContext = await applyLoaders(storyContext);
+      const storyContext = { context: 'value', abortSignal: new AbortController().signal } as any;
+      storyContext.loaded = await applyLoaders(storyContext);
 
-      expect(loadedContext).toEqual({
-        context: 'value',
-        loaded: { foo: 3 },
-      });
+      expect(storyContext).toEqual(
+        expect.objectContaining({
+          context: 'value',
+          loaded: { foo: 3 },
+        })
+      );
     });
   });
 
@@ -666,17 +702,23 @@ describe('playFunction', () => {
     const play = vi.fn(async ({ step }) => {
       await step('label', stepPlay);
     });
-    const runStep = vi.fn((label, p, c) => p(c));
-    const { playFunction } = prepareStory(
+    const runStep = vi.fn((label, p, c) => {
+      console.log(p.toString());
+      return p(c);
+    });
+    const { playFunction, runStep: preparedRunStep } = prepareStory(
       { id, name, play, moduleExport },
       { id, title },
       { render, runStep }
     );
 
-    await playFunction!({} as PlayFunctionContext);
+    const context: Partial<StoryContext> = {
+      step: (label, playFn) => preparedRunStep(label, playFn, context as StoryContext),
+    };
+    await playFunction!(context as PlayFunctionContext);
     expect(play).toHaveBeenCalled();
     expect(stepPlay).toHaveBeenCalled();
-    expect(runStep).toBeCalledWith('label', stepPlay, expect.any(Object));
+    expect(runStep).toBeCalledWith('label', expect.any(Function), expect.any(Object));
   });
 });
 
@@ -711,7 +753,7 @@ describe('prepareMeta', () => {
       },
     };
     const preparedStory = prepareStory({ id, name, moduleExport }, meta, { render });
-    const preparedMeta = prepareMeta(meta, { render }, {});
+    const preparedMeta = prepareMeta(meta, { render, runStep: vi.fn() }, {});
 
     // omitting the properties from preparedStory that are not in preparedMeta
     const {
