@@ -104,6 +104,7 @@
   },
   "bundler": {
     "entries": [
+      "./src/check.ts",
       "./src/generate.ts",
       "./src/index.ts"
     ],

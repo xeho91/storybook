@@ -23,4 +23,17 @@ process.once('uncaughtException', (error) => {
   throw error;
 });
 
-require('../dist/generate.js');
+const { check } = require('../dist/check.js');
+
+check().then(
+  (result) => {
+    if (!result) {
+      process.exit(1);
+    }
+    require('../dist/generate.js');
+  },
+  (error) => {
+    console.error(error);
+    process.exit(1);
+  }
+);
