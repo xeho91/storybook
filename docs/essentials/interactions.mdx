@@ -18,7 +18,7 @@ The interactions are written using a Storybook-instrumented version of [Testing 
 
 Since Interactions is still experimental, it doesn't yet ship with Storybook by default. As such, you'll have to install it. You may also want to add our wrappers for Testing Library and Jest.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -27,11 +27,11 @@ Since Interactions is still experimental, it doesn't yet ship with Storybook by 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Next, update [`.storybook/main.js`](../configure/overview.md#configure-story-rendering) to the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -39,7 +39,7 @@ Next, update [`.storybook/main.js`](../configure/overview.md#configure-story-ren
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 
@@ -58,7 +58,7 @@ Interactions run as part of the `play` function of your stories. We rely on Test
 
 Make sure to import the Storybook wrappers for Jest and Testing Library rather than importing Jest and Testing Library directly.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -68,7 +68,7 @@ Make sure to import the Storybook wrappers for Jest and Testing Library rather t
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 The above example uses the `canvasElement` to scope your element queries to the current story. It's essential if you want your play functions to eventually be compatible with Storybook Docs, which renders multiple components on the same page.
 

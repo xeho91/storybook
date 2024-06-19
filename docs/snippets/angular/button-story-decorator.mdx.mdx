@@ -1,5 +1,5 @@
 ```md
-<!-- Button.stories.mdx -->
+{/* Button.stories.mdx */}
 
 import { Meta, Story } from '@storybook/addon-docs';
 
@@ -7,7 +7,7 @@ import { componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
 
 import { Button } from './button.component';
 
-<!-- Parent contains ng-content -->
+{/* Parent contains ng-content */}
 import { Parent } from './parent.component';
 
 <Meta title="Button" component={Button}/>
@@ -17,7 +17,7 @@ export const Template = () => ({
   template: `<app-button label="Submit"></app-button>`,
 });
 
-<!-- With a template -->
+{/* With a template */}
 
 <Story 
   name="Primary"
@@ -27,7 +27,7 @@ export const Template = () => ({
   {Template.bind({})}
 </Story>
 
-<!-- With a component -->
+{/* With a component */}
 
 <Story 
   name="InsideParent"

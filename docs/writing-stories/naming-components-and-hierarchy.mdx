@@ -4,7 +4,7 @@ title: 'Naming components and hierarchy'
 
 The title of the component you export in the `default` export controls the name shown in the sidebar.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -12,7 +12,7 @@ The title of the component you export in the `default` export controls the name 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Yields this:
 
@@ -22,7 +22,7 @@ Yields this:
 
 It is also possible to group related components in an expandable interface in order to help with Storybook organization. To do so, use the `/` as a separator:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -30,9 +30,9 @@ It is also possible to group related components in an expandable interface in or
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -40,7 +40,7 @@ It is also possible to group related components in an expandable interface in or
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Yields this:
 
@@ -56,7 +56,7 @@ We recommend naming components according to the file hierarchy.
 
 Stories which have **no siblings** (i.e. the component has only one story) and which **display name** exactly matches the component name (last part of `title`) will be hoisted up to replace their parent component in the sidebar. This means you can have stories files like this:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -64,7 +64,7 @@ Stories which have **no siblings** (i.e. the component has only one story) and w
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This will then be visually presented in the sidebar like this:
 
@@ -78,7 +78,7 @@ By default, stories are sorted in the order in which they were imported. This ca
 
 The most powerful method of sorting is to provide a function to `storySort`. Any custom sorting can be achieved with this method.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -86,11 +86,11 @@ The most powerful method of sorting is to provide a function to `storySort`. Any
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 The `storySort` can also accept a configuration object.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -98,7 +98,7 @@ The `storySort` can also accept a configuration object.
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 | Field           |  Type   |                       Description                        | Required |      Default Value      |          Example          |
 | --------------- | :-----: | :------------------------------------------------------: | :------: | :---------------------: | :-----------------------: |
@@ -111,7 +111,7 @@ To sort your stories alphabetically, set `method` to `'alphabetical'` and option
 
 The `order` array can accept a nested array in order to sort 2nd-level story kinds. For example:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -119,7 +119,7 @@ The `order` array can accept a nested array in order to sort 2nd-level story kin
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Which would result in this story ordering:
 
@@ -134,7 +134,7 @@ Which would result in this story ordering:
 
 If you want certain categories to sort to the end of the list, you can insert a `*` into your `order` array to indicate where "all other stories" should go:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -142,7 +142,7 @@ If you want certain categories to sort to the end of the list, you can insert a 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 In this example, the `WIP` category would be displayed at the end of the list.
 

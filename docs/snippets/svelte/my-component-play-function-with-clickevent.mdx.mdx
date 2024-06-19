@@ -1,5 +1,5 @@
 ```md
-<!-- MyComponent.stories.mdx -->
+{/* MyComponent.stories.mdx */}
 
 import { Meta, Story } from '@storybook/addon-docs';
 
@@ -14,10 +14,10 @@ export const Template = (args) => ({
   props: args,
 });
 
-<!--  
+{/*  
   See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
   to learn more about using the canvasElement to query the DOM
--->
+*/}
 <Story
   name="ClickExample"
   play={ async ({ canvasElement }) => {

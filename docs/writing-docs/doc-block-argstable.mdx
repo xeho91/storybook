@@ -13,7 +13,7 @@ Storybook Docs automatically generates component args tables for components in s
 
 This is extremely useful, but it can be further expanded. Additional information can be added to the component to better document it:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -26,7 +26,7 @@ This is extremely useful, but it can be further expanded. Additional information
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 The args tables will be updated accordingly by including the additional information (e.g., JSDocs comments), offering a richer experience for any stakeholders involved.
 
@@ -34,7 +34,7 @@ The args tables will be updated accordingly by including the additional informat
 
 To use the `ArgsTable` in [DocsPage](./docs-page.md#component-parameter), export a component property on your stories metadata:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -42,7 +42,7 @@ To use the `ArgsTable` in [DocsPage](./docs-page.md#component-parameter), export
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Working with MDX
 
@@ -53,7 +53,7 @@ If you need, you can also include the `ArgsTable` block in your MDX stories. Bel
 | `of`    | Infers the args table from the component. <br/> `<ArgsTable of={MyComponent} />`                    |
 | `story` | Infers the args table based on a story. <br/> `<ArgsTable story="example-mycomponent--my-story" />` |
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -84,7 +84,7 @@ Below is an abridged table and example featuring the available options.
 | `control`                    | Associates a control for the property. <br/> `argTypes: { label: { control: { type: 'text'} } }` <br/>Read the  [Essentials documentation](../essentials/controls.md) to learn more about controls. |
 
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -93,7 +93,7 @@ Below is an abridged table and example featuring the available options.
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 
@@ -116,7 +116,7 @@ To reduce the boilerplate code you have to write, Storybook provides some conven
 
 You can also extend the ArgsTable's customization by grouping related `argTypes` into categories or even subcategories. Based on the following component implementation:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -129,7 +129,7 @@ You can also extend the ArgsTable's customization by grouping related `argTypes`
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 You could group similar properties for better organization and structure. Using the table below as a reference:
 
@@ -143,7 +143,7 @@ You could group similar properties for better organization and structure. Using 
 
 Results in the following change into your story and UI.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -151,7 +151,7 @@ Results in the following change into your story and UI.
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ![button story with args grouped into categories](./button-args-grouped-categories.png)
 
@@ -165,7 +165,7 @@ You can also extend the formula above and introduce subcategories, allowing bett
 | **onClick**         |  Events  |  Button Events  |
 | **size**            |  Sizes   |                 |
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -173,7 +173,7 @@ You can also extend the formula above and introduce subcategories, allowing bett
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ![button story with args grouped into categories](./button-args-grouped-subcategories.png)
 

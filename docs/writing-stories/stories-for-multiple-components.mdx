@@ -4,7 +4,7 @@ title: 'Stories for multiple components'
 
 It's useful to write stories that [render two or more components](../writing-stories/introduction.md#stories-for-two-or-more-components) at once if those components are designed to work together. For example, `ButtonGroups`, `Lists`, and `Page` components. Here's an example with `List` and `ListItem` components:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -16,7 +16,7 @@ It's useful to write stories that [render two or more components](../writing-sto
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Note that by adding `subcomponents` to the default export, we get an extra panel on the ArgsTable, listing the props of `ListItem`:
 
@@ -33,7 +33,7 @@ Let's talk about some techniques you can use to mitigate the above, which are es
 
 The simplest change we can make to the above is to reuse the stories of the `ListItem` in the `List`:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -47,7 +47,7 @@ The simplest change we can make to the above is to reuse the stories of the `Lis
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 By rendering the `Unchecked` story with its args, we are able to reuse the input data from the `ListItem` stories in the `List`.
 
@@ -57,7 +57,7 @@ However, we still aren’t using args to control the `ListItem` stories, which m
 
 One way we improve that situation is by pulling the rendered subcomponent out into a `children` arg:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -66,7 +66,7 @@ One way we improve that situation is by pulling the rendered subcomponent out in
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Now that `children` is an arg, we can potentially reuse it in another story.
 
@@ -89,7 +89,7 @@ We're currently working on improving the overall experience for the children arg
 
 Another option that is more “data”-based is to create a special “story-generating” template component:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -101,7 +101,7 @@ Another option that is more “data”-based is to create a special “story-gen
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This approach is a little more complex to setup, but it means you can more easily reuse the `args` to each story in a composite component. It also means that you can alter the args to the component with the Controls addon:
 

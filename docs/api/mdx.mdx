@@ -8,7 +8,7 @@ title: 'MDX Format'
 
 Let's get started with an example that combines Markdown with a single story:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -18,7 +18,7 @@ Let's get started with an example that combines Markdown with a single story:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 And here's how it renders in Storybook:
 
@@ -36,7 +36,7 @@ MDX-flavored [Component Story Format (CSF)](https://medium.com/storybookjs/compo
 
 For example, here's the story from the `Checkbox` example above, rewritten in CSF:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -48,7 +48,7 @@ For example, here's the story from the `Checkbox` example above, rewritten in CS
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 There's a one-to-one mapping from the code in `MDX` to `CSF`, which in turn directly corresponds to Storybook's internal `storiesOf` API. As a user, this means your existing Storybook knowledge should translate between the three constructs. And technically, this means that the transformations that happen under the hood are predictable and straightforward.
 
@@ -56,7 +56,7 @@ There's a one-to-one mapping from the code in `MDX` to `CSF`, which in turn dire
 
 Now let's look at a more realistic example to see a few more things we can do:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -66,7 +66,7 @@ Now let's look at a more realistic example to see a few more things we can do:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 And here's how that gets rendered in Storybook:
 
@@ -76,7 +76,7 @@ And here's how that gets rendered in Storybook:
 
 Suppose you have an existing story and want to embed it into your docs. Here's how to show a story with ID `some--id` (check the browser URL in Storybook v5+ to see a story's ID):
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -84,7 +84,7 @@ Suppose you have an existing story and want to embed it into your docs. Here's h
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 You can also use the rest of the MDX features in conjunction with embedding. That includes source, preview, and prop tables.
 
@@ -92,7 +92,7 @@ You can also use the rest of the MDX features in conjunction with embedding. Tha
 
 To add [decorators](../writing-docs/mdx.md#decorators-and-parameters) and [parameters](../writing-docs/mdx.md#decorators-and-parameters) in MDX:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -100,11 +100,11 @@ To add [decorators](../writing-docs/mdx.md#decorators-and-parameters) and [param
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 In addition, global decorators work just like before, e.g., adding the following to your [`.storybook/preview.js`](../configure/overview.md#configure-story-rendering):
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -112,13 +112,13 @@ In addition, global decorators work just like before, e.g., adding the following
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Play function
 
 Storybook's `play` functions are small snippets of code that run after the story loads. They're helpful methods to help test scenarios that otherwise would require user intervention. For example, if you're working on a login component and want to interact with it and verify the component's workflow, you could write the following story:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -130,7 +130,7 @@ Storybook's `play` functions are small snippets of code that run after the story
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## Documentation-only MDX
 

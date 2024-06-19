@@ -36,7 +36,7 @@ To do so, Storybook uses various static analysis tools depending on your framewo
 
 The format of the generated argType will look something like this:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -44,7 +44,7 @@ The format of the generated argType will look something like this:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This ArgTypes data structure, name, type, defaultValue, and description are standard fields in all ArgTypes (analogous to PropTypes in React). The table and control fields are addon-specific annotations. So, for example, the table annotation provides extra information to customize how the label gets rendered, and the control annotation includes additional information for the control editing the property.
 
@@ -61,7 +61,7 @@ This ArgTypes data structure, name, type, defaultValue, and description are stan
 
 If you want more control over the args table or any other aspect of using argTypes, you can overwrite the generated argTypes for your component on a per-arg basis. For instance, with the above-inferred argTypes and the following default export:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -69,11 +69,11 @@ If you want more control over the args table or any other aspect of using argTyp
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 The `values.description`, `table.type`, and `controls.type` are merged into the defaults extracted by Storybook. The final merged values would be:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -81,7 +81,7 @@ The `values.description`, `table.type`, and `controls.type` are merged into the 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 In particular, this would render a row with a modified description, a type display with a dropdown that shows the detail, and no control.
 
@@ -93,7 +93,7 @@ In particular, this would render a row with a modified description, a type displ
 
 You can also define arg types at the global level; they will apply to every component's stories unless you overwrite them. To do so, export the `argTypes` key in your `preview.js`:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -101,7 +101,7 @@ You can also define arg types at the global level; they will apply to every comp
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 💡 If you define a global arg type for a story that does not have that arg (e.g. if there is no corresponding global arg definition), then the arg type will have no effect.
@@ -111,7 +111,7 @@ You can also define arg types at the global level; they will apply to every comp
 
 If you want to access the argTypes of the current component inside an addon, you can use the `useArgTypes` hook from the `@storybook/api` package:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -119,4 +119,4 @@ If you want to access the argTypes of the current component inside an addon, you
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}

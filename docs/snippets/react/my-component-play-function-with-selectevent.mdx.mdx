@@ -1,5 +1,5 @@
 ```md
-<!-- MyComponent.stories.mdx -->
+{/* MyComponent.stories.mdx */}
 
 import { Meta, Story } from '@storybook/addon-docs';
 
@@ -9,7 +9,7 @@ import { MyComponent } from './MyComponent';
 
 <Meta title="WithSelectEvent" component={MyComponent}/>
 
-<!-- Function to emulate pausing between interactions -->
+{/* Function to emulate pausing between interactions */}
 
 export const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -17,10 +17,10 @@ export const sleep = (ms) => {
 
 export const Template = (args) => <MyComponent {...args} />;
 
-<!--  
+{/*  
  See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
  to learn more about using the canvasElement to query the DOM
--->
+*/}
 <Story 
   name="ExampleChangeEvent"
   play={ async ({ canvasElement }) => {

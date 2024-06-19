@@ -10,7 +10,7 @@ The best practice for docs is for each component to have its own set of document
 
 Storybook uses the `component` key in the story file’s default export to extract the component's description and props.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -18,7 +18,7 @@ Storybook uses the `component` key in the story file’s default export to extra
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## Subcomponents parameter
 
@@ -26,7 +26,7 @@ Sometimes it's helpful to document multiple components together. For example, a 
 
 DocsPage has the concept of a "primary" component defined by the `component` parameter. It also accepts one or more `subcomponents`.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -35,7 +35,7 @@ DocsPage has the concept of a "primary" component defined by the `component` par
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ![Subcomponents in Docs Page](./docspage-subcomponents.png)
 
@@ -51,7 +51,7 @@ Replace the DocsPage template with your own to customize its contents.
 
 Override the `docs.page` [parameter](../writing-stories/parameters.md) with `null` to remove its contents.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -59,13 +59,13 @@ Override the `docs.page` [parameter](../writing-stories/parameters.md) with `nul
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### With MDX documentation
 
 Write your documentation in MDX and update the `docs.page` [parameter](../writing-stories/parameters.md) to display it. The `id` of reference follows the pattern: `group-subgroup-...--name`, where the `groups` and `subgroups` are defined as according to the [Grouping Documentation](https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#grouping).
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -74,7 +74,7 @@ Write your documentation in MDX and update the `docs.page` [parameter](../writin
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### With a custom component
 
@@ -121,7 +121,7 @@ Then, update your `tsconfig.json` to include the following:
 
 Finally write your custom React component and update the `docs.page` [parameter](../writing-stories/parameters.md) to render the custom documentation.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -131,7 +131,7 @@ Finally write your custom React component and update the `docs.page` [parameter]
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## Remixing DocsPage using doc blocks
 
@@ -141,7 +141,7 @@ If you want to make minor customizations to the default DocsPage but don’t wan
 
 Here's an example of rebuilding DocsPage for the Button component using doc blocks:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -150,7 +150,7 @@ Here's an example of rebuilding DocsPage for the Button component using doc bloc
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 In addition, you can interleave your own components to customize the auto-generated contents of the page or pass in different options to the blocks to customize their appearance.
 
@@ -170,7 +170,7 @@ Therefore, we recommend inline rendering where possible. It's the default mode f
 
 To toggle the between the two settings, set `docs.inlineStories` in `.storybook/preview.js`. Like most [parameters](../writing-stories/parameters.md), you can also toggle at the component or story level:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -178,7 +178,7 @@ To toggle the between the two settings, set `docs.inlineStories` in `.storybook/
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Custom inline rendering
 
@@ -190,7 +190,7 @@ Different frameworks will need to approach this in different ways. Angular, for 
 
 Here’s an example of how to render Vue stories inline. The following docs config block uses `prepareForInline` and an effect hook provided by [@egoist/vue-to-react](https://github.com/egoist/vue-to-react).
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -198,7 +198,7 @@ Here’s an example of how to render Vue stories inline. The following docs conf
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 With this function, anyone using the docs addon for [@storybook/vue](https://github.com/storybookjs/storybook/tree/master/app/vue) can make their stories render inline, either globally with the inlineStories docs parameter, or on a per-story-basis using the inline prop on the `<Story>` doc block.
 

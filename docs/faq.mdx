@@ -319,7 +319,7 @@ Currently there's an issue when using MDX stories with IE11. This issue does <st
 
 Out of the box, Storybook provides syntax highlighting for a set of languages (e.g., Javascript, Markdown, CSS, HTML, Typescript, GraphQL) that you can use with your code blocks. If you're writing your custom code blocks with MDX, you'll need to import the syntax highlighter manually. For example, if you're adding a code block for SCSS, adjust your story to the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -327,7 +327,7 @@ Out of the box, Storybook provides syntax highlighting for a set of languages (e
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 💡 Check <code>react-syntax-highlighter</code>'s <a href="https://github.com/react-syntax-highlighter/react-syntax-highlighter">documentation</a> for a list of available languages.
@@ -375,7 +375,7 @@ See the following [issue](https://github.com/mdx-js/mdx/issues/1945) for more in
 This is a known issue with MDX 2. We're working to fix it. For now you can apply the following workaround:
 
 ```md
-<!-- Button.stories.mdx -->
+{/* Button.stories.mdx */}
 
 import { Story } from '@storybook/addon-docs';
 

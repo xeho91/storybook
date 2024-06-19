@@ -52,7 +52,7 @@ Once you've gone through the prompts, your `package.json` should look like:
 
 We'll need to add the necessary dependencies and make some adjustments. Run the following command to install the required dependencies:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -61,7 +61,7 @@ We'll need to add the necessary dependencies and make some adjustments. Run the 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Initialize a local Storybook instance to allow you to test your addon.
 
@@ -75,7 +75,7 @@ npx storybook init
 
 Next, create a `.babelrc.js` file in the root directory with the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -83,7 +83,7 @@ Next, create a `.babelrc.js` file in the root directory with the following:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 Babel configuration is required because our addon uses ES6 and JSX.
@@ -105,7 +105,7 @@ Change your `package.json` and add the following script to build the addon:
 
 Finally, create a new directory called `src` and inside a new file called `preset.js` with the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -113,7 +113,7 @@ Finally, create a new directory called `src` and inside a new file called `prese
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Presets are the way addons hook into Storybook. Among other tasks they allow you to:
 
@@ -127,7 +127,7 @@ For this example, we'll modify Storybook's UI.
 
 Now let’s add a panel to Storybook. Inside the `src` directory, create a new file called `register.js` and add the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -135,7 +135,7 @@ Now let’s add a panel to Storybook. Inside the `src` directory, create a new f
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 💡 Make sure to include the <code>key</code> when you register the addon. It will prevent any issues when the addon renders.
@@ -151,7 +151,7 @@ Going over the code snippet in more detail. When Storybook starts up:
 
 Finally, let’s hook it all up. Change `.storybook/main.js` to the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -159,7 +159,7 @@ Finally, let’s hook it all up. Change `.storybook/main.js` to the following:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 💡 When you register a Storybook addon, it will look for either <code>register.js</code> or <code>preset.js</code> as the entry points.
@@ -173,7 +173,7 @@ Run `yarn storybook` and you should see something similar to:
 
 Next, let’s replace the `MyPanel` component from above to show the parameter.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -181,7 +181,7 @@ Next, let’s replace the `MyPanel` component from above to show the parameter.
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 The new version is made smarter by [`useParameter`](./addons-api.md#useparameter), which is a [React hook](https://reactjs.org/docs/hooks-intro.html) that updates the parameter value and re-renders the panel every time the story changes.
 
@@ -191,7 +191,7 @@ The [addon API](./addons-api.md) provides hooks like this, so all of that commun
 
 When Storybook was initialized, it provided a small set of example stories. Change your `Button.stories.js` to the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -204,7 +204,7 @@ When Storybook was initialized, it provided a small set of example stories. Chan
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 After applying the changes to the story, the Storybook UI will show the following:
 
@@ -219,7 +219,7 @@ After applying the changes to the story, the Storybook UI will show the followin
 
 Before publishing the addon, we'll need to make one last change. In the root directory of the addon, create a new file called `preset.js` and add the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -227,7 +227,7 @@ Before publishing the addon, we'll need to make one last change. In the root dir
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This auto-registers the addon without any additional configuration from the user. Storybook looks for either a `preset.js` or a `register.js` file located at the root level.
 

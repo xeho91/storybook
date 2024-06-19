@@ -1,5 +1,5 @@
 ```md
-<!-- Button.stories.mdx -->
+{/* Button.stories.mdx */}
 
 import { Meta, Story } from '@storybook/addon-docs';
 
@@ -7,14 +7,14 @@ import Button from './Button.svelte';
 
 <Meta title="Button" component={Button} />
 
-<!-- 👇 We create a “template” of how args map to rendering -->
+{/* 👇 We create a “template” of how args map to rendering */}
 
 export const Template = (args) => ({
   Component: Button,
   props: args,
 });
 
-<!-- 👇 Each story then reuses that template -->
+{/* 👇 Each story then reuses that template */}
 <Story
   name="Primary"
   args={{

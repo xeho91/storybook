@@ -17,7 +17,7 @@ STORYBOOK_THEME=red STORYBOOK_DATA_KEY=12345 npm run storybook
 
 Then we can access these environment variables anywhere inside our preview JavaScript code like below:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -25,7 +25,7 @@ Then we can access these environment variables anywhere inside our preview JavaS
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 You can also access these variables in your custom `<head>`/`<body>` using the substitution `%STORYBOOK_X%`, for example: `%STORYBOOK_THEME%` will become `red`.
 
@@ -45,7 +45,7 @@ STORYBOOK_DATA_KEY=12345
 
 Then you can access this environment variable anywhere, even within your stories:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -65,7 +65,7 @@ Then you can access this environment variable anywhere, even within your stories
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 You can also use specific files for specific modes. Add a <code>.env.development</code> or <code>.env.production</code> to apply different values to your environment variables.
@@ -80,7 +80,7 @@ Then they'll be hardcoded to the static version of your Storybook.
 
 Additionally, you can extend your Storybook configuration file (i.e., [`.storybook/main.js`](../configure/overview.md#configure-story-rendering)) and provide a configuration field that you can use to define specific variables (e.g., API URLs). For example:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -88,11 +88,11 @@ Additionally, you can extend your Storybook configuration file (i.e., [`.storybo
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 When Storybook loads, it will enable you to access them in your stories similar as you would do if you were working with an `env` file:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -101,7 +101,7 @@ When Storybook loads, it will enable you to access them in your stories similar 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Using environment variables to choose the browser
 

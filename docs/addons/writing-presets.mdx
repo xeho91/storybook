@@ -12,7 +12,7 @@ A preset is a set of hooks that is called by Storybook on initialization and can
 
 Each configuration has a similar signature, accepting a base configuration object and options, as in this Webpack example:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -20,7 +20,7 @@ Each configuration has a similar signature, accepting a base configuration objec
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Babel
 
@@ -30,7 +30,7 @@ All functions take a [Babel configuration object](https://babeljs.io/docs/en/con
 
 For example, Storybook's Mihtril support uses plugins internally and here's how it configures babel:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -38,7 +38,7 @@ For example, Storybook's Mihtril support uses plugins internally and here's how 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 - `babel` is applied to the preview config, after it has been initialized by storybook
 - `babelDefault` is applied to the preview config before any user presets have been applied
@@ -52,7 +52,7 @@ All functions take a [webpack4 configuration object](https://webpack.js.org/conf
 
 For example, here is how Storybook automatically adopts `create-react-app`'s configuration if it's installed, where `applyCRAWebpackConfig` is a set of smart heuristics for modifying the input config.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -60,7 +60,7 @@ For example, here is how Storybook automatically adopts `create-react-app`'s con
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 - `webpack` is applied to the preview config after it has been initialized by Storybook
 - `webpackFinal` is applied to the preview config after all user presets have been applied
@@ -68,7 +68,7 @@ For example, here is how Storybook automatically adopts `create-react-app`'s con
 
 As of Storybook 6.3, Storybook can run with either `webpack4` or `webpack5` builder. If your addon needs to know which version of Webpack it's running inside, the version and the actual Webpack instance itself are both available inside your preset:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -76,7 +76,7 @@ As of Storybook 6.3, Storybook can run with either `webpack4` or `webpack5` buil
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 
 ### Manager entries
@@ -85,7 +85,7 @@ The addon config `managerEntries` allows you to add addons to Storybook from wit
 
 For example, the Storysource preset contains the following code:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -93,11 +93,11 @@ For example, the Storysource preset contains the following code:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This is equivalent to [registering the addon manually](../get-started/browse-stories.md#addons) in [`main.js`](../configure/overview.md#configure-story-rendering):
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -105,7 +105,7 @@ This is equivalent to [registering the addon manually](../get-started/browse-sto
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Preview entries
 
@@ -113,7 +113,7 @@ The addon `config` function allows you to add extra preview configuration from w
 
 For example, the Backgrounds preset contains the following code:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -121,12 +121,12 @@ For example, the Backgrounds preset contains the following code:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 
 Which in turn invokes:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -134,7 +134,7 @@ Which in turn invokes:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 This is equivalent to exporting the `backgrounds` parameter manually in `main.js`.
 
@@ -142,7 +142,7 @@ This is equivalent to exporting the `backgrounds` parameter manually in `main.js
 
 For users, the name `managerEntries` might be a bit too technical, so instead both users and preset-authors can simply use the `addons` property:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -150,7 +150,7 @@ For users, the name `managerEntries` might be a bit too technical, so instead bo
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 The array of values can support both references to other presets and addons that should be included into the manager.
 
@@ -160,7 +160,7 @@ If this heuristic is incorrect for an addon you are using, you can explicitly op
 
 Here's what it looks when combining presets and manager entries in the `addons` property:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -168,7 +168,7 @@ Here's what it looks when combining presets and manager entries in the `addons` 
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Entries
 
@@ -182,7 +182,7 @@ For example, some users want to configure the Webpack for Storybook's UI and add
 
 If it doesn't exist yet, create a file `.storybook/main.js`:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -190,7 +190,7 @@ If it doesn't exist yet, create a file `.storybook/main.js`:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Preview/Manager templates
 
@@ -198,7 +198,7 @@ It's also possible to programmatically modify the preview head/body HTML using a
 
 For example, the following snippet adds a style tag to the preview head programmatically:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -206,7 +206,7 @@ For example, the following snippet adds a style tag to the preview head programm
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Similarly, the `managerHead` can be used to modify the surrounding "manager" UI, analogous to `manager-head.html`.
 
@@ -216,7 +216,7 @@ Finally, the preview's main page _template_ can also be overridden using the `pr
 
 Change your `main.js` file to:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -224,11 +224,11 @@ Change your `main.js` file to:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 and extract the configuration to a new file `./storybook/my-preset.js`:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -236,6 +236,6 @@ and extract the configuration to a new file `./storybook/my-preset.js`:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Place your `my-preset.js` file wherever you want, if you want to share it far and wide you'll want to make it its own package.

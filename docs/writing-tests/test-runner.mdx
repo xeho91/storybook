@@ -15,7 +15,7 @@ The test-runner is a standalone, framework-agnostic utility that runs parallel t
 
 Run the following command to install it.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -24,7 +24,7 @@ Run the following command to install it.
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Update your `package.json` scripts and enable the test runner.
 
@@ -38,7 +38,7 @@ Update your `package.json` scripts and enable the test runner.
 
 Start your Storybook with:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -48,7 +48,7 @@ Start your Storybook with:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 💡 Storybook's test runner requires either a locally running Storybook instance or a published Storybook to run all the existing tests.
@@ -56,7 +56,7 @@ Start your Storybook with:
 
 Finally, open a new terminal window and run the test-runner with:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -65,7 +65,7 @@ Finally, open a new terminal window and run the test-runner with:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## Configure
 
@@ -93,7 +93,7 @@ If you're already using any of those flags in your project, you should be able t
 | `--eject`                       | Creates a local configuration file to override defaults of the test-runner <br/>`test-storybook --eject`                         |
 | `--coverage`                    | Runs [coverage tests](./test-coverage.md) on your stories and components <br/> `test-storybook --coverage`                       |
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -102,13 +102,13 @@ If you're already using any of those flags in your project, you should be able t
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Run tests against a deployed Storybook
 
 By default, the test-runner assumes that you're running it against a locally served Storybook on port `6006`. If you want to define a target URL to run against deployed Storybooks, you can use the `--url` flag or set the `TARGET_URL` environment variable. For example:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -118,7 +118,7 @@ By default, the test-runner assumes that you're running it against a locally ser
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ## Set up CI to run tests
 
@@ -128,7 +128,7 @@ You can also configure the test-runner to run tests on a CI environment. Documen
 
 If you're publishing your Storybook with services such as [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/), they emit a `deployment_status` event in GitHub Actions. You can use it and set the `deployment_status.target_url` as the `TARGET_URL` environment variable. Here's how:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -136,7 +136,7 @@ If you're publishing your Storybook with services such as [Vercel](https://verce
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 
@@ -148,7 +148,7 @@ If you're publishing your Storybook with services such as [Vercel](https://verce
 
 You can use your CI provider (for example, [GitHub Actions](https://github.com/features/actions), [GitLab Pipelines](https://docs.gitlab.com/ee/ci/pipelines/), [CircleCI](https://circleci.com/)) to build and run the test runner against your built Storybook. Here's a recipe that relies on third-party libraries, that is to say, [concurrently](https://www.npmjs.com/package/concurrently), [http-server](https://www.npmjs.com/package/http-server), and [wait-on](https://www.npmjs.com/package/wait-on) to build Storybook and run tests with the test-runner.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -156,7 +156,7 @@ You can use your CI provider (for example, [GitHub Actions](https://github.com/f
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 
@@ -198,7 +198,7 @@ Listed below are the available hooks and an overview of how to use them.
 
 To enable the hooks API, you'll need to add a new configuration file inside your Storybook directory and set them up as follows:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -207,7 +207,7 @@ To enable the hooks API, you'll need to add a new configuration file inside your
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 
@@ -228,7 +228,7 @@ When the test-runner executes, your existing tests will go through the following
 
 The test-runner exports a few helpers that can be used to make your tests more readable and maintainable by accessing Storybook's internals (e.g., `args`, `parameters`). Listed below are the available helpers and an overview of how to use them.
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -237,7 +237,7 @@ The test-runner exports a few helpers that can be used to make your tests more r
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Stories.json mode
 
@@ -247,7 +247,7 @@ The test-runner transforms your story files into tests when testing a local Stor
 
 Suppose you run into a situation where the local and remote Storybooks appear out of sync, or you might not even have access to the code. In that case, the `stories.json` file is guaranteed to be the most accurate representation of the deployed Storybook you are testing. To test a local Storybook using this feature, use the `--stories-json` flag as follows:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -256,7 +256,7 @@ Suppose you run into a situation where the local and remote Storybooks appear ou
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 <div class="aside">
 
@@ -266,7 +266,7 @@ Suppose you run into a situation where the local and remote Storybooks appear ou
 
 If you need to disable it, use the `--no-stories-json` flag:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -275,7 +275,7 @@ If you need to disable it, use the `--no-stories-json` flag:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 #### How do I check if my Storybook has a `stories.json` file?
 

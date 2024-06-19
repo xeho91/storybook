@@ -19,7 +19,7 @@ Out of the box, the Viewport addon offers you a standard set of viewports that y
 
 If you want to change the default set of viewports, you can set the global `parameters.viewport` [parameter](../writing-stories/parameters.md) in your [`.storybook/preview.js`](../configure/overview.md#configure-story-rendering):
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -27,7 +27,7 @@ If you want to change the default set of viewports, you can set the global `para
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 The viewport global can take an object with the following keys:
 
@@ -51,7 +51,7 @@ By default, Storybook uses a [minimal set of viewports](https://github.com/story
 
 Change your [`.storybook/preview.js`](../configure/overview.md#configure-story-rendering) to the following:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -59,7 +59,7 @@ Change your [`.storybook/preview.js`](../configure/overview.md#configure-story-r
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Start your Storybook, and you'll see the new devices that you can use.
 
@@ -69,7 +69,7 @@ See [here](https://github.com/storybookjs/storybook/blob/master/addons/viewport/
 
 If you have either a specific viewport or a list of viewports that you need to use, you can modify your [`.storybook/preview.js`](../configure/overview.md#configure-story-rendering) file and include them:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -77,11 +77,11 @@ If you have either a specific viewport or a list of viewports that you need to u
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Make the following change to use them in your Storybook:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -89,7 +89,7 @@ Make the following change to use them in your Storybook:
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Once you start Storybook, you'll see your new viewports and devices.
 
@@ -97,7 +97,7 @@ If you need, you can also add these two to another list of viewports.
 
 For instance, if you want to use these two with the minimal set of viewports, you can do it like so:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -105,7 +105,7 @@ For instance, if you want to use these two with the minimal set of viewports, yo
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 Both viewports (`Kindle Fire 2` and `Kindle Fire HD`) will feature in the list of devices by merging them into the [`MINIMAL_VIEWPORTS`](https://github.com/storybookjs/storybook/blob/master/addons/viewport/src/defaults.ts#L135).
 
@@ -115,7 +115,7 @@ There are cases where it's not practical for you to use a specific visual viewpo
 
 Update your story through [parameters](../writing-stories/parameters.md) to include your viewports at a component level or for a specific story:
 
-<!-- prettier-ignore-start -->
+{/* prettier-ignore-start */}
 
 <CodeSnippets
   paths={[
@@ -133,7 +133,7 @@ Update your story through [parameters](../writing-stories/parameters.md) to incl
   ]}
 />
 
-<!-- prettier-ignore-end -->
+{/* prettier-ignore-end */}
 
 ### Keyboard shortcuts
 

@@ -1,5 +1,5 @@
 ```md
-<!-- LoginForm.stories.mdx -->
+{/* LoginForm.stories.mdx */}
 
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
@@ -17,10 +17,10 @@ export const Template = (args) => <LoginForm {...args} />;
   <Story name="Empty Form">
     {Template.bind({})}
   </Story>
-  <!--  
+  {/*  
    See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
    to learn more about using the canvasElement to query the DOM
-  -->
+  */}
   <Story
     name="Filled Form"
     play={ async ({ canvasElement }) => {
