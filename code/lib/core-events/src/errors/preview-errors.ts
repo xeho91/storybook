@@ -238,6 +238,25 @@ export class StoryStoreAccessedBeforeInitializationError extends StorybookError 
   }
 }
 
+export class MountMustBeDestructured extends StorybookError {
+  readonly category = Category.PREVIEW_API;
+
+  readonly code = 12;
+
+  constructor(public data: { playFunction: string }) {
+    super();
+  }
+
+  template() {
+    return dedent`
+    To use mount in the play function, you must use object destructuring, e.g. play: ({ mount }) => {}.
+    
+    Instead received:
+    ${this.data.playFunction}
+    `;
+  }
+}
+
 export class NextJsSharpError extends StorybookError {
   readonly category = Category.FRAMEWORK_NEXTJS;
 

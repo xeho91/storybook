@@ -112,9 +112,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
     loaded: {},
     abortSignal: abortController.signal,
     canvasElement: null,
-    mount: async () => {
-      throw new Error('mount not provided.');
-    },
+    mount: null!,
     step: (label: StepLabel, play: PlayFunction<TRenderer>) => story.runStep!(label, play, context),
     ...story,
   };
