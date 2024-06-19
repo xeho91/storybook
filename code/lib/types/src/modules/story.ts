@@ -6,6 +6,7 @@ import type {
   CleanupCallback,
   StepRunner,
   PlayFunctionContext,
+  MountReturnType,
 } from '@storybook/csf';
 
 import type {
@@ -44,8 +45,8 @@ export type RenderToCanvas<TRenderer extends Renderer> = (
 ) => MaybePromise<void | TeardownRenderToCanvas>;
 
 export type ProjectAnnotations<TRenderer extends Renderer> = CsfProjectAnnotations<TRenderer> & {
+  mount?: (context: StoryContext<TRenderer>) => () => Promise<MountReturnType>;
   renderToCanvas?: RenderToCanvas<TRenderer>;
-
   /* @deprecated use renderToCanvas */
   renderToDOM?: RenderToCanvas<TRenderer>;
 };
@@ -109,6 +110,7 @@ export type PreparedStory<TRenderer extends Renderer = Renderer> =
     applyBeforeEach: (context: StoryContext<TRenderer>) => Promise<CleanupCallback[]>;
     playFunction?: (context: PlayFunctionContext<TRenderer>) => Promise<void> | void;
     runStep?: StepRunner<TRenderer>;
+    mount: (context: StoryContext<TRenderer>) => () => Promise<MountReturnType>;
   };
 
 export type PreparedMeta<TRenderer extends Renderer = Renderer> = Omit<

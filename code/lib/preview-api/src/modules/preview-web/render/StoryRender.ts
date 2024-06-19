@@ -1,6 +1,5 @@
 import type {
   PlayFunction,
-  PlayFunctionContext,
   PreparedStory,
   RenderContext,
   RenderContextCallbacks,
@@ -184,21 +183,22 @@ export class StoryRender<TRenderer extends Renderer> implements Render<TRenderer
     // abort controller may be torn down (above) before we actually check the signal.
     const abortSignal = (this.abortController as AbortController).signal;
 
-    const context: PlayFunctionContext<TRenderer> = {
+    const context: StoryContext<TRenderer> = {
       ...(this.storyContext() as StoryContextForLoaders<TRenderer>),
       viewMode: this.viewMode as StoryContext['viewMode'],
       abortSignal,
       canvasElement,
       loaded: {},
-      mount: async () => {
+      step: (label: StepLabel, play: PlayFunction<TRenderer>) => runStep!(label, play, context),
+      renderToCanvas: async () => {
         await this.runPhase(abortSignal, 'rendering', async () => {
           const teardown = await this.renderToScreen(renderContext, canvasElement);
           this.teardownRender = teardown || (() => {});
         });
-        return {};
       },
-      step: (label: StepLabel, play: PlayFunction<TRenderer>) => runStep!(label, play, context),
     };
+
+    context.mount = this.story.mount(context);
 
     const renderContext: RenderContext<TRenderer> = {
       componentId,

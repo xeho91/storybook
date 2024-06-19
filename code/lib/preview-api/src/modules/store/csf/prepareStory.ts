@@ -109,6 +109,15 @@ export function prepareStory<TRenderer extends Renderer>(
     throw new Error(`No render function available for storyId '${id}'`);
   }
 
+  const defaultMount = (context: StoryContext) => {
+    return async () => {
+      await context.renderToCanvas();
+      return {};
+    };
+  };
+
+  const mount = projectAnnotations.mount ?? defaultMount;
+
   return {
     ...partialAnnotations,
     moduleExport,
@@ -122,6 +131,7 @@ export function prepareStory<TRenderer extends Renderer>(
     applyBeforeEach,
     playFunction,
     runStep,
+    mount,
   };
 }
 export function prepareMeta<TRenderer extends Renderer>(
