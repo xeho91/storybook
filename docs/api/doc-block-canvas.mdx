@@ -4,7 +4,7 @@ title: 'Canvas'
 
 <YouTubeCallout id="uAA1JvLcl-w" title="Avoid Documentation Nightmares with Storybook's Canvas Doc Block" params="start=148" />
 
-The `Canvas` block is a wrapper around a [`Story`](./doc-block-story.md), featuring a toolbar that allows you to interact with its content while automatically providing the required [`Source`](./doc-block-source.md) snippets.
+The `Canvas` block is a wrapper around a [`Story`](./doc-block-story.mdx), featuring a toolbar that allows you to interact with its content while automatically providing the required [`Source`](./doc-block-source.mdx) snippets.
 
 ![Screenshot of Canvas block](./doc-block-canvas.png)
 
@@ -38,7 +38,7 @@ import { Canvas } from '@storybook/blocks';
 <details>
   <summary>Configuring with props <strong>and</strong> parameters</summary>
 
-  ℹ️ Like most blocks, the `Canvas` block is configured with props in MDX. Many of those props derive their default value from a corresponding [parameter](../writing-stories/parameters.md) in the block's namespace, `parameters.docs.canvas`.
+  ℹ️ Like most blocks, the `Canvas` block is configured with props in MDX. Many of those props derive their default value from a corresponding [parameter](../writing-stories/parameters.mdx) in the block's namespace, `parameters.docs.canvas`.
 
   The following `sourceState` configurations are equivalent:
 
@@ -58,7 +58,7 @@ import { Canvas } from '@storybook/blocks';
 
   {/* prettier-ignore-end */}
 
-  The example above applied the parameter at the [story](../writing-stories/parameters.md#story-parameters) level, but it could also be applied at the [component](../writing-stories/parameters.md#component-parameters) (or meta) level or [project](../writing-stories/parameters.md#global-parameters) level.
+  The example above applied the parameter at the [story](../writing-stories/parameters.mdx#story-parameters) level, but it could also be applied at the [component](../writing-stories/parameters.mdx#component-parameters) (or meta) level or [project](../writing-stories/parameters.mdx#global-parameters) level.
 </details>
 
 ### `additionalActions`
@@ -131,7 +131,7 @@ Specifies how the canvas should layout the story.
 * **padded**: (default) Add padding to the story
 * **fullscreen**: Show the story as-is, without padding
 
-In addition to the `parameters.docs.canvas.layout` property or the `layout` prop, the `Canvas` block will respect the `parameters.layout` value that defines [how a story is laid out](../configure/story-layout.md) in the regular story view.
+In addition to the `parameters.docs.canvas.layout` property or the `layout` prop, the `Canvas` block will respect the `parameters.layout` value that defines [how a story is laid out](../configure/story-layout.mdx) in the regular story view.
 
 ### `meta`
 
@@ -169,7 +169,7 @@ Specifies which story's source is displayed.
 
 Type: `SourceProps['code'] | SourceProps['format'] | SourceProps['language'] | SourceProps['type']`
 
-Specifies the props passed to the inner `Source` block. For more information, see the `Source` Doc Block [documentation](./doc-block-source.md).
+Specifies the props passed to the inner `Source` block. For more information, see the `Source` Doc Block [documentation](./doc-block-source.mdx).
 
 <Callout variant="info" icon="💡">
   The dark prop is ignored, as the `Source` block is always rendered in dark mode when shown as part of a `Canvas` block.
@@ -191,7 +191,7 @@ Specifies the initial state of the source panel.
 
 Type: `StoryProps['inline'] | StoryProps['height'] | StoryProps['autoplay']`
 
-Specifies the props passed to the inner `Story` block. For more information, see the `Story` Doc Block [documentation](./doc-block-story.md).
+Specifies the props passed to the inner `Story` block. For more information, see the `Story` Doc Block [documentation](./doc-block-story.mdx).
 
 ### `withToolbar`
 
@@ -207,7 +207,7 @@ Determines whether to render a toolbar containing tools to interact with the sto
 
 Type: `React.ReactNode`
 
-Expects only [Story](./doc-block-story.md) children. Reference the story with the `of` prop instead.
+Expects only [Story](./doc-block-story.mdx) children. Reference the story with the `of` prop instead.
 
 ### `columns`
 
