@@ -37,7 +37,7 @@ Depending on your technology stack, you also might need to configure the Storybo
 
 ## Configure Storybook for your stack
 
-Storybook comes with a permissive [default configuration](../configure/overview.md). It attempts to customize itself to fit your setup. But it’s not foolproof.
+Storybook comes with a permissive [default configuration](../configure/overview.mdx). It attempts to customize itself to fit your setup. But it’s not foolproof.
 
 Your project may have additional requirements before components can be rendered in isolation. This warrants customizing configuration further. There are three broad categories of configuration you might need.
 
@@ -46,9 +46,9 @@ Your project may have additional requirements before components can be rendered 
 
 If you see errors on the CLI when you run the `yarn storybook` command, you likely need to make changes to Storybook’s build configuration. Here are some things to try:
 
-- [Presets](../addons/addon-types.md) bundle common configurations for various technologies into Storybook. In particular, presets exist for Create React App, SCSS and Ant Design.
-- Specify a custom [Babel configuration](../configure/babel.md#custom-babel-config) for Storybook. Storybook automatically tries to use your project’s config if it can.
-- Adjust the [Webpack configuration](../builders/webpack.md) that Storybook uses. Try patching in your own configuration if needed.
+- [Presets](../addons/addon-types.mdx) bundle common configurations for various technologies into Storybook. In particular, presets exist for Create React App, SCSS and Ant Design.
+- Specify a custom [Babel configuration](../configure/babel.mdx#custom-babel-config) for Storybook. Storybook automatically tries to use your project’s config if it can.
+- Adjust the [Webpack configuration](../builders/webpack.mdx) that Storybook uses. Try patching in your own configuration if needed.
 
 </details>
 
@@ -66,7 +66,7 @@ If a particular story has a problem rendering, often it means your component exp
 
 A common frontend pattern is for components to assume that they render in a specific “context” with parent components higher up the rendering hierarchy (for instance, theme providers).
 
-Use [decorators](../writing-stories/decorators.md) to “wrap” every story in the necessary context providers. The [`.storybook/preview.js`](../configure/overview.md#configure-story-rendering) file allows you to customize how components render in Canvas, the preview iframe. See how you can wrap every component rendered in Storybook with [Styled Components](https://styled-components.com/) `ThemeProvider`, [Vue's Fontawesome](https://github.com/FortAwesome/vue-fontawesome), or with an Angular theme provider component in the example below.
+Use [decorators](../writing-stories/decorators.mdx) to “wrap” every story in the necessary context providers. The [`.storybook/preview.js`](../configure/overview.mdx#configure-story-rendering) file allows you to customize how components render in Canvas, the preview iframe. See how you can wrap every component rendered in Storybook with [Styled Components](https://styled-components.com/) `ThemeProvider`, [Vue's Fontawesome](https://github.com/FortAwesome/vue-fontawesome), or with an Angular theme provider component in the example below.
 
 {/* prettier-ignore-start */}
 
@@ -104,33 +104,33 @@ If you are using CSS-in-JS, chances are your styles are working because they’r
 <details>
   <summary>@import CSS into components</summary>
 
-Storybook allows you to import CSS files in your components directly. But in some cases you may need to [tweak its Webpack configuration](../builders/webpack.md#extendingstorybooks-webpack-config). Angular components require [a special import](../configure/styling-and-css.md#importing-css-files).
+Storybook allows you to import CSS files in your components directly. But in some cases you may need to [tweak its Webpack configuration](../builders/webpack.mdx#extendingstorybooks-webpack-config). Angular components require [a special import](../configure/styling-and-css.mdx#importing-css-files).
 
 </details>
 
 <details>
   <summary>Global imported styles</summary>
 
-If you have global imported styles, create a file called [`.storybook/preview.js`](../configure/overview.md#configure-story-rendering) and import the styles there. They will be added by Storybook automatically for all stories.
+If you have global imported styles, create a file called [`.storybook/preview.js`](../configure/overview.mdx#configure-story-rendering) and import the styles there. They will be added by Storybook automatically for all stories.
 
 </details>
 
 <details>
   <summary>Add external CSS or webfonts in the &lt;head&gt;</summary>
 
-Alternatively, if you want to inject a CSS link tag to the `<head>` directly (or some other resource like a webfont link), you can use [`.storybook/preview-head.html`](../configure/story-rendering.md#adding-to-&#60head&#62) to add arbitrary HTML.
+Alternatively, if you want to inject a CSS link tag to the `<head>` directly (or some other resource like a webfont link), you can use [`.storybook/preview-head.html`](../configure/story-rendering.mdx#adding-to-&#60head&#62) to add arbitrary HTML.
 
 </details>
 
 <details>
   <summary>Load fonts or images from a local directory</summary>
 
-If you're referencing fonts or images from a local directory, you'll need to configure the Storybook script to [serve the static files](../configure/images-and-assets.md).
+If you're referencing fonts or images from a local directory, you'll need to configure the Storybook script to [serve the static files](../configure/images-and-assets.mdx).
 
 </details>
 
 ## Load assets and resources
 
-If you want to [link to static files](../configure/images-and-assets.md) in your project or stories (e.g., `/fonts/XYZ.woff`), use the `-s path/to/folder` flag to specify a static folder to serve from when you start up Storybook. To do so, edit the `storybook` and `build-storybook` scripts in `package.json`.
+If you want to [link to static files](../configure/images-and-assets.mdx) in your project or stories (e.g., `/fonts/XYZ.woff`), use the `-s path/to/folder` flag to specify a static folder to serve from when you start up Storybook. To do so, edit the `storybook` and `build-storybook` scripts in `package.json`.
 
 We recommend serving external resources and assets requested in your components statically with Storybook. It ensures that assets are always available to your stories.
