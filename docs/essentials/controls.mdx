@@ -29,16 +29,177 @@ By default, Storybook will choose a control for each arg based on the initial va
 
 {/* prettier-ignore-start */}
 
-<FeatureSnippets
-  paths={[
-    'essentials/auto-generated-controls/react.mdx',
-    'essentials/auto-generated-controls/vue.mdx',
-    'essentials/auto-generated-controls/angular.mdx',
-    'essentials/auto-generated-controls/web-components.mdx',
-    'essentials/auto-generated-controls/ember.mdx',
-    'essentials/auto-generated-controls/fallback.mdx',
-  ]}
-/>
+<IfRenderer renderer='angular'>
+
+To use auto-detected controls with Angular, you must fill in the `component` field in your story metadata:
+
+```ts
+import { Button } from './button.component';
+
+export default {
+  title: 'Button',
+  component: Button,
+};
+```
+
+Storybook uses this to auto-generate the `ArgTypes` for your component using [Compodoc](https://compodoc.app/). It supports `inputs`, `outputs`, `properties`, `methods`, `view/content child/children` as first class prop types.
+
+You'll need to register Compodoc's `documentation.json` file in `.storybook/preview.ts`:
+
+```js
+import { setCompodocJson } from '@storybook/addon-docs/angular';
+import docJson from '../documentation.json';
+
+setCompodocJson(docJson);
+```
+
+Finally, to set up compodoc, you'll first need to install Compodoc:
+
+```sh
+yarn add -D @compodoc/compodoc
+```
+
+Then you'll need to configure Compodoc to generate a `documentation.json` file. Adding the following snippet to your `package.json` creates a metadata file `./documentation.json` each time you run storybook:
+
+```json
+{
+  ...
+  "scripts": {
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "storybook": "npm run docs:json && start-storybook -p 6006 -s src/assets",
+    ...
+  },
+}
+```
+
+Unfortunately, it's not currently possible to update this dynamically as you edit your components, but [there's an open issue](https://github.com/storybookjs/storybook/issues/8672) to support this with improvements to Compodoc.
+
+</IfRenderer>
+
+{/* prettier-ignore-end */}
+
+{/* prettier-ignore-start */}
+
+<IfRenderer renderer='ember'>
+
+Storybook for Ember relies on [@storybook/ember-cli-storybook addon](https://github.com/storybookjs/ember-cli-storybook), to extract documentation comments from your component source files. If you're using Storybook with Ember, you should already have this addon installed, and you will just need to enable it by adding the following config block in your `ember-cli-build.js` file:
+
+```js
+let app = new EmberApp(defaults, {
+  '@storybook/ember-cli-storybook': {
+    enableAddonDocsIntegration: true,
+  },
+});
+```
+
+Now, running the ember-cli server will generate a JSON documentation file at `/dist/storybook-docgen/index.json`. Since generation of this file is tied into the ember-cli build, it will get regenerated every time component files are saved. For details on documenting your components, check out the examples in the addon that powers the generation [ember-cli-addon-docs-yuidoc](https://github.com/ember-learn/ember-cli-addon-docs-yuidoc#documenting-components).
+
+Storybook uses this file to auto-generate the `ArgTypes` for your component based on docgen information created by [ember-cli-addon-docs-yuidoc](https://github.com/ember-learn/ember-cli-addon-docs-yuidoc#documenting-components).
+
+You'll need to register that in `.storybook/preview.js`:
+
+```js
+import { setJSONDoc } from '@storybook/addon-docs/ember';
+import docJson from '../dist/storybook-docgen/index.json';
+setJSONDoc(docJson);
+```
+
+Finally, to use auto-detected controls with Ember, you must fill in the `component` field in your story metadata:
+
+```ts
+export default {
+  title: 'Button',
+  component: 'button', // name of your button component from docgen-json file (index.js)
+};
+```
+
+</IfRenderer>
+
+{/* prettier-ignore-end */}
+
+{/* prettier-ignore-start */}
+
+<IfRenderer renderer='react'>
+
+To use auto-detected controls with React, you must fill in the `component` field in your story metadata:
+
+```ts
+// Button.stories.js|jsx|ts|tsx
+
+import { Button } from './Button';
+
+export default {
+  title: 'Button',
+  component: Button,
+};
+```
+
+Storybook uses this to auto-generate the `ArgTypes` for your component based on either `PropTypes` (using [`react-docgen`](https://github.com/reactjs/react-docgen)) or `TypeScript` types (using [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript)).
+
+</IfRenderer>
+
+{/* prettier-ignore-end */}
+
+{/* prettier-ignore-start */}
+
+<IfRenderer renderer='vue'>
+
+To use auto-detected controls with Vue, you must fill in the `component` field in your story metadata:
+
+```ts
+import { Button } from './Button.vue';
+
+export default {
+  title: 'Button',
+  component: Button,
+};
+```
+
+Storybook uses this to auto-generate the `ArgTypes` for your component using [`vue-docgen-api`](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api). It supports `props`, `events`, and `slots` as first class prop types.
+
+</IfRenderer>
+
+{/* prettier-ignore-end */}
+
+{/* prettier-ignore-start */}
+
+<IfRenderer renderer='web-components'>
+
+To use auto-detected controls with Web components, you must fill in the `component` field in your story metadata:
+
+```ts
+export default {
+  title: 'Button',
+  component: 'button', // name of your button component
+};
+```
+
+Storybook uses this to auto-generate the `ArgTypes` for your component using your [custom-elements.json](https://github.com/webcomponents/custom-elements-json) file.
+
+You'll need to register that in `.storybook/preview.js`:
+
+```js
+import { setCustomElementsManifest } from '@storybook/web-components';
+import customElements from '../custom-elements.json';
+
+setCustomElementsManifest(customElements);
+```
+
+You can generate a `custom-elements.json` using [@custom-elements-manifest/analyzer](https://github.com/open-wc/custom-elements-manifest). If you're using the pre-v1.0.0 version of `custom-elements.json` you can use either [web-component-analyzer](https://github.com/runem/web-component-analyzer) or [stenciljs](https://stenciljs.com/) (if you're using Stencil).
+
+</IfRenderer>
+
+{/* prettier-ignore-end */}
+
+{/* prettier-ignore-start */}
+
+<IfRenderer renderer={[ 'html', 'svelte', 'preact' ]}>
+
+Controls argument autodetection doesn't currently work with your framework.
+
+To use Controls, you'll need to [define the `ArgTypes` manually](#fully-custom-args)
+
+</IfRenderer>
 
 {/* prettier-ignore-end */}
 
