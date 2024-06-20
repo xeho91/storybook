@@ -3,22 +3,23 @@
 import { type CleanupCallback, isExportStory } from '@storybook/csf';
 import dedent from 'ts-dedent';
 import type {
-  Renderer,
   Args,
   ComponentAnnotations,
-  LegacyStoryAnnotationsOrFn,
-  NamedOrDefaultProjectAnnotations,
+  ComposedStoryFn,
   ComposedStoryPlayFn,
   ComposeStoryFn,
+  LegacyStoryAnnotationsOrFn,
+  NamedOrDefaultProjectAnnotations,
+  Parameters,
+  PlayFunction,
+  PlayFunctionContext,
+  PreparedStory,
+  ProjectAnnotations,
+  Renderer,
+  StepLabel,
   Store_CSFExports,
   StoryContext,
-  Parameters,
-  ComposedStoryFn,
   StrictArgTypes,
-  PlayFunctionContext,
-  ProjectAnnotations,
-  StepLabel,
-  PlayFunction,
 } from '@storybook/types';
 
 import { HooksContext } from '../../../addons';
@@ -28,6 +29,8 @@ import { normalizeStory } from './normalizeStory';
 import { normalizeComponentAnnotations } from './normalizeComponentAnnotations';
 import { getValuesFromArgTypes } from './getValuesFromArgTypes';
 import { normalizeProjectAnnotations } from './normalizeProjectAnnotations';
+import { getUsedProps } from '../../../modules/preview-web/render/mount-utils';
+import { MountMustBeDestructured } from '@storybook/core-events/preview-errors';
 
 let globalProjectAnnotations: ProjectAnnotations<any> = {};
 
@@ -91,7 +94,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
 
   // We don't use the mount from prepareStory yet for portable stories.
   // mount needs to be provided by the user (e.g. using testing-library)
-  const { mount, ...story } = prepareStory<TRenderer>(
+  const story = prepareStory<TRenderer>(
     normalizedStory,
     normalizedComponentAnnotations,
     normalizedProjectAnnotations
@@ -99,9 +102,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
 
   const globalsFromGlobalTypes = getValuesFromArgTypes(normalizedProjectAnnotations.globalTypes);
 
-  const abortController = new AbortController();
-
-  const context: StoryContext<TRenderer> = {
+  const context = {
     hooks: new HooksContext(),
     globals: {
       ...globalsFromGlobalTypes,
@@ -110,20 +111,20 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
     args: { ...story.initialArgs },
     viewMode: 'story',
     loaded: {},
-    abortSignal: abortController.signal,
-    canvasElement: null,
-    mount: null!,
+    abortSignal: new AbortController().signal,
     step: (label: StepLabel, play: PlayFunction<TRenderer>) => story.runStep!(label, play, context),
+    canvasElement: globalThis.document.body,
     ...story,
-  };
+  } as unknown as StoryContext<TRenderer>;
+
+  context.context = context;
+  context.mount = story.mount(context);
 
   const playFunction = story.playFunction
-    ? async (extraContext: Partial<PlayFunctionContext<TRenderer, TArgs>>) =>
-        story.playFunction!({
-          ...context,
-          ...extraContext,
-          canvasElement: extraContext?.canvasElement ?? globalThis.document?.body,
-        })
+    ? (extraContext: Partial<PlayFunctionContext<TRenderer, TArgs>>) => {
+        Object.assign(context, extraContext);
+        return playStory(story, context);
+      }
     : undefined;
 
   let previousCleanupsDone = false;
@@ -273,4 +274,40 @@ export function createPlaywrightTest<TFixture extends { extend: any }>(
       });
     },
   });
+}
+
+async function playStory<TRenderer extends Renderer>(
+  story: PreparedStory<TRenderer>,
+  context: StoryContext<TRenderer>
+) {
+  for (const { callback } of [...cleanups].reverse()) await callback();
+  cleanups.length = 0;
+
+  context.loaded = await story.applyLoaders(context);
+  if (context.abortSignal.aborted) return;
+
+  cleanups.push(
+    ...(await story.applyBeforeEach(context))
+      .filter(Boolean)
+      .map((callback) => ({ storyName: story.name, callback }))
+  );
+
+  const playFunction = story.playFunction;
+
+  const mountDestructured = playFunction && getUsedProps(playFunction).includes('mount');
+
+  if (!mountDestructured) {
+    await context.mount();
+  }
+
+  if (context.abortSignal.aborted) return;
+
+  if (playFunction) {
+    if (!mountDestructured) {
+      context.mount = async () => {
+        throw new MountMustBeDestructured({ playFunction: playFunction.toString() });
+      };
+    }
+    await playFunction(context);
+  }
 }

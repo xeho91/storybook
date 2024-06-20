@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {
   composeStory as originalComposeStory,
   composeStories as originalComposeStories,
@@ -114,6 +115,9 @@ export function composeStories<TModule extends Store_CSFExports<ReactRenderer, a
   csfExports: TModule,
   projectAnnotations?: ProjectAnnotations<ReactRenderer>
 ) {
+  if (projectAnnotations.testingLibaryRender) {
+    projectAnnotations.mount = mount;
+  }
   // @ts-expect-error (Converted from ts-ignore)
   const composedStories = originalComposeStories(csfExports, projectAnnotations, composeStory);
 
@@ -122,3 +126,9 @@ export function composeStories<TModule extends Store_CSFExports<ReactRenderer, a
     keyof Store_CSFExports
   >;
 }
+
+const mount = ({ testingLibraryRender, storyFn: Story }) => {
+  return (ui?: JSX.Element) => {
+    return testingLibraryRender(ui ? <Story originalStoryFn={() => ui} /> : <Story />);
+  };
+};
