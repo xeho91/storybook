@@ -37,11 +37,17 @@ function tryFindCore() {
 
     const projectPackageJsonContents = readJsonSync(projectPackageJsonPath);
 
-    return (
-      projectPackageJsonContents.dependencies['@storybook/core'] ||
-      projectPackageJsonContents.devDependencies['@storybook/core'] ||
-      projectPackageJsonContents.peerDependencies['@storybook/core']
-    );
+    const all = [
+      ...Object.keys(projectPackageJsonContents?.devDependencies || {}),
+      ...Object.keys(projectPackageJsonContents?.dependencies || {}),
+      ...Object.keys(projectPackageJsonContents?.peerDependencies || {}),
+    ];
+
+    if (all.includes('@storybook/core')) {
+      return true;
+    }
+
+    return false;
   } catch (e) {
     return false;
   }
