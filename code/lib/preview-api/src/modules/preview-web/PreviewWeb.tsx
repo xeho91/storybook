@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { global } from '@storybook/global';
-import type { Renderer, ProjectAnnotations, ModuleImportFn } from '@storybook/types';
+import type { ModuleImportFn, NormalizedProjectAnnotations, Renderer } from '@storybook/types';
 
 import { PreviewWithSelection } from './PreviewWithSelection';
 import { UrlStore } from './UrlStore';
@@ -11,7 +11,7 @@ export class PreviewWeb<TRenderer extends Renderer> extends PreviewWithSelection
   constructor(
     public importFn: ModuleImportFn,
 
-    public getProjectAnnotations: () => MaybePromise<ProjectAnnotations<TRenderer>>
+    public getProjectAnnotations: () => MaybePromise<NormalizedProjectAnnotations<TRenderer>>
   ) {
     super(importFn, getProjectAnnotations, new UrlStore(), new WebView());
 
