@@ -103,6 +103,9 @@ export async function check() {
 
   await execa('npx', [`-p`, `sb@${packageJson.version}`, 'sb', 'automigrate'], {
     stdio: 'inherit',
+    env: {
+      CI: 'true',
+    },
   });
 
   console.log(dedent`
