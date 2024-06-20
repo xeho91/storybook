@@ -1,5 +1,8 @@
 ---
 title: 'MDX Format'
+sidebar:
+  order: 2
+  title: MDX syntax
 ---
 
 `MDX` is the syntax [Storybook Docs](../writing-docs/introduction.mdx) uses to capture long-form Markdown documentation and stories in one file. You can also write pure documentation pages in `MDX` and add them to Storybook alongside your stories. [Read the announcement](https://medium.com/storybookjs/rich-docs-with-storybook-mdx-61bc145ae7bc) to learn more about how and why it came to be.
@@ -16,7 +19,7 @@ Let's get started with an example that combines Markdown with a single story:
 
 And here's how it renders in Storybook:
 
-![Show a simple mdx example](../_assets/api/mdx-simple.png)
+![Show a simple mdx example](../../_assets/api/mdx-simple.png)
 
 As you can see, a lot is going on here. We're writing Markdown, we're writing JSX, and somehow we're also defining Storybook stories that are drop-in compatible with the entire Storybook ecosystem.
 
@@ -50,7 +53,7 @@ Now let's look at a more realistic example to see a few more things we can do:
 
 And here's how that gets rendered in Storybook:
 
-![Display mdx page](../_assets/api/mdx-page.png)
+![Display mdx page](../../_assets/api/mdx-page.png)
 
 ### Embedding stories
 
@@ -66,7 +69,7 @@ You can also use the rest of the MDX features in conjunction with embedding. Tha
 
 ### Decorators and parameters
 
-To add [decorators](../writing-docs/mdx.mdx#decorators-and-parameters) and [parameters](../writing-docs/mdx.mdx#decorators-and-parameters) in MDX:
+To add [decorators](../../writing-docs/mdx.mdx#decorators-and-parameters) and [parameters](../../writing-docs/mdx.mdx#decorators-and-parameters) in MDX:
 
 {/* prettier-ignore-start */}
 
@@ -74,7 +77,7 @@ To add [decorators](../writing-docs/mdx.mdx#decorators-and-parameters) and [para
 
 {/* prettier-ignore-end */}
 
-In addition, global decorators work just like before, e.g., adding the following to your [`.storybook/preview.js`](../configure/overview.mdx#configure-story-rendering):
+In addition, global decorators work just like before, e.g., adding the following to your [`.storybook/preview.js`](../../configure/index.mdx#configure-story-rendering):
 
 {/* prettier-ignore-start */}
 
@@ -98,11 +101,11 @@ Typically, when you use the MDX format, you define your stories and are automati
 
 Suppose you don't define stories in your MDX. In that case, you can write MDX documentation and associate it with an existing story or embed that MDX as its documentation node in your Storybook's navigation.
 
-If you don't define a `Meta`, you can write Markdown and associate it with an existing story. See ["CSF Stories with MDX Docs"](../writing-docs/mdx.mdx).
+If you don't define a `Meta`, you can write Markdown and associate it with an existing story. See ["CSF Stories with MDX Docs"](../../writing-docs/mdx.mdx).
 
 To get a "documentation-only story" in your UI, define a `<Meta>` as you usually would, but don't define any stories. It will show up in your UI as a documentation node:
 
-![Show documentation](../_assets/api/mdx-documentation-only.png)
+![Show documentation](../../_assets/api/mdx-documentation-only.png)
 
 ## MDX file names
 
