@@ -1,10 +1,13 @@
 ---
 title: 'ArgsTable'
+sidebar:
+  order: 1
+  title: ArgsTable
 ---
 
-Storybook Docs automatically generates component args tables for components in supported frameworks. These tables list the arguments ([args for short](../writing-stories/args.mdx)) of the component, and even integrate with [controls](../essentials/controls.mdx) to allow you to change the args of the currently rendered story.
+Storybook Docs automatically generates component args tables for components in supported frameworks. These tables list the arguments ([args for short](../../writing-stories/args.mdx)) of the component, and even integrate with [controls](../../essentials/controls.mdx) to allow you to change the args of the currently rendered story.
 
-<Video src="../_assets/writing-docs/addon-controls-docs-optimized.mp4" />
+<Video src="../../_assets/writing-docs/addon-controls-docs-optimized.mp4" />
 
 This is extremely useful, but it can be further expanded. Additional information can be added to the component to better document it:
 
@@ -18,7 +21,7 @@ The args tables will be updated accordingly by including the additional informat
 
 ## Working with the DocsPage
 
-To use the `ArgsTable` in [DocsPage](./docs-page.mdx#component-parameter), export a component property on your stories metadata:
+To use the `ArgsTable` in [DocsPage](../docs-page.mdx#component-parameter), export a component property on your stories metadata:
 
 {/* prettier-ignore-start */}
 
@@ -41,7 +44,7 @@ If you need, you can also include the `ArgsTable` block in your MDX stories. Bel
 
 ### Customizing
 
-`ArgsTables` are generated based on an internal data structure called [ArgTypes](../api/argtypes.mdx). When you define the component's metadata element in your story, Storybook's Docs will automatically extract the ArgTypes based on available properties.
+`ArgsTables` are generated based on an internal data structure called [ArgTypes](../../api/argtypes.mdx). When you define the component's metadata element in your story, Storybook's Docs will automatically extract the ArgTypes based on available properties.
 
 If you need, you can customize what is displayed in the `ArgsTable` by extending the `ArgTypes` data, unless you're using the `ArgsTable of={component} />`. In this case, Storybook will infer the data automatically from the component.
 
@@ -57,7 +60,7 @@ Below is an abridged table and example featuring the available options.
 | `table.type.detail`            | Provides an extended version of the type. <br /> `argTypes: { label: { table: { type: { detail: 'something' } }}}`                                                                                       |
 | `table.defaultValue.summary`   | Provide a short version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { summary: 'Hello World' } }}}`                                                                        |
 | `table.defaultValue.detail`    | Provides a longer version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { detail: 'Something' } }}}`                                                                         |
-| `control`                      | Associates a control for the property. <br /> `argTypes: { label: { control: { type: 'text'} } }` <br />Read the [Essentials documentation](../essentials/controls.mdx) to learn more about controls.     |
+| `control`                      | Associates a control for the property. <br /> `argTypes: { label: { control: { type: 'text'} } }` <br />Read the [Essentials documentation](../../essentials/controls.mdx) to learn more about controls.     |
 
 {/* prettier-ignore-start */}
 
@@ -66,7 +69,7 @@ Below is an abridged table and example featuring the available options.
 {/* prettier-ignore-end */}
 
 <div class="aside">
-  💡 This API is experimental and may change outside the typical semver release cycle. Read the documentation to learn more about [ArgTypes](../api/argtypes.mdx).
+  💡 This API is experimental and may change outside the typical semver release cycle. Read the documentation to learn more about [ArgTypes](../../api/argtypes.mdx).
 </div>
 
 This would render a row with a modified description, a type display with a dropdown that shows the detail, and no control.
@@ -108,7 +111,7 @@ Results in the following change into your story and UI.
 
 {/* prettier-ignore-end */}
 
-![button story with args grouped into categories](../_assets/writing-docs/button-args-grouped-categories.png)
+![button story with args grouped into categories](../../_assets/writing-docs/button-args-grouped-categories.png)
 
 You can also extend the formula above and introduce subcategories, allowing better structuring and organization. Using the table below as a reference leads to the following change to your story and UI:
 
@@ -126,8 +129,8 @@ You can also extend the formula above and introduce subcategories, allowing bett
 
 {/* prettier-ignore-end */}
 
-![button story with args grouped into categories](../_assets/writing-docs/button-args-grouped-subcategories.png)
+![button story with args grouped into categories](../../_assets/writing-docs/button-args-grouped-subcategories.png)
 
 ### Controls
 
-The controls inside an `ArgsTable` are configured in exactly the same way as the [controls](../essentials/controls.mdx) addon pane. You’ll probably notice the table is very similar! It uses the same component and mechanism behind the scenes.
+The controls inside an `ArgsTable` are configured in exactly the same way as the [controls](../../essentials/controls.mdx) addon pane. You’ll probably notice the table is very similar! It uses the same component and mechanism behind the scenes.
