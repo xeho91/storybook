@@ -18,11 +18,7 @@ You can import images and other local files and have them built into the Storybo
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-component-story-import-static-asset.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-component-story-import-static-asset.md" />
 
 {/* prettier-ignore-end */}
 
@@ -32,11 +28,7 @@ You can import `.json` files and have them expanded to a JavaScript object:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-component-story-import-json.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-component-story-import-json.md" />
 
 {/* prettier-ignore-end */}
 
@@ -46,26 +38,15 @@ For development mode:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-debug-webpack-dev.yarn.js.mdx',
-    'common/storybook-debug-webpack-dev.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-debug-webpack-dev.md" />
 
 {/* prettier-ignore-end */}
 
 For production mode:
 
-
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-debug-webpack-prod.yarn.js.mdx',
-    'common/storybook-debug-webpack-prod.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-debug-webpack-prod.md" />
 
 {/* prettier-ignore-end */}
 
@@ -75,11 +56,7 @@ Starting with Storybook 6.4, [code splitting](https://v4.webpack.js.org/guides/c
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-on-demand-story-loading.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-on-demand-story-loading.md" />
 
 {/* prettier-ignore-end */}
 
@@ -91,11 +68,7 @@ Storybook builds your project with Webpack 4 by default. If your project uses We
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-webpack5.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-webpack5.md" />
 
 {/* prettier-ignore-end */}
 
@@ -107,11 +80,7 @@ Storybook supports Webpack's experimental [lazy compilation](https://webpack.js.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-webpack5-lazyCompilation.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-webpack5-lazyCompilation.md" />
 
 {/* prettier-ignore-end */}
 
@@ -123,11 +92,7 @@ Storybook supports Webpack's [filesystem caching](https://webpack.js.org/configu
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-webpack5-fsCache.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-webpack5-fsCache.md" />
 
 {/* prettier-ignore-end */}
 
@@ -143,11 +108,7 @@ For example, if you wanted to add [Sass](https://sass-lang.com/) support, you ca
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-add-sass-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-add-sass-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -155,18 +116,14 @@ Storybook uses the config returned from the above function to render your compon
 
 Nevertheless, edit `config` with care. Make sure to preserve the following config options:
 
-- **entry**
-- **output**
+* **entry**
+* **output**
 
 Furthermore, `config` requires the `HtmlWebpackplugin` to generate the preview page, so rather than overwriting `config.plugins` you should probably append to it (or overwrite it with care), see [the following issue](https://github.com/storybookjs/storybook/issues/6020) for examples on how to handle this:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-simplified-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-simplified-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -182,18 +139,12 @@ The following code snippet shows how you can replace the loaders from Storybook 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-using-existing-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-using-existing-config.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 Projects initialized via generators (e.g, Vue CLI) may require that you import their own Webpack config file (i.e., `/projectRoot/node_modules/@vue/cli-service/webpack.config.js`) to use a certain feature with Storybook. For other generators, make sure to check the documentation for instructions.
-
+  💡 Projects initialized via generators (e.g, Vue CLI) may require that you import their own Webpack config file (i.e., `/projectRoot/node_modules/@vue/cli-service/webpack.config.js`) to use a certain feature with Storybook. For other generators, make sure to check the documentation for instructions.
 </div>
 
 ### TypeScript Module Resolution
@@ -202,22 +153,16 @@ When working with TypeScript projects, the default Webpack configuration may fai
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-ts-module-resolution.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-ts-module-resolution.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 Learn more about Storybook's [built-in TypeScript support](../configure/typescript.mdx) or see [this issue](https://github.com/storybookjs/storybook/issues/14087) for more information.
-
+  💡 Learn more about Storybook's [built-in TypeScript support](../configure/typescript.mdx) or see [this issue](https://github.com/storybookjs/storybook/issues/14087) for more information.
 </div>
 
 #### Learn more about builders
 
-- [Vite builder](./vite.mdx) for bundling with Vite
-- Webpack builder for bundling with Webpack
-- [Builder API](./builder-api.mdx) for building a Storybook builder
+* [Vite builder](./vite.mdx) for bundling with Vite
+* Webpack builder for bundling with Webpack
+* [Builder API](./builder-api.mdx) for building a Storybook builder

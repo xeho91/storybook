@@ -5,9 +5,7 @@ title: 'Component Story Format (CSF)'
 Component Story Format (CSF) is the recommended way to [write stories](../writing-stories/introduction.mdx). It's an [open standard](https://github.com/ComponentDriven/csf) based on ES6 modules that is portable beyond Storybook.
 
 <div class="aside">
-
-💡 If you are writing stories in the older `storiesOf()` syntax, you can find documentation in an [advanced README](../../lib/core/docs/storiesOf.md).
-
+  💡 If you are writing stories in the older `storiesOf()` syntax, you can find documentation in an [advanced README](../../lib/core/docs/storiesOf.md).
 </div>
 
 In CSF, stories and component metadata are defined as ES Modules. Every component story file consists of a required [default export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#Using_the_default_export) and one or more [named exports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
@@ -22,11 +20,7 @@ The `component` field is required and used by addons for automatic prop table ge
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-component-story-mandatory-export.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-component-story-mandatory-export.md" />
 
 {/* prettier-ignore-end */}
 
@@ -38,16 +32,7 @@ With CSF, every named export in the file represents a story object by default.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/my-component-story-basic-and-props.js.mdx',
-    'react/my-component-story-basic-and-props.ts.mdx',
-    'vue/my-component-story-basic-and-props.js.mdx',
-    'svelte/my-component-story-basic-and-props.js.mdx',
-    'svelte/my-component-story-basic-and-props.native-format.mdx',
-    'angular/my-component-story-basic-and-props.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="my-component-story-basic-and-props.md" />
 
 {/* prettier-ignore-end */}
 
@@ -58,7 +43,7 @@ The exported identifiers will be converted to "start case" using Lodash's [start
 | name             |       Name        |
 | someName         |     Some Name     |
 | someNAME         |     Some NAME     |
-| some_custom_NAME | Some Custom NAME  |
+| some\_custom\_NAME | Some Custom NAME  |
 | someName1234     | Some Name 1 2 3 4 |
 
 We recommend that all export names to start with a capital letter.
@@ -69,11 +54,7 @@ Storybook's `name` configuration element is helpful in specific circumstances. C
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-component-story-with-storyname.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-component-story-with-storyname.md" />
 
 {/* prettier-ignore-end */}
 
@@ -85,17 +66,7 @@ Consider Storybook’s ["Button" example](../writing-stories/introduction.mdx#de
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-story-click-handler.js.mdx',
-    'react/button-story-click-handler.ts.mdx',
-    'vue/button-story-click-handler.2.js.mdx',
-    'vue/button-story-click-handler.3.js.mdx',
-    'svelte/button-story-click-handler.js.mdx',
-    'svelte/button-story-click-handler.native-format.mdx',
-    'angular/button-story-click-handler.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-click-handler.md" />
 
 {/* prettier-ignore-end */}
 
@@ -103,31 +74,15 @@ Now consider the same example, re-written with args:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-story-click-handler-args.js.mdx',
-    'vue/button-story-click-handler-args.2.js.mdx',
-    'vue/button-story-click-handler-args.3.js.mdx',
-    'angular/button-story-click-handler-args.ts.mdx',
-    'svelte/button-story-click-handler-args.js.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-click-handler-args.md" />
 
 {/* prettier-ignore-end */}
-
 
 Or even more simply:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-story-click-handler-simplificated.js.mdx',
-    'angular/button-story-click-handler-simplificated.ts.mdx',
-    'vue/button-story-click-handler-simplificated.js.mdx',
-    'svelte/button-story-click-handler-simplificated.native-format.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-click-handler-simplificated.md" />
 
 {/* prettier-ignore-end */}
 
@@ -143,18 +98,7 @@ A good use case for the `play` function is a form component. With previous Story
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/login-form-with-play-function.js.mdx',
-    'react/login-form-with-play-function.ts.mdx',
-    'angular/login-form-with-play-function.ts.mdx',
-    'vue/login-form-with-play-function.2.js.mdx',
-    'vue/login-form-with-play-function.ts-2.ts.mdx',
-    'vue/login-form-with-play-function.3.js.mdx',
-    'vue/login-form-with-play-function.ts-3.ts.mdx',
-    'svelte/login-form-with-play-function.js.mdx',
-  ]}
-/>
+<CodeSnippets path="login-form-with-play-function.md" />
 
 {/* prettier-ignore-end */}
 
@@ -170,11 +114,7 @@ If you specify the `name` option, it will be used as the story display name in t
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-test-with-storyname.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-test-with-storyname.md" />
 
 {/* prettier-ignore-end */}
 
@@ -195,16 +135,7 @@ Consider the following story file:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/my-component-story-with-nonstory.js.mdx',
-    'react/my-component-story-with-nonstory.ts.mdx',
-    'vue/my-component-story-with-nonstory.2.js.mdx',
-    'vue/my-component-story-with-nonstory.3.js.mdx',
-    'svelte/my-component-story-with-nonstory.js.mdx',
-    'angular/my-component-story-with-nonstory.ts.mdx'
-  ]}
-/>
+<CodeSnippets path="my-component-story-with-nonstory.md" />
 
 {/* prettier-ignore-end */}
 
@@ -212,11 +143,11 @@ When this file renders in Storybook, it treats `ComplexStory` and `SimpleStory` 
 
 For this particular example, you could achieve the same result in different ways, depending on what's convenient:
 
-- `includeStories: /^[A-Z]/`
-- `includeStories: /.*Story$/`
-- `includeStories: ['SimpleStory', 'ComplexStory']`
-- `excludeStories: /^[a-z]/`
-- `excludeStories: /.*Data$/`
-- `excludeStories: ['simpleData', 'complexData']`
+* `includeStories: /^[A-Z]/`
+* `includeStories: /.*Story$/`
+* `includeStories: ['SimpleStory', 'ComplexStory']`
+* `excludeStories: /^[a-z]/`
+* `excludeStories: /.*Data$/`
+* `excludeStories: ['simpleData', 'complexData']`
 
 The first option is the recommended solution if you follow the best practice of starting story exports with an uppercase letter (i.e., use UpperCamelCase).

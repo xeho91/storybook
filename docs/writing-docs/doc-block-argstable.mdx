@@ -5,26 +5,14 @@ title: 'ArgsTable'
 Storybook Docs automatically generates component args tables for components in supported frameworks. These tables list the arguments ([args for short](../writing-stories/args.mdx)) of the component, and even integrate with [controls](../essentials/controls.mdx) to allow you to change the args of the currently rendered story.
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="addon-controls-docs-optimized.mp4"
-    type="video/mp4"
-  />
+  <source src="addon-controls-docs-optimized.mp4" type="video/mp4" />
 </video>
 
 This is extremely useful, but it can be further expanded. Additional information can be added to the component to better document it:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-component-with-proptypes.js.mdx',
-    'react/button-component-with-proptypes.ts.mdx',
-    'angular/button-component-with-proptypes.ts.mdx',
-    'vue/button-component-with-proptypes.2.js.mdx',
-    'vue/button-component-with-proptypes.3.js.mdx',
-    'svelte/button-component-with-proptypes.js.mdx',
-  ]}
-/>
+<CodeSnippets path="button-component-with-proptypes.md" />
 
 {/* prettier-ignore-end */}
 
@@ -36,11 +24,7 @@ To use the `ArgsTable` in [DocsPage](./docs-page.mdx#component-parameter), expor
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-component-story.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-component-story.md" />
 
 {/* prettier-ignore-end */}
 
@@ -50,55 +34,41 @@ If you need, you can also include the `ArgsTable` block in your MDX stories. Bel
 
 | Option  | Description                                                                                         |
 | ------- | --------------------------------------------------------------------------------------------------- |
-| `of`    | Infers the args table from the component. <br/> `<ArgsTable of={MyComponent} />`                    |
-| `story` | Infers the args table based on a story. <br/> `<ArgsTable story="example-mycomponent--my-story" />` |
+| `of`    | Infers the args table from the component. <br /> `<ArgsTable of={MyComponent} />`                    |
+| `story` | Infers the args table based on a story. <br /> `<ArgsTable story="example-mycomponent--my-story" />` |
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-mdx-argstable-block-for-component.with-component.mdx.mdx',
-    'common/component-story-mdx-argstable-block-for-story.with-story.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-mdx-argstable-block-for-component.md" />
 
 ### Customizing
 
-`ArgsTables` are generated based on an internal data structure called [ArgTypes](../api/argtypes.mdx). When you define the component's metadata element in your story, Storybook's Docs will automatically extract the ArgTypes based on available properties. 
+`ArgsTables` are generated based on an internal data structure called [ArgTypes](../api/argtypes.mdx). When you define the component's metadata element in your story, Storybook's Docs will automatically extract the ArgTypes based on available properties.
 
 If you need, you can customize what is displayed in the `ArgsTable` by extending the `ArgTypes` data, unless you're using the `ArgsTable of={component} />`. In this case, Storybook will infer the data automatically from the component.
 
 Below is an abridged table and example featuring the available options.
 
-
 | Field                          | Description                                                                                                                                                                                             |
 |--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                         | The name of the property. <br/> `argTypes: { label: { name: 'Something' } }`                                                                                                                            |
-| `type.name`                    | Sets a type for the property. <br/> `argTypes: { label: { type: { name: 'number' } } }`                                                                                                                 |
-| `type.required`                | Sets the property as optional or required. <br/> `argTypes: { label: { type: { required: true } }`                                                                                                      |
-| `description`                  | Sets a Markdown description for the property. <br/> `argTypes: { label: { description: 'Something' } }`                                                                                                 |
-| `table.type.summary`           | Provide a  short version of the type. <br/> `argTypes: { label: { table: { type: { summary: 'a short summary' } }}}`                                                                                    |
-| `table.type.detail`            | Provides an extended version of the type. <br/> `argTypes: { label: { table: { type: { detail: 'something' } }}}`                                                                                       |
-| `table.defaultValue.summary`   | Provide a short version of the default value. <br/> `argTypes: { label: { table: { defaultValue: { summary: 'Hello World' } }}}`                                                                        |
-| `table.defaultValue.detail`    | Provides a longer version of the default value. <br/> `argTypes: { label: { table: { defaultValue: { detail: 'Something' } }}}`                                                                         |
-| `control`                      | Associates a control for the property. <br/> `argTypes: { label: { control: { type: 'text'} } }` <br/>Read the [Essentials documentation](../essentials/controls.mdx) to learn more about controls.     |
-
+| `name`                         | The name of the property. <br /> `argTypes: { label: { name: 'Something' } }`                                                                                                                            |
+| `type.name`                    | Sets a type for the property. <br /> `argTypes: { label: { type: { name: 'number' } } }`                                                                                                                 |
+| `type.required`                | Sets the property as optional or required. <br /> `argTypes: { label: { type: { required: true } }`                                                                                                      |
+| `description`                  | Sets a Markdown description for the property. <br /> `argTypes: { label: { description: 'Something' } }`                                                                                                 |
+| `table.type.summary`           | Provide a  short version of the type. <br /> `argTypes: { label: { table: { type: { summary: 'a short summary' } }}}`                                                                                    |
+| `table.type.detail`            | Provides an extended version of the type. <br /> `argTypes: { label: { table: { type: { detail: 'something' } }}}`                                                                                       |
+| `table.defaultValue.summary`   | Provide a short version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { summary: 'Hello World' } }}}`                                                                        |
+| `table.defaultValue.detail`    | Provides a longer version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { detail: 'Something' } }}}`                                                                         |
+| `control`                      | Associates a control for the property. <br /> `argTypes: { label: { control: { type: 'text'} } }` <br />Read the [Essentials documentation](../essentials/controls.mdx) to learn more about controls.     |
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-csf-argstable-customization.js.mdx',
-    'common/component-story-mdx-argtypes.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-csf-argstable-customization.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 This API is experimental and may change outside the typical semver release cycle. Read the documentation to learn more about [ArgTypes](../api/argtypes.mdx).
-
+  💡 This API is experimental and may change outside the typical semver release cycle. Read the documentation to learn more about [ArgTypes](../api/argtypes.mdx).
 </div>
 
 This would render a row with a modified description, a type display with a dropdown that shows the detail, and no control.
@@ -109,8 +79,8 @@ To reduce the boilerplate code you have to write, Storybook provides some conven
 
 | Type           | Shorthand                                                                                  |
 | -------------- | ------------------------------------------------------------------------------------------ |
-| `type.name`    | Assigns the type to a number property. <br/> `argTypes: { label: { type: number }`         |
-| `control.type` | Assigns a radio control for the property. <br/> `argTypes: { size: { control: 'radio' } }` |
+| `type.name`    | Assigns the type to a number property. <br /> `argTypes: { label: { type: number }`         |
+| `control.type` | Assigns a radio control for the property. <br /> `argTypes: { size: { control: 'radio' } }` |
 
 ### Grouping
 
@@ -118,16 +88,7 @@ You can also extend the ArgsTable's customization by grouping related `argTypes`
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-implementation.js.mdx',
-    'react/button-implementation.ts.mdx',
-    'angular/button-implementation.ts.mdx',
-    'vue/button-implementation.2.js.mdx',
-    'vue/button-implementation.3.js.mdx',
-    'svelte/button-implementation.js.mdx',
-  ]}
-/>
+<CodeSnippets path="button-implementation.md" />
 
 {/* prettier-ignore-end */}
 
@@ -145,11 +106,7 @@ Results in the following change into your story and UI.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-argtypes-with-categories.js.mdx'
-  ]}
-/>
+<CodeSnippets path="button-story-argtypes-with-categories.md" />
 
 {/* prettier-ignore-end */}
 
@@ -167,11 +124,7 @@ You can also extend the formula above and introduce subcategories, allowing bett
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-argtypes-with-subcategories.js.mdx'
-  ]}
-/>
+<CodeSnippets path="button-story-argtypes-with-subcategories.md" />
 
 {/* prettier-ignore-end */}
 

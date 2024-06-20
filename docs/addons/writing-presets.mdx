@@ -14,11 +14,7 @@ Each configuration has a similar signature, accepting a base configuration objec
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-webpack-preset-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-webpack-preset-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -32,17 +28,13 @@ For example, Storybook's Mihtril support uses plugins internally and here's how 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-babel-configuration-example.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-babel-configuration-example.md" />
 
 {/* prettier-ignore-end */}
 
-- `babel` is applied to the preview config, after it has been initialized by storybook
-- `babelDefault` is applied to the preview config before any user presets have been applied
-- `managerBabel` is applied to the manager.
+* `babel` is applied to the preview config, after it has been initialized by storybook
+* `babelDefault` is applied to the preview config before any user presets have been applied
+* `managerBabel` is applied to the manager.
 
 ### Webpack
 
@@ -54,30 +46,21 @@ For example, here is how Storybook automatically adopts `create-react-app`'s con
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-webpackfinal-example.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-webpackfinal-example.md" />
 
 {/* prettier-ignore-end */}
 
-- `webpack` is applied to the preview config after it has been initialized by Storybook
-- `webpackFinal` is applied to the preview config after all user presets have been applied
-- `managerWebpack` is applied to the manager config
+* `webpack` is applied to the preview config after it has been initialized by Storybook
+* `webpackFinal` is applied to the preview config after all user presets have been applied
+* `managerWebpack` is applied to the manager config
 
 As of Storybook 6.3, Storybook can run with either `webpack4` or `webpack5` builder. If your addon needs to know which version of Webpack it's running inside, the version and the actual Webpack instance itself are both available inside your preset:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-versioned-webpack.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-versioned-webpack.md" />
 
 {/* prettier-ignore-end */}
-
 
 ### Manager entries
 
@@ -87,11 +70,7 @@ For example, the Storysource preset contains the following code:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-storysource-manager-entries.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-storysource-manager-entries.md" />
 
 {/* prettier-ignore-end */}
 
@@ -99,11 +78,7 @@ This is equivalent to [registering the addon manually](../get-started/browse-sto
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-use-manager-entries.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-use-manager-entries.md" />
 
 {/* prettier-ignore-end */}
 
@@ -115,24 +90,15 @@ For example, the Backgrounds preset contains the following code:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-backgrounds-preset-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-backgrounds-preset-config.md" />
 
 {/* prettier-ignore-end */}
-
 
 Which in turn invokes:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-backgrounds-addon-default-params.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-backgrounds-addon-default-params.md" />
 
 {/* prettier-ignore-end */}
 
@@ -144,11 +110,7 @@ For users, the name `managerEntries` might be a bit too technical, so instead bo
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-register-storysource-example.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-register-storysource-example.md" />
 
 {/* prettier-ignore-end */}
 
@@ -162,11 +124,7 @@ Here's what it looks when combining presets and manager entries in the `addons` 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-register-presets-managerentry.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-register-presets-managerentry.md" />
 
 {/* prettier-ignore-end */}
 
@@ -184,11 +142,7 @@ If it doesn't exist yet, create a file `.storybook/main.js`:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-advanced-config-example.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-advanced-config-example.md" />
 
 {/* prettier-ignore-end */}
 
@@ -200,17 +154,13 @@ For example, the following snippet adds a style tag to the preview head programm
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-preview-head.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-preview-head.md" />
 
 {/* prettier-ignore-end */}
 
 Similarly, the `managerHead` can be used to modify the surrounding "manager" UI, analogous to `manager-head.html`.
 
-Finally, the preview's main page _template_ can also be overridden using the `previewMainTemplate`, which should return a reference to a file containing an `.ejs` template that gets interpolated with some environment variables. For an example, see the [Storybook's default template](https://github.com/storybookjs/storybook/blob/next/lib/core-common/templates/index.ejs).
+Finally, the preview's main page *template* can also be overridden using the `previewMainTemplate`, which should return a reference to a file containing an `.ejs` template that gets interpolated with some environment variables. For an example, see the [Storybook's default template](https://github.com/storybookjs/storybook/blob/next/lib/core-common/templates/index.ejs).
 
 ## Sharing advanced configuration
 
@@ -218,11 +168,7 @@ Change your `main.js` file to:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-import-preset-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-import-preset-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -230,11 +176,7 @@ and extract the configuration to a new file `./storybook/my-preset.js`:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preset-full-config-object.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preset-full-config-object.md" />
 
 {/* prettier-ignore-end */}
 

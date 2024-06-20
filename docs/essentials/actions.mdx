@@ -5,10 +5,7 @@ title: 'Actions'
 The actions addon is used to display data received by event handler (callback) arguments in your stories.
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="addon-actions-optimized.mp4"
-    type="video/mp4"
-  />
+  <source src="addon-actions-optimized.mp4" type="video/mp4" />
 </video>
 
 ## Action args
@@ -21,12 +18,7 @@ You can use [argTypes](../api/argtypes.mdx) to tell Storybook that an arg to you
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-onclick-action-argtype.js.mdx',
-    'common/button-story-onclick-action-argtype.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-onclick-action-argtype.md" />
 
 {/* prettier-ignore-end */}
 
@@ -40,11 +32,7 @@ Another option is to use a global parameter to match all [argTypes](../api/argty
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-matching-argtypes.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-preview-matching-argtypes.md" />
 
 {/* prettier-ignore-end */}
 
@@ -52,19 +40,12 @@ If you need more granular control over which `argTypes` are matched, you can adj
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-matching-argtypes.js.mdx',
-    'common/button-story-matching-argtypes.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-matching-argtypes.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 If you're generating argTypes with another addon (like [docs](../writing-docs/introduction.mdx), which is the common behavior), ensure the actions addon <strong>AFTER</strong> the other addon. You can do this by listing it later in the addons registration code in [`.storybook/main.js`](../configure/overview.mdx#configure-story-rendering). This is default in [essentials](./introduction.mdx).
-
+  💡 If you're generating argTypes with another addon (like [docs](../writing-docs/introduction.mdx), which is the common behavior), ensure the actions addon <strong>AFTER</strong> the other addon. You can do this by listing it later in the addons registration code in [`.storybook/main.js`](../configure/overview.mdx#configure-story-rendering). This is default in [essentials](./introduction.mdx).
 </div>
 
 ## Action event handlers
@@ -73,12 +54,7 @@ It is also possible to detect if your component is emitting the correct HTML eve
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-action-event-handle.js.mdx',
-    'common/button-story-action-event-handle.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-action-event-handle.md" />
 
 {/* prettier-ignore-end */}
 

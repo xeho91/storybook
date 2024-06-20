@@ -7,24 +7,19 @@ title: 'Controls'
 Storybook Controls gives you a graphical UI to interact with a component's arguments dynamically without needing to code. It creates an addon panel next to your component examples ("stories"), so you can edit them live.
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="addon-controls-optimized.mp4"
-    type="video/mp4"
-  />
+  <source src="addon-controls-optimized.mp4" type="video/mp4" />
 </video>
 
 Controls do not require any modification to your components. Stories for controls are:
 
-- Convenient. Auto-generate controls based on React/Vue/Angular/etc. components.
-- Portable. Reuse your interactive stories in documentation, tests, and even in designs.
-- Rich. Customize the controls and interactive data to suit your exact needs.
+* Convenient. Auto-generate controls based on React/Vue/Angular/etc. components.
+* Portable. Reuse your interactive stories in documentation, tests, and even in designs.
+* Rich. Customize the controls and interactive data to suit your exact needs.
 
 To use the Controls addon, you need to write your stories using [args](../writing-stories/args.mdx). Storybook will automatically generate UI controls based on your args and what it can infer about your component. Still, you can configure the controls further using [argTypes](../api/argtypes.mdx), see below.
 
 <div class="aside">
-
-💡 If you have stories in the older pre-Storybook 6 style, check the <a href="https://medium.com/storybookjs/storybook-6-migration-guide-200346241bb5">args & controls migration guide</a> to learn how to convert your existing stories for args.
-
+  💡 If you have stories in the older pre-Storybook 6 style, check the <a href="https://medium.com/storybookjs/storybook-6-migration-guide-200346241bb5">args & controls migration guide</a> to learn how to convert your existing stories for args.
 </div>
 
 ## Choosing the control type
@@ -50,12 +45,7 @@ For instance, suppose you have a `variant` arg on your story that should be `pri
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-controls-primary-variant.js.mdx',
-    'common/button-story-controls-primary-variant.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-controls-primary-variant.md" />
 
 {/* prettier-ignore-end */}
 
@@ -71,19 +61,12 @@ We can specify which controls get used by declaring a custom [argType](../api/ar
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-controls-radio-group.js.mdx',
-    'common/button-story-controls-radio-group.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-controls-radio-group.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 ArgTypes are a powerful feature that can be used to customize the controls for your stories. See the documentation about [customizing controls](#annotation) with `argTypes` annotation for more information.
-
+  💡 ArgTypes are a powerful feature that can be used to customize the controls for your stories. See the documentation about [customizing controls](#annotation) with `argTypes` annotation for more information.
 </div>
 
 This replaces the input with a radio group for a more intuitive experience.
@@ -103,11 +86,7 @@ If you haven't used the CLI to setup the configuration, or if you want to define
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addon-controls-custom-matchers.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addon-controls-custom-matchers.md" />
 
 {/* prettier-ignore-end */}
 
@@ -117,27 +96,15 @@ Until now, we only used auto-generated controls based on the component we're wri
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/table-story-fully-customize-controls.js.mdx',
-    'react/table-story-fully-customize-controls.mdx.mdx',
-    'vue/table-story-fully-customize-controls.2.js.mdx',
-    'vue/table-story-fully-customize-controls.mdx-2.mdx.mdx',
-    'vue/table-story-fully-customize-controls.3.js.mdx',
-    'vue/table-story-fully-customize-controls.mdx-3.mdx.mdx',
-    'angular/table-story-fully-customize-controls.ts.mdx',
-    'angular/table-story-fully-customize-controls.mdx.mdx',
-    'svelte/table-story-fully-customize-controls.native-format.mdx',
-  ]}
-/>
+<CodeSnippets path="table-story-fully-customize-controls.md" />
 
 {/* prettier-ignore-end */}
 
 By default, Storybook will add controls for all args that:
 
-- It infers from the component definition [if your framework supports it](../api/frameworks-feature-support.mdx).
+* It infers from the component definition [if your framework supports it](../api/frameworks-feature-support.mdx).
 
-- Appear in the list of args for your story.
+* Appear in the list of args for your story.
 
 Using `argTypes`, you can change the display and behavior of each control.
 
@@ -149,19 +116,7 @@ One way to deal with this is to use primitive values (e.g., strings) as arg valu
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/component-story-custom-args-complex.js.mdx',
-    'react/component-story-custom-args-complex.ts.mdx',
-    'react/component-story-custom-args-complex.mdx.mdx',
-    'vue/component-story-custom-args-complex.3.js.mdx',
-    'vue/component-story-custom-args-complex.mdx-3.mdx.mdx',
-    'angular/component-story-custom-args-complex.ts.mdx',
-    'angular/component-story-custom-args-complex.mdx.mdx',
-    'svelte/component-story-custom-args-complex.js.mdx',
-    'svelte/component-story-custom-args-complex.native-format.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-custom-args-complex.md" />
 
 {/* prettier-ignore-end */}
 
@@ -169,11 +124,7 @@ Unless you need the flexibility of a function, an easier way to map primitives t
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-custom-args-mapping.js.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-custom-args-mapping.md" />
 
 {/* prettier-ignore-end */}
 
@@ -183,8 +134,8 @@ Note that both `mapping` and `control.labels` don't have to be exhaustive. If th
 
 The Controls addon can be configured in two ways:
 
-- Individual controls can be configured via control annotations.
-- The addon's appearance can be configured via parameters.
+* Individual controls can be configured via control annotations.
+* The addon's appearance can be configured via parameters.
 
 ### Annotation
 
@@ -192,39 +143,34 @@ As shown above, you can configure individual controls with the “control" annot
 
 | Data Type   | Control        | Description                                                                                                                                                                                                                |
 | ----------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **boolean** | `boolean`      | Provides a toggle for switching between possible states.<br/> `argTypes: { active: { control: 'boolean' }}`                                                                                                                |
-| **number**  | `number`       | Provides a numeric input to include the range of all possible values.<br/> `argTypes: { even: { control: { type: 'number', min:1, max:30, step: 2 } }}`                                                                    |
-|             | `range`        | Provides a range slider component to include all possible values.<br/> `argTypes: { odd: { control: { type: 'range', min: 1, max: 30, step: 3 } }}`                                                                        |
-| **object**  | `object`       | Provides a JSON-based editor component to handle the object's values.<br/> Also allows edition in raw mode.<br/> `argTypes: { user: { control: 'object' }}`                                                                |
-| **array**   | `object`       | Provides a JSON-based editor component to handle the values of the array.<br/> Also allows edition in raw mode.<br/> `argTypes: { odd: { control: 'object' }}`                                                             |
-|             | `file`         | Provides a file input component that returns an array of URLs.<br/> Can be further customized to accept specific file types.<br/> `argTypes: { avatar: { control: { type: 'file', accept: '.png' } }}`                     |
-| **enum**    | `radio`        | Provides a set of radio buttons based on the available options.<br/> `argTypes: { contact: { control: 'radio', options: ['email', 'phone', 'mail'] }}`                                                                     |
-|             | `inline-radio` | Provides a set of inlined radio buttons based on the available options.<br/> `argTypes: { contact: { control: 'inline-radio', options: ['email', 'phone', 'mail'] }}`                                                      |
-|             | `check`        | Provides a set of checkbox components for selecting multiple options.<br/> `argTypes: { contact: { control: 'check', options: ['email', 'phone', 'mail'] }}`                                                               |
-|             | `inline-check` | Provides a set of inlined checkbox components for selecting multiple options.<br/> `argTypes: { contact: { control: 'inline-check', options: ['email', 'phone', 'mail'] }}`                                                |
+| **boolean** | `boolean`      | Provides a toggle for switching between possible states.<br /> `argTypes: { active: { control: 'boolean' }}`                                                                                                                |
+| **number**  | `number`       | Provides a numeric input to include the range of all possible values.<br /> `argTypes: { even: { control: { type: 'number', min:1, max:30, step: 2 } }}`                                                                    |
+|             | `range`        | Provides a range slider component to include all possible values.<br /> `argTypes: { odd: { control: { type: 'range', min: 1, max: 30, step: 3 } }}`                                                                        |
+| **object**  | `object`       | Provides a JSON-based editor component to handle the object's values.<br /> Also allows edition in raw mode.<br /> `argTypes: { user: { control: 'object' }}`                                                                |
+| **array**   | `object`       | Provides a JSON-based editor component to handle the values of the array.<br /> Also allows edition in raw mode.<br /> `argTypes: { odd: { control: 'object' }}`                                                             |
+|             | `file`         | Provides a file input component that returns an array of URLs.<br /> Can be further customized to accept specific file types.<br /> `argTypes: { avatar: { control: { type: 'file', accept: '.png' } }}`                     |
+| **enum**    | `radio`        | Provides a set of radio buttons based on the available options.<br /> `argTypes: { contact: { control: 'radio', options: ['email', 'phone', 'mail'] }}`                                                                     |
+|             | `inline-radio` | Provides a set of inlined radio buttons based on the available options.<br /> `argTypes: { contact: { control: 'inline-radio', options: ['email', 'phone', 'mail'] }}`                                                      |
+|             | `check`        | Provides a set of checkbox components for selecting multiple options.<br /> `argTypes: { contact: { control: 'check', options: ['email', 'phone', 'mail'] }}`                                                               |
+|             | `inline-check` | Provides a set of inlined checkbox components for selecting multiple options.<br /> `argTypes: { contact: { control: 'inline-check', options: ['email', 'phone', 'mail'] }}`                                                |
 |             | `select`       | Provides a drop-down list component to handle single value selection. `argTypes: { age: { control: 'select', options: [20, 30, 40, 50] }}`                                                                                 |
 |             | `multi-select` | Provides a drop-down list that allows multiple selected values. `argTypes: { countries: { control: 'multi-select', options: ['USA', 'Canada', 'Mexico'] }}`                                                                |
-| **string**  | `text`         | Provides a freeform text input. <br/> `argTypes: { label: { control: 'text' }}`                                                                                                                                            |
-|             | `color`        | Provides a color picker component to handle color values.<br/> Can be additionally configured to include a set of color presets.<br/> `argTypes: { color: { control: { type: 'color', presetColors: ['red', 'green']} }}`  |
+| **string**  | `text`         | Provides a freeform text input. <br /> `argTypes: { label: { control: 'text' }}`                                                                                                                                            |
+|             | `color`        | Provides a color picker component to handle color values.<br /> Can be additionally configured to include a set of color presets.<br /> `argTypes: { color: { control: { type: 'color', presetColors: ['red', 'green']} }}`  |
 |             | `date`         | Provides a datepicker component to handle date selection. `argTypes: { startDate: { control: 'date' }}`                                                                                                                    |
 
 <div class="aside">
-💡 The <code>date</code> control will convert the date into a UNIX timestamp when the value changes. It's a known limitation that will be fixed in a future release. If you need to represent the actual date, you'll need to update the story's implementation and convert the value into a date object.
+  💡 The <code>date</code> control will convert the date into a UNIX timestamp when the value changes. It's a known limitation that will be fixed in a future release. If you need to represent the actual date, you'll need to update the story's implementation and convert the value into a date object.
 </div>
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/gizmo-story-controls-customization.js.mdx',
-    'common/gizmo-story-controls-customization.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="gizmo-story-controls-customization.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-💡 Numeric data types will default to a <code>number</code> control unless additional configuration is provided.
+  💡 Numeric data types will default to a <code>number</code> control unless additional configuration is provided.
 </div>
 
 ### Parameters
@@ -239,11 +185,7 @@ To enable expanded mode globally, add the following to [`.storybook/preview.js`]
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-expanded-controls.js.mdx',
-    ]}
-/>
+<CodeSnippets path="storybook-preview-expanded-controls.md" />
 
 {/* prettier-ignore-end */}
 
@@ -257,11 +199,7 @@ For `color` controls, you can specify an array of `presetColors`, either on the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-preview-parameters-color-swatches.js.mdx',
-    ]}
-/>
+<CodeSnippets path="storybook-preview-parameters-color-swatches.md" />
 
 {/* prettier-ignore-end */}
 
@@ -275,37 +213,22 @@ Suppose you want to disable Controls for a property called `foo` in a component'
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-disable-controls.js.mdx',
-    'common/component-story-disable-controls.mdx.mdx'
-  ]}
-/>
+<CodeSnippets path="component-story-disable-controls.md" />
 
 {/* prettier-ignore-end */}
 
 Resulting in the following change in Storybook UI:
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="addon-controls-disable-specific-prop.mp4"
-    type="video/mp4"
-  />
+  <source src="addon-controls-disable-specific-prop.mp4" type="video/mp4" />
 </video>
 
 The previous example also removed the prop documentation from the table. In some cases, this is fine. However, sometimes you might want to render the prop documentation, but without a control. The following example illustrates how:
 
-<CodeSnippets
-  paths={[
-    'common/component-story-disable-controls-alt.js.mdx',
-    'common/component-story-disable-controls-alt.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-disable-controls-alt.md" />
 
 <div class="aside">
-
-💡 As with other Storybook properties, such as [decorators](../writing-stories/decorators.mdx), you can apply the same pattern at a story level for more granular cases.
-
+  💡 As with other Storybook properties, such as [decorators](../writing-stories/decorators.mdx), you can apply the same pattern at a story level for more granular cases.
 </div>
 
 ### Conditional controls
@@ -316,11 +239,7 @@ Consider a collection of "advanced" settings that are only visible when the user
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-conditional-controls-toggle.js.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-conditional-controls-toggle.md" />
 
 {/* prettier-ignore-end */}
 
@@ -328,11 +247,7 @@ Or consider a constraint where if the user sets one control value, it doesn't ma
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-conditional-controls-mutual-exclusion.js.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-conditional-controls-mutual-exclusion.md" />
 
 {/* prettier-ignore-end */}
 
@@ -360,11 +275,7 @@ If you don't plan to handle the control args inside your Story, you can remove t
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-hide-nocontrols-warning.js.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-hide-nocontrols-warning.md" />
 
 {/* prettier-ignore-end */}
 
@@ -378,12 +289,7 @@ Consider the following story snippets:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-disable-controls-regex.js.mdx',
-    'common/component-story-disable-controls-regex.mdx.mdx'
-  ]}
-/>
+<CodeSnippets path="component-story-disable-controls-regex.md" />
 
 {/* prettier-ignore-end */}
 
@@ -395,11 +301,6 @@ Consider the following snippet to force required args first:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-sort-controls.js.mdx',
-    'common/component-story-sort-controls.mdx.mdx'
-  ]}
-/>
+<CodeSnippets path="component-story-sort-controls.md" />
 
 {/* prettier-ignore-end */}

@@ -6,9 +6,9 @@ Storybook’s webpack config by [default](#default-configuration) sets up [Babel
 
 It has three different modes:
 
-- [**CRA**](#cra-mode) - the mode for Create React App apps specifically
-- [**V6**](#v6-mode) - the default mode for version 6.x and below
-- [**V7**](#v7-mode) - a new mode slated to become the default in SB7.x
+* [**CRA**](#cra-mode) - the mode for Create React App apps specifically
+* [**V6**](#v6-mode) - the default mode for version 6.x and below
+* [**V7**](#v7-mode) - a new mode slated to become the default in SB7.x
 
 ## CRA mode
 
@@ -42,11 +42,7 @@ If you need, you can customize the default Babel configuration used by Storybook
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-custom-babel-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-custom-babel-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -64,11 +60,7 @@ To activate V7 mode, set the feature flag in your `.storybook/main.js` config:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-babel-mode-v7.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-babel-mode-v7.md" />
 
 {/* prettier-ignore-end */}
 
@@ -163,7 +155,7 @@ BABEL_SHOW_CONFIG_FOR=.storybook/preview.js yarn storybook
 When the command finishes running, it will display the available babel configuration for the `.storybook/preview.js` file. You can use this information to debug issues with transpilation.
 
 <div class="aside">
-💡 Due to what appears to be a Babel bug, setting this flag causes Babel transpilation to fail on the file provided. Thus you cannot actually <strong>run</strong> Storybook using this command. However, it will print out the configuration information as advertised, and therefore you can use this to debug your Storybook. You'll need to remove the flag to actually run your Storybook.
+  💡 Due to what appears to be a Babel bug, setting this flag causes Babel transpilation to fail on the file provided. Thus you cannot actually <strong>run</strong> Storybook using this command. However, it will print out the configuration information as advertised, and therefore you can use this to debug your Storybook. You'll need to remove the flag to actually run your Storybook.
 </div>
 
 For more info, please refer to the [Babel documentation](https://babeljs.io/docs/en/configuration#print-effective-configs).

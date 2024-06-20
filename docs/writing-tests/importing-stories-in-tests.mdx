@@ -12,10 +12,10 @@ Stories are a practical starting point for UI testing. Import stories into tools
 
 Storybook has test addons for core frameworks React, Vue (2,3), and Angular. This allows you to reuse stories along with all of their mocks, dependencies, and context.
 
-- [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react)
-- [@storybook/testing-vue](https://storybook.js.org/addons/@storybook/testing-vue)
-- [@storybook/testing-vue3](https://storybook.js.org/addons/@storybook/testing-vue3)
-- [@storybook/testing-angular](https://storybook.js.org/addons/@storybook/testing-angular)
+* [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react)
+* [@storybook/testing-vue](https://storybook.js.org/addons/@storybook/testing-vue)
+* [@storybook/testing-vue3](https://storybook.js.org/addons/@storybook/testing-vue3)
+* [@storybook/testing-angular](https://storybook.js.org/addons/@storybook/testing-angular)
 
 ### Install the addon
 
@@ -23,19 +23,12 @@ Run the following command to add Storybook's testing addon into your environment
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-testing-addon-install.yarn.js.mdx',
-    'common/storybook-testing-addon-install.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-testing-addon-install.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 When running the command to install the addon, don't forget to select **only** your framework.
-
+  💡 When running the command to install the addon, don't forget to select **only** your framework.
 </div>
 
 ### Optional configuration
@@ -44,13 +37,7 @@ If you've set up global decorators or parameters and you need to use them in you
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/storybook-testing-addon-optional-config.js.mdx',
-    'vue/storybook-testing-addon-optional-config.2.js.mdx',
-    'vue/storybook-testing-addon-optional-config.3.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-testing-addon-optional-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -58,12 +45,7 @@ Update your test script to include the configuration file:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/storybook-testing-addon-optional-config-scripts.json.mdx',
-    'vue/storybook-testing-addon-optional-config-scripts.json.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-testing-addon-optional-config-scripts.md" />
 
 {/* prettier-ignore-end */}
 
@@ -72,24 +54,14 @@ Update your test script to include the configuration file:
 [Testing Library](https://testing-library.com/) is a suite of helper libraries for browser-based interaction tests. With [Component Story Format](../api/csf.mdx), your stories are reusable with Testing Library. Each named export (story) is renderable within your testing setup.
 
 <div class="aside">
-
-💡 You can use Testing Library out-of-the-box with [Storybook Interaction Testing](./interaction-testing.mdx).
-
+  💡 You can use Testing Library out-of-the-box with [Storybook Interaction Testing](./interaction-testing.mdx).
 </div>
 
 For example, if you were working on a login component and wanted to test the invalid credentials scenario, here's how you could write your test:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/component-test-with-testing-library.js.mdx',
-    'vue/component-test-with-testing-library.js.mdx',
-    'angular/component-test-with-testing-library.ts.mdx',
-    'svelte/component-test-with-testing-library.js.mdx',
-    'preact/component-test-with-testing-library.js.mdx',
-  ]}
-/>
+<CodeSnippets path="component-test-with-testing-library.md" />
 
 {/* prettier-ignore-end */}
 
@@ -103,36 +75,19 @@ An example of an end-to-end test with Cypress and Storybook is testing a login c
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/login-form-with-play-function.js.mdx',
-    'react/login-form-with-play-function.ts.mdx',
-    'angular/login-form-with-play-function.ts.mdx',
-    'vue/login-form-with-play-function.2.js.mdx',
-    'vue/login-form-with-play-function.ts-2.ts.mdx',
-    'vue/login-form-with-play-function.3.js.mdx',
-    'vue/login-form-with-play-function.ts-3.ts.mdx',
-    'svelte/login-form-with-play-function.js.mdx',
-  ]}
-/>
+<CodeSnippets path="login-form-with-play-function.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
- 💡 The play function contains small snippets of code that run after the story renders. It allows you to sequence interactions in stories.
-
+  💡 The play function contains small snippets of code that run after the story renders. It allows you to sequence interactions in stories.
 </div>
 
 With Cypress, you could write the following test:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-cypress-test.js.mdx',
-  ]}
-/>
+<CodeSnippets path="component-cypress-test.md" />
 
 {/* prettier-ignore-end */}
 
@@ -148,47 +103,32 @@ A real-life scenario of user flow testing with Playwright would be how to test a
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/login-form-with-play-function.js.mdx',
-    'react/login-form-with-play-function.ts.mdx',
-    'angular/login-form-with-play-function.ts.mdx',
-    'vue/login-form-with-play-function.2.js.mdx',
-    'vue/login-form-with-play-function.ts-2.ts.mdx',
-    'vue/login-form-with-play-function.3.js.mdx',
-    'vue/login-form-with-play-function.ts-3.ts.mdx',
-    'svelte/login-form-with-play-function.js.mdx',
-  ]}
-/>
+<CodeSnippets path="login-form-with-play-function.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
- 💡 The play function contains small snippets of code that run after the story renders. It allows you to sequence interactions in stories.
+  💡 The play function contains small snippets of code that run after the story renders. It allows you to sequence interactions in stories.
 </div>
 
 With Playwright, you can write a test to check if the inputs are filled and match the story:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-playwright-test.js.mdx',
-  ]}
-/>
+<CodeSnippets path="component-playwright-test.md" />
 
 {/* prettier-ignore-end */}
 
 Once you execute Playwright, it opens a new browser window, loads Storybook's isolated iframe, asserts if the inputs contain the specified values, and displays the test results in the terminal.
 
----
+***
 
 #### Learn about other UI tests
 
-- [Test runner](./test-runner.mdx) to automate test execution
-- [Visual tests](./visual-testing.mdx) for appearance
-- [Accessibility tests](./accessibility-testing.mdx) for accessibility
-- [Interaction tests](./interaction-testing.mdx) for user behavior simulation
-- [Coverage tests](./test-coverage.mdx) for measuring code coverage
-- [Snapshot tests](./snapshot-testing.mdx) for rendering errors and warnings
-- Import stories in other tests for other tools
+* [Test runner](./test-runner.mdx) to automate test execution
+* [Visual tests](./visual-testing.mdx) for appearance
+* [Accessibility tests](./accessibility-testing.mdx) for accessibility
+* [Interaction tests](./interaction-testing.mdx) for user behavior simulation
+* [Coverage tests](./test-coverage.mdx) for measuring code coverage
+* [Snapshot tests](./snapshot-testing.mdx) for rendering errors and warnings
+* Import stories in other tests for other tools

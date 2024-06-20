@@ -6,14 +6,14 @@ Contribute a new feature or bug fix to [Storybook's monorepo](https://github.com
 
 ## Initial setup
 
-Start by [forking](https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo) the Storybook monorepo and cloning it locally. 
+Start by [forking](https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo) the Storybook monorepo and cloning it locally.
 
 ```shell
 git clone https://github.com/your-username/storybook.git
 ```
 
 Navigate to the `storybook` directory and install the required dependencies with the following commands:
-    
+
 ```shell
 yarn && yarn bootstrap --core
 ```
@@ -35,7 +35,7 @@ cd examples/cra-ts-essentials && yarn storybook
 ```
 
 <div class="aside">
-💡 The Storybook monorepo contains various example projects, each corresponding to a different framework and environment, and they are commonly used as additional tooling to test new features.
+  💡 The Storybook monorepo contains various example projects, each corresponding to a different framework and environment, and they are commonly used as additional tooling to test new features.
 </div>
 
 If everything is working as it should, you should see the `example/cra-ts-essentials` Storybook running.
@@ -61,9 +61,7 @@ yarn build
 When asked if you want to start the build in `watch` mode, answer **yes** to develop in interactive mode. Afterward, choose which packages you want to build. For example, if you're going to work on a feature for `@storybook/addon-docs`, you might want to select `@storybook/addon-docs` and `@storybook/components`.
 
 <div class="aside">
-
-💡 Build's `watch` mode is great for interactive development. However, for performance reasons it only transpiles your code and doesn't execute the TypeScript compiler. If something isn't working as expected, try running `build` <b>WITHOUT</b> watch mode: it will re-generate TypeScript types and also perform type checking for you.
-
+  💡 Build's `watch` mode is great for interactive development. However, for performance reasons it only transpiles your code and doesn't execute the TypeScript compiler. If something isn't working as expected, try running `build` <b>WITHOUT</b> watch mode: it will re-generate TypeScript types and also perform type checking for you.
 </div>
 
 ![Storybook package selector](./storybook-build-packages-selection-optimized.png)
@@ -113,9 +111,7 @@ yarn test
 ```
 
 <div class="aside">
-
-💡  Storybook uses [jest](https://jestjs.io/) as part of the testing suite, if you notice that the snapshot tests fail you can re-run and update them with `yarn test -u`.
-
+  💡  Storybook uses [jest](https://jestjs.io/) as part of the testing suite, if you notice that the snapshot tests fail you can re-run and update them with `yarn test -u`.
 </div>
 
 Doing this prevents last-minute bugs and is also a great way to get your contribution merged faster once you submit your pull request. Failing to do so will lead to one of the maintainers mark the pull request with the **Work in Progress** label until all tests pass.
@@ -128,8 +124,8 @@ If your contribution focuses on a bugfix and you want it featured in the next st
 
 #### Useful resources when working with forks
 
-- [Sync a fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/working-with-forks/syncing-a-fork)
-- [Merge an upstream repository into your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/working-with-forks/merging-an-upstream-repository-into-your-fork)
+* [Sync a fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/working-with-forks/syncing-a-fork)
+* [Merge an upstream repository into your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/working-with-forks/merging-an-upstream-repository-into-your-fork)
 
 ## How to work with reproductions
 
@@ -150,15 +146,13 @@ npx storybook@next link --local /path/to/local-repro-directory
 ```
 
 <div class="aside">
-💡  The <code>storybook link</code> command relies on <code>yarn 2</code> linking under the hood. It requires that the local repro is using <code>yarn 2</code>, which will be the case if you're using the [<code>storybook repro</code> command](./how-to-reproduce) per our contributing guidelines. If you are trying to link to a non-<code>yarn 2</code> project, linking will fail.
+  💡  The <code>storybook link</code> command relies on <code>yarn 2</code> linking under the hood. It requires that the local repro is using <code>yarn 2</code>, which will be the case if you're using the [<code>storybook repro</code> command](./how-to-reproduce) per our contributing guidelines. If you are trying to link to a non-<code>yarn 2</code> project, linking will fail.
 </div>
 
 ## Troubleshooting
 
 <details>
+  <summary><code>yarn build --all --watch</code> watches everything but is resource-intensive</summary>
 
-<summary><code>yarn build --all --watch</code> watches everything but is resource-intensive</summary>
-
-It's troublesome to know which packages you're going to change ahead of time, and watching all of them can be highly demanding, even on modern machines. If you're working on a powerful enough machine, you can use `yarn build --all --watch` instead of `yarn build`.
-
+  It's troublesome to know which packages you're going to change ahead of time, and watching all of them can be highly demanding, even on modern machines. If you're working on a powerful enough machine, you can use `yarn build --all --watch` instead of `yarn build`.
 </details>

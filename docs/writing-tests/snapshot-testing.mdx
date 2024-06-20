@@ -16,12 +16,7 @@ Run the following command to install Storyshots:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addon-storyshots-install.yarn.js.mdx',
-    'common/storybook-addon-storyshots-install.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addon-storyshots-install.md" />
 
 {/* prettier-ignore-end */}
 
@@ -29,16 +24,12 @@ Add a test file to your environment with the following contents to configure Sto
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-storyshots-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-storyshots-config.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-💡 You can name the test file differently to suit your needs. Bear in mind that it requires to be picked up by Jest.
+  💡 You can name the test file differently to suit your needs. Bear in mind that it requires to be picked up by Jest.
 </div>
 
 Run your first test. Storyshots will recognize your stories (based on [.storybook/main.js's setup](../configure/story-rendering.mdx)) and save them in the **snapshots** directory.
@@ -71,16 +62,12 @@ Next, update your test file (for example, `storybook.test.js`) to the following:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-storyshots-custom-directory.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-storyshots-custom-directory.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-💡 Don't forget to replace your-custom-directory with your own.
+  💡 Don't forget to replace your-custom-directory with your own.
 </div>
 
 When you run your tests, the snapshots will be available in the directory you've specified.
@@ -91,11 +78,7 @@ By default, Storyshots detects your project's framework. If you run into a situa
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-storyshots-custom-framework.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-storyshots-custom-framework.md" />
 
 {/* prettier-ignore-end */}
 
@@ -105,7 +88,7 @@ These are the frameworks currently supported by Storyshots: `angular`, `html`, `
 
 Storyshots is highly customizable and includes options for various advanced use cases. You can read more in the [addon’s documentation](https://github.com/storybookjs/storybook/tree/master/addons/storyshots/storyshots-core#options).
 
----
+***
 
 #### What’s the difference between snapshot tests and visual tests?
 
@@ -113,10 +96,10 @@ Visual tests capture images of stories and compare them against image baselines.
 
 #### Learn about other UI tests
 
-- [Test runner](./test-runner.mdx) to automate test execution
-- [Visual tests](./visual-testing.mdx) for appearance
-- [Accessibility tests](./accessibility-testing.mdx) for accessibility
-- [Interaction tests](./interaction-testing.mdx) for user behavior simulation
-- [Coverage tests](./test-coverage.mdx) for measuring code coverage
-- Snapshot tests for rendering errors and warnings
-- [Import stories in other tests](./importing-stories-in-tests.mdx) for other tools
+* [Test runner](./test-runner.mdx) to automate test execution
+* [Visual tests](./visual-testing.mdx) for appearance
+* [Accessibility tests](./accessibility-testing.mdx) for accessibility
+* [Interaction tests](./interaction-testing.mdx) for user behavior simulation
+* [Coverage tests](./test-coverage.mdx) for measuring code coverage
+* Snapshot tests for rendering errors and warnings
+* [Import stories in other tests](./importing-stories-in-tests.mdx) for other tools

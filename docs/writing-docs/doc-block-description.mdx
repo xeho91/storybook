@@ -12,20 +12,16 @@ Storybook extracts the component's description and renders it at the top of the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-csf-description.js.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-csf-description.md" />
 
 {/* prettier-ignore-end */}
 
 | Option      | Description                                                                                                                                                       |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `component` | Overrides the default component description. <br/> `description: { component:'An example component description' }`                                                |
-| `markdown`  | Provides custom Markdown for the component description. <br/> `<Description markdown={dedent'# Custom Description'} />` <br/> Only applicable to MDX.             |
-| `story`     | Overrides the story description. <br/> `description: { story: 'An example story description' }`                                                                   |
-| `of`        | Sets the description based either on a component or story. <br/> `<Description of={Component} />` <br/> `<Description of={'.'} />` <br/> Only applicable to MDX. |
+| `component` | Overrides the default component description. <br /> `description: { component:'An example component description' }`                                                |
+| `markdown`  | Provides custom Markdown for the component description. <br /> `<Description markdown={dedent'# Custom Description'} />` <br /> Only applicable to MDX.             |
+| `story`     | Overrides the story description. <br /> `description: { story: 'An example story description' }`                                                                   |
+| `of`        | Sets the description based either on a component or story. <br /> `<Description of={Component} />` <br /> `<Description of={'.'} />` <br /> Only applicable to MDX. |
 
 ## Working with MDX
 
@@ -33,10 +29,6 @@ If you need, you can also include the `Description` Doc Block in your MDX storie
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/component-story-mdx-description.mdx.mdx',
-  ]}
-/>
+<CodeSnippets path="component-story-mdx-description.md" />
 
 {/* prettier-ignore-end */}

@@ -4,13 +4,13 @@ title: 'Essential addons'
 
 A major strength of Storybook are [addons](https://storybook.js.org/addons) that extend Storybook’s UI and behavior. Storybook ships by default with a set of “essential” addons that add to the initial user experience. There are many third-party addons as well as “official” addons developed by the Storybook core team.
 
-- [Docs](../writing-docs/introduction.mdx)
-- [Controls](./controls.mdx)
-- [Actions](./actions.mdx)
-- [Viewport](./viewport.mdx)
-- [Backgrounds](./backgrounds.mdx)
-- [Toolbars & globals](./toolbars-and-globals.mdx)
-- [Measure & outline](./measure-and-outline.mdx)
+* [Docs](../writing-docs/introduction.mdx)
+* [Controls](./controls.mdx)
+* [Actions](./actions.mdx)
+* [Viewport](./viewport.mdx)
+* [Backgrounds](./backgrounds.mdx)
+* [Toolbars & globals](./toolbars-and-globals.mdx)
+* [Measure & outline](./measure-and-outline.mdx)
 
 ### Installation
 
@@ -20,12 +20,7 @@ If you're upgrading from a previous Storybook version, you'll need to run the fo
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addon-essentials-install.yarn.js.mdx',
-    'common/storybook-addon-essentials-install.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addon-essentials-install.md" />
 
 {/* prettier-ignore-end */}
 
@@ -33,11 +28,7 @@ Update your Storybook configuration (in [`.storybook/main.js`](../configure/over
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-register-essentials-addon.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-register-essentials-addon.md" />
 
 {/* prettier-ignore-end */}
 
@@ -49,22 +40,13 @@ If you need to reconfigure any of the [individual Essentials addons](https://sto
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addon-actions-install.yarn.js.mdx',
-    'common/storybook-addon-actions-install.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addon-actions-install.md" />
 
 {/* prettier-ignore-end */}
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-register-individual-actions-addon.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-register-individual-actions-addon.md" />
 
 {/* prettier-ignore-end */}
 
@@ -72,11 +54,7 @@ Below is an abridged configuration and table with all the available options for 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-full-individual-essentials-config.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-full-individual-essentials-config.md" />
 
 {/* prettier-ignore-end */}
 
@@ -84,10 +62,10 @@ Below is an abridged configuration and table with all the available options for 
 | ------------------------------ | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@storybook/addon-actions`     | N/A                   | N/A                                                                                                                                                                                                                     |
 | `@storybook/addon-viewport`    | N/A                   | N/A                                                                                                                                                                                                                     |
-| `@storybook/addon-docs`        | `configureJSX`        | Enables JSX support in MDX for projects that aren't configured to handle the format. <br/> `configureJSX: true`                                                                                                         |
-|                                | `babelOptions`        | Provides additional Babel configurations for file transpilation. <br/> `babelOptions: { plugins: [], presets: []}` <br/> Extends `configureJSX`.                                                                        |
-|                                | `sourceLoaderOptions` | Provides additional configuration for Storybook's source loader. <br/> `sourceLoaderOptions: null` . <br/> Required for [`@storybook/addon-storysource`](https://storybook.js.org/addons/@storybook/addon-storysource). |
-|                                | `transcludeMarkdown`  | Enables Markdown file support into MDX and render them as components. <br/> `transcludeMarkdown: true`                                                                                                                  |
+| `@storybook/addon-docs`        | `configureJSX`        | Enables JSX support in MDX for projects that aren't configured to handle the format. <br /> `configureJSX: true`                                                                                                         |
+|                                | `babelOptions`        | Provides additional Babel configurations for file transpilation. <br /> `babelOptions: { plugins: [], presets: []}` <br /> Extends `configureJSX`.                                                                        |
+|                                | `sourceLoaderOptions` | Provides additional configuration for Storybook's source loader. <br /> `sourceLoaderOptions: null` . <br /> Required for [`@storybook/addon-storysource`](https://storybook.js.org/addons/@storybook/addon-storysource). |
+|                                | `transcludeMarkdown`  | Enables Markdown file support into MDX and render them as components. <br /> `transcludeMarkdown: true`                                                                                                                  |
 | `@storybook/addon-controls`    | N/A                   | N/A                                                                                                                                                                                                                     |
 | `@storybook/addon-backgrounds` | N/A                   | N/A                                                                                                                                                                                                                     |
 | `@storybook/addon-toolbars`    | N/A                   | N/A                                                                                                                                                                                                                     |
@@ -103,16 +81,10 @@ For example, if you wanted to disable the [backgrounds addon](./backgrounds.mdx)
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-main-disable-addon.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-main-disable-addon.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 You can use the following keys for each individual addon: `actions`, `backgrounds`, `controls`, `docs`, `viewport`, `toolbars`, `measure`, `outline`.
-
+  💡 You can use the following keys for each individual addon: `actions`, `backgrounds`, `controls`, `docs`, `viewport`, `toolbars`, `measure`, `outline`.
 </div>

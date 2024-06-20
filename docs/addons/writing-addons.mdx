@@ -8,9 +8,9 @@ One of Storybook's main features is its robust addon ecosystem. Use addons to en
 
 For this example, we're going to build a bare-bones addon which:
 
-- Adds a new panel in Storybook.
-- Retrieves a custom parameter from the stories.
-- Displays the parameter data in the panel.
+* Adds a new panel in Storybook.
+* Retrieves a custom parameter from the stories.
+* Displays the parameter data in the panel.
 
 ### Addon kit
 
@@ -54,12 +54,7 @@ We'll need to add the necessary dependencies and make some adjustments. Run the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-write-addon-install-dependencies.yarn.js.mdx',
-    'common/storybook-write-addon-install-dependencies.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-write-addon-install-dependencies.md" />
 
 {/* prettier-ignore-end */}
 
@@ -70,23 +65,19 @@ npx storybook init
 ```
 
 <div class="aside">
-💡 Initializing Storybook adds the building blocks for our addon. If you're building a standalone Storybook addon, set the React and Storybook packages as peer dependencies. It prevents the addon from breaking Storybook when there are different versions available.
+  💡 Initializing Storybook adds the building blocks for our addon. If you're building a standalone Storybook addon, set the React and Storybook packages as peer dependencies. It prevents the addon from breaking Storybook when there are different versions available.
 </div>
 
 Next, create a `.babelrc.js` file in the root directory with the following:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-addon-babel-configuration.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-addon-babel-configuration.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-Babel configuration is required because our addon uses ES6 and JSX.
+  Babel configuration is required because our addon uses ES6 and JSX.
 </div>
 
 Change your `package.json` and add the following script to build the addon:
@@ -100,28 +91,22 @@ Change your `package.json` and add the following script to build the addon:
 ```
 
 <div class="aside">
-
-💡 Running `yarn build` at this stage will output the code into the <code>dist</code> directory, transpiled into a ES5 module ready to be installed into any Storybook.
-
+  💡 Running `yarn build` at this stage will output the code into the <code>dist</code> directory, transpiled into a ES5 module ready to be installed into any Storybook.
 </div>
 
 Finally, create a new directory called `src` and inside a new file called `preset.js` with the following:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-addon-preset-implementation.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-addon-preset-implementation.md" />
 
 {/* prettier-ignore-end */}
 
 Presets are the way addons hook into Storybook. Among other tasks they allow you to:
 
-- Add to [Storybook's UI](#add-a-panel)
-- Add to the [preview iframe](./writing-presets.mdx#preview-entries)
-- Modify [babel](./writing-presets.mdx#babel) and [webpack settings](./writing-presets.mdx#webpack)
+* Add to [Storybook's UI](#add-a-panel)
+* Add to the [preview iframe](./writing-presets.mdx#preview-entries)
+* Modify [babel](./writing-presets.mdx#babel) and [webpack settings](./writing-presets.mdx#webpack)
 
 For this example, we'll modify Storybook's UI.
 
@@ -131,16 +116,12 @@ Now let’s add a panel to Storybook. Inside the `src` directory, create a new f
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-addon-initial-panel-state.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-addon-initial-panel-state.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-💡 Make sure to include the <code>key</code> when you register the addon. It will prevent any issues when the addon renders.
+  💡 Make sure to include the <code>key</code> when you register the addon. It will prevent any issues when the addon renders.
 </div>
 
 Going over the code snippet in more detail. When Storybook starts up:
@@ -155,18 +136,12 @@ Finally, let’s hook it all up. Change `.storybook/main.js` to the following:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-addon-storybook-registration.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-addon-storybook-registration.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 When you register a Storybook addon, it will look for either `register.js` or `preset.js` as the entry points.
-
+  💡 When you register a Storybook addon, it will look for either `register.js` or `preset.js` as the entry points.
 </div>
 
 Run `yarn storybook` and you should see something similar to:
@@ -179,11 +154,7 @@ Next, let’s replace the `MyPanel` component from above to show the parameter.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addon-change-panel.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addon-change-panel.md" />
 
 {/* prettier-ignore-end */}
 
@@ -197,26 +168,14 @@ When Storybook was initialized, it provided a small set of example stories. Chan
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-story-with-addon-example.js.mdx',
-    'react/button-story-with-addon-example.ts.mdx',
-    'vue/button-story-with-addon-example.js.mdx',
-    'angular/button-story-with-addon-example.ts.mdx',
-    'svelte/button-story-with-addon-example.js.mdx',
-    'svelte/button-story-with-addon-example.native-format.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-with-addon-example.md" />
 
 {/* prettier-ignore-end */}
 
 After applying the changes to the story, the Storybook UI will show the following:
 
 <video autoPlay muted playsInline loop>
-  <source
-    src="addon-final-stage-optimized.mp4"
-    type="video/mp4"
-  />
+  <source src="addon-final-stage-optimized.mp4" type="video/mp4" />
 </video>
 
 ### Root level preset.js
@@ -225,11 +184,7 @@ Before publishing the addon, we'll need to make one last change. In the root dir
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/my-addon-root-level-preset.js.mdx',
-  ]}
-/>
+<CodeSnippets path="my-addon-root-level-preset.md" />
 
 {/* prettier-ignore-end */}
 
@@ -239,13 +194,13 @@ This auto-registers the addon without any additional configuration from the user
 
 Now that you've seen how to create a bare-bones addon let's see how to share it with the community. Before we begin, make sure your addon meets the following requirements:
 
-- `package.json` file with metadata about the addon
-- Peer dependencies of `react` and `@storybook/addons`
-- `preset.js` file at the root level written as an ES5 module
-- `src` directory containing the ES6 addon code
-- `dist` directory containing transpiled ES5 code on publish
-- [GitHub](https://github.com/) account to host your code
-- [NPM](https://www.npmjs.com/) account to publish the addon
+* `package.json` file with metadata about the addon
+* Peer dependencies of `react` and `@storybook/addons`
+* `preset.js` file at the root level written as an ES5 module
+* `src` directory containing the ES6 addon code
+* `dist` directory containing transpiled ES5 code on publish
+* [GitHub](https://github.com/) account to host your code
+* [NPM](https://www.npmjs.com/) account to publish the addon
 
 Reference the [storybook-addon-outline](https://www.npmjs.com/package/storybook-addon-outline) to see a project that meets these requirements.
 

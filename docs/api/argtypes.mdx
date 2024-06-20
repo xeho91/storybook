@@ -3,9 +3,7 @@ title: 'ArgTypes'
 ---
 
 <div class="aside">
-
-This API is experimental and may change outside of the typical semver release cycle
-
+  This API is experimental and may change outside of the typical semver release cycle
 </div>
 
 ArgTypes are a first-class feature in Storybook for specifying the behaviour of [Args](../writing-stories/args.mdx). By specifying the type of an arg, you constrain the values that it can take and provide information about args that are not explicitly set (i.e., not required).
@@ -22,39 +20,33 @@ If you are using the Storybook [docs](../writing-docs/introduction.mdx) addon (i
 
 To do so, Storybook uses various static analysis tools depending on your framework.
 
-- React
-  - [react-docgen](https://github.com/reactjs/react-docgen)
-  - [react-docgen-typescript](https://github.com/styleguidist/react-docgen-typescript)
-- Vue
-  - [vue-docgen-api](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api)
-- Angular
-  - [compodoc](https://compodoc.app/)
-- WebComponents
-  - [custom-element.json](https://github.com/webcomponents/custom-elements-json)
-- Ember
-  - [YUI doc](https://github.com/ember-learn/ember-cli-addon-docs-yuidoc#documenting-components)
+* React
+  * [react-docgen](https://github.com/reactjs/react-docgen)
+  * [react-docgen-typescript](https://github.com/styleguidist/react-docgen-typescript)
+* Vue
+  * [vue-docgen-api](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api)
+* Angular
+  * [compodoc](https://compodoc.app/)
+* WebComponents
+  * [custom-element.json](https://github.com/webcomponents/custom-elements-json)
+* Ember
+  * [YUI doc](https://github.com/ember-learn/ember-cli-addon-docs-yuidoc#documenting-components)
 
 The format of the generated argType will look something like this:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-generated-argtypes.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-generated-argtypes.md" />
 
 {/* prettier-ignore-end */}
 
 This ArgTypes data structure, name, type, defaultValue, and description are standard fields in all ArgTypes (analogous to PropTypes in React). The table and control fields are addon-specific annotations. So, for example, the table annotation provides extra information to customize how the label gets rendered, and the control annotation includes additional information for the control editing the property.
 
 <div class="aside">
+  💡 The `@storybook/addon-docs` provide a shorthand for common tasks:
 
-💡 The `@storybook/addon-docs` provide a shorthand for common tasks:
-
-- `type: 'number'` is shorthand for `type: { name: 'number' }`
-- `control: 'radio'` is shorthand for `control: { type: 'radio' }`
-
+  * `type: 'number'` is shorthand for `type: { name: 'number' }`
+  * `control: 'radio'` is shorthand for `control: { type: 'radio' }`
 </div>
 
 #### Manual specification
@@ -63,11 +55,7 @@ If you want more control over the args table or any other aspect of using argTyp
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-customize-argtypes.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-customize-argtypes.md" />
 
 {/* prettier-ignore-end */}
 
@@ -75,18 +63,14 @@ The `values.description`, `table.type`, and `controls.type` are merged into the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-merged-argtypes.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-merged-argtypes.md" />
 
 {/* prettier-ignore-end */}
 
 In particular, this would render a row with a modified description, a type display with a dropdown that shows the detail, and no control.
 
 <div class="aside">
-💡 As with other Storybook properties (e.g., args, decorators), you can also override ArgTypes per story basis.
+  💡 As with other Storybook properties (e.g., args, decorators), you can also override ArgTypes per story basis.
 </div>
 
 #### Global `argTypes`
@@ -95,16 +79,12 @@ You can also define arg types at the global level; they will apply to every comp
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/button-story-project-args-theme.js.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-project-args-theme.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-💡 If you define a global arg type for a story that does not have that arg (e.g., if there is no corresponding global arg definition), then the arg type will have no effect.
+  💡 If you define a global arg type for a story that does not have that arg (e.g., if there is no corresponding global arg definition), then the arg type will have no effect.
 </div>
 
 #### Using argTypes in addons
@@ -113,10 +93,6 @@ If you want to access the argTypes of the current component inside an addon, you
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-argtypes-with-addon.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-argtypes-with-addon.md" />
 
 {/* prettier-ignore-end */}

@@ -8,11 +8,7 @@ This is the core addon API. This is how to get the addon API:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-imports.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-imports.md" />
 
 {/* prettier-ignore-end */}
 
@@ -29,11 +25,7 @@ See how we can use this:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-register.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-register.md" />
 
 {/* prettier-ignore-end */}
 
@@ -46,11 +38,7 @@ See how you can use this method:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addon-panel-initial.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addon-panel-initial.md" />
 
 {/* prettier-ignore-end */}
 
@@ -65,29 +53,23 @@ Use the `makeDecorator` API to create decorators in the style of the official ad
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-makedecorator.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-makedecorator.md" />
 
 {/* prettier-ignore-end */}
 
 The options to `makeDecorator` are:
 
-- `name`: The name of the export (e.g. `withFoo`)
-- `parameterName`: The name of the parameter your addon uses. This should be unique.
-- `skipIfNoParametersOrOptions`: Don't run your decorator if the user hasn't set options (via `.addDecorator(withFoo(options)))`) or parameters (`.add('story', () => <Story/>, { foo: 'param' })`, or `.addParameters({ foo: 'param' })`).
-- `allowDeprecatedUsage`: support the deprecated "wrapper" usage (`.add('story', () => withFoo(options)(() => <Story/>))`).
-- `wrapper`: your decorator function. Takes the `storyFn`, `context`, and both the `options` and `parameters` (as defined in `skipIfNoParametersOrOptions` above).
+* `name`: The name of the export (e.g. `withFoo`)
+* `parameterName`: The name of the parameter your addon uses. This should be unique.
+* `skipIfNoParametersOrOptions`: Don't run your decorator if the user hasn't set options (via `.addDecorator(withFoo(options)))`) or parameters (`.add('story', () => <Story/>, { foo: 'param' })`, or `.addParameters({ foo: 'param' })`).
+* `allowDeprecatedUsage`: support the deprecated "wrapper" usage (`.add('story', () => withFoo(options)(() => <Story/>))`).
+* `wrapper`: your decorator function. Takes the `storyFn`, `context`, and both the `options` and `parameters` (as defined in `skipIfNoParametersOrOptions` above).
 
 <div class="aside">
-
-💡 If the story's parameters include `{ foo: { disable: true } }` (where `foo` is the `parameterName` of your addon), your decorator will not be called.
-
+  💡 If the story's parameters include `{ foo: { disable: true } }` (where `foo` is the `parameterName` of your addon), your decorator will not be called.
 </div>
 
----
+***
 
 ## Storybook hooks
 
@@ -97,11 +79,7 @@ Writing addons can be simplified a lot by using these Storybook hooks:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-usestorybookstate.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-usestorybookstate.md" />
 
 {/* prettier-ignore-end */}
 
@@ -114,11 +92,7 @@ If you use this, remember your component will be re-rendered a lot, and you may 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-useapi.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-useapi.md" />
 
 {/* prettier-ignore-end */}
 
@@ -130,11 +104,7 @@ Details on the Storybook API are further down.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-usechannel.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-usechannel.md" />
 
 {/* prettier-ignore-end */}
 
@@ -146,11 +116,7 @@ The messages can be listened to on both the iframe and the manager side.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-useaddonstate.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-useaddonstate.md" />
 
 {/* prettier-ignore-end */}
 
@@ -166,11 +132,7 @@ With this hook, addons can access the same portion of the state, persisted even 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-useparameter.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-useparameter.md" />
 
 {/* prettier-ignore-end */}
 
@@ -182,11 +144,7 @@ If the parameter isn't set, the default value (second argument) is returned inst
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-useglobal.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-useglobal.md" />
 
 {/* prettier-ignore-end */}
 
@@ -200,17 +158,13 @@ If you use this hook, remember that your component will render a lot, and you ma
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/args-usage-with-addons.js.mdx'
-  ]}
-/>
+<CodeSnippets path="args-usage-with-addons.md" />
 
 {/* prettier-ignore-end */}
 
 You can use this handy Storybook hook in your addon if you need to read or update [`args`](../writing-stories/args.mdx).
 
----
+***
 
 ## Storybook API
 
@@ -222,22 +176,14 @@ Let's have a look at API methods.
 
 With this method, you can select a story via an API. This method accepts two parameters.
 
-1.  story kind name
-2.  story name (optional)
+1. story kind name
+2. story name (optional)
 
 Let's say you've got a story like this:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'react/button-story-with-addon-example.js.mdx',
-    'vue/button-story-with-addon-example.js.mdx',
-    'angular/button-story-with-addon-example.ts.mdx',
-    'svelte/button-story-with-addon-example.js.mdx',
-    'svelte/button-story-with-addon-example.native-format.mdx',
-  ]}
-/>
+<CodeSnippets path="button-story-with-addon-example.md" />
 
 {/* prettier-ignore-end */}
 
@@ -245,11 +191,7 @@ This is how you can select the above story:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-selectstory.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-selectstory.md" />
 
 {/* prettier-ignore-end */}
 
@@ -259,11 +201,7 @@ Same as `selectStory`, but accepts a story inside current kind as the only param
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-selectincurrentkind.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-selectincurrentkind.md" />
 
 {/* prettier-ignore-end */}
 
@@ -273,27 +211,17 @@ This method allows you to set query string parameters. You can use that as tempo
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-setqueryparams.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-setqueryparams.md" />
 
 {/* prettier-ignore-end */}
 
 <div class="aside">
-
-💡 If you need to remove a query param, use `null` for that. For example, we need to remove the `bbc` query param. See below how to do it:
-
+  💡 If you need to remove a query param, use `null` for that. For example, we need to remove the `bbc` query param. See below how to do it:
 </div>
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-disablequeryparams.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-disablequeryparams.md" />
 
 {/* prettier-ignore-end */}
 
@@ -303,11 +231,7 @@ This method allows you to get a query param set by the above API `setQueryParams
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-getqueryparam.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-getqueryparam.md" />
 
 {/* prettier-ignore-end */}
 
@@ -317,11 +241,7 @@ This method allows you to get the application URL state with some changed params
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-geturlstate.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-geturlstate.md" />
 
 {/* prettier-ignore-end */}
 
@@ -331,11 +251,7 @@ This method allows you to register a handler function called whenever the user n
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-addons-api-on.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-addons-api-on.md" />
 
 {/* prettier-ignore-end */}
 
@@ -345,11 +261,7 @@ This method allows you to override the default Storybook UI configuration (e.g.,
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-config-layout.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-config-layout.md" />
 
 {/* prettier-ignore-end */}
 

@@ -16,18 +16,13 @@ Storybook provides an official [test coverage addon](https://storybook.js.org/ad
 
 ### Set up the coverage addon
 
-Engineered to work alongside modern testing tools (e.g., [[Playwright](https://playwright.dev/)), the coverage addon automatically instruments your code and generates code coverage data. For an optimal experience, we recommend using the [test runner](./test-runner.mdx) alongside the coverage addon to run your tests.
+Engineered to work alongside modern testing tools (e.g., \[[Playwright](https://playwright.dev/)), the coverage addon automatically instruments your code and generates code coverage data. For an optimal experience, we recommend using the [test runner](./test-runner.mdx) alongside the coverage addon to run your tests.
 
 Run the following command to install the addon.
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-addon-install.yarn.js.mdx',
-    'common/storybook-coverage-addon-install.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-addon-install.md" />
 
 {/* prettier-ignore-end */}
 
@@ -35,12 +30,7 @@ Update your Storybook configuration (in `.storybook/main.js|ts`) to include the 
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-addon-registration.js.mdx',
-    'common/storybook-coverage-addon-registration.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-addon-registration.md" />
 
 {/* prettier-ignore-end */}
 
@@ -48,12 +38,7 @@ Start your Storybook with:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-run-dev.yarn.js.mdx',
-    'common/storybook-run-dev.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-run-dev.md" />
 
 {/* prettier-ignore-end */}
 
@@ -61,12 +46,7 @@ Finally, open a new terminal window and run the test-runner with:
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-test-runner-coverage.yarn.js.mdx',
-    'common/storybook-test-runner-coverage.npm.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-test-runner-coverage.md" />
 
 {/* prettier-ignore-end */}
 
@@ -78,31 +58,26 @@ By default, the [`@storybook/addon-coverage`](https://storybook.js.org/addons/@s
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-addon-config-options.js.mdx',
-    'common/storybook-coverage-addon-config-options.ts.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-addon-config-options.md" />
 
 {/* prettier-ignore-end */}
 
 | Option                 | Description                                                                                                                                             | Plugin      |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `cwd`                  | Defines the current working directory <br/>`options: { instanbul: { cwd: process.cwd(),}}`                                                              | Babel, Vite |
-| `include`              | Select the files to collect coverage <br/>`options: { instanbul: { include: ['**/stories/**'],}}`                                                       | Babel, Vite |
-| `exclude`              | Select the files to exclude from coverage <br/>`options: { instanbul: { exclude: ['**/stories/**'],}}`                                                  | Babel, Vite |
-| `extension`            | Sets additional file extensions for coverage <br/>`options: { instanbul: { extension: ['.js', '.cjs', '.mjs'],}}`                                       | Babel, Vite |
-| `nycrcPath`            | Defines the relative path for the existing nyc configuration file <br/>`options: { instanbul: { nycrcPath: '../nyc.config.js',}}`                       | Babel, Vite |
-| `excludeNodeModules`   | Disables `node_modules` directory introspection <br/>`options: { instanbul: { excludeNodeModules:false,}}`                                              | Babel       |
-| `ignoreClassMethods`   | Configures a set of method names to ignore from being collected <br/>`options: { instanbul: { ignoreClassMethods: ['example', 'myMethod'],}}`           | Babel       |
-| `useInlineSourceMaps`  | Enables coverage collection on source maps <br/>`options: { instanbul: { useInlineSourceMaps: false,}}`                                                 | Babel       |
-| `inputSourceMap`       | Sets the value to store the source map.<br/> Useful for instrumenting code programmatically <br/>`options: { instanbul: { inputSourceMap: sourceMap,}}` | Babel       |
-| `onCover`              | Hook to monitor coverage collection for all tests <br/>`options: { instanbul: { onCover: (fileName, fileCoverage) => {},}}`                             | Babel       |
-| `requireEnv`           | Overrides the `VITE_COVERAGE` environment variable's value by granting access to the `env` variables <br/>`options: { instanbul: { requireEnv: true,}}` | Vite        |
-| `cypress`              | Replaces the `VITE_COVERAGE` environment variable with `CYPRESS_COVERAGE`. <br/>Requires Cypress <br/>`options: { instanbul: { cypress: true,}}`        | Vite        |
-| `checkProd`            | Configures the plugin to skip instrumentation in production environments <br/>`options: { instanbul: { checkProd: true,}}`                              | Vite        |
-| `forceBuildInstrument` | Configures the plugin to add instrumentation in build mode <br/>`options: { instanbul: { forceBuildInstrument: true,}}`                                 | Vite        |
+| `cwd`                  | Defines the current working directory <br />`options: { instanbul: { cwd: process.cwd(),}}`                                                              | Babel, Vite |
+| `include`              | Select the files to collect coverage <br />`options: { instanbul: { include: ['**/stories/**'],}}`                                                       | Babel, Vite |
+| `exclude`              | Select the files to exclude from coverage <br />`options: { instanbul: { exclude: ['**/stories/**'],}}`                                                  | Babel, Vite |
+| `extension`            | Sets additional file extensions for coverage <br />`options: { instanbul: { extension: ['.js', '.cjs', '.mjs'],}}`                                       | Babel, Vite |
+| `nycrcPath`            | Defines the relative path for the existing nyc configuration file <br />`options: { instanbul: { nycrcPath: '../nyc.config.js',}}`                       | Babel, Vite |
+| `excludeNodeModules`   | Disables `node_modules` directory introspection <br />`options: { instanbul: { excludeNodeModules:false,}}`                                              | Babel       |
+| `ignoreClassMethods`   | Configures a set of method names to ignore from being collected <br />`options: { instanbul: { ignoreClassMethods: ['example', 'myMethod'],}}`           | Babel       |
+| `useInlineSourceMaps`  | Enables coverage collection on source maps <br />`options: { instanbul: { useInlineSourceMaps: false,}}`                                                 | Babel       |
+| `inputSourceMap`       | Sets the value to store the source map.<br /> Useful for instrumenting code programmatically <br />`options: { instanbul: { inputSourceMap: sourceMap,}}` | Babel       |
+| `onCover`              | Hook to monitor coverage collection for all tests <br />`options: { instanbul: { onCover: (fileName, fileCoverage) => {},}}`                             | Babel       |
+| `requireEnv`           | Overrides the `VITE_COVERAGE` environment variable's value by granting access to the `env` variables <br />`options: { instanbul: { requireEnv: true,}}` | Vite        |
+| `cypress`              | Replaces the `VITE_COVERAGE` environment variable with `CYPRESS_COVERAGE`. <br />Requires Cypress <br />`options: { instanbul: { cypress: true,}}`        | Vite        |
+| `checkProd`            | Configures the plugin to skip instrumentation in production environments <br />`options: { instanbul: { checkProd: true,}}`                              | Vite        |
+| `forceBuildInstrument` | Configures the plugin to add instrumentation in build mode <br />`options: { instanbul: { forceBuildInstrument: true,}}`                                 | Vite        |
 
 ## What about other coverage reporting tools?
 
@@ -110,15 +85,11 @@ Out of the box, code coverage tests work seamlessly with Storybook's test-runner
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-report-lcov.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-report-lcov.md" />
 
 {/* prettier-ignore-end */}
 
----
+***
 
 ## Troubleshooting
 
@@ -128,12 +99,7 @@ If you intend on running coverage tests in frameworks with special files like Vu
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets
-  paths={[
-    'common/storybook-coverage-report-vue.json.mdx',
-    'common/storybook-coverage-report-vue.js.mdx',
-  ]}
-/>
+<CodeSnippets path="storybook-coverage-report-vue.md" />
 
 {/* prettier-ignore-end */}
 
@@ -143,10 +109,10 @@ As the [coverage addon](https://storybook.js.org/addons/@storybook/addon-coverag
 
 #### Learn about other UI tests
 
-- [Test runner](./test-runner.mdx) to automate test execution
-- [Visual tests](./visual-testing.mdx) for appearance
-- [Accessibility tests](./accessibility-testing.mdx) for accessibility
-- [Interaction tests](./interaction-testing.mdx) for user behavior simulation
-- Coverage tests for measuring code coverage
-- [Snapshot tests](./snapshot-testing.mdx) for rendering errors and warnings
-- [Import stories in other tests](./importing-stories-in-tests.mdx) for other tools
+* [Test runner](./test-runner.mdx) to automate test execution
+* [Visual tests](./visual-testing.mdx) for appearance
+* [Accessibility tests](./accessibility-testing.mdx) for accessibility
+* [Interaction tests](./interaction-testing.mdx) for user behavior simulation
+* Coverage tests for measuring code coverage
+* [Snapshot tests](./snapshot-testing.mdx) for rendering errors and warnings
+* [Import stories in other tests](./importing-stories-in-tests.mdx) for other tools
