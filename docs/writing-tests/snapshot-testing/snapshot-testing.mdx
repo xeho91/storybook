@@ -1,12 +1,15 @@
 ---
 title: 'Snapshot testing with Storyshots'
+sidebar:
+  order: 1
+  title: Storyshots
 ---
 
 Snapshot tests compare the rendered markup of every story against known baselines. It’s a way to identify markup changes that trigger rendering errors and warnings.
 
 Storybook is a helpful tool for snapshot testing because every story is essentially a test specification. Any time you write or update a story, you get a snapshot test for free.
 
-![Example Snapshot test](./snapshot-test.png)
+![Example Snapshot test](../../_assets/writing-tests/snapshot-test.png)
 
 ## Migrating Tests
 
@@ -46,11 +49,11 @@ Run your first test. Storyshots will recognize your stories (based on [.storyboo
 npm test storybook.test.js
 ```
 
-![Successful snapshot tests](./storyshots-pass.png)
+![Successful snapshot tests](../../_assets/writing-tests/storyshots-pass.png)
 
 When you make changes to your components or stories, rerun the test to identify the changes to the rendered markup.
 
-![Failing snapshots](./storyshots-fail.png)
+![Failing snapshots](../../_assets/writing-tests/storyshots-fail.png)
 
 If they're intentional, accept them as new baselines. If the changes are bugs, fix the underlying code, then rerun the snapshot tests.
 
@@ -104,11 +107,11 @@ Visual tests capture images of stories and compare them against image baselines.
 
 #### Learn about other UI tests
 
-* [Test runner](./test-runner.mdx) to automate test execution
-* [Visual tests](./visual-testing.mdx) for appearance
-* [Accessibility tests](./accessibility-testing.mdx) for accessibility
-* [Interaction tests](./interaction-testing.mdx) for user behavior simulation
-* [Coverage tests](./test-coverage.mdx) for measuring code coverage
+* [Test runner](../test-runner.mdx) to automate test execution
+* [Visual tests](../visual-testing.mdx) for appearance
+* [Accessibility tests](../accessibility-testing.mdx) for accessibility
+* [Interaction tests](../interaction-testing.mdx) for user behavior simulation
+* [Coverage tests](../test-coverage.mdx) for measuring code coverage
 * Snapshot tests for rendering errors and warnings
-* [End-to-end tests](./stories-in-end-to-end-tests.mdx) for simulating real user scenarios
-* [Unit tests](./stories-in-unit-tests.mdx) for functionality
+* [End-to-end tests](../import-stories-in-tests/stories-in-end-to-end-tests.mdx) for simulating real user scenarios
+* [Unit tests](../import-stories-in-tests/stories-in-unit-tests.mdx) for functionality
