@@ -10,10 +10,73 @@ Below is a comprehensive table of what’s supported in which framework integrat
 
 Core frameworks have dedicated maintainers or contributors who are responsible for maintaining the integration. As such, you can use most Storybook features in these frameworks.
 
-<FrameworkSupportTable core />
+|                                                                                                                       | React | Vue 3 | Angular | Web Components |
+| --------------------------------------------------------------------------------------------------------------------- | ----- | ----- | ------- | -------------- |
+| **Essentials**                                                                                                        |       |       |         |                |
+| [Actions](../essentials/actions.mdx)                                                                                  | ✅    | ✅    | ✅       | ✅             |
+| [Backgrounds](../essentials/backgrounds.mdx)                                                                          | ✅    | ✅    | ✅       | ✅             |
+| [Docs](../writing-docs/introduction.mdx)                                                                              | ✅    | ✅    | ✅       | ✅             |
+| [Viewport](../essentials/viewport.mdx)                                                                                | ✅    | ✅    | ✅       | ✅             |
+| [Controls](../essentials/controls.mdx)                                                                                | ✅    | ✅    | ✅       | ✅             |
+| [Measure](../essentials/measure-and-outline.mdx#measure-addon)                                                        | ✅    | ✅    | ✅       | ✅             |
+| [Outline](../essentials/measure-and-outline.mdx#outline-addon)                                                        | ✅    | ✅    | ✅       | ✅             |
+| **Addons**                                                                                                            |       |       |         |                |
+| [A11y](../writing-tests/accessibility-testing.mdx)                                                                    | ✅    | ✅    | ✅       | ✅             |
+| [CSS resources](https://github.com/storybookjs/addon-cssresources)                                                    | ✅    | ✅    | ✅       | ✅             |
+| [Design assets](https://github.com/storybookjs/addon-design-assets)                                                   | ✅    | ✅    | ✅       | ✅             |
+| [Events](https://github.com/storybookjs/addon-events)                                                                 | ✅    | ✅    | ✅       | ✅             |
+| [Google analytics](https://github.com/storybookjs/addon-google-analytics)                                             | ✅    | ✅    | ✅       | ✅             |
+| [GraphQL](https://github.com/storybookjs/addon-graphql)                                                               | ✅    |       | ✅       |                |
+| [Jest](https://github.com/storybookjs/storybook/tree/next/code/addons/jest)                                           | ✅    | ✅    | ✅       | ✅             |
+| [knobs](https://github.com/storybookjs/addon-knobs)                                                                   | ✅    | ✅    | ✅       | ✅             |
+| [Links](https://github.com/storybookjs/storybook/tree/next/code/addons/links)                                         | ✅    | ✅    | ✅       | ✅             |
+| [Queryparams](https://github.com/storybookjs/addon-queryparams)                                                       | ✅    | ✅    | ✅       | ✅             |
+| [StoryShots](../writing-tests/snapshot-testing.mdx)                                                                   | ✅    | ✅    | ✅       | ✅             |
+| [Storysource](https://github.com/storybookjs/storybook/tree/next/code/addons/storysource)                             | ✅    | ✅    | ✅       | ✅             |
+| **Docs**                                                                                                              | ✅    | ✅    | ✅       |  ✅              |
+| [CSF Stories](./csf.mdx)                                                                                              | ✅    | ✅    | ✅       | ✅             |
+| [MDX Stories](./mdx.mdx)                                                                                              | ✅    | ✅    | ✅       | ✅             |
+| [StoriesOf stories](https://github.com/storybookjs/storybook/blob/release-7-6/code/lib/preview-api/docs/storiesOf.md) |       |       |          |                |
+| [Source](../writing-docs/doc-block-source.mdx)                                                                        | ✅    | ✅    | ✅       | ✅             |
+| [Dynamic Source](../writing-docs/doc-block-source.mdx)                                                                | ✅    | ✅    | ✅       | ✅             |
+| [Args Table](../writing-docs/doc-block-argstable.mdx)                                                                 | ✅    | ✅    | ✅       | ✅             |
+| [Description](../writing-docs/doc-block-description.mdx)                                                              | ✅    | ✅    | ✅       | ✅             |
+| Inline stories                                                                                                        | ✅    | ✅    | ✅       | ✅             |
+
 
 ## Community frameworks
 
 Community frameworks have fewer contributors which means they may not be as up to date as core frameworks. If you use one of these frameworks for your job, please consider contributing to its integration with Storybook.
 
-<FrameworkSupportTable core={false} />
+|                                                                                                                       | Ember | HTML | Svelte | Preact |
+| --------------------------------------------------------------------------------------------------------------------- | ----- | ---- | ------ | ------ |
+| **Essentials**                                                                                                        |       |      |        |        |
+| [Actions](../essentials/actions.mdx)                                                                                  | ✅    | ✅   | ✅     | ✅     |
+| [Backgrounds](../essentials/backgrounds.mdx)                                                                          | ✅    | ✅   | ✅     | ✅     |
+| [Docs](../writing-docs/introduction.mdx)                                                                              | ✅    | ✅   | ✅     | ✅     |
+| [Viewport](../essentials/viewport.mdx)                                                                                | ✅    | ✅   | ✅     | ✅     |
+| [Controls](../essentials/controls.mdx)                                                                                | ✅    |      |        |        |
+| [Measure](../essentials/measure-and-outline.mdx#measure-addon)                                                        | ✅    | ✅   | ✅     | ✅     |
+| [Outline](../essentials/measure-and-outline.mdx#outline-addon)                                                        | ✅    | ✅   | ✅     | ✅     |
+| **Addons**                                                                                                            |       |      |        |        |
+| [A11y](../writing-tests/accessibility-testing.mdx)                                                                    | ✅    | ✅   | ✅     | ✅     |
+| [CSS resources](https://github.com/storybookjs/addon-cssresources)                                                    | ✅    | ✅   | ✅     | ✅     |
+| [Design assets](https://github.com/storybookjs/addon-design-assets)                                                   | ✅    | ✅   | ✅     | ✅     |
+| [Events](https://github.com/storybookjs/addon-events)                                                                 | ✅    | ✅   |        | ✅     |
+| [Google analytics](https://github.com/storybookjs/addon-google-analytics)                                             | ✅    | ✅   | ✅     | ✅     |
+| [GraphQL](https://github.com/storybookjs/addon-graphql)                                                               |       |      |        |        |
+| [Jest](https://github.com/storybookjs/storybook/tree/next/code/addons/jest)                                           | ✅    | ✅   | ✅     | ✅     |
+| [knobs](https://github.com/storybookjs/addon-knobs)                                                                   | ✅    | ✅   | ✅     | ✅     |
+| [Links](https://github.com/storybookjs/storybook/tree/next/code/addons/links)                                         | ✅    | ✅   | ✅     | ✅     |
+| [Queryparams](https://github.com/storybookjs/addon-queryparams)                                                       | ✅    | ✅   | ✅     | ✅     |
+| [StoryShots](../writing-tests/snapshot-testing.mdx)                                                                   |       | ✅   | ✅     | ✅     |
+| [Storysource](https://github.com/storybookjs/storybook/tree/next/code/addons/storysource)                             | ✅    | ✅   | ✅     | ✅     |
+| **Docs**                                                                                                              |       |      |        |        |
+| [CSF Stories](./csf.mdx)                                                                                              | ✅    | ✅   | ✅     | ✅     |
+| [MDX Stories](./mdx.mdx)                                                                                              | ✅    | ✅   | ✅     | ✅     |
+| [StoriesOf stories](https://github.com/storybookjs/storybook/blob/release-7-6/code/lib/preview-api/docs/storiesOf.md) | ✅    | ✅   | ✅     | ✅     |
+| [Source](../writing-docs/doc-block-source.mdx)                                                                        | ✅    | ✅   | ✅     | ✅     |
+| [Dynamic Source](../writing-docs/doc-block-source.mdx)                                                                |       | ✅   | ✅     |        |
+| [Args Table](../writing-docs/doc-block-argstable.mdx)                                                                 | ✅    | ✅   | ✅     |        |
+| [Description](../writing-docs/doc-block-description.mdx)                                                              | ✅    |      |        |        |
+| Inline stories                                                                                                        |       | ✅   | ✅     |        |
