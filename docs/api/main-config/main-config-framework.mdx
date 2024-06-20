@@ -11,7 +11,7 @@ Parent: [main.js|ts configuration](./main-config.mdx)
 
 Type: `FrameworkName | { name: FrameworkName; options?: FrameworkOptions }`
 
-Configures Storybook based on a set of [framework-specific](../configure/frameworks.mdx) settings.
+Configures Storybook based on a set of [framework-specific](../../configure/integration/frameworks.mdx) settings.
 
 {/* prettier-ignore-start */}
 
@@ -35,11 +35,11 @@ While many options are specific to a framework, there are some options that are 
 
 Type: `Record<string, any>`
 
-Configures Storybook's builder, [Vite](../builders/vite.mdx) or [Webpack](../builders/webpack.mdx).
+Configures Storybook's builder, [Vite](../../builders/vite.mdx) or [Webpack](../../builders/webpack.mdx).
 
 #### `options.builder.useSWC`
 
-For frameworks made with [Webpack](../builders/webpack.mdx) builder, except Angular. Enabling this option allows you to use the [SWC](https://swc.rs/) compiler instead of [Babel](../configure/compilers.mdx#babel).
+For frameworks made with [Webpack](../../builders/webpack.mdx) builder, except Angular. Enabling this option allows you to use the [SWC](https://swc.rs/) compiler instead of [Babel](../../configure/integration/compilers.mdx#babel).
 
 When Storybook loads, it will update Webpack's configuration including the required loaders (e.g., [`TerserPlugin`](https://webpack.js.org/plugins/terser-webpack-plugin/), [`babel-loader`](https://webpack.js.org/loaders/babel-loader/)) with SWC equivalents (e.g., [`swc-loader`](https://swc.rs/docs/usage/swc-loader)) for bundling and minification.
 

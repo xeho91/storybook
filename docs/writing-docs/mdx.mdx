@@ -159,7 +159,9 @@ In Storybook, you can apply MDX options, including plugins, in the main configur
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
+
   The [`remark-gfm`](https://github.com/remarkjs/remark-gfm) package isn't provided by default during migration. We recommend installing it as a development dependency if you use its features.
+  
 </Callout>
 
 ### Automigration
@@ -184,7 +186,7 @@ Create an MDX file to add your custom documentation. Depending on how you want y
 
 ### Using the `Meta` Doc Block
 
-If you need to match the component documentation to an existing story, you can configure the [`Meta`](../api/doc-block-meta.mdx) Doc Block to control how the documentation gets rendered. Out of the box, it allows you to define a custom title or a reference to the story you need to document (i.e., via the `of` prop). For example:
+If you need to match the component documentation to an existing story, you can configure the [`Meta`](../api/doc-blocks/doc-block-meta.mdx) Doc Block to control how the documentation gets rendered. Out of the box, it allows you to define a custom title or a reference to the story you need to document (i.e., via the `of` prop). For example:
 
 {/* prettier-ignore-start */}
 
@@ -218,7 +220,7 @@ However, providing the `Meta` Doc Block may not be required for certain use case
   If you're overriding an existing auto-generated documentation page enabled via [`tags`](./autodocs.mdx#setup-automated-documentation) configuration property, we recommend removing it to avoid errors.
 </Callout>
 
-Once the custom MDX documentation is loaded, Storybook will infer the title and location using the same heuristic rules to generate [auto-title stories](../configure/sidebar-and-urls.mdx#csf-30-auto-titles) and render it in the sidebar as a `Docs` entry.
+Once the custom MDX documentation is loaded, Storybook will infer the title and location using the same heuristic rules to generate [auto-title stories](../configure/user-interface/sidebar-and-urls.mdx#csf-30-auto-titles) and render it in the sidebar as a `Docs` entry.
 
 #### Working with standalone documentation pages
 
@@ -265,7 +267,7 @@ If you need to extend your documentation with additional content written in Mark
 {/* prettier-ignore-end */}
 
 <Callout variant="info">
-  The `Markdown` Doc Block provides additional configuration options to customize the rendering of your documentation. For more information, refer to the [API documentation](../api/doc-block-markdown.mdx).
+  The `Markdown` Doc Block provides additional configuration options to customize the rendering of your documentation. For more information, refer to the [API documentation](../api/doc-blocks/doc-block-markdown.mdx).
 </Callout>
 
 ![Changelog markdown in an MDX story](../_assets/writing-docs/mdx-markdown-docs-import.png)
@@ -310,7 +312,7 @@ If you run into a situation where Storybook is not able to detect and render the
 
 #### The documentation doesn't render using `stories.mdx`
 
-Starting with Storybook 7.0, we've deprecated documenting stories with the `.stories.mdx` file extension. If you're still using the `stories.mdx` extension, we recommend [migrating](#automigration) as soon as possible to avoid any issues, as the majority of APIs and [Doc Blocks](./doc-blocks.mdx) used by Storybook were overhauled to support MDX 2 and the new MDX compiler (e.g., the [`Meta`](../api/doc-block-meta.mdx) block).
+Starting with Storybook 7.0, we've deprecated documenting stories with the `.stories.mdx` file extension. If you're still using the `stories.mdx` extension, we recommend [migrating](#automigration) as soon as possible to avoid any issues, as the majority of APIs and [Doc Blocks](./doc-blocks.mdx) used by Storybook were overhauled to support MDX 2 and the new MDX compiler (e.g., the [`Meta`](../api/doc-blocks/doc-block-meta.mdx) block).
 
 #### MDX 1 fallback
 
@@ -360,7 +362,7 @@ If you're still encountering issues, we recommend reaching out to the community 
 
 ### The controls are not updating the story within the MDX documentation page
 
-If you turned off inline rendering for your stories via the [`inline`](../api/doc-block-story.mdx#inline) configuration option, you would run into a situation where the associated controls are not updating the story within the documentation page. This is a known limitation of the current implementation and will be addressed in a future release.
+If you turned off inline rendering for your stories via the [`inline`](../api/doc-blocks/doc-block-story.mdx#inline) configuration option, you would run into a situation where the associated controls are not updating the story within the documentation page. This is a known limitation of the current implementation and will be addressed in a future release.
 
 #### Learn more about Storybook documentation
 

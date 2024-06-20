@@ -51,7 +51,7 @@ Options include:
 | `--disable-telemetry`           | Disables Storybook's telemetry. Learn more about it [here](../configure/telemetry.mdx)<br />`storybook dev --disable-telemetry`                                             |
 
 <Callout variant="warning" id="static-dir-deprecation">
-  Starting in 6.4 the `-s` flag is deprecated. Instead, use a configuration object in your `.storybook/main.js` file. See the [images and assets documentation](../configure/images-and-assets.mdx#serving-static-files-via-storybook) for more information.
+  Starting in 6.4 the `-s` flag is deprecated. Instead, use a configuration object in your `.storybook/main.js` file. See the [images and assets documentation](../configure/integration/images-and-assets.mdx#serving-static-files-via-storybook) for more information.
 </Callout>
 
 ### `build`
@@ -64,20 +64,20 @@ storybook build [options]
 
 Options include:
 
-| Option                          | Description                                                                                                                                                                                             |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-h`, `--help`                  | Output usage information<br />`storybook build --help`                                                                                                                                                  |
-| `-V`, `--version`               | Output the version number<br />`storybook build -V`                                                                                                                                                     |
-| `-s`, `--static-dir`            | **Deprecated** [see note](#static-dir-deprecation).<br /> Directory where to load static files from, comma-separated list<br />`storybook build -s public`                                              |
-| `-o`, `--output-dir [dir-name]` | Directory where to store built files<br />`storybook build -o /my-deployed-storybook`                                                                                                                   |
-| `-c`, `--config-dir [dir-name]` | Directory where to load Storybook configurations from<br />`storybook build -c .storybook`                                                                                                              |
-| `--loglevel [level]`            | Controls level of logging during build.<br /> Available options: `silly`, `verbose`, `info` (default), `warn`, `error`, `silent`<br />`storybook build --loglevel warn`                                 |
-| `--quiet`                       | Suppress verbose build output<br />`storybook build --quiet`                                                                                                                                            |
-| `--debug-webpack`               | Display final webpack configurations for debugging purposes<br />`storybook build --debug-webpack`                                                                                                      |
-| `--webpack-stats-json`          | Write Webpack Stats JSON to disk<br />`storybook build --webpack-stats-json /my-storybook/webpack-stats`                                                                                                |
-| `--docs`                        | Builds Storybook in documentation mode. Learn more about it in [here](../writing-docs/build-documentation.mdx#publish-storybooks-documentation)<br />`storybook build --docs`                           |
-| `--disable-telemetry`           | Disables Storybook's telemetry. Learn more about it [here](../configure/telemetry.mdx).<br />`storybook build --disable-telemetry`                                                                      |
-| `--test`                        | Optimize Storybook's production build for performance and tests by removing unnecessary features with the `test` option. Learn more [here](../api/main-config-build.mdx).<br />`storybook build --test` |
+| Option                          | Description                                                                                                                                                                                                         |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `-h`, `--help`                  | Output usage information<br />`storybook build --help`                                                                                                                                                              |
+| `-V`, `--version`               | Output the version number<br />`storybook build -V`                                                                                                                                                                 |
+| `-s`, `--static-dir`            | **Deprecated** [see note](#static-dir-deprecation).<br /> Directory where to load static files from, comma-separated list<br />`storybook build -s public`                                                          |
+| `-o`, `--output-dir [dir-name]` | Directory where to store built files<br />`storybook build -o /my-deployed-storybook`                                                                                                                               |
+| `-c`, `--config-dir [dir-name]` | Directory where to load Storybook configurations from<br />`storybook build -c .storybook`                                                                                                                          |
+| `--loglevel [level]`            | Controls level of logging during build.<br /> Available options: `silly`, `verbose`, `info` (default), `warn`, `error`, `silent`<br />`storybook build --loglevel warn`                                             |
+| `--quiet`                       | Suppress verbose build output<br />`storybook build --quiet`                                                                                                                                                        |
+| `--debug-webpack`               | Display final webpack configurations for debugging purposes<br />`storybook build --debug-webpack`                                                                                                                  |
+| `--webpack-stats-json`          | Write Webpack Stats JSON to disk<br />`storybook build --webpack-stats-json /my-storybook/webpack-stats`                                                                                                            |
+| `--docs`                        | Builds Storybook in documentation mode. Learn more about it in [here](../writing-docs/build-documentation.mdx#publish-storybooks-documentation)<br />`storybook build --docs`                                       |
+| `--disable-telemetry`           | Disables Storybook's telemetry. Learn more about it [here](../configure/telemetry.mdx).<br />`storybook build --disable-telemetry`                                                                                  |
+| `--test`                        | Optimize Storybook's production build for performance and tests by removing unnecessary features with the `test` option. Learn more [here](../api/main-config/main-config-build.mdx).<br />`storybook build --test` |
 
 {/* Re-read this for accuracy */}
 
@@ -93,15 +93,15 @@ For example, `storybook@latest init` will install the latest version of Storyboo
 
 Options include:
 
-| Option                 | Description                                                                                                                                                                      |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-b`, `--builder`      | Defines the [builder](../builders/index.mdx) to use for your Storybook instance<br />`storybook init --builder webpack5`                                                         |
-| `-f`,`--force`         | Forcefully installs Storybook into your project, prompting you to overwrite existing files<br />`storybook init --force`                                                         |
-| `-s`, `--skip-install` | Skips the dependency installation step. Used only when you need to configure Storybook manually<br />`storybook init --skip-install`                                             |
-| `-t`, `--type`         | Defines the [framework](../configure/frameworks.mdx) to use for your Storybook instance<br />`storybook init --type solid`                                                       |
-| `-y`, `--yes`          | Skips interactive prompts and automatically installs Storybook per specified version<br />`storybook init --yes`                                                                 |
-| `--package-manager`    | Sets the package manager to use when installing the addon.<br /> Available package managers include `npm`, `yarn`, and `pnpm`<br />`storybook init --package-manager pnpm`       |
-| `--use-pnp`            | Enables [Plug'n'Play](https://yarnpkg.com/features/pnp) support for Yarn. This option is only available when using Yarn as your package manager<br />`storybook init --use-pnp`  |
+| Option                 | Description                                                                                                                                                                                  |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `-b`, `--builder`      | Defines the [builder](../builders/index.mdx) to use for your Storybook instance<br />`storybook init --builder webpack5`                                                                     |
+| `-f`,`--force`         | Forcefully installs Storybook into your project, prompting you to overwrite existing files<br />`storybook init --force`                                                                     |
+| `-s`, `--skip-install` | Skips the dependency installation step. Used only when you need to configure Storybook manually<br />`storybook init --skip-install`                                                         |
+| `-t`, `--type`         | Defines the [framework](../configure/integration/frameworks.mdx) to use for your Storybook instance<br />`storybook init --type solid`                                                       |
+| `-y`, `--yes`          | Skips interactive prompts and automatically installs Storybook per specified version<br />`storybook init --yes`                                                                             |
+| `--package-manager`    | Sets the package manager to use when installing the addon.<br /> Available package managers include `npm`, `yarn`, and `pnpm`<br />`storybook init --package-manager pnpm`                   |
+| `--use-pnp`            | Enables [Plug'n'Play](https://yarnpkg.com/features/pnp) support for Yarn. This option is only available when using Yarn as your package manager<br />`storybook init --use-pnp`              |
 
 ### `add`
 
@@ -206,7 +206,7 @@ Storybook Environment Info:
 
 ### `sandbox`
 
-Generates a local sandbox project using the specified version (e.g., `@latest`, `@8`, `@next`) for testing Storybook features based on the list of supported [frameworks](../configure/frameworks.mdx). Useful for reproducing bugs when opening an issue or a discussion.
+Generates a local sandbox project using the specified version (e.g., `@latest`, `@8`, `@next`) for testing Storybook features based on the list of supported [frameworks](../configure/integration/frameworks.mdx). Useful for reproducing bugs when opening an issue or a discussion.
 
 ```shell
 storybook[@version] sandbox [framework-filter] [options]

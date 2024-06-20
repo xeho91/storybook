@@ -37,7 +37,7 @@ Every modern web application has unique requirements and relies on various tools
 | Option           | Description                                                                                                                                                                                                                                                  | Framework |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --------- |
 | `nextConfigPath` | Sets the default path for the NextJS configuration file<br />`framework: { name: '@storybook/nextjs', options: { nextConfigPath: '../next.config.js'} }`                                                                                                     | NextJS    |
-| `builder`        | Configures [Webpack 5](../../builders/webpack.mdx) builder options for NextJS<br /> `core: { builder: { name:'webpack5', options: { lazyCompilation: true} }}`                                                                                                  | NextJS    |
+| `builder`        | Configures [Webpack 5](../../builders/webpack.mdx) builder options for NextJS<br /> `core: { builder: { name:'webpack5', options: { lazyCompilation: true} }}`                                                                                               | NextJS    |
 | `fastRefresh`    | Enables [fast refresh mode](https://www.npmjs.com/package/react-refresh) for React<br />`framework: { name: '@storybook/react-webpack5', options: { fastRefresh: false } }`                                                                                  | React     |
 | `strictMode`     | Enables React's [strict mode](https://reactjs.org/docs/strict-mode.html)<br />`framework: { name: '@storybook/react-webpack5', options: { strictMode: false } }`                                                                                             | React     |
 | `legacyRootApi`  | Requires React 18. Toggles support for React's [legacy root API](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis)<br />`framework: { name: '@storybook/react-webpack5', options: { legacyRootApi: true } }` | React     |
@@ -54,7 +54,7 @@ With the release of Next.js [version 13](https://nextjs.org/blog/next-13), it in
 
 ### My framework doesn't work with Storybook
 
-Out of the box, most frameworks work seamlessly with Storybook. However, some frameworks (e.g., [CRACO](https://craco.js.org/)) provide their own configuration that Storybook isn't prepared to handle without additional steps, either [via addon](../addons/writing-presets.mdx) or integration. To learn more, read our [addons guide](../../addons/index.mdx).
+Out of the box, most frameworks work seamlessly with Storybook. However, some frameworks (e.g., [CRACO](https://craco.js.org/)) provide their own configuration that Storybook isn't prepared to handle without additional steps, either [via addon](../../addons/writing-presets.mdx) or integration. To learn more, read our [addons guide](../../addons/index.mdx).
 
 ### How do I build a Storybook framework?
 
@@ -66,7 +66,7 @@ We're deprecating support for several frameworks, including [Aurelia](https://gi
 
 ### Learn about configuring Storybook
 
-* [Theming](./theming.mdx) to customize the look and feel of Storybook's UI
+* [Theming](../user-interface/theming.mdx) to customize the look and feel of Storybook's UI
 * [CSS](../styling-and-css.mdx) to configure CSS support
 * [Images & assets](../integration/images-and-assets.mdx) for static asset handling
 * [Environment variables](../environment-variables.mdx) to configure environment variables

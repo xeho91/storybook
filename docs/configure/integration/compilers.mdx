@@ -18,7 +18,7 @@ SWC is a fast, highly extensible tool for compiling and bundling modern JavaScri
 {/* prettier-ignore-end */}
 
 <Callout variant="info">
-  Support for the SWC builder is currently experimental for Next.js projects, and it's not enabled by default. It requires you to opt in to use it. For more information on configuring SWC with the supported frameworks, see the [SWC API](../../api/main-config-swc.mdx) documentation.
+  Support for the SWC builder is currently experimental for Next.js projects, and it's not enabled by default. It requires you to opt in to use it. For more information on configuring SWC with the supported frameworks, see the [SWC API](../../api/main-config/main-config-swc.mdx) documentation.
 </Callout>
 
 ## Babel
@@ -125,6 +125,7 @@ If you're working with a project that was initialized with [Create React App](ht
 ## Troubleshooting
 
 <IfRenderer renderer="react">
+
   ### The SWC compiler doesn't work with React
 
   If you have enabled the SWC builder option in a React-based project and you are not explicitly importing React in your `jsx|tsx` files, it can cause Storybook to fail to load. SWC does not automatically import the `jsx-runtime` module when using the SWC builder. To resolve this issue, you need to adjust your Storybook configuration file (i.e., `.storybook/main.js|ts`) and configure the `swc` option as follows:
@@ -134,6 +135,7 @@ If you're working with a project that was initialized with [Create React App](ht
   <CodeSnippets path="main-config-swc-jsx-transform.md" />
 
   {/* prettier-ignore-end */}
+  
 </IfRenderer>
 
 ### Babel configuration not working

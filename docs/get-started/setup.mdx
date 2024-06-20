@@ -49,7 +49,7 @@ Your project may have additional requirements before components can be rendered 
   If you see errors on the CLI when you run the `yarn storybook` command, you likely need to make changes to Storybook’s build configuration. Here are some things to try:
 
   * [Presets](../addons/addon-types.mdx) bundle common configurations for various technologies into Storybook. In particular, presets exist for Create React App and Ant Design.
-  * Specify a custom [Babel configuration](../configure/compilers.mdx#babel) for Storybook. Storybook automatically tries to use your project’s config if it can.
+  * Specify a custom [Babel configuration](../configure/integration/compilers.mdx#babel) for Storybook. Storybook automatically tries to use your project’s config if it can.
   * Adjust the [Webpack configuration](../builders/webpack.mdx) that Storybook uses. Try patching in your own configuration if needed.
 </details>
 
@@ -77,6 +77,6 @@ Your project may have additional requirements before components can be rendered 
 
 ## Load assets and resources
 
-If you want to [link to static files](../configure/images-and-assets.mdx) in your project or stories (e.g., `/fonts/XYZ.woff`), use the `-s path/to/folder` flag to specify a static folder to serve from when you start up Storybook. To do so, edit the `storybook` and `build-storybook` scripts in `package.json`.
+If you want to [link to static files](../configure/integration/images-and-assets.mdx) in your project or stories (e.g., `/fonts/XYZ.woff`), use the `-s path/to/folder` flag to specify a static folder to serve from when you start up Storybook. To do so, edit the `storybook` and `build-storybook` scripts in `package.json`.
 
 We recommend serving external resources and assets requested in your components statically with Storybook. It ensures that assets are always available to your stories.

@@ -34,7 +34,7 @@ import * as ButtonStories from './Button.stories'
 
 <Callout variant="warning">
 
-  The Controls doc block will only have functioning UI controls if you have also installed and registered [`@storybook/addon-controls`](../essentials/controls.mdx) (included in [`@storybook/addon-essentials`](../essentials/index.mdx)) and haven't turned off inline stories with the [`inline`](./doc-block-story.mdx#inline) configuration option.
+  The Controls doc block will only have functioning UI controls if you have also installed and registered [`@storybook/addon-controls`](../../essentials/controls.mdx) (included in [`@storybook/addon-essentials`](../../essentials/index.mdx)) and haven't turned off inline stories with the [`inline`](./doc-block-story.mdx#inline) configuration option.
 
 </Callout>
 
@@ -47,7 +47,7 @@ import { Controls } from '@storybook/blocks';
 <details>
   <summary>Configuring with props <strong>and</strong> parameters</summary>
 
-  ℹ️ Like most blocks, the `Controls` block is configured with props in MDX. Many of those props derive their default value from a corresponding [parameter](../writing-stories/parameters.mdx) in the block's namespace, `parameters.docs.controls`.
+  ℹ️ Like most blocks, the `Controls` block is configured with props in MDX. Many of those props derive their default value from a corresponding [parameter](../../writing-stories/parameters.mdx) in the block's namespace, `parameters.docs.controls`.
 
   The following `exclude` configurations are equivalent:
 
@@ -67,12 +67,12 @@ import { Controls } from '@storybook/blocks';
 
   {/* prettier-ignore-end */}
 
-  The example above applied the parameter at the [component](../writing-stories/parameters.mdx#component-parameters) (or meta) level, but it could also be applied at the [project](../writing-stories/parameters.mdx#global-parameters) or [story](../writing-stories/parameters.mdx#story-parameters) level.
+  The example above applied the parameter at the [component](../../writing-stories/parameters.mdx#component-parameters) (or meta) level, but it could also be applied at the [project](../../writing-stories/parameters.mdx#global-parameters) or [story](../../writing-stories/parameters.mdx#story-parameters) level.
 </details>
 
 <Callout variant="info" icon="💡">
 
-  This API configures Controls blocks used within docs pages. To configure the Controls addon panel, see the [Controls addon docs](../essentials/controls.mdx). To configure individual controls, you can specify [argTypes](./arg-types.mdx#control) for each.
+  This API configures Controls blocks used within docs pages. To configure the Controls addon panel, see the [Controls addon docs](../../essentials/controls.mdx). To configure individual controls, you can specify [argTypes](../arg-types.mdx#control) for each.
   
 </Callout>
 

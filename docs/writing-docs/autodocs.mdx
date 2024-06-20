@@ -63,7 +63,7 @@ Going over the code snippet in more detail. When Storybook starts up, it will ov
 
 #### With MDX
 
-You can also use MDX to generate the documentation template. This is useful in non-React projects where JSX-handling is not configured. Normally, when you create an MDX file in your project, it is treated as normal documentation. To indicate that an MDX file is a documentation template, supply the `isTemplate` property to its [`Meta`](../api/doc-block-meta.mdx) Doc Block. For example:
+You can also use MDX to generate the documentation template. This is useful in non-React projects where JSX-handling is not configured. Normally, when you create an MDX file in your project, it is treated as normal documentation. To indicate that an MDX file is a documentation template, supply the `isTemplate` property to its [`Meta`](../api/doc-blocks/doc-block-meta.mdx) Doc Block. For example:
 
 {/* prettier-ignore-start */}
 
@@ -208,7 +208,7 @@ If you're still encountering issues, we recommend reaching out to the community 
 
 ### The controls are not updating the story within the auto-generated documentation
 
-If you turned off inline rendering for your stories via the [`inline`](../api/doc-block-story.mdx#inline) configuration option, you would run into a situation where the associated controls are not updating the story within the documentation page. This is a known limitation of the current implementation and will be addressed in a future release.
+If you turned off inline rendering for your stories via the [`inline`](../api/doc-blocks/doc-block-story.mdx#inline) configuration option, you would run into a situation where the associated controls are not updating the story within the documentation page. This is a known limitation of the current implementation and will be addressed in a future release.
 
 #### Learn more about Storybook documentation
 
