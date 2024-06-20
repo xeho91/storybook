@@ -8,7 +8,7 @@ Accessibility is the practice of making websites inclusive to all. That means su
 
 Accessibility tests audit the rendered DOM against a set of heuristics based on [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) rules and other industry-accepted best practices. They act as the first line of QA to catch blatant accessibility violations.
 
-![Accessibility testing](./accessibility-testing-storybook.gif)
+![Accessibility testing](../_assets/writing-tests/accessibility-testing-storybook.gif)
 
 ## Accessibility checks with a11y addon
 
@@ -52,7 +52,7 @@ Storybook's a11y addon runs [Axe](https://github.com/dequelabs/axe-core) on the 
 
 Cycling through both stories, you will see that the `Inaccessible` story contains some issues that need fixing. Opening the violations tab in the accessibility panel provides a clear description of the accessibility issue and guidelines for solving it.
 
-![Storybook accessibility addon running](./storybook-a11y-addon-unoptimized.png)
+![Storybook accessibility addon running](../_assets/writing-tests/storybook-a11y-addon-unoptimized.png)
 
 ### Configure
 
@@ -132,7 +132,7 @@ When you execute the test runner (for example, with `yarn test-storybook`), it w
 
 It starts checking for issues by traversing the DOM tree starting from the story's root element and generates a detailed report based on the issues it encountered.
 
-![Accessibility testing with the test runner](./test-runner-a11y-optimized.png)
+![Accessibility testing with the test runner](../_assets/writing-tests/test-runner-a11y-optimized.png)
 
 ### A11y config with the test runner
 
