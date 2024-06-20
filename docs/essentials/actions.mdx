@@ -17,7 +17,7 @@ Actions work via supplying special Storybook-generated “action” arguments (r
 
 ### Action argType annotation
 
-You can use [argTypes](../api/argtypes.md) to tell Storybook that an arg to your story should be an action. Usually, it makes sense to do this at the component level (although you can apply it per individual story):
+You can use [argTypes](../api/argtypes.mdx) to tell Storybook that an arg to your story should be an action. Usually, it makes sense to do this at the component level (although you can apply it per individual story):
 
 {/* prettier-ignore-start */}
 
@@ -36,7 +36,7 @@ When Storybook sees this argType, it will create an arg set to a special “acti
 
 ### Automatically matching args
 
-Another option is to use a global parameter to match all [argTypes](../api/argtypes.md) that match a certain pattern. The following configuration automatically creates actions for each `on` argType (which you can either specify manually or can be [inferred automatically](../api/argtypes.md#automatic-argtype-inference)).
+Another option is to use a global parameter to match all [argTypes](../api/argtypes.mdx) that match a certain pattern. The following configuration automatically creates actions for each `on` argType (which you can either specify manually or can be [inferred automatically](../api/argtypes.mdx#automatic-argtype-inference)).
 
 {/* prettier-ignore-start */}
 
@@ -63,13 +63,13 @@ If you need more granular control over which `argTypes` are matched, you can adj
 
 <div class="aside">
 
-💡 If you're generating argTypes with another addon (like [docs](../writing-docs/introduction.md), which is the common behavior), ensure the actions addon <strong>AFTER</strong> the other addon. You can do this by listing it later in the addons registration code in [`.storybook/main.js`](../configure/overview.md#configure-story-rendering). This is default in [essentials](./introduction.md).
+💡 If you're generating argTypes with another addon (like [docs](../writing-docs/introduction.mdx), which is the common behavior), ensure the actions addon <strong>AFTER</strong> the other addon. You can do this by listing it later in the addons registration code in [`.storybook/main.js`](../configure/overview.mdx#configure-story-rendering). This is default in [essentials](./introduction.mdx).
 
 </div>
 
 ## Action event handlers
 
-It is also possible to detect if your component is emitting the correct HTML events using the `parameters.actions.handles` [parameter](../writing-stories/parameters.md).
+It is also possible to detect if your component is emitting the correct HTML events using the `parameters.actions.handles` [parameter](../writing-stories/parameters.mdx).
 
 {/* prettier-ignore-start */}
 
