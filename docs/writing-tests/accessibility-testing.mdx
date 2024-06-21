@@ -126,7 +126,9 @@ Add a new [configuration file](./test-runner.mdx#test-hook-api) inside your Stor
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
+
   `preVisit` and `postVisit` are convenient hooks that allow you to extend the test runner's default configuration. Read more about them [here](./test-runner.mdx#test-hook-api).
+
 </Callout>
 
 When you execute the test runner (for example, with `yarn test-storybook`), it will run the accessibility audit and any [interaction tests](./interaction-testing.mdx) you might have configured for each component story.
@@ -168,6 +170,6 @@ Browser-based accessibility tests, like those found in Storybook, evaluate the r
 * Accessibility tests for accessibility
 * [Interaction tests](./interaction-testing.mdx) for user behavior simulation
 * [Coverage tests](./test-coverage.mdx) for measuring code coverage
-* [Snapshot tests](./snapshot-testing.mdx) for rendering errors and warnings
-* [End-to-end tests](./stories-in-end-to-end-tests.mdx) for simulating real user scenarios
-* [Unit tests](./stories-in-unit-tests.mdx) for functionality
+* [Snapshot tests](./snapshot-testing/snapshot-testing.mdx) for rendering errors and warnings
+* [End-to-end tests](./import-stories-in-tests/stories-in-end-to-end-tests.mdx) for simulating real user scenarios
+* [Unit tests](./import-stories-in-tests/stories-in-unit-tests.mdx) for functionality

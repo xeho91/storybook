@@ -62,8 +62,8 @@ Under the hood, Storybook’s interaction addon mirrors Testing Library’s [`us
 
 Below is an abridged API for user-event. For more, check out the [official user-event docs](https://testing-library.com/docs/user-event/utility/).
 
-| User events       | Description                                                                                                                                              |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| User events       | Description                                                                                                                                               |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `clear`           | Selects the text inside inputs, or textareas and deletes it <br />`userEvent.clear(await within(canvasElement).getByRole('myinput'));`                    |
 | `click`           | Clicks the element, calling a click() function <br />`userEvent.click(await within(canvasElement).getByText('mycheckbox'));`                              |
 | `dblClick`        | Clicks the element twice <br />`userEvent.dblClick(await within(canvasElement).getByText('mycheckbox'));`                                                 |
@@ -154,6 +154,6 @@ Interaction tests integrate Jest and Testing Library into Storybook. The biggest
 * [Accessibility tests](./accessibility-testing.mdx) for accessibility
 * Interaction tests for user behavior simulation
 * [Coverage tests](./test-coverage.mdx) for measuring code coverage
-* [Snapshot tests](./snapshot-testing.mdx) for rendering errors and warnings
-* [End-to-end tests](./stories-in-end-to-end-tests.mdx) for simulating real user scenarios
-* [Unit tests](./stories-in-unit-tests.mdx) for functionality
+* [Snapshot tests](./snapshot-testing/snapshot-testing.mdx) for rendering errors and warnings
+* [End-to-end tests](./import-stories-in-tests/stories-in-end-to-end-tests.mdx) for simulating real user scenarios
+* [Unit tests](./import-stories-in-tests/stories-in-unit-tests.mdx) for functionality

@@ -51,6 +51,7 @@ Use the *named* exports of a CSF file to define your component’s stories. We r
 {/* prettier-ignore-end */}
 
 <IfRenderer renderer="react">
+
   #### Working with React Hooks
 
   [React Hooks](https://react.dev/reference/react) are convenient helper methods to create components using a more streamlined approach. You can use them while creating your component's stories if you need them, although you should treat them as an advanced use case. We **recommend** [args](./args.mdx) as much as possible when writing your own stories. As an example, here’s a story that uses React Hooks to change the button's state:
@@ -64,9 +65,11 @@ Use the *named* exports of a CSF file to define your component’s stories. We r
   <Callout variant="info" icon="💡">
     The recommendation mentioned above also applies to other frameworks, not only React.
   </Callout>
+
 </IfRenderer>
 
 <IfRenderer renderer="solid">
+
   #### Working with Solid Signals
 
   [Solid Signals](https://www.solidjs.com/docs/latest/api#basic-reactivity) are convenient helper methods to create components using a more streamlined approach. You can use them while creating your component's stories if you need them, although you should treat them as an advanced use case. We **recommend** [args](./args.mdx) as much as possible when writing your own stories. As an example, here’s a story that uses Solid Signals to change the button's state:
@@ -80,6 +83,7 @@ Use the *named* exports of a CSF file to define your component’s stories. We r
   <Callout variant="info" icon="💡">
     The recommendation mentioned above also applies to other frameworks, not only Solid.
   </Callout>
+
 </IfRenderer>
 
 ### Rename stories
@@ -203,5 +207,7 @@ You can also reuse stories from the child `ListItem` in your `List` component. T
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
+
   Note that there are disadvantages in writing stories like this as you cannot take full advantage of the args mechanism and composing args as you build even more complex composite components. For more discussion, see the [multi component stories](../writing-stories/stories-for-multiple-components.mdx) workflow documentation.
+  
 </Callout>

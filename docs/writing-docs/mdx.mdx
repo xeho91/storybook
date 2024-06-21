@@ -51,7 +51,9 @@ The first thing you'll notice is that the component documentation is divided int
 * **MDX** is great for writing structured documentation and composing it with interactive JSX elements.
 
 <Callout variant="info" icon="💡">
+
   If you’re coming from a previous version of Storybook, you might be accustomed to using MDX both for **documentation** and for defining **stories** in the same `.stories.mdx` file. We’ve deprecated this functionality and plan to remove it in a future version of Storybook. We provide [migration](#automigration) scripts to help you onto the new format.
+
 </Callout>
 
 ### Anatomy of MDX
@@ -87,7 +89,9 @@ Imports the components and stories that will be used in the JSX throughout the r
 {/* prettier-ignore-end */}
 
 <Callout variant="info">
+
   When providing the `of` prop to the `Meta` block, make sure that you're referencing the [**default export**](../api/csf.mdx#default-export) of the story file and not the component itself to prevent render issues with the generated documentation.
+  
 </Callout>
 
 The `Meta` block defines where the document will be placed in the sidebar. In this case, it is adjacent to the Checkbox’s stories. By default, the docs sidebar node is titled `"Docs"`, but this can be customized by passing a `name` prop (e.g., `<Meta of={CheckboxStories} name="Info" />`). If you want to place a docs node at an arbitrary point in the navigation hierarchy, you can use the `title` prop (e.g., `<Meta title="path/to/node" />`).
@@ -217,7 +221,9 @@ However, providing the `Meta` Doc Block may not be required for certain use case
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
+
   If you're overriding an existing auto-generated documentation page enabled via [`tags`](./autodocs.mdx#setup-automated-documentation) configuration property, we recommend removing it to avoid errors.
+
 </Callout>
 
 Once the custom MDX documentation is loaded, Storybook will infer the title and location using the same heuristic rules to generate [auto-title stories](../configure/user-interface/sidebar-and-urls.mdx#csf-30-auto-titles) and render it in the sidebar as a `Docs` entry.

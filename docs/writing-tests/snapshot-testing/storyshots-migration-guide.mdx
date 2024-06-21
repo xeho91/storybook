@@ -49,7 +49,9 @@ To enable DOM snapshot testing with the test-runner, you can extend the test-run
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
+
   If you've set up DOM snapshot tests in your project with the test-runner and enabled the [`index.json` mode](../test-runner.mdx#indexjson-mode) via CLI flag, tests are generated in a temporary folder outside your project, and snapshots get stored alongside them. You'll need to extend the test-runner's configuration and provide a custom snapshot resolver to allow a different location for the snapshots. See the [Troubleshooting](#the-test-runner-does-not-generate-snapshot-files-in-the-expected-directory) section for more information.
+
 </Callout>
 
 #### Run image snapshot tests with the test-runner
@@ -63,6 +65,7 @@ By default, the test-runner provides you with the option to run multiple testing
 {/* prettier-ignore-end */}
 
 <IfRenderer renderer={['react', 'vue' ]}>
+
   ### With Portable Stories
 
   Storybook provides a `composeStories` utility that helps convert stories from a story file into renderable elements that can be reused in your Node tests with JSDOM. It also allows you to apply other Storybook features that you have enabled in your project (e.g., [decorators](../../writing-stories/decorators.mdx), [args](../../writing-stories/args.mdx)), which allows your component to render correctly. This is what is known as portable stories.
@@ -82,7 +85,9 @@ By default, the test-runner provides you with the option to run multiple testing
   {/* prettier-ignore-end */}
 
   <Callout variant="info" icon="ℹ️">
+
     If you're using Vue3, you must install the [`@storybook/testing-vue3`](https://storybook.js.org/addons/@storybook/testing-vue3) package to use the `setProjectAnnotations` API in your setup file and the `composeStories` API in your existing tests.
+    
   </Callout>
 
   #### Configure the testing framework for portable stories

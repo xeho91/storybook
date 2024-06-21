@@ -72,7 +72,9 @@ You can separate the arguments to a story to compose in other stories. Here's ho
 {/* prettier-ignore-end */}
 
 <Callout variant="info" icon="💡">
+
   If you find yourself re-using the same args for most of a component's stories, you should consider using [component-level args](#component-args).
+  
 </Callout>
 
 Args are useful when writing stories for composite components that are assembled from other components. Composite components often pass their arguments unchanged to their child components, and similarly, their stories can be compositions of their child components stories. With args, you can directly compose the arguments:
