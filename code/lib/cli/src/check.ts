@@ -17,19 +17,19 @@ function tryFindCore() {
   try {
     const found = require.resolve('@storybook/core');
 
+    console.log('debugging: ', __dirname);
+    console.log(tmpdir());
+
     if (!found.includes('node_modules')) {
       // We're either in PNP-mode or linked-mode.
       // We were able to find the core package, so let's hope for the best.
       return true;
     }
 
-    if (found.includes('npx')) {
-      // We're in npx-mode. Good to proceed.
+    if (found.includes('npx') || found.includes('pnpm/dlx')) {
+      // We're in npx-mode | pnpm-dlx. Good to proceed.
       return true;
     }
-
-    console.log('debugging: ', __dirname);
-    console.log(tmpdir());
 
     const topLevelNodeModulesPath = found.split('node_modules')[0];
     const projectPackageJsonPath = findUp.sync('package.json', { cwd: topLevelNodeModulesPath });
