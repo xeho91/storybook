@@ -67,5 +67,6 @@ export function composeConfigs<TRenderer extends Renderer>(
     runStep: composeStepRunners<TRenderer>(stepRunners),
     tags: getArrayField(moduleExportList, 'tags'),
     mount: getSingletonField(moduleExportList, 'mount'),
+    testingLibraryRender: getSingletonField(moduleExportList, 'testingLibraryRender'),
   });
 }

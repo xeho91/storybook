@@ -257,6 +257,26 @@ export class MountMustBeDestructured extends StorybookError {
   }
 }
 
+export class MountMustBeConfigured extends StorybookError {
+  readonly category = Category.PREVIEW_API;
+
+  readonly code = 13;
+
+  template() {
+    return dedent`
+    You must configure testingLibraryRender to use play in portable stories.
+    
+    import { render } from '@testing-library/react';
+    
+    setProjectAnnotations({
+      testingLibraryRender: render,
+    });
+    
+    Or configure mount yourself, see: DOCS
+    `;
+  }
+}
+
 export class NextJsSharpError extends StorybookError {
   readonly category = Category.FRAMEWORK_NEXTJS;
 

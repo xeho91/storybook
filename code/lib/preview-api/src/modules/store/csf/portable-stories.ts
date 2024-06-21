@@ -113,19 +113,17 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
     loaded: {},
     abortSignal: new AbortController().signal,
     step: (label: StepLabel, play: PlayFunction<TRenderer>) => story.runStep!(label, play, context),
-    canvasElement: globalThis.document.body,
+    canvasElement: globalThis?.document?.body,
     ...story,
   } as unknown as StoryContext<TRenderer>;
 
   context.context = context;
   context.mount = story.mount(context);
 
-  const playFunction = story.playFunction
-    ? (extraContext: Partial<PlayFunctionContext<TRenderer, TArgs>>) => {
-        Object.assign(context, extraContext);
-        return playStory(story, context);
-      }
-    : undefined;
+  const playFunction = (extraContext: Partial<PlayFunctionContext<TRenderer, TArgs>>) => {
+    Object.assign(context, extraContext);
+    return playStory(story, context);
+  };
 
   let previousCleanupsDone = false;
 
@@ -179,7 +177,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
       args: story.initialArgs as Partial<TArgs>,
       parameters: story.parameters as Parameters,
       argTypes: story.argTypes as StrictArgTypes<TArgs>,
-      play: playFunction as ComposedStoryPlayFn<TRenderer, TArgs> | undefined,
+      play: playFunction as ComposedStoryPlayFn<TRenderer, TArgs>,
     }
   );
 

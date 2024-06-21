@@ -778,6 +778,7 @@ describe('prepareMeta', () => {
       argTypes,
       mount,
       runStep,
+      testingLibraryRender,
       ...expectedPreparedMeta
     } = preparedStory;
 

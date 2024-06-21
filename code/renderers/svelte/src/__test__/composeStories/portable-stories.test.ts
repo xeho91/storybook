@@ -3,12 +3,15 @@ import { it, expect, vi, describe, afterEach } from 'vitest';
 import { render, screen, cleanup } from '@testing-library/svelte';
 // import '@testing-library/svelte/vitest';
 import { expectTypeOf } from 'expect-type';
-import type { Meta } from '../..';
+import { type Meta } from '../..';
 import * as stories from './Button.stories';
 // import type Button from './Button.svelte';
 import type Button from './Button.svelte';
 import { composeStories, composeStory, setProjectAnnotations } from '../../portable-stories';
 
+setProjectAnnotations({
+  testingLibraryRender: render,
+});
 // example with composeStories, returns an object with all stories composed with args/decorators
 const { CSF3Primary, LoaderStory } = composeStories(stories);
 
@@ -82,6 +85,7 @@ describe('projectAnnotations', () => {
         globalTypes: {
           locale: { defaultValue: 'en' },
         },
+        testingLibraryRender: render,
       },
     ]);
     const WithEnglishText = composeStory(stories.CSF2StoryWithLocale, stories.default);
@@ -123,9 +127,7 @@ describe('CSF3', () => {
   it('renders with play function without canvas element', async () => {
     const CSF3InputFieldFilled = composeStory(stories.CSF3InputFieldFilled, stories.default);
 
-    render(CSF3InputFieldFilled.Component, CSF3InputFieldFilled.props);
-
-    await CSF3InputFieldFilled.play!();
+    await CSF3InputFieldFilled.play();
 
     const input = screen.getByTestId('input') as HTMLInputElement;
     expect(input.value).toEqual('Hello world!');
@@ -134,9 +136,10 @@ describe('CSF3', () => {
   it('renders with play function with canvas element', async () => {
     const CSF3InputFieldFilled = composeStory(stories.CSF3InputFieldFilled, stories.default);
 
-    const { container } = render(CSF3InputFieldFilled.Component, CSF3InputFieldFilled.props);
+    const div = document.createElement('div');
+    document.body.appendChild(div);
 
-    await CSF3InputFieldFilled.play!({ canvasElement: container });
+    await CSF3InputFieldFilled.play({ canvasElement: div });
 
     const input = screen.getByTestId('input') as HTMLInputElement;
     expect(input.value).toEqual('Hello world!');
@@ -178,10 +181,10 @@ it.each(testCases)('Renders %s story', async (_storyName, Story) => {
     return;
   }
 
-  await Story.load();
+  const div = document.createElement('div');
+  document.body.appendChild(div);
 
-  const { container } = await render(Story.Component, Story.props);
+  await Story.play({ canvasElement: div });
 
-  await Story.play?.({ canvasElement: container });
-  expect(container).toMatchSnapshot();
+  expect(div).toMatchSnapshot();
 });

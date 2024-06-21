@@ -3625,13 +3625,13 @@ describe('PreviewWeb', () => {
               },
               "fileName": "./src/ComponentOne.stories.js",
             },
-            "runStep": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
           },
           "component-one--b": {
@@ -3674,13 +3674,13 @@ describe('PreviewWeb', () => {
               },
               "fileName": "./src/ComponentOne.stories.js",
             },
-            "runStep": undefined,
             "story": "B",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
           },
           "component-one--e": {
@@ -3701,13 +3701,13 @@ describe('PreviewWeb', () => {
               "fileName": "./src/ExtraComponentOne.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
             "story": "E",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
           },
           "component-two--c": {
@@ -3738,13 +3738,13 @@ describe('PreviewWeb', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
             "story": "C",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component Two",
           },
         }

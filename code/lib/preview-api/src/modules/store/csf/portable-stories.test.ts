@@ -81,8 +81,12 @@ describe('composeStory', () => {
       spy(context);
     };
 
-    const composedStory = composeStory(Story, meta);
-    await composedStory.play!({ canvasElement: null });
+    const composedStory = composeStory(Story, meta, {
+      mount: (context) => async () => {
+        return context.canvas;
+      },
+    });
+    await composedStory.play({ canvasElement: null });
     expect(spy).toHaveBeenCalledWith(
       expect.objectContaining({
         args: {

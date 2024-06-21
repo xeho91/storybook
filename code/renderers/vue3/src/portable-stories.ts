@@ -11,6 +11,7 @@ import type {
   Store_CSFExports,
   StoriesWithPartialProps,
 } from '@storybook/types';
+import { MountMustBeConfigured } from '@storybook/core-events/preview-errors';
 import { h } from 'vue';
 
 import * as defaultProjectAnnotations from './entry-preview';
@@ -51,18 +52,14 @@ export function setProjectAnnotations(
 // This will not be necessary once we have auto preset loading
 export const vueProjectAnnotations: ProjectAnnotations<VueRenderer> = {
   ...defaultProjectAnnotations,
-  mount: ({ testingLibraryRender, unboundStoryFn, context }: StoryContext) => {
+  mount: ({ testingLibraryRender: render, unboundStoryFn, context }: StoryContext) => {
     return (Component?: any, options?: any) => {
-      if (testingLibraryRender == null) {
-        throw new Error(
-          'You need specify testingLibraryRender or mount to use the play function in portable stories.'
-        );
-      }
+      if (render == null) throw new MountMustBeConfigured();
       if (Component) {
         context.originalStoryFn = () => h(Component, options?.props, options?.slots);
       }
       const DecoratedComponent = unboundStoryFn(context);
-      return testingLibraryRender(DecoratedComponent);
+      return render(DecoratedComponent, { baseElement: context.canvasElement });
     };
   },
 };

@@ -13,6 +13,7 @@ import {
 
 import type { ModuleImportFn, StoryIndex, TeardownRenderToCanvas } from '@storybook/types';
 import type { RenderPhase } from './render/StoryRender';
+import { composeConfigs } from '../store/csf';
 
 export const componentOneExports = {
   default: {
@@ -65,15 +66,17 @@ export const docsRenderer = {
   unmount: vi.fn(),
 };
 export const teardownrenderToCanvas: Mock<[TeardownRenderToCanvas]> = vi.fn();
-export const projectAnnotations = {
-  globals: { a: 'b' },
-  globalTypes: {},
-  decorators: [vi.fn((s) => s())],
-  render: vi.fn(),
-  renderToCanvas: vi.fn().mockReturnValue(teardownrenderToCanvas),
-  parameters: { docs: { renderer: () => docsRenderer } },
-};
-export const getProjectAnnotations = vi.fn(() => projectAnnotations as any);
+export const projectAnnotations = composeConfigs([
+  {
+    globals: { a: 'b' },
+    globalTypes: {},
+    decorators: [vi.fn((s) => s())],
+    render: vi.fn(),
+    renderToCanvas: vi.fn().mockReturnValue(teardownrenderToCanvas),
+    parameters: { docs: { renderer: () => docsRenderer } },
+  },
+]);
+export const getProjectAnnotations = vi.fn(() => projectAnnotations);
 
 export const storyIndex: StoryIndex = {
   v: 5,

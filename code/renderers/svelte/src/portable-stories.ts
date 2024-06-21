@@ -1,25 +1,25 @@
 import {
-  composeStory as originalComposeStory,
   composeStories as originalComposeStories,
+  composeStory as originalComposeStory,
   setProjectAnnotations as originalSetProjectAnnotations,
 } from '@storybook/preview-api';
 import type {
   Args,
+  ComposedStoryFn,
   ProjectAnnotations,
-  StoryAnnotationsOrFn,
   Store_CSFExports,
   StoriesWithPartialProps,
-  ComposedStoryFn,
+  StoryAnnotationsOrFn,
 } from '@storybook/types';
 
 import * as svelteProjectAnnotations from './entry-preview';
 import type { Meta } from './public-types';
-import type { SvelteRenderer } from './types';
+import type { StoryContext, SvelteRenderer } from './types';
 import PreviewRender from '@storybook/svelte/internal/PreviewRender.svelte';
 // @ts-expect-error Don't know why TS doesn't pick up the types export here
 import { createSvelte5Props } from '@storybook/svelte/internal/createSvelte5Props';
 import { IS_SVELTE_V4 } from './utils';
-import type { StoryContext } from './types';
+import { MountMustBeConfigured } from '@storybook/core-events/preview-errors';
 
 type ComposedStory<TArgs extends Args = any> = ComposedStoryFn<SvelteRenderer, TArgs> & {
   Component: typeof PreviewRender;
@@ -60,14 +60,9 @@ export function setProjectAnnotations(
 // This will not be necessary once we have auto preset loading
 export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<SvelteRenderer> = {
   ...svelteProjectAnnotations,
-  mount: ({ testingLibraryRender, unboundStoryFn, context }: StoryContext) => {
+  mount: ({ unboundStoryFn, context, testingLibraryRender: render }: StoryContext) => {
     return (Component?: any, options?: any) => {
-      if (testingLibraryRender == null) {
-        throw new Error(
-          'You need specify testingLibraryRender or mount to use the play function in portable stories.'
-        );
-      }
-
+      if (render == null) throw new MountMustBeConfigured();
       if (Component) {
         context.originalStoryFn = () => ({
           Component: Component,
@@ -77,7 +72,7 @@ export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<SvelteRend
 
       const { Component: DecoratedComponent, props } = unboundStoryFn(context);
 
-      return testingLibraryRender(DecoratedComponent, { props });
+      return render(DecoratedComponent, { props, target: context.canvasElement });
     };
   },
 };

@@ -11,20 +11,31 @@ vi.mock('@storybook/global', () => ({
 
 describe('composeConfigs', () => {
   it('sets default (empty) values for fields', () => {
-    expect(composeConfigs([])).toEqual({
-      parameters: {},
-      decorators: [],
-      args: {},
-      argsEnhancers: [],
-      argTypes: {},
-      argTypesEnhancers: [],
-      globals: {},
-      globalTypes: {},
-      loaders: [],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    expect(composeConfigs([])).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {},
+        "argTypesEnhancers": [
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {},
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('composes parameters', () => {
@@ -37,20 +48,37 @@ describe('composeConfigs', () => {
           parameters: { obj: { a: '2', c: '2' } },
         },
       ])
-    ).toEqual({
-      parameters: { obj: { a: '2', b: '1', c: '2' } },
-      decorators: [],
-      args: {},
-      argsEnhancers: [],
-      argTypes: {},
-      argTypesEnhancers: [],
-      globals: {},
-      globalTypes: {},
-      loaders: [],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {},
+        "argTypesEnhancers": [
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {
+          "obj": {
+            "a": "2",
+            "b": "1",
+            "c": "2",
+          },
+        },
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('composes export defaults', () => {
@@ -67,20 +95,37 @@ describe('composeConfigs', () => {
           },
         },
       ])
-    ).toEqual({
-      parameters: { obj: { a: '2', b: '1', c: '2' } },
-      decorators: [],
-      args: {},
-      argsEnhancers: [],
-      argTypes: {},
-      argTypesEnhancers: [],
-      globals: {},
-      globalTypes: {},
-      loaders: [],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {},
+        "argTypesEnhancers": [
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {
+          "obj": {
+            "a": "2",
+            "b": "1",
+            "c": "2",
+          },
+        },
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('overrides object fields by key', () => {
@@ -103,20 +148,83 @@ describe('composeConfigs', () => {
           },
         },
       ])
-    ).toEqual({
-      parameters: {},
-      decorators: [],
-      args: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      argsEnhancers: [],
-      argTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      argTypesEnhancers: [],
-      globals: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      globalTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      loaders: [],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+            "name": "obj",
+          },
+          "x": {
+            "0": "2",
+            "name": "x",
+          },
+          "y": {
+            "0": "1",
+            "name": "y",
+          },
+          "z": {
+            "0": "2",
+            "name": "z",
+          },
+        },
+        "argTypesEnhancers": [
+          [Function],
+          [Function],
+        ],
+        "args": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+          },
+          "x": "2",
+          "y": "1",
+          "z": "2",
+        },
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+            "name": "obj",
+          },
+          "x": {
+            "0": "2",
+            "name": "x",
+          },
+          "y": {
+            "0": "1",
+            "name": "y",
+          },
+          "z": {
+            "0": "2",
+            "name": "z",
+          },
+        },
+        "globals": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+          },
+          "x": "2",
+          "y": "1",
+          "z": "2",
+        },
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {},
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('overrides object fields by key with mixed named and default exports', () => {
@@ -142,20 +250,83 @@ describe('composeConfigs', () => {
           },
         },
       ])
-    ).toEqual({
-      parameters: {},
-      decorators: [],
-      args: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      argsEnhancers: [],
-      argTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      argTypesEnhancers: [],
-      globals: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      globalTypes: { x: '2', y: '1', z: '2', obj: { a: '2', c: '2' } },
-      loaders: [],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+            "name": "obj",
+          },
+          "x": {
+            "0": "2",
+            "name": "x",
+          },
+          "y": {
+            "0": "1",
+            "name": "y",
+          },
+          "z": {
+            "0": "2",
+            "name": "z",
+          },
+        },
+        "argTypesEnhancers": [
+          [Function],
+          [Function],
+        ],
+        "args": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+          },
+          "x": "2",
+          "y": "1",
+          "z": "2",
+        },
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+            "name": "obj",
+          },
+          "x": {
+            "0": "2",
+            "name": "x",
+          },
+          "y": {
+            "0": "1",
+            "name": "y",
+          },
+          "z": {
+            "0": "2",
+            "name": "z",
+          },
+        },
+        "globals": {
+          "obj": {
+            "a": "2",
+            "c": "2",
+          },
+          "x": "2",
+          "y": "1",
+          "z": "2",
+        },
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {},
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('concats array fields', () => {
@@ -172,20 +343,45 @@ describe('composeConfigs', () => {
           loaders: ['3', '4'],
         },
       ])
-    ).toEqual({
-      parameters: {},
-      decorators: [],
-      args: {},
-      argsEnhancers: ['1', '2', '3', '4'],
-      argTypes: {},
-      argTypesEnhancers: ['1', '2', '3', '4'],
-      globals: {},
-      globalTypes: {},
-      loaders: ['1', '2', '3', '4'],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {},
+        "argTypesEnhancers": [
+          "1",
+          "2",
+          "3",
+          "4",
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [
+          "1",
+          "2",
+          "3",
+          "4",
+        ],
+        "mount": undefined,
+        "parameters": {},
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('allows single array to be written without array', () => {
@@ -202,20 +398,42 @@ describe('composeConfigs', () => {
           loaders: ['2', '3'],
         },
       ])
-    ).toEqual({
-      parameters: {},
-      decorators: [],
-      args: {},
-      argsEnhancers: ['1', '2', '3'],
-      argTypes: {},
-      argTypesEnhancers: ['1', '2', '3'],
-      globals: {},
-      globalTypes: {},
-      loaders: ['1', '2', '3'],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {},
+        "argTypesEnhancers": [
+          "1",
+          "2",
+          "3",
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [
+          "1",
+          "2",
+          "3",
+        ],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [
+          "1",
+          "2",
+          "3",
+        ],
+        "mount": undefined,
+        "parameters": {},
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('combines decorators in reverse file order', () => {
@@ -228,20 +446,36 @@ describe('composeConfigs', () => {
           decorators: ['3', '4'],
         },
       ])
-    ).toEqual({
-      parameters: {},
-      decorators: ['3', '4', '1', '2'],
-      args: {},
-      argsEnhancers: [],
-      argTypes: {},
-      argTypesEnhancers: [],
-      globals: {},
-      globalTypes: {},
-      loaders: [],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {},
+        "argTypesEnhancers": [
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [
+          "3",
+          "4",
+          "1",
+          "2",
+        ],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {},
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('concats argTypesEnhancers in two passes', () => {
@@ -250,25 +484,45 @@ describe('composeConfigs', () => {
         { argTypesEnhancers: [{ a: '1' }, { a: '2', secondPass: true }] },
         { argTypesEnhancers: [{ a: '3' }, { a: '4', secondPass: true }] },
       ])
-    ).toEqual({
-      parameters: {},
-      decorators: [],
-      args: {},
-      argsEnhancers: [],
-      argTypes: {},
-      argTypesEnhancers: [
-        { a: '1' },
-        { a: '3' },
-        { a: '2', secondPass: true },
-        { a: '4', secondPass: true },
-      ],
-      globals: {},
-      globalTypes: {},
-      loaders: [],
-      beforeEach: [],
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": undefined,
+        "argTypes": {},
+        "argTypesEnhancers": [
+          {
+            "a": "1",
+          },
+          {
+            "a": "3",
+          },
+          {
+            "a": "2",
+            "secondPass": true,
+          },
+          {
+            "a": "4",
+            "secondPass": true,
+          },
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {},
+        "render": undefined,
+        "renderToCanvas": undefined,
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('concats chooses scalar fields', () => {
@@ -285,23 +539,31 @@ describe('composeConfigs', () => {
           applyDecorators: 'applyDecorators-2',
         },
       ])
-    ).toEqual({
-      parameters: {},
-      decorators: [],
-      args: {},
-      argsEnhancers: [],
-      argTypes: {},
-      argTypesEnhancers: [],
-      globals: {},
-      globalTypes: {},
-      loaders: [],
-      beforeEach: [],
-      render: 'render-2',
-      renderToCanvas: 'renderToCanvas-2',
-      applyDecorators: 'applyDecorators-2',
-      runStep: expect.any(Function),
-      tags: [],
-    });
+    ).toMatchInlineSnapshot(`
+      {
+        "applyDecorators": "applyDecorators-2",
+        "argTypes": {},
+        "argTypesEnhancers": [
+          [Function],
+          [Function],
+        ],
+        "args": {},
+        "argsEnhancers": [],
+        "beforeEach": [],
+        "decorators": [],
+        "globalTypes": {},
+        "globals": {},
+        "loaders": [],
+        "mount": undefined,
+        "parameters": {},
+        "render": "render-2",
+        "renderToCanvas": "renderToCanvas-2",
+        "renderToDOM": undefined,
+        "runStep": [Function],
+        "tags": [],
+        "testingLibraryRender": undefined,
+      }
+    `);
   });
 
   it('composes step runners', () => {

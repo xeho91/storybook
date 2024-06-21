@@ -102,7 +102,7 @@ export function prepareStory<TRenderer extends Renderer>(
   const decoratedStoryFn = applyHooks<TRenderer>(applyDecorators)(undecoratedStoryFn, decorators);
   const unboundStoryFn = (context: StoryContext<TRenderer>) => decoratedStoryFn(context);
 
-  const playFunction = storyAnnotations?.play || componentAnnotations.play;
+  const playFunction = storyAnnotations?.play ?? componentAnnotations?.play;
 
   const mountUsed = playFunction && getUsedProps(playFunction).includes('mount');
   if (!render && !mountUsed) {
@@ -112,11 +112,17 @@ export function prepareStory<TRenderer extends Renderer>(
   const defaultMount = (context: StoryContext) => {
     return async () => {
       await context.renderToCanvas();
-      return {};
+      return context.canvas;
     };
   };
 
-  const mount = projectAnnotations.mount ?? defaultMount;
+  const mount =
+    storyAnnotations.mount ??
+    componentAnnotations.mount ??
+    projectAnnotations.mount ??
+    defaultMount;
+
+  const testingLibraryRender = projectAnnotations.testingLibraryRender;
 
   return {
     ...partialAnnotations,
@@ -132,6 +138,7 @@ export function prepareStory<TRenderer extends Renderer>(
     playFunction,
     runStep,
     mount,
+    testingLibraryRender,
   };
 }
 export function prepareMeta<TRenderer extends Renderer>(
@@ -139,9 +146,8 @@ export function prepareMeta<TRenderer extends Renderer>(
   projectAnnotations: NormalizedProjectAnnotations<TRenderer>,
   moduleExport: ModuleExport
 ): PreparedMeta<TRenderer> {
-  const bla = preparePartialAnnotations(undefined, componentAnnotations, projectAnnotations);
   return {
-    ...bla,
+    ...preparePartialAnnotations(undefined, componentAnnotations, projectAnnotations),
     moduleExport,
   };
 }

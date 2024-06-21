@@ -6,7 +6,7 @@ import type {
   CleanupCallback,
   StepRunner,
   PlayFunctionContext,
-  MountReturnType,
+  Canvas,
 } from '@storybook/csf';
 
 import type {
@@ -44,12 +44,13 @@ export type RenderToCanvas<TRenderer extends Renderer> = (
   element: TRenderer['canvasElement']
 ) => MaybePromise<void | TeardownRenderToCanvas>;
 
-export type ProjectAnnotations<TRenderer extends Renderer> = CsfProjectAnnotations<TRenderer> & {
-  mount?: (context: StoryContext<TRenderer>) => () => Promise<MountReturnType>;
+export interface ProjectAnnotations<TRenderer extends Renderer>
+  extends CsfProjectAnnotations<TRenderer> {
+  testingLibraryRender?: (...args: never[]) => unknown;
   renderToCanvas?: RenderToCanvas<TRenderer>;
   /* @deprecated use renderToCanvas */
   renderToDOM?: RenderToCanvas<TRenderer>;
-};
+}
 
 type NamedExportsOrDefault<TExport> = TExport | { default: TExport };
 
@@ -111,7 +112,8 @@ export type PreparedStory<TRenderer extends Renderer = Renderer> =
     applyBeforeEach: (context: StoryContext<TRenderer>) => Promise<CleanupCallback[]>;
     playFunction?: (context: PlayFunctionContext<TRenderer>) => Promise<void> | void;
     runStep: StepRunner<TRenderer>;
-    mount: (context: StoryContext<TRenderer>) => () => Promise<MountReturnType>;
+    mount: (context: StoryContext<TRenderer>) => () => Promise<Canvas>;
+    testingLibraryRender?: (...args: never[]) => unknown;
   };
 
 export type PreparedMeta<TRenderer extends Renderer = Renderer> = Omit<

@@ -51,7 +51,7 @@ export type ComposedStoryFn<
 > = PartialArgsStoryFn<TRenderer, TArgs> & {
   args: TArgs;
   id: StoryId;
-  play?: ComposedStoryPlayFn<TRenderer, TArgs>;
+  play: ComposedStoryPlayFn<TRenderer, TArgs>;
   load: () => Promise<void>;
   storyName: string;
   parameters: Parameters;

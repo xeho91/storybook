@@ -1,21 +1,22 @@
 import {
-  composeStory as originalComposeStory,
   composeStories as originalComposeStories,
+  composeStory as originalComposeStory,
   setProjectAnnotations as originalSetProjectAnnotations,
 } from '@storybook/preview-api';
 import type {
   Args,
   NamedOrDefaultProjectAnnotations,
-  StoryAnnotationsOrFn,
+  ProjectAnnotations,
   Store_CSFExports,
   StoriesWithPartialProps,
-  ProjectAnnotations,
+  StoryAnnotationsOrFn,
 } from '@storybook/types';
 
 import * as reactProjectAnnotations from './entry-preview';
 import type { Meta, StoryContext } from './public-types';
 import type { ReactRenderer } from './types';
 import * as React from 'react';
+import { MountMustBeConfigured } from '@storybook/core-events/preview-errors';
 
 /** Function that sets the globalConfig of your storybook. The global config is the preview module of your .storybook folder.
  *
@@ -43,17 +44,13 @@ export function setProjectAnnotations(
 // This will not be necessary once we have auto preset loading
 export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<ReactRenderer> = {
   ...reactProjectAnnotations,
-  mount: ({ context, testingLibraryRender, unboundStoryFn: Story }: StoryContext) => {
+  mount: ({ unboundStoryFn: Story, context, testingLibraryRender: render }: StoryContext) => {
     return (ui?: JSX.Element) => {
-      if (testingLibraryRender == null) {
-        throw new Error(
-          'You need specify testingLibraryRender or mount to use the play function in portable stories.'
-        );
-      }
+      if (render == null) throw new MountMustBeConfigured();
       if (ui) {
         context.originalStoryFn = () => ui;
       }
-      return testingLibraryRender(<Story {...context} />);
+      return render(<Story {...context} />, { baseElement: context.canvasElement });
     };
   },
 };
@@ -94,7 +91,7 @@ export function composeStory<TArgs extends Args = Args>(
   return originalComposeStory<ReactRenderer, TArgs>(
     story as StoryAnnotationsOrFn<ReactRenderer, Args>,
     componentAnnotations,
-    projectAnnotationsWithMount,
+    projectAnnotations,
     INTERNAL_DEFAULT_PROJECT_ANNOTATIONS,
     exportsName
   );

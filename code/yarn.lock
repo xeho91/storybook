@@ -6694,6 +6694,7 @@ __metadata:
   resolution: "@storybook/react@workspace:renderers/react"
   dependencies:
     "@storybook/client-logger": "workspace:*"
+    "@storybook/core-events": "workspace:*"
     "@storybook/docs-tools": "workspace:*"
     "@storybook/global": "npm:^5.0.0"
     "@storybook/preview-api": "workspace:*"
@@ -7169,6 +7170,7 @@ __metadata:
   resolution: "@storybook/vue3@workspace:renderers/vue3"
   dependencies:
     "@digitak/esrun": "npm:^3.2.2"
+    "@storybook/core-events": "workspace:*"
     "@storybook/docs-tools": "workspace:*"
     "@storybook/global": "npm:^5.0.0"
     "@storybook/preview-api": "workspace:*"

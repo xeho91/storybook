@@ -1,10 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { Renderer, ProjectAnnotations, StoryIndex } from '@storybook/types';
+import type { Renderer, StoryIndex } from '@storybook/types';
 
 import { prepareStory } from './csf/prepareStory';
 import { processCSFFile } from './csf/processCSFFile';
 import { StoryStore } from './StoryStore';
 import type { HooksContext } from './hooks';
+import { composeConfigs } from './csf';
 
 // Spy on prepareStory/processCSFFile
 vi.mock('./csf/prepareStory', async (importOriginal) => {
@@ -41,12 +42,14 @@ const importFn = vi.fn(async (path) => {
   return path === './src/ComponentOne.stories.js' ? componentOneExports : componentTwoExports;
 });
 
-const projectAnnotations: ProjectAnnotations<any> = {
-  globals: { a: 'b' },
-  globalTypes: { a: { type: 'string' } },
-  argTypes: { a: { type: 'string' } },
-  render: vi.fn(),
-};
+const projectAnnotations = composeConfigs([
+  {
+    globals: { a: 'b' },
+    globalTypes: { a: { type: 'string' } },
+    argTypes: { a: { type: 'string' } },
+    render: vi.fn(),
+  },
+]);
 
 const storyIndex: StoryIndex = {
   v: 5,
@@ -308,13 +311,13 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne-new.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
           },
         }
@@ -475,13 +478,13 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
           },
           "component-one--b": {
@@ -515,13 +518,13 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
             "story": "B",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
           },
           "component-two--c": {
@@ -555,13 +558,13 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
             "story": "C",
             "subcomponents": undefined,
             "tags": [
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component Two",
           },
         }
@@ -665,7 +668,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
+            "runStep": [Function],
             "story": "A",
             "storyFn": [Function],
             "subcomponents": undefined,
@@ -673,6 +676,7 @@ describe('StoryStore', () => {
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
             "unboundStoryFn": [Function],
             "undecoratedStoryFn": [Function],
@@ -714,7 +718,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
+            "runStep": [Function],
             "story": "B",
             "storyFn": [Function],
             "subcomponents": undefined,
@@ -722,6 +726,7 @@ describe('StoryStore', () => {
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component One",
             "unboundStoryFn": [Function],
             "undecoratedStoryFn": [Function],
@@ -763,7 +768,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
-            "runStep": undefined,
+            "runStep": [Function],
             "story": "C",
             "storyFn": [Function],
             "subcomponents": undefined,
@@ -771,6 +776,7 @@ describe('StoryStore', () => {
               "dev",
               "test",
             ],
+            "testingLibraryRender": undefined,
             "title": "Component Two",
             "unboundStoryFn": [Function],
             "undecoratedStoryFn": [Function],
@@ -827,13 +833,13 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentOne.stories.js",
               },
               "playFunction": undefined,
-              "runStep": undefined,
               "story": "A",
               "subcomponents": undefined,
               "tags": [
                 "dev",
                 "test",
               ],
+              "testingLibraryRender": undefined,
               "title": "Component One",
             },
             "component-one--b": {
@@ -867,13 +873,13 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentOne.stories.js",
               },
               "playFunction": undefined,
-              "runStep": undefined,
               "story": "B",
               "subcomponents": undefined,
               "tags": [
                 "dev",
                 "test",
               ],
+              "testingLibraryRender": undefined,
               "title": "Component One",
             },
             "component-two--c": {
@@ -907,13 +913,13 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentTwo.stories.js",
               },
               "playFunction": undefined,
-              "runStep": undefined,
               "story": "C",
               "subcomponents": undefined,
               "tags": [
                 "dev",
                 "test",
               ],
+              "testingLibraryRender": undefined,
               "title": "Component Two",
             },
           },
