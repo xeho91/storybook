@@ -6,6 +6,6 @@ export function mount(context: StoryContext) {
       context.originalStoryFn = () => ui;
     }
     await context.renderToCanvas();
-    return {};
+    return context.canvas;
   };
 }

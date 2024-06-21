@@ -15,7 +15,7 @@ import { h } from 'vue';
 
 import * as defaultProjectAnnotations from './entry-preview';
 import type { Meta } from './public-types';
-import type { VueRenderer } from './types';
+import type { StoryContext, VueRenderer } from './types';
 
 type JSXAble<TElement> = TElement & {
   new (...args: any[]): any;
@@ -47,6 +47,25 @@ export function setProjectAnnotations(
 ) {
   originalSetProjectAnnotations<VueRenderer>(projectAnnotations);
 }
+
+// This will not be necessary once we have auto preset loading
+export const vueProjectAnnotations: ProjectAnnotations<VueRenderer> = {
+  ...defaultProjectAnnotations,
+  mount: ({ testingLibraryRender, unboundStoryFn, context }: StoryContext) => {
+    return (Component?: any, options?: any) => {
+      if (testingLibraryRender == null) {
+        throw new Error(
+          'You need specify testingLibraryRender or mount to use the play function in portable stories.'
+        );
+      }
+      if (Component) {
+        context.originalStoryFn = () => h(Component, options?.props, options?.slots);
+      }
+      const DecoratedComponent = unboundStoryFn(context);
+      return testingLibraryRender(DecoratedComponent);
+    };
+  },
+};
 
 /**
  * Function that will receive a story along with meta (e.g. a default export from a .stories file)
@@ -85,7 +104,7 @@ export function composeStory<TArgs extends Args = Args>(
     story as StoryAnnotationsOrFn<VueRenderer, Args>,
     componentAnnotations,
     projectAnnotations,
-    defaultProjectAnnotations,
+    vueProjectAnnotations,
     exportsName
   );
 

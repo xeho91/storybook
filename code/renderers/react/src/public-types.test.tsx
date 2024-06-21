@@ -1,9 +1,9 @@
 // this file tests Typescript types that's why there are no assertions
 import { describe, it } from 'vitest';
+import { expectTypeOf } from 'expect-type';
 
 import { satisfies } from '@storybook/core-common';
-import type { Args, StoryAnnotations, StrictArgs } from '@storybook/types';
-import { expectTypeOf } from 'expect-type';
+import type { Args, Canvas, StoryAnnotations, StrictArgs } from '@storybook/types';
 import type { KeyboardEventHandler, ReactElement, ReactNode } from 'react';
 import React from 'react';
 
@@ -313,7 +313,9 @@ it('Infer mock function given to args in meta.', () => {
   type Story = StoryObj<typeof meta>;
 
   const Basic: Story = {
-    play: async ({ args }) => {
+    play: async ({ args, mount }) => {
+      const canvas = await mount(<TestButton {...args} />);
+      expectTypeOf(canvas).toEqualTypeOf<Canvas>();
       expectTypeOf(args.onClick).toEqualTypeOf<Mock<[], void>>();
       expectTypeOf(args.onRender).toEqualTypeOf<() => JSX.Element>();
     },

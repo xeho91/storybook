@@ -19,6 +19,7 @@ import PreviewRender from '@storybook/svelte/internal/PreviewRender.svelte';
 // @ts-expect-error Don't know why TS doesn't pick up the types export here
 import { createSvelte5Props } from '@storybook/svelte/internal/createSvelte5Props';
 import { IS_SVELTE_V4 } from './utils';
+import type { StoryContext } from './types';
 
 type ComposedStory<TArgs extends Args = any> = ComposedStoryFn<SvelteRenderer, TArgs> & {
   Component: typeof PreviewRender;
@@ -57,8 +58,29 @@ export function setProjectAnnotations(
 }
 
 // This will not be necessary once we have auto preset loading
-export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<SvelteRenderer> =
-  svelteProjectAnnotations;
+export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<SvelteRenderer> = {
+  ...svelteProjectAnnotations,
+  mount: ({ testingLibraryRender, unboundStoryFn, context }: StoryContext) => {
+    return (Component?: any, options?: any) => {
+      if (testingLibraryRender == null) {
+        throw new Error(
+          'You need specify testingLibraryRender or mount to use the play function in portable stories.'
+        );
+      }
+
+      if (Component) {
+        context.originalStoryFn = () => ({
+          Component: Component,
+          props: options?.props ?? options,
+        });
+      }
+
+      const { Component: DecoratedComponent, props } = unboundStoryFn(context);
+
+      return testingLibraryRender(DecoratedComponent, { props });
+    };
+  },
+};
 
 /**
  * Function that will receive a story along with meta (e.g. a default export from a .stories file)

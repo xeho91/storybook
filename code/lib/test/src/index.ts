@@ -1,5 +1,6 @@
 import { instrument } from '@storybook/instrumenter';
-import { type LoaderFunction } from '@storybook/csf';
+import type { Renderer, WebRenderer } from '@storybook/types';
+import { type LoaderFunction } from '@storybook/types';
 import chai from 'chai';
 import { global } from '@storybook/global';
 import { expect as rawExpect } from './expect';
@@ -11,15 +12,15 @@ import {
   resetAllMocks,
   restoreAllMocks,
 } from './spy';
-import type { Renderer, WebRenderer } from '@storybook/types';
 import type { queries } from './testing-library';
 import { within } from './testing-library';
+
 export * from './spy';
 
 type Queries = ReturnType<typeof within<typeof queries>>;
 
 declare module '@storybook/types' {
-  interface MountReturnType extends Queries {}
+  interface Canvas extends Queries {}
 }
 
 export const { expect } = instrument(
@@ -95,14 +96,8 @@ const nameSpiesAndWrapActionsInSpies: LoaderFunction<Renderer> = ({ initialArgs 
   traverseArgs(initialArgs);
 };
 
-const enhanceMount: LoaderFunction<WebRenderer> = (context) => {
-  if ('mount' in context && typeof context.mount === 'function') {
-    const mount = context.mount.bind(null);
-    context.mount = async (...args) => {
-      await mount(...args);
-      return within(context.canvasElement);
-    };
-  }
+const addCanvas: LoaderFunction<WebRenderer> = (context) => {
+  context.canvas = within(context.canvasElement);
 };
 
 // We are using this as a default Storybook loader, when the test package is used. This avoids the need for optional peer dependency workarounds.
@@ -110,7 +105,7 @@ const enhanceMount: LoaderFunction<WebRenderer> = (context) => {
 (global as any).__STORYBOOK_TEST_LOADERS__ = [
   resetAllMocksLoader,
   nameSpiesAndWrapActionsInSpies,
-  enhanceMount,
+  addCanvas,
 ];
 // eslint-disable-next-line no-underscore-dangle
 (global as any).__STORYBOOK_TEST_ON_MOCK_CALL__ = onMockCall;

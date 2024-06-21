@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import {
   composeStory as originalComposeStory,
   composeStories as originalComposeStories,
@@ -14,8 +13,9 @@ import type {
 } from '@storybook/types';
 
 import * as reactProjectAnnotations from './entry-preview';
-import type { Meta } from './public-types';
+import type { Meta, StoryContext } from './public-types';
 import type { ReactRenderer } from './types';
+import * as React from 'react';
 
 /** Function that sets the globalConfig of your storybook. The global config is the preview module of your .storybook folder.
  *
@@ -41,8 +41,22 @@ export function setProjectAnnotations(
 }
 
 // This will not be necessary once we have auto preset loading
-export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<ReactRenderer> =
-  reactProjectAnnotations;
+export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<ReactRenderer> = {
+  ...reactProjectAnnotations,
+  mount: ({ context, testingLibraryRender, unboundStoryFn: Story }: StoryContext) => {
+    return (ui?: JSX.Element) => {
+      if (testingLibraryRender == null) {
+        throw new Error(
+          'You need specify testingLibraryRender or mount to use the play function in portable stories.'
+        );
+      }
+      if (ui) {
+        context.originalStoryFn = () => ui;
+      }
+      return testingLibraryRender(<Story {...context} />);
+    };
+  },
+};
 
 /**
  * Function that will receive a story along with meta (e.g. a default export from a .stories file)
@@ -80,7 +94,7 @@ export function composeStory<TArgs extends Args = Args>(
   return originalComposeStory<ReactRenderer, TArgs>(
     story as StoryAnnotationsOrFn<ReactRenderer, Args>,
     componentAnnotations,
-    projectAnnotations,
+    projectAnnotationsWithMount,
     INTERNAL_DEFAULT_PROJECT_ANNOTATIONS,
     exportsName
   );
@@ -115,9 +129,6 @@ export function composeStories<TModule extends Store_CSFExports<ReactRenderer, a
   csfExports: TModule,
   projectAnnotations?: ProjectAnnotations<ReactRenderer>
 ) {
-  if (projectAnnotations.testingLibaryRender) {
-    projectAnnotations.mount = mount;
-  }
   // @ts-expect-error (Converted from ts-ignore)
   const composedStories = originalComposeStories(csfExports, projectAnnotations, composeStory);
 
@@ -126,9 +137,3 @@ export function composeStories<TModule extends Store_CSFExports<ReactRenderer, a
     keyof Store_CSFExports
   >;
 }
-
-const mount = ({ testingLibraryRender, storyFn: Story }) => {
-  return (ui?: JSX.Element) => {
-    return testingLibraryRender(ui ? <Story originalStoryFn={() => ui} /> : <Story />);
-  };
-};
