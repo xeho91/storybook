@@ -27,6 +27,8 @@ function tryFindCore() {
       return true;
     }
 
+    console.log('debugging: ', __dirname);
+
     const topLevelNodeModulesPath = found.split('node_modules')[0];
     const projectPackageJsonPath = findUp.sync('package.json', { cwd: topLevelNodeModulesPath });
 
