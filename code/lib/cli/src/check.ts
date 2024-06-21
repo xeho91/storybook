@@ -101,12 +101,19 @@ export async function check() {
     return false;
   }
 
-  await execa('npx', [`-p`, `sb@${packageJson.version}`, 'sb', 'automigrate'], {
-    stdio: 'inherit',
-    env: {
-      CI: 'true',
-    },
-  });
+  try {
+    await execa('npx', [`-p`, `sb@${packageJson.version}`, 'sb', 'automigrate'], {
+      stdio: 'inherit',
+      env: {
+        CI: 'true',
+      },
+    });
+  } catch (e) {
+    console.log(dedent`
+      The migration has failed. Please install @storybook/core manually.
+    `);
+    return false;
+  }
 
   console.log(dedent`
     Success! The migration has been completed. Please commit the changes to your project.
