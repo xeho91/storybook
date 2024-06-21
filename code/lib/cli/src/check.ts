@@ -1,7 +1,6 @@
 import { join } from 'node:path';
 import prompts from 'prompts';
 import findUp from 'find-up';
-import { tmpdir } from 'node:os';
 import { dedent } from 'ts-dedent';
 import execa from 'execa';
 import { readJSON, readJsonSync } from 'fs-extra';
@@ -17,17 +16,26 @@ function tryFindCore() {
   try {
     const found = require.resolve('@storybook/core');
 
-    console.log('debugging: ', __dirname);
-    console.log(tmpdir());
-
     if (!found.includes('node_modules')) {
       // We're either in PNP-mode or linked-mode.
       // We were able to find the core package, so let's hope for the best.
       return true;
     }
 
-    if (found.includes('npx') || found.includes('pnpm/dlx')) {
-      // We're in npx-mode | pnpm-dlx. Good to proceed.
+    if (found.match(/.*[\/|\\]+dlx-[^\/|\\]+[\/|\\]/)) {
+      console.log(
+        'you ran the storybook with yarn dlx. Sorry but that is not supported. Please use npx.'
+      );
+      process.exit(1);
+    }
+
+    if (
+      found.includes('.npm/_npx') ||
+      found.includes('pnpm/dlx') ||
+      found.includes(join('.npm', '_npx')) ||
+      found.includes(join('pnpm', 'dlx'))
+    ) {
+      // We're in npx-mode | pnpm-dlx. Good to proceed, those auto-install peerDependencies
       return true;
     }
 
@@ -54,8 +62,6 @@ function tryFindCore() {
 
     return false;
   } catch (e) {
-    console.log('debugging: ', __dirname);
-    console.log(tmpdir());
     return false;
   }
 }
