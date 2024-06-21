@@ -27,8 +27,8 @@ function tryFindCore() {
       return true;
     }
 
-    const TopLevelNodeModulesPath = found.split('node_modules')[0];
-    const projectPackageJsonPath = findUp.sync('package.json', { cwd: TopLevelNodeModulesPath });
+    const topLevelNodeModulesPath = found.split('node_modules')[0];
+    const projectPackageJsonPath = findUp.sync('package.json', { cwd: topLevelNodeModulesPath });
 
     if (!projectPackageJsonPath) {
       // Unknown how this could happen.. a users uses our package, and has `node_modules` in the path, but no `package.json`?
