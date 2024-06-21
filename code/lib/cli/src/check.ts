@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import prompts from 'prompts';
 import findUp from 'find-up';
+import { tmpdir } from 'node:os';
 import { dedent } from 'ts-dedent';
 import execa from 'execa';
 import { readJSON, readJsonSync } from 'fs-extra';
@@ -28,6 +29,7 @@ function tryFindCore() {
     }
 
     console.log('debugging: ', __dirname);
+    console.log(tmpdir());
 
     const topLevelNodeModulesPath = found.split('node_modules')[0];
     const projectPackageJsonPath = findUp.sync('package.json', { cwd: topLevelNodeModulesPath });
@@ -52,6 +54,8 @@ function tryFindCore() {
 
     return false;
   } catch (e) {
+    console.log('debugging: ', __dirname);
+    console.log(tmpdir());
     return false;
   }
 }
