@@ -27,9 +27,7 @@
 
 {#if decorator}
   <svelte:component this={decorator.Component} {...decorator.props} bind:this={decoratorInstance}>
-    <svelte:component this={} {...props} biComponentnd:this={instance}>
-    {context.slot}
-    </svelte:component>
+    <svelte:component this={Component} {...props} bind:this={instance} />
   </svelte:component>
 {:else}
   <svelte:component this={Component} {...props} bind:this={instance} />
