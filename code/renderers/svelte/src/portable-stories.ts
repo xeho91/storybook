@@ -61,18 +61,16 @@ export function setProjectAnnotations(
 export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<SvelteRenderer> = {
   ...svelteProjectAnnotations,
   mount: ({ unboundStoryFn, context, testingLibraryRender: render }: StoryContext) => {
-    return (Component?: any, options?: any) => {
+    return async (Component, options) => {
       if (render == null) throw new MountMustBeConfigured();
-      if (Component) {
-        context.originalStoryFn = () => ({
-          Component: Component,
-          props: options?.props ?? options,
-        });
-      }
-
-      const { Component: DecoratedComponent, props } = unboundStoryFn(context);
-
-      return render(DecoratedComponent, { props, target: context.canvasElement });
+      const { Component: DecoratedComponent, props } = unboundStoryFn({
+        ...context,
+        originalStoryFn: Component
+          ? () => ({ Component, props: options?.props ?? options })
+          : context.originalStoryFn,
+      });
+      render(DecoratedComponent, { props, target: context.canvasElement });
+      return context.canvas;
     };
   },
 };

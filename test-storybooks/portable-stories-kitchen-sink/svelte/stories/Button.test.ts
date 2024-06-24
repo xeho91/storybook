@@ -6,6 +6,8 @@ import * as stories from './Button.stories';
 // import type Button from './Button.svelte';
 import { composeStories, composeStory, setProjectAnnotations } from '@storybook/svelte';
 
+setProjectAnnotations({ testingLibraryRender: render });
+
 // example with composeStories, returns an object with all stories composed with args/decorators
 const { CSF3Primary, LoaderStory } = composeStories(stories);
 
@@ -22,7 +24,7 @@ describe('renders', () => {
     // Because the props will be passed to the first decorator of the story instead
     // of the actual component of the story. This is because of our current PreviewRender structure
 
-    const composedStory = composeStory(
+    const Composed = composeStory(
       {
         ...stories.CSF3Primary,
         args: { ...stories.CSF3Primary.args, label: 'Hello world' },
@@ -30,7 +32,7 @@ describe('renders', () => {
       stories.default
     );
 
-    render(composedStory.Component, composedStory.props);
+    render(Composed.Component, Composed.props);
     const buttonElement = screen.getByText(/Hello world/i);
     expect(buttonElement).not.toBeNull();
   });
@@ -69,6 +71,7 @@ describe('projectAnnotations', () => {
         globalTypes: {
           locale: { defaultValue: 'en' },
         },
+        testingLibraryRender: render,
       },
     ]);
     const WithEnglishText = composeStory(stories.CSF2StoryWithLocale, stories.default);
@@ -95,7 +98,6 @@ describe('CSF3', () => {
 
   it('renders with inferred globalRender', () => {
     const Primary = composeStory(stories.CSF3Button, stories.default);
-
     render(Primary.Component, Primary.props);
     const buttonElement = screen.getByText(/foo/i);
     expect(buttonElement).not.toBeNull();
@@ -111,9 +113,7 @@ describe('CSF3', () => {
   it('renders with play function without canvas element', async () => {
     const CSF3InputFieldFilled = composeStory(stories.CSF3InputFieldFilled, stories.default);
 
-    render(CSF3InputFieldFilled.Component, CSF3InputFieldFilled.props);
-
-    await CSF3InputFieldFilled.play!();
+    await CSF3InputFieldFilled.play();
 
     const input = screen.getByTestId('input') as HTMLInputElement;
     expect(input.value).toEqual('Hello world!');
@@ -122,16 +122,19 @@ describe('CSF3', () => {
   it('renders with play function with canvas element', async () => {
     const CSF3InputFieldFilled = composeStory(stories.CSF3InputFieldFilled, stories.default);
 
-    const { container } = render(CSF3InputFieldFilled.Component, CSF3InputFieldFilled.props);
+    const div = document.createElement('div');
+    document.body.appendChild(div);
 
-    await CSF3InputFieldFilled.play!({ canvasElement: container });
+    await CSF3InputFieldFilled.play({ canvasElement: div });
 
     const input = screen.getByTestId('input') as HTMLInputElement;
     expect(input.value).toEqual('Hello world!');
+
+    document.body.removeChild(div);
   });
 });
 
-// // Batch snapshot testing
+// Batch snapshot testing
 const testCases = Object.values(composeStories(stories)).map(
   (Story) => [Story.storyName, Story] as [string, typeof Story]
 );
@@ -142,11 +145,7 @@ it.each(testCases)('Renders %s story', async (_storyName, Story) => {
     return;
   }
 
-  await Story.load();
+  await Story.play({ canvasElement: document.body });
 
-  const { container } = await render(Story.Component, Story.props);
-
-  await Story.play?.({ canvasElement: container });
-  expect(container).toMatchSnapshot();
+  expect(document.body).toMatchSnapshot();
 });
-

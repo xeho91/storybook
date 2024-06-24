@@ -30,7 +30,7 @@ export const addPackageResolutions = async ({ cwd, dryRun }: YarnOptions) => {
     playwright: '1.36.0',
     'playwright-core': '1.36.0',
     '@playwright/test': '1.36.0',
-    '@storybook/csf': '0.1.9--canary.91.42a6edc.0',
+    '@storybook/csf': '0.1.9--canary.91.b332918.0',
   };
   await writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 };
@@ -75,6 +75,7 @@ export const addWorkaroundResolutions = async ({ cwd, dryRun }: YarnOptions) => 
     '@vitejs/plugin-react': '4.2.0',
     '@sveltejs/vite-plugin-svelte': '3.0.1',
     '@vitejs/plugin-vue': '4.5.0',
+    '@storybook/csf': '0.1.9--canary.91.b332918.0',
   };
   await writeJSON(packageJsonPath, packageJson, { spaces: 2 });
 };

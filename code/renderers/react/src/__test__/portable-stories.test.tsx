@@ -24,10 +24,6 @@ afterEach(() => {
 // example with composeStory, returns a single story composed with args/decorators
 const Secondary = composeStory(stories.CSF2Secondary, stories.default);
 describe('renders', () => {
-  afterEach(() => {
-    cleanup();
-  });
-
   it('renders primary button', () => {
     render(<CSF3Primary>Hello world</CSF3Primary>);
     const buttonElement = screen.getByText(/Hello world/i);
@@ -117,10 +113,6 @@ describe('projectAnnotations', () => {
 });
 
 describe('CSF3', () => {
-  afterEach(() => {
-    cleanup();
-  });
-
   it('renders with inferred globalRender', () => {
     const Primary = composeStory(stories.CSF3Button, stories.default);
 
@@ -154,6 +146,8 @@ describe('CSF3', () => {
 
     const input = screen.getByTestId('input') as HTMLInputElement;
     expect(input.value).toEqual('Hello world!');
+
+    document.body.removeChild(div);
   });
 });
 
@@ -194,14 +188,9 @@ const testCases = Object.values(composeStories(stories)).map(
   (Story) => [Story.storyName, Story] as [string, typeof Story]
 );
 it.each(testCases)('Renders %s story', async (_storyName, Story) => {
-  if (_storyName === 'CSF2StoryWithLocale') {
-    return;
-  }
+  if (_storyName === 'CSF2StoryWithLocale') return;
 
-  const div = document.createElement('div');
-  document.body.appendChild(div);
+  await Story.play();
 
-  await Story.play({ canvasElement: div });
-
-  expect(div).toMatchSnapshot();
+  expect(document.body).toMatchSnapshot();
 });

@@ -112,7 +112,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
     viewMode: 'story',
     loaded: {},
     abortSignal: new AbortController().signal,
-    step: (label: StepLabel, play: PlayFunction<TRenderer>) => story.runStep!(label, play, context),
+    step: (label: StepLabel, play: PlayFunction<TRenderer>) => story.runStep(label, play, context),
     canvasElement: globalThis?.document?.body,
     ...story,
   } as unknown as StoryContext<TRenderer>;

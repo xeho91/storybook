@@ -109,6 +109,13 @@ export function prepareStory<TRenderer extends Renderer>(
     throw new Error(`No render function available for storyId '${id}'`);
   }
 
+  const { tags } = partialAnnotations;
+
+  if (mountUsed) {
+    // Play is not supported in docs yet, and when mount is used, the mounting is happening in play itself.
+    tags.push('!autodocs');
+  }
+
   const defaultMount = (context: StoryContext) => {
     return async () => {
       await context.renderToCanvas();
@@ -126,6 +133,7 @@ export function prepareStory<TRenderer extends Renderer>(
 
   return {
     ...partialAnnotations,
+    tags,
     moduleExport,
     id,
     name,
