@@ -1,3 +1,4 @@
+import type { NetworkInterfaceInfoIPv4 } from 'os';
 import os from 'os';
 import { getServerAddresses } from '../server-address';
 
