@@ -412,13 +412,13 @@ export class Instrumenter {
     const { callRefsByResult, renderPhase } = this.getState(call.storyId);
 
     // Map complex values to a JSON-serializable representation.
-    const serializeValues = (value: any, count = 0): any => {
+    const serializeValues = (value: any, depth = 0): any => {
       if (callRefsByResult.has(value)) {
         return callRefsByResult.get(value);
       }
       if (value instanceof Array) {
         if (depth > 10) return [];
-        return value.map((it) => serializeValues(it, count++));
+        return value.map((it) => serializeValues(it, ++depth));
       }
       if (value instanceof Date) {
         return { __date__: { value: value.toISOString() } };
@@ -454,7 +454,7 @@ export class Instrumenter {
       if (Object.prototype.toString.call(value) === '[object Object]') {
         if (depth > 10) return {};
         return Object.fromEntries(
-          Object.entries(value).map(([key, val]) => [key, serializeValues(val, count++)])
+          Object.entries(value).map(([key, val]) => [key, serializeValues(val, ++depth)])
         );
       }
       return value;
