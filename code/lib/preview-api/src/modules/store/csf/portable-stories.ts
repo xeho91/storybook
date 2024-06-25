@@ -256,6 +256,7 @@ export function createPlaywrightTest<TFixture extends { extend: any }>(
             `);
         }
 
+        // start the play function on the client, and halt when rendering starts
         await page.evaluate(async (wrappedStoryRef: WrappedStoryRef) => {
           const unwrappedStoryRef = await globalThis.__pwUnwrapObject?.(wrappedStoryRef);
           const story =
@@ -273,8 +274,10 @@ export function createPlaywrightTest<TFixture extends { extend: any }>(
           await renderingStarted.promise;
         }, storyRef);
 
+        // let playwright mount the story in node
         const mountResult = await mount(storyRef, ...restArgs);
 
+        // go back to client to continue playing the play function
         await page.evaluate(async (wrappedStoryRef: WrappedStoryRef) => {
           const unwrappedStoryRef = await globalThis.__pwUnwrapObject?.(wrappedStoryRef);
           const story =
