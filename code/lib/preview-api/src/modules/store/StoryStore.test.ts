@@ -311,6 +311,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne-new.stories.js",
             },
             "playFunction": undefined,
+            "renderToCanvas": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
@@ -478,6 +479,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "renderToCanvas": undefined,
             "story": "A",
             "subcomponents": undefined,
             "tags": [
@@ -518,6 +520,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "renderToCanvas": undefined,
             "story": "B",
             "subcomponents": undefined,
             "tags": [
@@ -558,6 +561,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
+            "renderToCanvas": undefined,
             "story": "C",
             "subcomponents": undefined,
             "tags": [
@@ -668,6 +672,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "renderToCanvas": undefined,
             "runStep": [Function],
             "story": "A",
             "storyFn": [Function],
@@ -718,6 +723,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentOne.stories.js",
             },
             "playFunction": undefined,
+            "renderToCanvas": undefined,
             "runStep": [Function],
             "story": "B",
             "storyFn": [Function],
@@ -768,6 +774,7 @@ describe('StoryStore', () => {
               "fileName": "./src/ComponentTwo.stories.js",
             },
             "playFunction": undefined,
+            "renderToCanvas": undefined,
             "runStep": [Function],
             "story": "C",
             "storyFn": [Function],
@@ -833,6 +840,7 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentOne.stories.js",
               },
               "playFunction": undefined,
+              "renderToCanvas": undefined,
               "story": "A",
               "subcomponents": undefined,
               "tags": [
@@ -873,6 +881,7 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentOne.stories.js",
               },
               "playFunction": undefined,
+              "renderToCanvas": undefined,
               "story": "B",
               "subcomponents": undefined,
               "tags": [
@@ -913,6 +922,7 @@ describe('StoryStore', () => {
                 "fileName": "./src/ComponentTwo.stories.js",
               },
               "playFunction": undefined,
+              "renderToCanvas": undefined,
               "story": "C",
               "subcomponents": undefined,
               "tags": [

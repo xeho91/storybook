@@ -55,6 +55,7 @@ const storyContextExtras = () => ({
   canvasElement: {},
   step: vi.fn(),
   mount: vi.fn(),
+  canvas: undefined,
 });
 
 describe('prepareStory', () => {
@@ -779,6 +780,7 @@ describe('prepareMeta', () => {
       mount,
       runStep,
       testingLibraryRender,
+      renderToCanvas,
       ...expectedPreparedMeta
     } = preparedStory;
 
