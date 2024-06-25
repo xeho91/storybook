@@ -1,4 +1,4 @@
-import { findPackageSync } from 'fd-package-json';
+import readPkgUp from 'read-pkg-up';
 import { detect, getNpmVersion } from 'detect-package-manager';
 import {
   loadMainConfig,
@@ -224,7 +224,7 @@ export const getStorybookMetadata = async (_configDir?: string) => {
     return cachedMetadata;
   }
 
-  const packageJson = findPackageSync(process.cwd()) || {};
+  const { packageJson = {} } = readPkgUp.sync({ cwd: process.cwd(), normalize: false }) || {};
   // TODO: improve the way configDir is extracted, as a "storybook" script might not be present
   // Scenarios:
   // 1. user changed it to something else e.g. "storybook:dev"
@@ -232,7 +232,7 @@ export const getStorybookMetadata = async (_configDir?: string) => {
   const configDir =
     (_configDir ||
       (getStorybookConfiguration(
-        String((packageJson?.scripts as Record<string, unknown> | undefined)?.storybook || ''),
+        packageJson?.scripts?.storybook || '',
         '-c',
         '--config-dir'
       ) as string)) ??
