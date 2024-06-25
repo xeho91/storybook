@@ -114,6 +114,7 @@ export type PreparedStory<TRenderer extends Renderer = Renderer> =
     runStep: StepRunner<TRenderer>;
     mount: (context: StoryContext<TRenderer>) => () => Promise<Canvas>;
     testingLibraryRender?: (...args: never[]) => unknown;
+    renderToCanvas?: ProjectAnnotations<TRenderer>['renderToCanvas'];
   };
 
 export type PreparedMeta<TRenderer extends Renderer = Renderer> = Omit<

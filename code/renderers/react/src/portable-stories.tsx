@@ -13,10 +13,10 @@ import type {
 } from '@storybook/types';
 
 import * as reactProjectAnnotations from './entry-preview';
-import type { Meta, StoryContext } from './public-types';
+import type { Meta } from './public-types';
 import type { ReactRenderer } from './types';
 import * as React from 'react';
-import { MountMustBeConfigured } from '@storybook/core-events/preview-errors';
+import { TestingLibraryMustBeConfigured } from '@storybook/core-events/preview-errors';
 
 /** Function that sets the globalConfig of your storybook. The global config is the preview module of your .storybook folder.
  *
@@ -44,14 +44,11 @@ export function setProjectAnnotations(
 // This will not be necessary once we have auto preset loading
 export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<ReactRenderer> = {
   ...reactProjectAnnotations,
-  mount: ({ unboundStoryFn: Story, context, testingLibraryRender: render }: StoryContext) => {
-    return (ui?: JSX.Element) => {
-      if (render == null) throw new MountMustBeConfigured();
-      if (ui) {
-        context.originalStoryFn = () => ui;
-      }
-      return render(<Story {...context} />, { baseElement: context.canvasElement });
-    };
+  renderToCanvas: ({
+    storyContext: { context, unboundStoryFn: Story, testingLibraryRender: render, canvasElement },
+  }) => {
+    if (render == null) throw new TestingLibraryMustBeConfigured();
+    render(<Story {...context} />, { baseElement: canvasElement });
   },
 };
 
@@ -89,7 +86,7 @@ export function composeStory<TArgs extends Args = Args>(
   exportsName?: string
 ) {
   return originalComposeStory<ReactRenderer, TArgs>(
-    story as StoryAnnotationsOrFn<ReactRenderer, Args>,
+    story as StoryAnnotationsOrFn<ReactRenderer>,
     componentAnnotations,
     projectAnnotations,
     INTERNAL_DEFAULT_PROJECT_ANNOTATIONS,

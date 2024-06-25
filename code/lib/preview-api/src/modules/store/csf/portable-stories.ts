@@ -6,15 +6,14 @@ import type {
   Args,
   ComponentAnnotations,
   ComposedStoryFn,
-  ComposedStoryPlayFn,
   ComposeStoryFn,
   LegacyStoryAnnotationsOrFn,
   NamedOrDefaultProjectAnnotations,
   Parameters,
   PlayFunction,
-  PlayFunctionContext,
   PreparedStory,
   ProjectAnnotations,
+  RenderContext,
   Renderer,
   StepLabel,
   Store_CSFExports,
@@ -119,8 +118,13 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
 
   context.context = context;
   context.mount = story.mount(context);
+  context.renderToCanvas = () =>
+    story.renderToCanvas?.(
+      { storyContext: context } as RenderContext<TRenderer>,
+      context.canvasElement
+    );
 
-  const playFunction = (extraContext: Partial<PlayFunctionContext<TRenderer, TArgs>>) => {
+  const playFunction = (extraContext: Partial<StoryContext<TRenderer, Partial<TArgs>>>) => {
     Object.assign(context, extraContext);
     return playStory(story, context);
   };
@@ -177,7 +181,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
       args: story.initialArgs as Partial<TArgs>,
       parameters: story.parameters as Parameters,
       argTypes: story.argTypes as StrictArgTypes<TArgs>,
-      play: playFunction as ComposedStoryPlayFn<TRenderer, TArgs>,
+      play: playFunction,
     }
   );
 
@@ -212,9 +216,12 @@ export function composeStories<TModule extends Store_CSFExports>(
 type WrappedStoryRef = { __pw_type: 'jsx' | 'importRef' };
 type UnwrappedJSXStoryRef = {
   __pw_type: 'jsx';
-  type: ComposedStoryFn;
+  type: UnwrappedImportStoryRef;
 };
-type UnwrappedImportStoryRef = ComposedStoryFn;
+type UnwrappedImportStoryRef = ComposedStoryFn & {
+  playPromise?: Promise<void>;
+  renderingEnded?: PromiseWithResolvers<void>;
+};
 
 declare global {
   function __pwUnwrapObject(
@@ -253,19 +260,28 @@ export function createPlaywrightTest<TFixture extends { extend: any }>(
           const unwrappedStoryRef = await globalThis.__pwUnwrapObject?.(wrappedStoryRef);
           const story =
             '__pw_type' in unwrappedStoryRef ? unwrappedStoryRef.type : unwrappedStoryRef;
-          return story?.load?.();
+
+          const renderingStarted = Promise.withResolvers<void>();
+          story.renderingEnded = Promise.withResolvers();
+          story.playPromise = story.play({
+            canvasElement: document.querySelector('#root'),
+            renderToCanvas: async () => {
+              renderingStarted.resolve();
+              await story.renderingEnded?.promise;
+            },
+          });
+          await renderingStarted.promise;
         }, storyRef);
 
-        // mount the story
         const mountResult = await mount(storyRef, ...restArgs);
 
-        // play the story in the browser
         await page.evaluate(async (wrappedStoryRef: WrappedStoryRef) => {
           const unwrappedStoryRef = await globalThis.__pwUnwrapObject?.(wrappedStoryRef);
           const story =
             '__pw_type' in unwrappedStoryRef ? unwrappedStoryRef.type : unwrappedStoryRef;
-          const canvasElement = document.querySelector('#root');
-          return story?.play?.({ canvasElement });
+
+          story.renderingEnded?.resolve();
+          await story.playPromise;
         }, storyRef);
 
         return mountResult;

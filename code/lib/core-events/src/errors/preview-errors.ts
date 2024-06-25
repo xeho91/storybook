@@ -257,7 +257,7 @@ export class MountMustBeDestructured extends StorybookError {
   }
 }
 
-export class MountMustBeConfigured extends StorybookError {
+export class TestingLibraryMustBeConfigured extends StorybookError {
   readonly category = Category.PREVIEW_API;
 
   readonly code = 13;

@@ -14,12 +14,12 @@ import type {
 
 import * as svelteProjectAnnotations from './entry-preview';
 import type { Meta } from './public-types';
-import type { StoryContext, SvelteRenderer } from './types';
+import type { SvelteRenderer } from './types';
 import PreviewRender from '@storybook/svelte/internal/PreviewRender.svelte';
 // @ts-expect-error Don't know why TS doesn't pick up the types export here
 import { createSvelte5Props } from '@storybook/svelte/internal/createSvelte5Props';
 import { IS_SVELTE_V4 } from './utils';
-import { MountMustBeConfigured } from '@storybook/core-events/preview-errors';
+import { TestingLibraryMustBeConfigured } from '@storybook/core-events/preview-errors';
 
 type ComposedStory<TArgs extends Args = any> = ComposedStoryFn<SvelteRenderer, TArgs> & {
   Component: typeof PreviewRender;
@@ -60,18 +60,12 @@ export function setProjectAnnotations(
 // This will not be necessary once we have auto preset loading
 export const INTERNAL_DEFAULT_PROJECT_ANNOTATIONS: ProjectAnnotations<SvelteRenderer> = {
   ...svelteProjectAnnotations,
-  mount: ({ unboundStoryFn, context, testingLibraryRender: render }: StoryContext) => {
-    return async (Component, options) => {
-      if (render == null) throw new MountMustBeConfigured();
-      const { Component: DecoratedComponent, props } = unboundStoryFn({
-        ...context,
-        originalStoryFn: Component
-          ? () => ({ Component, props: options?.props ?? options })
-          : context.originalStoryFn,
-      });
-      render(DecoratedComponent, { props, target: context.canvasElement });
-      return context.canvas;
-    };
+  renderToCanvas: ({
+    storyContext: { context, unboundStoryFn, testingLibraryRender: render, canvasElement },
+  }) => {
+    if (render == null) throw new TestingLibraryMustBeConfigured();
+    const { Component, props } = unboundStoryFn(context);
+    render(Component, { props, target: canvasElement });
   },
 };
 

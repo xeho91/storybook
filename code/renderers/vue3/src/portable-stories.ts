@@ -11,12 +11,12 @@ import type {
   Store_CSFExports,
   StoriesWithPartialProps,
 } from '@storybook/types';
-import { MountMustBeConfigured } from '@storybook/core-events/preview-errors';
+import { TestingLibraryMustBeConfigured } from '@storybook/core-events/preview-errors';
 import { h } from 'vue';
 
 import * as defaultProjectAnnotations from './entry-preview';
 import type { Meta } from './public-types';
-import type { StoryContext, VueRenderer } from './types';
+import type { VueRenderer } from './types';
 
 type JSXAble<TElement> = TElement & {
   new (...args: any[]): any;
@@ -52,15 +52,11 @@ export function setProjectAnnotations(
 // This will not be necessary once we have auto preset loading
 export const vueProjectAnnotations: ProjectAnnotations<VueRenderer> = {
   ...defaultProjectAnnotations,
-  mount: ({ testingLibraryRender: render, unboundStoryFn, context }: StoryContext) => {
-    return (Component?: any, options?: any) => {
-      if (render == null) throw new MountMustBeConfigured();
-      if (Component) {
-        context.originalStoryFn = () => h(Component, options?.props, options?.slots);
-      }
-      const DecoratedComponent = unboundStoryFn(context);
-      return render(DecoratedComponent, { baseElement: context.canvasElement });
-    };
+  renderToCanvas: ({
+    storyContext: { context, unboundStoryFn, testingLibraryRender: render, canvasElement },
+  }) => {
+    if (render == null) throw new TestingLibraryMustBeConfigured();
+    return render(unboundStoryFn(context), { baseElement: canvasElement });
   },
 };
 

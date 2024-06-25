@@ -148,6 +148,7 @@ export function prepareStory<TRenderer extends Renderer>(
     runStep,
     mount,
     testingLibraryRender,
+    renderToCanvas: projectAnnotations.renderToCanvas,
   };
 }
 export function prepareMeta<TRenderer extends Renderer>(
