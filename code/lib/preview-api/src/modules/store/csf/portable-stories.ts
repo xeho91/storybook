@@ -124,7 +124,7 @@ export function composeStory<TRenderer extends Renderer = Renderer, TArgs extend
       context.canvasElement
     );
 
-  const playFunction = (extraContext: Partial<StoryContext<TRenderer, Partial<TArgs>>>) => {
+  const playFunction = (extraContext: Partial<StoryContext<TRenderer, Partial<TArgs>>> = {}) => {
     Object.assign(context, extraContext);
     return playStory(story, context);
   };
