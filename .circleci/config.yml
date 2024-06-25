@@ -538,10 +538,10 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
-      - bun-orb/setup:
-          version: 1.1.17
       - attach_workspace:
           at: .
+      - bun-orb/setup:
+          version: 1.1.17
       - when:
           condition:
             equal: ["npm", << parameters.packageManager >>]
@@ -630,10 +630,13 @@ jobs:
     steps:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
-      - bun-orb/setup:
-          version: 1.1.17
       - attach_workspace:
           at: .
+      - run:
+          name: Install unzip
+          command: sudo apt install unzip
+      - bun-orb/setup:
+          version: 1.1.17
       - run:
           name: Install dependencies
           command: yarn install --no-immutable
