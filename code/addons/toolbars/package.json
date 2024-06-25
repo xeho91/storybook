@@ -47,8 +47,8 @@
     "!src/**/*"
   ],
   "scripts": {
-    "check": "bun ../../../scripts/prepare/check.ts",
-    "prep": "bun ../../../scripts/prepare/addon-bundle.ts"
+    "check": "../../../scripts/prepare/check.ts",
+    "prep": "../../../scripts/prepare/addon-bundle.ts"
   },
   "devDependencies": {
     "react": "^18.2.0",

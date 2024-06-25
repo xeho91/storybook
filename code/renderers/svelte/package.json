@@ -54,7 +54,7 @@
   ],
   "scripts": {
     "check": "svelte-check",
-    "prep": "bun ../../../scripts/prepare/bundle.ts"
+    "prep": "../../../scripts/prepare/bundle.ts"
   },
   "dependencies": {
     "@storybook/global": "^5.0.0",

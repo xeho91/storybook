@@ -49,8 +49,8 @@
     "src/mocks/**/*"
   ],
   "scripts": {
-    "check": "bun ../../../scripts/prepare/check.ts",
-    "prep": "bun ../../../scripts/prepare/bundle.ts"
+    "check": "../../../scripts/prepare/check.ts",
+    "prep": "../../../scripts/prepare/bundle.ts"
   },
   "dependencies": {
     "@storybook/addon-actions": "workspace:*",

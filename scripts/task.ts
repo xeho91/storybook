@@ -521,7 +521,7 @@ process.on('exit', () => {
   });
 });
 
-if (require.main === module) {
+if (import.meta.path === Bun.main) {
   run()
     .then((status) => process.exit(status))
     .catch((err) => {

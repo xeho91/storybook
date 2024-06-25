@@ -64,8 +64,8 @@
     "!src/**/*"
   ],
   "scripts": {
-    "check": "bun ../../../scripts/prepare/check.ts",
-    "prep": "bun ../../../scripts/prepare/addon-bundle.ts"
+    "check": "../../../scripts/prepare/check.ts",
+    "prep": "../../../scripts/prepare/addon-bundle.ts"
   },
   "dependencies": {
     "@storybook/global": "^5.0.0",

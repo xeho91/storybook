@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import { join } from 'path';
 import fs from 'fs-extra';
 import ts from 'typescript';
