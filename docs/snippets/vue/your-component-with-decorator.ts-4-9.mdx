@@ -1,0 +1,14 @@
+```ts
+// YourComponent.stories.ts
+
+import type { Meta } from '@storybook/vue3';
+
+import YourComponent from './YourComponent.vue';
+
+const meta = {
+  component: YourComponent,
+  decorators: [() => ({ template: '<div style="margin: 3em;"><story/></div>' })],
+} satisfies Meta<typeof YourComponent>;
+
+export default meta;
+```
