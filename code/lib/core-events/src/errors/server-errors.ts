@@ -545,7 +545,7 @@ export class UpgradeStorybookToSameVersionError extends StorybookError {
 
   template() {
     return dedent`
-      You are trying to upgrade Storybook to the same version that is currently installed in the project, version ${this.data.beforeVersion}. This is not supported.
+      You are upgrading Storybook to the same version that is currently installed in the project, version ${this.data.beforeVersion}.
       
       This usually happens when running the upgrade command without a version specifier, e.g. "npx storybook upgrade".
       This will cause npm to run the globally cached storybook binary, which might be the same version that you already have.
@@ -601,6 +601,25 @@ export class NoStatsForViteDevError extends StorybookError {
       Unable to write preview stats as the Vite builder does not support stats in dev mode.
 
       Please remove the \`--stats-json\` flag when running in dev mode.
+    `;
+  }
+}
+
+export class FindPackageVersionsError extends StorybookError {
+  readonly category = Category.CLI;
+
+  readonly code = 1;
+
+  constructor(
+    public data: { error: Error | unknown; packageName: string; packageManager: string }
+  ) {
+    super();
+  }
+
+  template() {
+    return dedent`
+      Unable to find versions of "${this.data.packageName}" using ${this.data.packageManager}
+      ${this.data.error && `Reason: ${this.data.error}`}
     `;
   }
 }
