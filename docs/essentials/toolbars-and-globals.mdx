@@ -17,7 +17,7 @@ When the globals change, the story re-renders, and the decorators rerun with the
 
 ## Global types and the toolbar annotation
 
-Storybook has a simple, declarative syntax for configuring toolbar menus. In your [`.storybook/preview.js`](../configure/overview.mdx#configure-story-rendering), you can add your own toolbars by creating `globalTypes` with a `toolbar` annotation:
+Storybook has a simple, declarative syntax for configuring toolbar menus. In your [`.storybook/preview.js`](../configure/index.mdx#configure-story-rendering), you can add your own toolbars by creating `globalTypes` with a `toolbar` annotation:
 
 {/* prettier-ignore-start */}
 
@@ -26,7 +26,7 @@ Storybook has a simple, declarative syntax for configuring toolbar menus. In you
 {/* prettier-ignore-end */}
 
 <div class="aside">
-  💡 As globals are *global* you can *only* set `globalTypes` in [`.storybook/preview.js`](../configure/overview.mdx#configure-story-rendering).
+  💡 As globals are *global* you can *only* set `globalTypes` in [`.storybook/preview.js`](../configure/index.mdx#configure-story-rendering).
 </div>
 
 When you start your Storybook, you should see a new dropdown with the `light` and `dark` options in your toolbar.
@@ -35,7 +35,7 @@ When you start your Storybook, you should see a new dropdown with the `light` an
 
 We have a `global` implemented. Let's wire it up! We can consume our new `theme` global in a decorator using the `context.globals.theme` value.
 
-For example, suppose you are using `styled-components`. You can add a theme provider decorator to your [`.storybook/preview.js`](../configure/overview.mdx#configure-story-rendering) config:
+For example, suppose you are using `styled-components`. You can add a theme provider decorator to your [`.storybook/preview.js`](../configure/index.mdx#configure-story-rendering) config:
 
 {/* prettier-ignore-start */}
 
@@ -49,7 +49,7 @@ So far, we've managed to create and consume a global inside Storybook.
 
 Now let's take a look at a more complex example. Let's suppose we wanted to implement a new global called **locale** for internationalization, which shows a flag on the right side of the toolbar.
 
-In your [`.storybook/preview.js`](../configure/overview.mdx#configure-story-rendering), add the following:
+In your [`.storybook/preview.js`](../configure/index.mdx#configure-story-rendering), add the following:
 
 {/* prettier-ignore-start */}
 

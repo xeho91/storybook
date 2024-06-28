@@ -7,7 +7,7 @@ sidebar:
 
 Storybook test runner turns all of your stories into executable tests. It is powered by [Jest](https://jestjs.io/) and [Playwright](https://playwright.dev/).
 
-* For those [without a play function](../writing-stories/introduction.mdx): it verifies whether the story renders without any errors.
+* For those [without a play function](../writing-stories/index.mdx): it verifies whether the story renders without any errors.
 * For those [with a play function](../writing-stories/play-function.mdx): it also checks for errors in the play function and that all assertions passed.
 
 These tests run in a live browser and can be executed via the [command line](#cli-options) or your [CI server](#set-up-ci-to-run-tests).
@@ -197,7 +197,7 @@ The test-runner exports a few helpers that can be used to make your tests more r
 
 ### Stories.json mode
 
-The test-runner transforms your story files into tests when testing a local Storybook. For a remote Storybook, it uses the Storybook's [stories.json](../configure/overview.mdx#feature-flags) file (a static index of all the stories) to run the tests.
+The test-runner transforms your story files into tests when testing a local Storybook. For a remote Storybook, it uses the Storybook's [stories.json](../configure/index.mdx#feature-flags) file (a static index of all the stories) to run the tests.
 
 #### Why?
 
@@ -223,7 +223,7 @@ If you need to disable it, use the `--no-stories-json` flag:
 
 #### How do I check if my Storybook has a `stories.json` file?
 
-Stories.json mode requires a `stories.json` file. Open a browser window and navigate to your deployed Storybook instance (for example, `https://your-storybook-url-here.com/stories.json`). You should see a JSON file that starts with a `"v": 3` key, immediately followed by another key called "stories", which contains a map of story IDs to JSON objects. If that is the case, your Storybook supports [stories.json mode](../configure/overview.mdx#feature-flags).
+Stories.json mode requires a `stories.json` file. Open a browser window and navigate to your deployed Storybook instance (for example, `https://your-storybook-url-here.com/stories.json`). You should see a JSON file that starts with a `"v": 3` key, immediately followed by another key called "stories", which contains a map of story IDs to JSON objects. If that is the case, your Storybook supports [stories.json mode](../configure/index.mdx#feature-flags).
 
 ***
 
