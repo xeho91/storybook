@@ -1,0 +1,53 @@
+---
+title: 'Canvas'
+sidebar:
+  order: 2
+  title: Canvas
+---
+
+Storybook's `Canvas` Doc Block is a wrapper featuring a toolbar that allows you to interact with its content while automatically providing the required [Source](./doc-block-source.mdx) snippets.
+
+![Docs block with a story preview](../../_assets/writing-docs/docblock-preview.png)
+
+## Working with the DocsPage
+
+Storybook's [DocsPage](../docs-page.mdx) wraps each story inside a `Canvas` Doc Block. The first story rendered in the DocsPage is automatically configured with a toolbar and set as *primary*. All other existing stories will not feature the toolbar. It also includes a [Source](../doc-block-source.mdx) Doc Block to visualize the story code snippet.
+
+## Working with MDX
+
+The `Canvas` Doc Block includes additional customization options if you're writing MDX stories. Below is a condensed example and table featuring all the available options.
+
+{/* prettier-ignore-start */}
+
+<CodeSnippets path="mdx-canvas-doc-block.md" />
+
+{/* prettier-ignore-end */}
+
+| Option        | Description                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------ |
+| `columns`     | Splits the stories based on the number of defined columns. <br /> `<Canvas columns={2}></Canvas>` |
+| `isColumn`    | Displays the stories one above the other. <br /> `<Canvas isColumn></Canvas>`                     |
+| `withSource`  | Controls the source code block visibility. <br /> `Canvas withSource="open"></Canvas>`            |
+| `withToolbar` | Sets the `Canvas` toolbar visibility. <br /> `<Canvas withToolbar></Canvas>`                      |
+
+### Rendering multiple stories
+
+If you want, you can also group multiple stories and render them inside a single `Canvas` Doc Block. For example:
+
+{/* prettier-ignore-start */}
+
+<CodeSnippets path="mdx-canvas-multiple-stories.md" />
+
+{/* prettier-ignore-end */}
+
+### Non-story content
+
+Additionally, you can also place non-story related content inside `Canvas` Doc Block allowing you to render the JSX content precisely as it would if you placed it inside an MDX file, for example:
+
+{/* prettier-ignore-start */}
+
+<CodeSnippets path="my-component-with-story-content.md" />
+
+{/* prettier-ignore-end */}
+
+When rendered, Storybook will automatically generate the code snippet for this inside the [Source](./doc-block-source.mdx) block beneath the block.

@@ -1,0 +1,16 @@
+```js filename="/my-addon/manager.js" renderer="common" language="js"
+import React from 'react';
+
+import { useParameter } from '@storybook/api';
+
+export const Panel = () => {
+  const value = useParameter('parameter-key', 'default value');
+
+  return (
+    <div>
+      for the currently selected story, the parameter for "parameter-key" is:
+      {value}
+    </div>
+  );
+};
+```

@@ -1,0 +1,11 @@
+```js filename="/my-addon/manager.js" renderer="common" language="js"
+import React from 'react';
+
+import { useStorybookApi } from '@storybook/api';
+
+export const Panel = () => {
+  const state = useStorybookApi();
+
+  return <div>do something with storybook's api</div>;
+};
+```

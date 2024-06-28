@@ -1,0 +1,100 @@
+---
+title: 'Styling and CSS'
+sidebar:
+  order: 3
+  title: Styling and CSS
+---
+
+There are many ways to include CSS in a web application, and correspondingly there are many ways to include CSS in Storybook. Usually, it is best to try and replicate what your application does with styling in Storybook’s configuration.
+
+### CSS-in-JS
+
+CSS-in-JS libraries are designed to use basic JavaScript, and they often work in Storybook without any extra configuration. Some libraries expect components to render in a specific rendering “context” (for example, to provide themes), and you may need to add a [global decorator](../../writing-stories/decorators.mdx#global-decorators) to supply it.
+
+### Importing CSS files
+
+If your component files import their CSS, Storybook's webpack configuration will work out of the box. The noticeable exception to this is if you're using a CSS precompiler. In this case, you can either install and configure a Storybook preset (e.g., [SCSS preset](https://github.com/storybookjs/presets/tree/master/packages/preset-scss)), or customize [Storybook's webpack configuration](../../builders/webpack.mdx#extending-storybooks-webpack-config) and include the appropriate loader.
+
+
+{/* prettier-ignore-start */}
+
+<IfRenderer renderer='angular'>
+
+With Angular, you'll need to take special care of handling CSS.
+
+### Working with previous versions
+
+If you're working with an older version of Angular, in addition to providing a custom Webpack configuration, you can also use an inline loader to load your CSS safely. For example:
+
+```js
+import '!style-loader!css-loader!./styles.css';
+```
+
+### With Angular 13
+
+With Angular version 13 and above, you should use a builder configuration to import your CSS, for example:
+
+```json
+  {
+    "my-project": {
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "styles": ["src/styles.css", "src/styles.scss"]
+          }
+        }
+      }
+    }
+  }
+```
+
+Additionally, if you need Storybook specific styles that are separate from your application, you can configure the styles with [Storybook's custom builder](https://storybook.js.org/docs/6), which will override the application's styles:
+
+```json
+  {
+    "storybook": {
+      "builder": "@storybook/angular:start-storybook",
+      "options": {
+        "browserTarget": "my-default-project:build",
+        "styles": [".storybook/custom-styles.scss"]
+      }
+    }
+  }
+```
+
+### Nx with Angular 13
+
+If you're working with Storybook and [NX libraries](https://nx.dev/structure/library-types), you can extend your project's configuration (i.e., `project.json`) and provide the application's styles. For example: 
+
+
+```json
+ "build-storybook": {
+    "executor": "@nrwl/storybook:build",
+    "outputs": ["{options.outputPath}"],
+    "options": {
+      "uiFramework": "@storybook/angular",
+      "outputPath": "dist/storybook/example-lib",
+      "config": {
+        "configFolder": "libs/example-lib/storybook/.storybook"
+      },
+      "projectBuildConfig": "example-lib:build-storybook",
+      "styles": ["apps/example-app/src/styles.scss"]
+    },
+    "configurations": {
+      "ci": {
+        "quiet": true
+      }
+    }
+  }  
+```
+
+</IfRenderer>
+
+{/* prettier-ignore-end */}
+
+To use your CSS in all stories, you import it in [`.storybook/preview.js`](../index.mdx#configure-story-rendering)
+
+### Adding webfonts
+
+If you need webfonts to be available, you may need to add some code to the [`.storybook/preview-head.html`](../story-rendering.mdx#adding-to-head) file. We recommend including any assets with your Storybook if possible, in which case you likely want to configure the [static file location](./images-and-assets.mdx#serving-static-files-via-storybook-configuration).

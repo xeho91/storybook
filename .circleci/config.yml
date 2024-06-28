@@ -44,7 +44,7 @@ executors:
     resource_class: <<parameters.class>>
 
 orbs:
-  git-shallow-clone: guitarrapc/git-shallow-clone@2.0.3
+  git-shallow-clone: guitarrapc/git-shallow-clone@2.8.0
 
 commands:
   ensure-pr-is-labeled-with:

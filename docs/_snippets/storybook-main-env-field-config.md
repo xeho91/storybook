@@ -1,0 +1,18 @@
+```js filename=".storybook/main.js" renderer="common" language="js"
+module.exports = {
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+  ],
+  /* 
+   * 👇 The `config` argument contains all the other existing environment variables.
+   * Either configured in an `.env` file or configured on the command line.
+  */
+  env: (config) => ({
+    ...config,
+    EXAMPLE_VAR: 'An environment variable configured in Storybook',
+  }),
+};
+```
