@@ -1,0 +1,28 @@
+---
+title: 'swc'
+sidebar:
+  order: 20
+  title: swc
+---
+
+Parent: [main.js|ts configuration](./main-config.mdx)
+
+Type: `(config: swc.Options, options: Options) => swc.Options | Promise<swc.Options>`
+
+Customize Storybook's [SWC](https://swc.rs/) setup.
+
+{/* prettier-ignore-start */}
+
+<CodeSnippets path="main-config-swc.md" />
+
+{/* prettier-ignore-end */}
+
+## `SWC.Options`
+
+See SWC's [documentation](https://swc.rs/) for more information.
+
+## Options
+
+Type: `{ configType?: 'DEVELOPMENT' | 'PRODUCTION' }`
+
+There are other options that are difficult to document here. Please introspect the type definition for more information.

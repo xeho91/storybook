@@ -1,0 +1,13 @@
+```md renderer="common" language="mdx"
+{/* MyComponent.stories.mdx */}
+
+import { Canvas } from '@storybook/addon-docs';
+
+import { MyComponent } from './MyComponent';
+
+<Canvas>
+  <h2>Some here</h2>
+  <MyComponent />
+</Canvas>
+```
+
