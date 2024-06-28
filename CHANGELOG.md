@@ -1,4 +1,10 @@
-## 7.6.18
+## 7.6.20
+
+- Core: Replace ip function to address security concerns [#27529](https://github.com/storybookjs/storybook/pull/27529), thanks @tony19 
+- Telemetry: Detect Node version [#28299](https://github.com/storybookjs/storybook/pull/28299), thanks @yannbf
+- Angular: Support v18 [#27237](https://github.com/storybookjs/storybook/pull/27237), thanks @valentinpalkovic
+
+## 7.6.19
 
 - Fix bad release in `7.6.18` thanks @jreinhold!
 
