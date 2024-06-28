@@ -12,6 +12,7 @@ import { PACKS_DIRECTORY } from './utils/constants';
 
 import { maxConcurrentTasks } from './utils/concurrency';
 import { getWorkspaces } from './utils/workspace';
+import { execa, execaSync } from 'execa';
 
 program
   .option('-O, --open', 'keep process open')
@@ -22,6 +23,7 @@ program.parse(process.argv);
 const logger = console;
 
 const dirname = path.dirname(new URL(import.meta.url).pathname);
+const root = path.resolve(__dirname, '..');
 
 const startVerdaccio = async () => {
   let resolved = false;
@@ -96,13 +98,8 @@ const publish = async (packages: { name: string; location: string }[], url: stri
               await execaCommand(`yarn pack --out ${PACKS_DIRECTORY}/${tarballFilename}`, {
                 cwd: pathLocation,
               });
-              // Restricted packages have to be scoped packages, and sb isn't a scoped package
-              const isRestricted =
-                tarballFilename !== 'sb.tgz' && tarballFilename !== 'storybook.tgz';
               await execaCommand(
-                `npm publish ${tarballFilename} --registry ${url} --force ${
-                  isRestricted ? '--access restricted' : ''
-                } --ignore-scripts`,
+                `npm publish ${tarballFilename} --registry ${url} --force --ignore-scripts`,
                 {
                   cwd: PACKS_DIRECTORY,
                 }
@@ -118,20 +115,6 @@ const publish = async (packages: { name: string; location: string }[], url: stri
     )
   );
 };
-
-const addUser = (url: string) =>
-  new Promise<void>(async (res, rej) => {
-    logger.log(`👤 add temp user to verdaccio`);
-
-    try {
-      await execaCommand(
-        `npx npm-cli-adduser -r ${url} -a -u foo -p s3cret -e user@example.com -t legacy`
-      );
-      res();
-    } catch (e) {
-      rej(e);
-    }
-  });
 
 const run = async () => {
   const verdaccioUrl = `http://localhost:6001`;
@@ -158,12 +141,15 @@ const run = async () => {
 
   logger.log(`🌿 verdaccio running on ${verdaccioUrl}`);
 
-  // in some environments you need to add a dummy user. always try to add & catch on failure
-  try {
-    await addUser(verdaccioUrl);
-  } catch (e) {
-    //
-  }
+  logger.log(`👤 add temp user to verdaccio`);
+  await execa(
+    'npx',
+    // creates a .npmrc file in the root directory of the project
+    ['npm-auth-to-token', '-u', 'foo', '-p', 's3cret', '-e', 'test@test.com', '-r', verdaccioUrl],
+    {
+      cwd: root,
+    }
+  );
 
   logger.log(`📦 found ${packages.length} storybook packages at version ${chalk.blue(version)}`);
 
@@ -171,7 +157,9 @@ const run = async () => {
     await publish(packages, verdaccioUrl);
   }
 
-  return new Promise<void>((res) => {
+  return new Promise<void>(async (res) => {
+    await execa('npx', ['rimraf', '.npmrc'], { cwd: root });
+
     if (!program.open) {
       verdaccioServer.close(() => {
         res();
@@ -184,5 +172,6 @@ const run = async () => {
 
 run().catch((e) => {
   logger.error(e);
+  execaSync('npx', ['rimraf', '.npmrc'], { cwd: root });
   process.exit(1);
 });
