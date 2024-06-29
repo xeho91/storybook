@@ -7,6 +7,7 @@
   export let props = {};
   export let on = undefined;
   export let argTypes = undefined;
+  export let isOriginalStory = false;
 
   let instance;
   let decoratorInstance;
@@ -17,13 +18,14 @@
     Svelte Docgen will create argTypes for events with the name 'event_eventName'
     The Actions addon will convert these to args because they are type: 'action'
     We need to filter these args out so they are not passed to the component
+    We also need to filter out the 'children' prop because we render it as the default slot instead
   */
-  let propsWithoutDocgenEvents;
-  $: propsWithoutDocgenEvents = Object.fromEntries(
-    Object.entries(props).filter(([key]) => !key.startsWith('event_'))
+  let filteredProps;
+  $: filteredProps = Object.fromEntries(
+    Object.entries(props).filter(([key]) => key !== 'children' && !key.startsWith('event_'))
   );
 
-  if (argTypes && IS_SVELTE_V4) {
+  if (isOriginalStory && argTypes && IS_SVELTE_V4) {
     const eventsFromArgTypes = Object.fromEntries(
       Object.entries(argTypes)
         .filter(([key, value]) => value.action && props[key] != null)
@@ -43,8 +45,18 @@
 
 {#if decorator}
   <svelte:component this={decorator.Component} {...decorator.props} bind:this={decoratorInstance}>
-    <svelte:component this={Component} {...propsWithoutDocgenEvents} bind:this={instance} />
+    {#if isOriginalStory && props.children}
+      <svelte:component this={Component} {...filteredProps} bind:this={instance}>
+        {@html props.children}
+      </svelte:component>
+    {:else}
+      <svelte:component this={Component} {...filteredProps} bind:this={instance} />
+    {/if}
+  </svelte:component>
+{:else if isOriginalStory && props.children}
+  <svelte:component this={Component} {...filteredProps} bind:this={instance}>
+    {@html props.children}
   </svelte:component>
 {:else}
-  <svelte:component this={Component} {...propsWithoutDocgenEvents} bind:this={instance} />
+  <svelte:component this={Component} {...filteredProps} bind:this={instance} />
 {/if}
