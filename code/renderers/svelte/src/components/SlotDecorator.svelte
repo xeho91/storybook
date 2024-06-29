@@ -14,7 +14,8 @@
 
   const IS_SVELTE_V4 = Number(SVELTE_VERSION[0]) <= 4;
 
-  const CHILDREN_ARG_AS_HTML = globalThis.FRAMEWORK_OPTIONS?.childrenArgAsHtml ?? false;
+  const CHILDREN_ARG_AS_DEFAULT_SLOT =
+    globalThis.FRAMEWORK_OPTIONS?.childrenArgAsDefaultSlot ?? false;
   /*
     Svelte Docgen will create argTypes for events with the name 'event_eventName'
     The Actions addon will convert these to args because they are type: 'action'
@@ -27,7 +28,7 @@
       if (key.startsWith('event_')) {
         return false;
       }
-      if (key === 'children' && CHILDREN_ARG_AS_HTML) {
+      if (key === 'children' && CHILDREN_ARG_AS_DEFAULT_SLOT) {
         return false;
       }
       return true;
@@ -54,17 +55,25 @@
 
 {#if decorator}
   <svelte:component this={decorator.Component} {...decorator.props} bind:this={decoratorInstance}>
-    {#if CHILDREN_ARG_AS_HTML && isOriginalStory && props.children}
+    {#if CHILDREN_ARG_AS_DEFAULT_SLOT && isOriginalStory && props.children}
       <svelte:component this={Component} {...filteredProps} bind:this={instance}>
-        {@html props.children}
+        {#if props.children.Component}
+          <svelte:component this={props.children.Component} {...props.children.props} />
+        {:else}
+          {@html props.children}
+        {/if}
       </svelte:component>
     {:else}
       <svelte:component this={Component} {...filteredProps} bind:this={instance} />
     {/if}
   </svelte:component>
-{:else if CHILDREN_ARG_AS_HTML && isOriginalStory && props.children}
+{:else if CHILDREN_ARG_AS_DEFAULT_SLOT && isOriginalStory && props.children}
   <svelte:component this={Component} {...filteredProps} bind:this={instance}>
-    {@html props.children}
+    {#if props.children.Component}
+      <svelte:component this={props.children.Component} {...props.children.props} />
+    {:else}
+      {@html props.children}
+    {/if}
   </svelte:component>
 {:else}
   <svelte:component this={Component} {...filteredProps} bind:this={instance} />

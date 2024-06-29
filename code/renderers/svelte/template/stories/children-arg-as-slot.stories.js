@@ -7,7 +7,7 @@ export default {
   beforeEach: () => {
     globalThis.FRAMEWORK_OPTIONS = {
       ...globalThis.FRAMEWORK_OPTIONS,
-      childrenArgAsHtml: true,
+      childrenArgAsDefaultSlot: true,
     };
     return () => {
       globalThis.FRAMEWORK_OPTIONS = initialFrameworkOptions;
@@ -41,6 +41,23 @@ export const Number = {
     children: 1,
   },
 };
+export const ComponentWithoutProps = {
+  args: {
+    children: {
+      Component: globalThis.Components.Button,
+    },
+  },
+};
+export const ComponentWithProps = {
+  args: {
+    children: {
+      Component: globalThis.Components.Button,
+      props: {
+        label: 'Button label',
+      },
+    },
+  },
+};
 export const WithDecorator = {
   decorators: [() => BorderDecoratorBlue],
   args: {
@@ -52,7 +69,7 @@ export const FrameworkOptionDisabled = {
   beforeEach: () => {
     globalThis.FRAMEWORK_OPTIONS = {
       ...globalThis.FRAMEWORK_OPTIONS,
-      childrenArgAsHtml: false,
+      childrenArgAsDefaultSlot: false,
     };
     return () => {
       globalThis.FRAMEWORK_OPTIONS = initialFrameworkOptions;
