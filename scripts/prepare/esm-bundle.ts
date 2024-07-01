@@ -25,6 +25,8 @@ type DtsConfigSection = Pick<Options, 'dts' | 'tsconfig'>;
 /* MAIN */
 
 const run = async ({ cwd, flags }: { cwd: string; flags: string[] }) => {
+  const debug = hasFlag(flags, 'debug');
+
   const {
     name,
     dependencies,
@@ -33,16 +35,23 @@ const run = async ({ cwd, flags }: { cwd: string; flags: string[] }) => {
   } = (await fs.readJson(join(cwd, 'package.json'))) as PackageJsonWithBundlerConfig;
 
   if (pre) {
-    await exec(`bun ${pre}`, { cwd });
+    console.log('pre', pre);
+    await exec(`bun ${pre}`, { cwd }, { debug });
   }
+
+  console.log('after pre');
 
   const reset = hasFlag(flags, 'reset');
   const watch = hasFlag(flags, 'watch');
   const optimized = hasFlag(flags, 'optimized');
 
+  console.log('reset');
+
   if (reset) {
     await fs.emptyDir(join(process.cwd(), 'dist'));
   }
+
+  console.log('areset');
 
   const tasks: Promise<any>[] = [];
 
@@ -145,7 +154,7 @@ const run = async ({ cwd, flags }: { cwd: string; flags: string[] }) => {
   await Promise.all(tasks);
 
   if (post) {
-    await exec(`bun ${post}`, { cwd }, { debug: true });
+    await exec(`bun ${post}`, { cwd }, { debug });
   }
 
   if (process.env.CI !== 'true') {
