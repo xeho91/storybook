@@ -166,6 +166,7 @@ jobs:
             - code/frameworks
             - code/deprecated
             - code/lib
+            - code/core
             - code/builders
             - code/ui
             - code/renderers
@@ -270,7 +271,7 @@ jobs:
           at: .
       - codecov/upload
       - report-workflow-on-failure
-  chromatic-internal-storybooks:
+  chromatic-internal-storybook:
     executor:
       class: medium+
       name: sb_node_18_browsers
@@ -285,10 +286,8 @@ jobs:
           at: .
       - run:
           name: Running Chromatic
-          command: |
-            cd code
-            yarn storybook:ui:chromatic
-            yarn storybook:blocks:chromatic
+          command: yarn storybook:ui:chromatic
+          working_directory: code
       - report-workflow-on-failure
       - store_test_results:
           path: test-results
@@ -683,7 +682,7 @@ workflows:
       - script-checks:
           requires:
             - build
-      - chromatic-internal-storybooks:
+      - chromatic-internal-storybook:
           requires:
             - build
       - coverage:
@@ -745,7 +744,7 @@ workflows:
       - script-checks:
           requires:
             - build
-      - chromatic-internal-storybooks:
+      - chromatic-internal-storybook:
           requires:
             - build
       - coverage:
@@ -808,7 +807,7 @@ workflows:
       - script-checks:
           requires:
             - build
-      - chromatic-internal-storybooks:
+      - chromatic-internal-storybook:
           requires:
             - build
       - create-sandboxes:

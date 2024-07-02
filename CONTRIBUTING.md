@@ -59,7 +59,7 @@ If you want to make code changes to Storybook packages while running a sandbox, 
 
 ```bash
 cd code
-yarn build --watch react core-server api addon-docs
+yarn build --watch react core addon-docs
 ```
 
 2. If you are running the sandbox in "linked" mode (the default), you should see the changes reflected on a refresh (you may need to restart it if changing server packages)
@@ -80,7 +80,7 @@ yarn task --prod
 
 ```bash
 cd code
-yarn build --prod --watch angular core-server api addon-docs
+yarn build --prod --watch angular core addon-docs
 ```
 
 ## Contributing to Storybook
