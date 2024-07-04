@@ -19,7 +19,6 @@ import { wrapRequire } from './wrap-require';
 import { reactDocgen } from './react-docgen';
 import { removeReactDependency } from './prompt-remove-react';
 import { storyshotsMigration } from './storyshots-migration';
-import { removeArgtypesRegex } from './remove-argtypes-regex';
 import { webpack5CompilerSetup } from './webpack5-compiler-setup';
 import { addonsAPI } from './addons-api';
 import { mdx1to3 } from './mdx-1-to-3';
@@ -43,7 +42,6 @@ export const allFixes: Fix[] = [
   builderVite,
   sbBinary,
   sbScripts,
-  removeArgtypesRegex,
   removedGlobalClientAPIs,
   mdxgfm,
   autodocsTrue,
