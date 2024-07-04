@@ -139,11 +139,11 @@ const IconPlaceholder = styled.div(({ theme }) => ({
   animation: `${theme.animation.glow} 1.5s ease-in-out infinite`,
 }));
 
-const IconButtonSkeletonWrapper = styled.div(() => ({
+const IconButtonSkeletonWrapper = styled.div({
   marginTop: 6,
   padding: 7,
   height: 28,
-}));
+});
 
 /**
  * @deprecated

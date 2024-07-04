@@ -59,7 +59,7 @@ const Notification = styled.div<{ duration?: number }>(
     }
 );
 
-const NotificationWithInteractiveStates = styled(Notification)(() => ({
+const NotificationWithInteractiveStates = styled(Notification)({
   cursor: 'pointer',
   border: 'none',
   outline: 'none',
@@ -80,11 +80,11 @@ const NotificationWithInteractiveStates = styled(Notification)(() => ({
     boxShadow:
       'rgba(2,156,253,1) 0 0 0 1px inset, 0 1px 3px 0 rgba(30,167,253,0.5), 0 2px 5px 0 rgba(0,0,0,0.05), 0 5px 15px 0 rgba(0,0,0,0.1)',
   },
-}));
+});
 const NotificationButton = NotificationWithInteractiveStates.withComponent('div');
 const NotificationLink = NotificationWithInteractiveStates.withComponent(Link);
 
-const NotificationIconWrapper = styled.div(() => ({
+const NotificationIconWrapper = styled.div({
   display: 'flex',
   marginRight: 10,
   alignItems: 'center',
@@ -93,7 +93,7 @@ const NotificationIconWrapper = styled.div(() => ({
     width: 16,
     height: 16,
   },
-}));
+});
 
 const NotificationTextWrapper = styled.div(({ theme }) => ({
   width: '100%',
