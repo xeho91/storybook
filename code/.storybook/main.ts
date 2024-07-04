@@ -1,10 +1,6 @@
-import path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { mergeConfig } from 'vite';
 import type { StorybookConfig } from '../frameworks/react-vite';
-
-const componentsPath = path.join(__dirname, '../core/src/components');
-const managerApiPath = path.join(__dirname, '../core/src/manager-api');
 
 const config: StorybookConfig = {
   stories: [
@@ -63,18 +59,6 @@ const config: StorybookConfig = {
   },
   viteFinal: (viteConfig, { configType }) =>
     mergeConfig(viteConfig, {
-      resolve: {
-        alias: {
-          ...(configType === 'DEVELOPMENT'
-            ? {
-                '@storybook/components': componentsPath,
-                'storybook/internal/components': componentsPath,
-                '@storybook/manager-api': managerApiPath,
-                'storybook/internal/manager-api': managerApiPath,
-              }
-            : {}),
-        },
-      },
       optimizeDeps: { force: true },
       build: {
         // disable sourcemaps in CI to not run out of memory
