@@ -159,7 +159,6 @@ describe('ComposeStories types', () => {
        * Type '{ backgroundColor: { control: string; }; size: { control: { type: string; }; options: string[]; }; }'
        * has no properties in common with type 'Partial<ArgTypes<ComponentType>>'.
        */
-      // @ts-expect-error fix this later
       default: stories.default satisfies Meta<typeof Button>,
     }).toMatchTypeOf<ComposeStoriesParam>();
   });
