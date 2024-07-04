@@ -1,10 +1,10 @@
 import { describe, expect, vi, it } from 'vitest';
-import type { StorybookConfig } from '@storybook/types';
+import type { StorybookConfig } from '@storybook/core/types';
 import { mdxgfm } from './mdx-gfm';
 
 vi.mock('globby', () => ({
   __esModule: true,
-  default: vi.fn().mockResolvedValue(['a/fake/file.mdx']),
+  globby: vi.fn().mockResolvedValue(['a/fake/file.mdx']),
 }));
 
 const check = async ({
