@@ -92,7 +92,6 @@ export const updateArgsInCsfFile = async (node: t.Node, input: Record<string, an
                   delete args[key.node.name];
                 }
               },
-              // @ts-expect-error noScope works but is not typed properly
               noScope: true,
             });
 

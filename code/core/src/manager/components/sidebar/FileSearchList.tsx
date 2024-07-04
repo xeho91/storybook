@@ -56,13 +56,13 @@ interface FileSearchListProps {
 }
 
 interface FileItemContentProps {
-  virtualItem: VirtualItem;
+  virtualItem: VirtualItem<any>;
   selected: number | null;
   searchResult: SearchResult;
 }
 
 interface FileItemSelectionPayload {
-  virtualItem: VirtualItem;
+  virtualItem: VirtualItem<any>;
   searchResult: SearchResult;
   itemId: string;
 }
