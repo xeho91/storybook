@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { once } from '@storybook/client-logger';
+import { once } from 'storybook/internal/client-logger';
 import { instrument } from '@storybook/instrumenter';
 import * as domTestingLibrary from '@testing-library/dom';
 import _userEvent from '@testing-library/user-event';
@@ -105,4 +105,14 @@ export const {
   prettyFormat,
 } = testingLibrary;
 
-export const { userEvent } = instrument({ userEvent: _userEvent }, { intercept: true });
+// This lines below are to prevent tsup doing stupid (not working) inline stuff, see:
+// https://github.com/storybookjs/storybook/issues/25258
+// eslint-disable-next-line @typescript-eslint/naming-convention
+type _UserEvent = typeof _userEvent;
+
+export interface UserEvent extends _UserEvent {}
+
+export const { userEvent }: { userEvent: UserEvent } = instrument(
+  { userEvent: _userEvent },
+  { intercept: true }
+);

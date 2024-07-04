@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { styled } from '@storybook/theming';
+import { styled } from 'storybook/internal/theming';
 import type { NodeResult, Result } from 'axe-core';
 import { useResizeDetector } from 'react-resize-detector';
 import HighlightToggle from './Report/HighlightToggle';
@@ -87,8 +87,8 @@ const List = styled.div(({ theme }) => ({
 
 interface TabsProps {
   tabs: {
-    label: JSX.Element;
-    panel: JSX.Element;
+    label: React.ReactElement;
+    panel: React.ReactElement;
     items: Result[];
     type: RuleType;
   }[];
@@ -121,7 +121,6 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
         <TabsWrapper>
           {tabs.map((tab, index) => (
             <Item
-              /* eslint-disable-next-line react/no-array-index-key */
               key={index}
               data-index={index}
               active={activeTab === index}

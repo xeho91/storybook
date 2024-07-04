@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
-import { logger } from '@storybook/node-logger';
+import { logger } from 'storybook/internal/node-logger';
 
 const appDirectory = fs.realpathSync(process.cwd());
 
@@ -53,7 +53,6 @@ export function getReactScriptsPath({ noCache }: { noCache?: boolean } = {}) {
 
 export function isReactScriptsInstalled(requiredVersion = '2.0.0') {
   try {
-    // eslint-disable-next-line import/no-dynamic-require,global-require
     const reactScriptsJson = require(path.join(getReactScriptsPath(), 'package.json'));
     return !semver.gtr(requiredVersion, reactScriptsJson.version);
   } catch (e) {

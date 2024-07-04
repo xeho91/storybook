@@ -1,6 +1,6 @@
 import { Configuration } from 'webpack';
 import * as path from 'path';
-import { Preset } from '@storybook/types';
+import { Preset } from 'storybook/internal/types';
 import fs from 'fs';
 
 import { PresetOptions } from './preset-options';
@@ -33,7 +33,6 @@ function loadEsmModule<T>(modulePath: string): Promise<T> {
 export const runNgcc = async () => {
   let ngcc: any;
   try {
-    // eslint-disable-next-line global-require
     ngcc = require('@angular/compiler-cli/ngcc');
   } catch (error) {
     ngcc = await loadEsmModule('@angular/compiler-cli/ngcc');

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useMemo } from '@storybook/preview-api';
-import type { DecoratorFunction, Renderer } from '@storybook/types';
+import { useMemo } from 'storybook/internal/preview-api';
+import type { DecoratorFunction, Renderer } from 'storybook/internal/types';
 
 import { initializeThemeState, pluckThemeFromContext, useThemeParameters } from './helpers';
 
@@ -16,7 +16,8 @@ export interface ProviderStrategyConfiguration {
 
 const pluckThemeFromKeyPairTuple = ([_, themeConfig]: [string, Theme]): Theme => themeConfig;
 
-export const withThemeFromJSXProvider = <TRenderer extends Renderer = Renderer>({
+// TODO check with @kasperpeulen: change the types so they can be correctly inferred from context e.g. <Story extends (...args: any[]) => any>
+export const withThemeFromJSXProvider = <TRenderer extends Renderer = any>({
   Provider,
   GlobalStyles,
   defaultTheme,

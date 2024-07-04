@@ -16,7 +16,7 @@
     "editor.formatOnSave": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
@@ -33,7 +33,6 @@
       ".tsx"
     ]
   },
-  "eslint.packageManager": "yarn",
   "eslint.useESLintClass": true,
   "eslint.validate": [
     "json",

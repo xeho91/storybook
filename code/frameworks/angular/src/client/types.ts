@@ -4,7 +4,7 @@ import {
   Parameters as DefaultParameters,
   StoryContext as DefaultStoryContext,
   WebRenderer,
-} from '@storybook/types';
+} from 'storybook/internal/types';
 
 export interface NgModuleMetadata {
   /**
@@ -37,10 +37,6 @@ export interface StoryFnAngularReturnType {
   userDefinedTemplate?: boolean;
 }
 
-/**
- * @deprecated Use `AngularRenderer` instead.
- */
-export type AngularFramework = AngularRenderer;
 export interface AngularRenderer extends WebRenderer {
   component: any;
   storyResult: StoryFnAngularReturnType;

@@ -1,5 +1,5 @@
 import { global as globalThis } from '@storybook/global';
-import type { PartialStoryFn, StoryContext } from '@storybook/types';
+import type { PartialStoryFn, StoryContext } from 'storybook/internal/types';
 
 export default {
   component: globalThis.Components.Pre,
@@ -78,6 +78,5 @@ export const Defined = {
 //   parameters: {
 //     docs: { disable: true },
 //     chromatic: { disable: true },
-//     storyshots: { disable: true },
 //   },
 // };

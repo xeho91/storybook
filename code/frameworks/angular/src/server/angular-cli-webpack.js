@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 // Private angular devkit stuff
 const {
   generateI18nBrowserWebpackConfigFromContext,
@@ -62,13 +61,16 @@ exports.getWebpackConfig = async (baseConfig, { builderOptions, builderContext }
       // Default options
       index: 'noop-index',
       main: 'noop-main',
-      outputPath: 'noop-out',
 
       // Options provided by user
       ...builderOptions,
       styles: builderOptions.styles
         ?.map((style) => (typeof style === 'string' ? style : style.input))
         .filter((style) => typeof style === 'string' || style.inject !== false),
+      outputPath:
+        typeof builderOptions.outputPath === 'string'
+          ? builderOptions.outputPath
+          : builderOptions.outputPath?.base ?? 'noop-out',
 
       // Fixed options
       optimization: false,

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { styled } from '@storybook/theming';
+import { styled } from 'storybook/internal/theming';
 
 import type { NodeResult } from 'axe-core';
 import { Rules } from './Rules';
@@ -63,7 +63,6 @@ interface ElementsProps {
 export const Elements: FC<ElementsProps> = ({ elements, type }) => (
   <ol>
     {elements.map((element, index) => (
-      // eslint-disable-next-line react/no-array-index-key
       <Element element={element} key={index} type={type} />
     ))}
   </ol>

@@ -1,63 +1,64 @@
+import { describe, afterEach, it, expect, vi } from 'vitest';
 import * as fs from 'fs';
-import { logger } from '@storybook/node-logger';
+import { logger } from '@storybook/core/node-logger';
 import { detect, detectFrameworkPreset, detectLanguage } from './detect';
 import { ProjectType, SupportedLanguage } from './project_types';
-import type { JsPackageManager, PackageJsonWithMaybeDeps } from './js-package-manager';
+import type { JsPackageManager, PackageJsonWithMaybeDeps } from '@storybook/core/common';
 
-jest.mock('./helpers', () => ({
-  isNxProject: jest.fn(),
+vi.mock('./helpers', () => ({
+  isNxProject: vi.fn(),
 }));
 
-jest.mock('fs', () => ({
-  existsSync: jest.fn(),
-  stat: jest.fn(),
-  lstat: jest.fn(),
-  access: jest.fn(),
+vi.mock('fs', () => ({
+  existsSync: vi.fn(),
+  stat: vi.fn(),
+  lstat: vi.fn(),
+  access: vi.fn(),
+  realpathSync: vi.fn(),
+  lstatSync: vi.fn(),
+  readdir: vi.fn(),
+  readdirSync: vi.fn(),
+  readlinkSync: vi.fn(),
+  default: vi.fn(),
 }));
 
-jest.mock('fs-extra', () => ({
-  pathExistsSync: jest.fn(() => true),
+vi.mock('fs-extra', () => ({
+  pathExistsSync: vi.fn(() => true),
 }));
 
-jest.mock('path', () => ({
-  // make it return just the second path, for easier testing
-  join: jest.fn((_, p) => p),
-}));
-
-jest.mock('@storybook/node-logger');
+vi.mock('@storybook/core/node-logger');
 
 const MOCK_FRAMEWORK_FILES: {
   name: string;
   files: Record<'package.json', PackageJsonWithMaybeDeps> | Record<string, string>;
 }[] = [
   {
-    name: ProjectType.SFC_VUE,
-    files: {
-      'package.json': {
-        dependencies: {
-          vuetify: '1.0.0',
-        },
-        devDependencies: {
-          'vue-loader': '1.0.0',
-        },
-      },
-    },
-  },
-  {
-    name: ProjectType.VUE,
-    files: {
-      'package.json': {
-        dependencies: {
-          vue: '1.0.0',
-        },
-      },
-    },
-  },
-  {
     name: ProjectType.VUE3,
     files: {
       'package.json': {
         dependencies: {
+          vue: '^3.0.0',
+        },
+      },
+    },
+  },
+  {
+    name: ProjectType.NUXT,
+    files: {
+      'package.json': {
+        dependencies: {
+          nuxt: '^3.11.2',
+        },
+      },
+    },
+  },
+  {
+    name: ProjectType.NUXT,
+    files: {
+      'package.json': {
+        dependencies: {
+          // Nuxt projects may have Vue 3 as an explicit dependency
+          nuxt: '^3.11.2',
           vue: '^3.0.0',
         },
       },
@@ -244,7 +245,7 @@ describe('Detect', () => {
   });
 
   it(`should return language javascript if the TS dependency is present but less than minimum supported`, async () => {
-    (logger.warn as jest.MockedFunction<typeof logger.warn>).mockClear();
+    vi.mocked(logger.warn).mockClear();
 
     const packageManager = {
       retrievePackageJson: () =>
@@ -433,13 +434,13 @@ describe('Detect', () => {
 
   describe('detectFrameworkPreset should return', () => {
     afterEach(() => {
-      jest.clearAllMocks();
+      vi.clearAllMocks();
     });
 
     MOCK_FRAMEWORK_FILES.forEach((structure) => {
       it(`${structure.name}`, () => {
-        (fs.existsSync as jest.Mock).mockImplementation((filePath) => {
-          return Object.keys(structure.files).includes(filePath);
+        vi.mocked(fs.existsSync).mockImplementation((filePath) => {
+          return typeof filePath === 'string' && Object.keys(structure.files).includes(filePath);
         });
 
         const result = detectFrameworkPreset(
@@ -455,24 +456,16 @@ describe('Detect', () => {
       expect(result).toBe(ProjectType.UNDETECTED);
     });
 
-    // TODO(blaine): Remove once Nuxt3 is supported
-    it(`UNSUPPORTED for Nuxt framework above version 3.0.0`, () => {
-      const result = detectFrameworkPreset({
-        dependencies: {
-          nuxt: '3.0.0',
-        },
-      });
-      expect(result).toBe(ProjectType.UNSUPPORTED);
-    });
-
     // TODO: The mocking in this test causes tests after it to fail
     it('REACT_SCRIPTS for custom react scripts config', () => {
       const forkedReactScriptsConfig = {
         '/node_modules/.bin/react-scripts': 'file content',
       };
 
-      (fs.existsSync as jest.Mock).mockImplementation((filePath) => {
-        return Object.keys(forkedReactScriptsConfig).includes(filePath);
+      vi.mocked(fs.existsSync).mockImplementation((filePath) => {
+        return (
+          typeof filePath === 'string' && Object.keys(forkedReactScriptsConfig).includes(filePath)
+        );
       });
 
       const result = detectFrameworkPreset();

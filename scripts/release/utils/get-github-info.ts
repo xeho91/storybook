@@ -6,7 +6,6 @@
  */
 
 import DataLoader from 'dataloader';
-import fetch from 'node-fetch';
 
 const validRepoNameRegex = /^[\w.-]+\/[\w.-]+$/;
 
@@ -73,7 +72,7 @@ function makeQuery(repos: ReposWithCommitsAndPRsToFetch) {
                       nodes {
                         name
                       }
-                    }    
+                    }
                     mergeCommit {
                       commitUrl
                       oid

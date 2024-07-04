@@ -1,6 +1,6 @@
 import React from 'react';
-import { addons, types, useAddonState } from '@storybook/manager-api';
-import { Badge, Spaced } from '@storybook/components';
+import { addons, types, useAddonState } from 'storybook/internal/manager-api';
+import { Badge, Spaced } from 'storybook/internal/components';
 import { ADDON_ID, PANEL_ID, PARAM_KEY } from './constants';
 import { VisionSimulator } from './components/VisionSimulator';
 import { A11YPanel } from './components/A11YPanel';
@@ -29,7 +29,7 @@ addons.register(ADDON_ID, (api) => {
   addons.add(PANEL_ID, {
     title: '',
     type: types.TOOL,
-    match: ({ viewMode }) => viewMode === 'story',
+    match: ({ viewMode, tabId }) => viewMode === 'story' && !tabId,
     render: () => <VisionSimulator />,
   });
 

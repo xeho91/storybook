@@ -1,16 +1,12 @@
-import type { ComponentType, ReactElement } from 'react';
-import type { WebRenderer } from '@storybook/types';
+import type { ComponentType } from 'react';
+import type { Canvas, WebRenderer } from 'storybook/internal/types';
 
-export type { RenderContext } from '@storybook/types';
-export type { StoryContext } from '@storybook/types';
+export type { RenderContext, StoryContext } from 'storybook/internal/types';
 
-/**
- * @deprecated Use `ReactRenderer` instead.
- */
-export type ReactFramework = ReactRenderer;
 export interface ReactRenderer extends WebRenderer {
   component: ComponentType<this['T']>;
   storyResult: StoryFnReactReturnType;
+  mount: (ui?: JSX.Element) => Promise<Canvas>;
 }
 
 export interface ShowErrorArgs {
@@ -18,4 +14,4 @@ export interface ShowErrorArgs {
   description: string;
 }
 
-export type StoryFnReactReturnType = ReactElement<unknown>;
+export type StoryFnReactReturnType = JSX.Element;

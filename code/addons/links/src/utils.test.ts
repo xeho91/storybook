@@ -1,20 +1,23 @@
-import { addons } from '@storybook/preview-api';
-import { SELECT_STORY } from '@storybook/core-events';
+// @vitest-environment happy-dom
+
+import { describe, beforeAll, beforeEach, it, expect, vi } from 'vitest';
+import { addons } from 'storybook/internal/preview-api';
+import { SELECT_STORY } from 'storybook/internal/core-events';
 
 import { linkTo, hrefTo } from './utils';
 
-jest.mock('@storybook/preview-api');
-jest.mock('@storybook/global', () => ({
+vi.mock('storybook/internal/preview-api');
+vi.mock('@storybook/global', () => ({
   global: {
     document: global.document,
     window: global,
   },
 }));
 
-const mockAddons = addons as unknown as jest.Mocked<typeof addons>;
+const mockAddons = vi.mocked(addons);
 
 describe('preview', () => {
-  const channel = { emit: jest.fn() };
+  const channel = { emit: vi.fn() };
   beforeAll(() => {
     mockAddons.getChannel.mockReturnValue(channel as any);
   });

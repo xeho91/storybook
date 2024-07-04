@@ -1,9 +1,9 @@
-import fs from 'fs';
+import * as fs from 'fs';
 import findUp from 'find-up';
 import semver from 'semver';
-import { logger } from '@storybook/node-logger';
+import { logger } from '@storybook/core/node-logger';
 
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import prompts from 'prompts';
 import type { TemplateConfiguration, TemplateMatcher } from './project_types';
 import {
@@ -13,9 +13,9 @@ import {
   unsupportedTemplate,
   CoreBuilder,
 } from './project_types';
-import { commandLog, isNxProject } from './helpers';
-import type { JsPackageManager, PackageJsonWithMaybeDeps } from './js-package-manager';
-import { HandledError } from './HandledError';
+import { isNxProject } from './helpers';
+import type { JsPackageManager, PackageJsonWithMaybeDeps } from '@storybook/core/common';
+import { commandLog, HandledError } from '@storybook/core/common';
 
 const viteConfigFiles = ['vite.config.ts', 'vite.config.js', 'vite.config.mjs'];
 const webpackConfigFiles = ['webpack.config.js'];
@@ -44,7 +44,7 @@ const hasPeerDependency = (
   return !!version;
 };
 
-type SearchTuple = [string, (version: string) => boolean | undefined];
+type SearchTuple = [string, ((version: string) => boolean) | undefined];
 
 const getFrameworkPreset = (
   packageJson: PackageJsonWithMaybeDeps,
@@ -114,28 +114,32 @@ export async function detectBuilder(packageManager: JsPackageManager, projectTyp
   const webpackConfig = findUp.sync(webpackConfigFiles);
   const dependencies = await packageManager.getAllDependencies();
 
-  if (viteConfig || (dependencies['vite'] && dependencies['webpack'] === undefined)) {
+  if (viteConfig || (dependencies.vite && dependencies.webpack === undefined)) {
     commandLog('Detected Vite project. Setting builder to Vite')();
     return CoreBuilder.Vite;
   }
 
   // REWORK
-  if (webpackConfig || (dependencies['webpack'] && dependencies['vite'] !== undefined)) {
+  if (
+    webpackConfig ||
+    ((dependencies.webpack || dependencies['@nuxt/webpack-builder']) &&
+      dependencies.vite !== undefined)
+  ) {
     commandLog('Detected webpack project. Setting builder to webpack')();
     return CoreBuilder.Webpack5;
   }
 
   // Fallback to Vite or Webpack based on project type
   switch (projectType) {
-    case ProjectType.SFC_VUE:
-      return CoreBuilder.Vite;
     case ProjectType.REACT_SCRIPTS:
     case ProjectType.ANGULAR:
     case ProjectType.REACT_NATIVE: // technically react native doesn't use webpack, we just want to set something
     case ProjectType.NEXTJS:
+    case ProjectType.EMBER:
       return CoreBuilder.Webpack5;
+    case ProjectType.NUXT:
+      return CoreBuilder.Vite;
     default:
-      // eslint-disable-next-line no-case-declarations
       const { builder } = await prompts(
         {
           type: 'select',
@@ -175,7 +179,7 @@ export async function detectLanguage(packageManager: JsPackageManager) {
 
   const isTypescriptDirectDependency = await packageManager
     .getAllDependencies()
-    .then((deps) => Boolean(deps['typescript']));
+    .then((deps) => Boolean(deps.typescript));
 
   const typescriptVersion = await packageManager.getPackageVersion('typescript');
   const prettierVersion = await packageManager.getPackageVersion('prettier');
@@ -186,9 +190,8 @@ export async function detectLanguage(packageManager: JsPackageManager) {
     '@typescript-eslint/parser'
   );
 
-  const eslintPluginStorybookVersion = await packageManager.getPackageVersion(
-    'eslint-plugin-storybook'
-  );
+  const eslintPluginStorybookVersion =
+    await packageManager.getPackageVersion('eslint-plugin-storybook');
 
   if (isTypescriptDirectDependency && typescriptVersion) {
     if (
@@ -204,6 +207,13 @@ export async function detectLanguage(packageManager: JsPackageManager) {
       language = SupportedLanguage.TYPESCRIPT_3_8;
     } else if (semver.lt(typescriptVersion, '3.8.0')) {
       logger.warn('Detected TypeScript < 3.8, populating with JavaScript examples');
+    }
+  } else {
+    // No direct dependency on TypeScript, but could be a transitive dependency
+    // This is eg the case for Nuxt projects, which support a recent version of TypeScript
+    // Check for tsconfig.json (https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+    if (fs.existsSync('tsconfig.json')) {
+      language = SupportedLanguage.TYPESCRIPT_4_9;
     }
   }
 

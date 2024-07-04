@@ -1,4 +1,4 @@
-import { hasDocsOrControls } from '@storybook/docs-tools';
+import { hasDocsOrControls } from 'storybook/internal/docs-tools';
 
 import type { Configuration } from 'webpack';
 import type { StorybookConfig } from './types';
@@ -10,10 +10,8 @@ export const webpackFinal: StorybookConfig['webpackFinal'] = async (
 ): Promise<Configuration> => {
   if (!hasDocsOrControls(options)) return config;
 
-  const typescriptOptions = await options.presets.apply<StorybookConfig['typescript']>(
-    'typescript',
-    {} as any
-  );
+  const typescriptOptions = await options.presets.apply('typescript', {} as any);
+  const debug = options.loglevel === 'debug';
 
   const { reactDocgen, reactDocgenTypescriptOptions } = typescriptOptions || {};
 
@@ -30,11 +28,15 @@ export const webpackFinal: StorybookConfig['webpackFinal'] = async (
           ...(config.module?.rules ?? []),
           {
             test: /\.(cjs|mjs|tsx?|jsx?)$/,
+            enforce: 'pre',
             loader: requirer(
               require.resolve,
               '@storybook/preset-react-webpack/dist/loaders/react-docgen-loader'
             ),
-            exclude: /node_modules\/.*/,
+            options: {
+              debug,
+            },
+            exclude: /(\.(stories|story)\.(js|jsx|ts|tsx))|(node_modules)/,
           },
         ],
       },
@@ -51,11 +53,15 @@ export const webpackFinal: StorybookConfig['webpackFinal'] = async (
         ...(config.module?.rules ?? []),
         {
           test: /\.(cjs|mjs|jsx?)$/,
+          enforce: 'pre',
           loader: requirer(
             require.resolve,
             '@storybook/preset-react-webpack/dist/loaders/react-docgen-loader'
           ),
-          exclude: /node_modules\/.*/,
+          options: {
+            debug,
+          },
+          exclude: /(\.(stories|story)\.(js|jsx|ts|tsx))|(node_modules)/,
         },
       ],
     },

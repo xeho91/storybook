@@ -1,5 +1,5 @@
-import { useEffect } from '@storybook/preview-api';
-import type { DecoratorFunction, Renderer } from '@storybook/types';
+import { useEffect } from 'storybook/internal/preview-api';
+import type { DecoratorFunction, Renderer } from 'storybook/internal/types';
 import { initializeThemeState, pluckThemeFromContext, useThemeParameters } from './helpers';
 
 export interface DataAttributeStrategyConfiguration {
@@ -12,7 +12,8 @@ export interface DataAttributeStrategyConfiguration {
 const DEFAULT_ELEMENT_SELECTOR = 'html';
 const DEFAULT_DATA_ATTRIBUTE = 'data-theme';
 
-export const withThemeByDataAttribute = <TRenderer extends Renderer = Renderer>({
+// TODO check with @kasperpeulen: change the types so they can be correctly inferred from context e.g. <Story extends (...args: any[]) => any>
+export const withThemeByDataAttribute = <TRenderer extends Renderer = any>({
   themes,
   defaultTheme,
   parentSelector = DEFAULT_ELEMENT_SELECTOR,

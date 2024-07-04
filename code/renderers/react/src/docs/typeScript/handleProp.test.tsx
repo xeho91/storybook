@@ -1,12 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 
+import { describe, it, expect } from 'vitest';
 import React from 'react';
 import {
   type PropDef,
   extractComponentProps,
   type DocgenInfo,
   type DocgenPropDefaultValue,
-} from '@storybook/docs-tools';
+} from 'storybook/internal/docs-tools';
 import { enhanceTypeScriptProp } from './handleProp';
 
 type Component = any;
@@ -39,7 +40,6 @@ function createDocgenProp({
   };
 }
 
-// eslint-disable-next-line react/forbid-foreign-prop-types
 function createComponent({ propTypes = {}, defaultProps = {}, docgenInfo = {} }): Component {
   const component = () => {
     return <div>Hey!</div>;
@@ -85,7 +85,7 @@ describe('enhanceTypeScriptProp', () => {
 
       const expectedSummary = "{ foo: 'foo', bar: 'bar' }";
 
-      expect(defaultValue?.summary.replace(/\s/g, '')).toBe(expectedSummary.replace(/\s/g, ''));
+      expect(defaultValue?.summary?.replace(/\s/g, '')).toBe(expectedSummary.replace(/\s/g, ''));
       expect(defaultValue?.detail).toBeUndefined();
     });
 

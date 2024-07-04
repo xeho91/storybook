@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { ArgTypes } from '@storybook/types';
+import { ArgTypes } from 'storybook/internal/types';
 import { ICollection } from '../types';
 import {
   ComponentInputsOutputs,
@@ -172,7 +172,7 @@ const buildTemplate = (
   const firstSelector = selector.split(',')[0];
   const templateReplacers: [
     string | RegExp,
-    string | ((substring: string, ...args: any[]) => string)
+    string | ((substring: string, ...args: any[]) => string),
   ][] = [
     [/(^.*?)(?=[,])/, '$1'],
     [/(^\..+)/, 'div$1'],

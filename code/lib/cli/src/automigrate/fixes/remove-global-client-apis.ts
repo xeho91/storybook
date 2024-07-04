@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import dedent from 'ts-dedent';
+import { dedent } from 'ts-dedent';
 import { readFile } from 'fs-extra';
 import type { Fix } from '../types';
 
@@ -19,7 +19,9 @@ interface GlobalClientAPIOptions {
 
 export const removedGlobalClientAPIs: Fix<GlobalClientAPIOptions> = {
   id: 'removedglobalclientapis',
-  promptOnly: true,
+  promptType: 'manual',
+
+  versionRange: ['<7', '>=7'],
 
   async check({ previewConfigPath }) {
     if (previewConfigPath) {

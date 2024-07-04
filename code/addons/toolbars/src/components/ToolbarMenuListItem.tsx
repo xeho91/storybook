@@ -1,6 +1,6 @@
 import React from 'react';
-import type { TooltipLinkListLink } from '@storybook/components';
-import { Icons } from '@storybook/components';
+import type { TooltipLinkListLink } from 'storybook/internal/components';
+import { Icons } from 'storybook/internal/components';
 import type { ToolbarItem } from '../types';
 
 export type ToolbarMenuListItemProps = {
@@ -9,7 +9,6 @@ export type ToolbarMenuListItemProps = {
 } & ToolbarItem;
 
 export const ToolbarMenuListItem = ({
-  left,
   right,
   title,
   value,
@@ -25,12 +24,12 @@ export const ToolbarMenuListItem = ({
     active: currentValue === value,
     right,
     title,
-    left,
+    icon,
     onClick,
   };
 
   if (icon && !hideIcon) {
-    Item.left = Icon;
+    Item.icon = Icon;
   }
 
   return Item;

@@ -9,10 +9,6 @@ const addonsPackages = fs
 const libPackages = fs
   .readdirSync(path.join(__dirname, 'lib'))
   .filter((p) => fs.statSync(path.join(__dirname, 'lib', p)).isDirectory());
-const uiPackages = fs
-  .readdirSync(path.join(__dirname, 'ui'))
-  .filter((p) => fs.statSync(path.join(__dirname, 'ui', p)).isDirectory())
-  .filter((p) => !p.startsWith('.'));
 
 module.exports = {
   root: true,
@@ -23,17 +19,31 @@ module.exports = {
   },
   plugins: ['local-rules'],
   rules: {
+    'import/no-unresolved': 'off', // covered by typescript
     'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
     'eslint-comments/no-unused-disable': 'error',
     'react-hooks/rules-of-hooks': 'off',
     'import/extensions': 'off', // for mjs, we sometimes need extensions
-    'jest/no-done-callback': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
     '@typescript-eslint/dot-notation': [
       'error',
       {
         allowIndexSignaturePropertyAccess: true,
       },
     ],
+    '@typescript-eslint/no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'vite',
+            message: 'Please dynamically import from vite instead, to force the use of ESM',
+            allowTypeImports: true,
+          },
+        ],
+      },
+    ],
+    '@typescript-eslint/default-param-last': 'off',
   },
   overrides: [
     {
@@ -45,22 +55,13 @@ module.exports = {
       },
     },
     {
-      // this package depends on a lot of peerDependencies we don't want to specify, because npm would install them
-      files: ['**/addons/docs/**/*'],
+      files: ['**/template/**/*', '**/vitest.config.ts', '**/addons/docs/**/*'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
       },
     },
     {
-      files: [
-        '*.js',
-        '*.jsx',
-        '*.json',
-        '*.html',
-        '**/.storybook/*.ts',
-        '**/.storybook/*.tsx',
-        'setup-jest.ts',
-      ],
+      files: ['*.js', '*.jsx', '*.json', '*.html', '**/.storybook/*.ts', '**/.storybook/*.tsx'],
       parserOptions: {
         project: null,
       },
@@ -89,20 +90,20 @@ module.exports = {
     {
       // these packages use pre-bundling, dependencies will be bundled, and will be in devDepenencies
       files: ['frameworks/**/*', 'builders/**/*', 'deprecated/**/*', 'renderers/**/*'],
-      excludedFiles: ['frameworks/angular/**/*', 'frameworks/ember/**/*', 'lib/core-server/**/*'],
+      excludedFiles: ['frameworks/angular/**/*', 'frameworks/ember/**/*', 'core/**/*'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',
-          { bundledDependencies: false, devDependencies: true },
+          { bundledDependencies: false, devDependencies: true, peerDependencies: true },
         ],
       },
     },
     {
-      files: ['**/ui/.storybook/**'],
+      files: ['**/.storybook/**'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',
-          { packageDir: [__dirname], devDependencies: true },
+          { packageDir: [__dirname], devDependencies: true, peerDependencies: true },
         ],
       },
     },
@@ -115,15 +116,6 @@ module.exports = {
             packageDir: [__dirname, path.join(__dirname, 'addons', directory)],
             devDependencies: true,
           },
-        ],
-      },
-    })),
-    ...uiPackages.map((directory) => ({
-      files: [path.join('**', 'ui', directory, '**', '*.*')],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { packageDir: [__dirname, path.join(__dirname, 'ui', directory)], devDependencies: true },
         ],
       },
     })),
@@ -140,13 +132,7 @@ module.exports = {
       },
     })),
     {
-      files: [
-        '**/__tests__/**',
-        '**/__testfixtures__/**',
-        '**/*.test.*',
-        '**/*.stories.*',
-        '**/storyshots-*/**/stories/**',
-      ],
+      files: ['**/__tests__/**', '**/__testfixtures__/**', '**/*.test.*', '**/*.stories.*'],
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'import/no-extraneous-dependencies': 'off',
@@ -203,12 +189,6 @@ module.exports = {
       },
     },
     {
-      files: ['**/e2e-tests/**/*'],
-      rules: {
-        'jest/no-test-callback': 'off', // These aren't jest tests
-      },
-    },
-    {
       files: ['**/builder-vite/input/iframe.html'],
       rules: {
         'no-undef': 'off', // ignore "window" undef errors
@@ -223,6 +203,7 @@ module.exports = {
     },
     {
       files: ['**/*.ts', '!**/*.test.*', '!**/*.spec.*'],
+      excludedFiles: ['**/*.test.*', '**/*.mockdata.*'],
       rules: {
         'local-rules/no-uncategorized-errors': 'warn',
       },

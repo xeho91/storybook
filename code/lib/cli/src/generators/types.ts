@@ -1,6 +1,6 @@
 import type { NpmOptions } from '../NpmOptions';
 import type { SupportedLanguage, Builder, ProjectType } from '../project_types';
-import type { JsPackageManager, PackageManagerName } from '../js-package-manager/JsPackageManager';
+import type { JsPackageManager, PackageManagerName } from '@storybook/core/common';
 import type { FrameworkPreviewParts } from './configure';
 
 export type GeneratorOptions = {
@@ -22,14 +22,15 @@ export interface FrameworkOptions {
   staticDir?: string;
   addScripts?: boolean;
   addMainFile?: boolean;
+  addPreviewFile?: boolean;
   addComponents?: boolean;
-  skipBabel?: boolean;
-  useSWC?: ({ builder }: { builder: Builder }) => boolean;
+  webpackCompiler?: ({ builder }: { builder: Builder }) => 'babel' | 'swc' | undefined;
   extraMain?: any;
   extensions?: string[];
   framework?: Record<string, any>;
   storybookConfigFolder?: string;
   componentsDestinationPath?: string;
+  installFrameworkPackages?: boolean;
 }
 
 export type Generator<T = void> = (
@@ -41,7 +42,6 @@ export type Generator<T = void> = (
 
 export type CommandOptions = {
   packageManager: PackageManagerName;
-  useNpm?: boolean;
   usePnp?: boolean;
   type?: ProjectType;
   force?: any;
@@ -55,4 +55,5 @@ export type CommandOptions = {
   disableTelemetry?: boolean;
   enableCrashReports?: boolean;
   debug?: boolean;
+  dev?: boolean;
 };

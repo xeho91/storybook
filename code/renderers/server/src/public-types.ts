@@ -8,10 +8,10 @@ import type {
   LoaderFunction,
   StrictArgs,
   ProjectAnnotations,
-} from '@storybook/types';
+} from 'storybook/internal/types';
 import type { ServerRenderer } from './types';
 
-export type { Args, ArgTypes, Parameters, StrictArgs } from '@storybook/types';
+export type { Args, ArgTypes, Parameters, StrictArgs } from 'storybook/internal/types';
 
 /**
  * Metadata to configure the stories for a component.
@@ -28,22 +28,11 @@ export type Meta<TArgs = Args> = ComponentAnnotations<ServerRenderer, TArgs>;
 export type StoryFn<TArgs = Args> = AnnotatedStoryFn<ServerRenderer, TArgs>;
 
 /**
- * Story function that represents a CSFv3 component example.
+ * Story object that represents a CSFv3 component example.
  *
  * @see [Named Story exports](https://storybook.js.org/docs/formats/component-story-format/#named-story-exports)
  */
 export type StoryObj<TArgs = Args> = StoryAnnotations<ServerRenderer, TArgs>;
-
-/**
- * @deprecated Use `StoryFn` instead.
- * Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories.
- * You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/
- *
- * Story function that represents a CSFv2 component example.
- *
- * @see [Named Story exports](https://storybook.js.org/docs/formats/component-story-format/#named-story-exports)
- */
-export type Story<TArgs = Args> = StoryFn<TArgs>;
 
 export type { ServerRenderer };
 export type Decorator<TArgs = StrictArgs> = DecoratorFunction<ServerRenderer, TArgs>;

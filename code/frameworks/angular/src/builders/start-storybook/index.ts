@@ -11,12 +11,12 @@ import { BrowserBuilderOptions, StylePreprocessorOptions } from '@angular-devkit
 import { from, Observable, of } from 'rxjs';
 import { map, switchMap, mapTo } from 'rxjs/operators';
 import { sync as findUpSync } from 'find-up';
-import { sync as readUpSync } from 'read-pkg-up';
+import { findPackageSync } from 'fd-package-json';
 
-import { CLIOptions } from '@storybook/types';
-import { getEnvConfig, versions } from '@storybook/cli';
-import { addToGlobalContext } from '@storybook/telemetry';
-import { buildDevStandalone, withTelemetry } from '@storybook/core-server';
+import { CLIOptions } from 'storybook/internal/types';
+import { getEnvConfig, versions } from 'storybook/internal/common';
+import { addToGlobalContext } from 'storybook/internal/telemetry';
+import { buildDevStandalone, withTelemetry } from 'storybook/internal/core-server';
 import {
   AssetPattern,
   SourceMapUnion,
@@ -37,6 +37,7 @@ export type StorybookBuilderOptions = JsonObject & {
   styles?: StyleElement[];
   stylePreprocessorOptions?: StylePreprocessorOptions;
   assets?: AssetPattern[];
+  preserveSymlinks?: boolean;
   sourceMap?: SourceMapUnion;
 } & Pick<
     // makes sure the option exists
@@ -57,6 +58,7 @@ export type StorybookBuilderOptions = JsonObject & {
     | 'docs'
     | 'debugWebpack'
     | 'webpackStatsJson'
+    | 'statsJson'
     | 'loglevel'
     | 'previewUrl'
   >;
@@ -66,11 +68,13 @@ export type StorybookBuilderOutput = JsonObject & BuilderOutput & {};
 const commandBuilder: BuilderHandlerFn<StorybookBuilderOptions> = (options, context) => {
   const builder = from(setup(options, context)).pipe(
     switchMap(({ tsConfig }) => {
+      const docTSConfig = findUpSync('tsconfig.doc.json', { cwd: options.configDir });
+
       const runCompodoc$ = options.compodoc
         ? runCompodoc(
             {
               compodocArgs: [...options.compodocArgs, ...(options.quiet ? ['--silent'] : [])],
-              tsconfig: tsConfig,
+              tsconfig: docTSConfig ?? tsConfig,
             },
             context
           ).pipe(mapTo({ tsConfig }))
@@ -86,7 +90,7 @@ const commandBuilder: BuilderHandlerFn<StorybookBuilderOptions> = (options, cont
         configDir: 'SBCONFIG_CONFIG_DIR',
         ci: 'CI',
       });
-      // eslint-disable-next-line no-param-reassign
+
       options.port = parseInt(`${options.port}`, 10);
 
       const {
@@ -112,12 +116,14 @@ const commandBuilder: BuilderHandlerFn<StorybookBuilderOptions> = (options, cont
         debugWebpack,
         loglevel,
         webpackStatsJson,
+        statsJson,
         previewUrl,
         sourceMap = false,
+        preserveSymlinks = false,
       } = options;
 
       const standaloneOptions: StandaloneOptions = {
-        packageJson: readUpSync({ cwd: __dirname }).packageJson,
+        packageJson: findPackageSync(__dirname),
         ci,
         configDir,
         ...(docs ? { docs } : {}),
@@ -137,14 +143,16 @@ const commandBuilder: BuilderHandlerFn<StorybookBuilderOptions> = (options, cont
           ...(stylePreprocessorOptions ? { stylePreprocessorOptions } : {}),
           ...(styles ? { styles } : {}),
           ...(assets ? { assets } : {}),
+          preserveSymlinks,
           sourceMap,
         },
         tsConfig,
         initialPath,
         open,
         debugWebpack,
-        loglevel,
         webpackStatsJson,
+        statsJson,
+        loglevel,
         previewUrl,
       };
 
