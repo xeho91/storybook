@@ -25671,7 +25671,6 @@ __metadata:
     "@babel/core": "npm:^7.24.4"
     "@babel/types": "npm:^7.24.0"
     "@ndelangen/get-tarball": "npm:^3.0.7"
-    "@storybook/codemod": "workspace:*"
     "@storybook/core": "workspace:*"
     "@types/cross-spawn": "npm:^6.0.2"
     "@types/prompts": "npm:^2.0.9"
