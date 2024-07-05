@@ -91,9 +91,7 @@ export const Button: React.FC<ButtonProps> = ({ isDisabled = false, content = ''
 
 <button type="button" {disabled}>{content}</button>
 ```
-```html renderer="vue" language="js" tabTitle="2"
-{/* Button.vue */}
-
+```html filename="Button.vue" renderer="vue" language="js" tabTitle="2"
 <template>
   <button type="button" :disabled="isDisabled">{{ content }}</button>
 </template>
@@ -122,9 +120,7 @@ export const Button: React.FC<ButtonProps> = ({ isDisabled = false, content = ''
   };
 </script>
 ```
-```html renderer="vue" language="js" tabTitle="3"
-{/* Button.vue */}
-
+```html filename=" Button.vue" renderer="vue" language="js" tabTitle="3"
 <template>
   <button type="button" :disabled="isDisabled">{{ content }}</button>
 </template>

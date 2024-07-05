@@ -1,6 +1,4 @@
-```md renderer="common" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="common" language="mdx"
 import { Meta } from '@storybook/addon-docs';
 
 <Meta title="A storybook story with syntax highlight registered globally" />

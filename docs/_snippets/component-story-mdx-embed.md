@@ -1,6 +1,4 @@
-```md renderer="common" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="common" language="mdx"
 import { Story } from '@storybook/addon-docs';
 
 # Some header

@@ -1,6 +1,4 @@
-```html renderer="common" language="ts" tabTitle="html"
-{/* .storybook/preview-head.html */}
-
+```html filename=".storybook/preview-head.html" renderer="common" language="ts" tabTitle="html"
 {/* Pull in static files served from your Static directory or the internet */}
 
 <link rel=”preload” href=”your/font” />

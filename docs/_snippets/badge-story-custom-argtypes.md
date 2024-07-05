@@ -3,7 +3,7 @@ import { Badge } from './Badge';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Badge',
@@ -39,9 +39,7 @@ export default {
   },
 };
 ```
-```md renderer="common" language="mdx"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="common" language="mdx"
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Badge } from './Badge';

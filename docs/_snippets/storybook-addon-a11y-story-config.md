@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { MyComponent } from './MyComponent.component';
@@ -44,7 +42,7 @@ import { MyComponent } from './MyComponent.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading 
   * to learn how to generate automatic titles
   */
   title: 'Configure a11y addon',
@@ -83,7 +81,7 @@ import { MyComponent } from './MyComponent';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading 
   * to learn how to generate automatic titles
   */
   title: 'Configure a11y addon',
@@ -115,9 +113,7 @@ ExampleStory.parameters = {
   },
 };
 ```
-```md renderer="react" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { MyComponent } from './MyComponent';
@@ -163,7 +159,7 @@ import { MyComponent } from './MyComponent';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading 
   * to learn how to generate automatic titles
   */
   title: 'Configure a11y addon',
@@ -200,7 +196,7 @@ import MyComponent from './MyComponent.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading 
   * to learn how to generate automatic titles
   */
   title: 'Configure a11y addon',
@@ -232,9 +228,7 @@ ExampleStory.parameters = {
   },
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import MyComponent from './MyComponent.svelte';
@@ -276,7 +270,7 @@ import MyComponent from './MyComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading 
   * to learn how to generate automatic titles
   */
   title: 'Configure a11y addon',
@@ -311,9 +305,7 @@ ExampleStory.parameters = {
   },
 };
 ```
-```md renderer="vue" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="vue" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import MyComponent from './MyComponent.vue';

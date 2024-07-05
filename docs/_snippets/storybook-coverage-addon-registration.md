@@ -7,7 +7,6 @@ module.exports = {
   ],
 };
 ```
-
 ```ts filename=".storybook/main.ts" renderer="common" language="ts"
 // Replace your-framework with the framework and builder you are using (e.g., react-webpack5, vue3-webpack5)
 import type { StorybookConfig } from '@storybook/your-framework';
@@ -22,4 +21,3 @@ const config: StorybookConfig = {
 
 export default config;
 ```
-

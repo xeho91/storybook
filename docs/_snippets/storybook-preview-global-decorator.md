@@ -5,7 +5,7 @@ export const decorators = [
   componentWrapperDecorator((story) => `<div style="margin: 3em">${story}</div>`),
 ];
 ```
-```js filename=".storybook/preview.js" renderer="react" language="js"
+```js filename=".storybook/preview.js" renderer="react" language="js" tabTitle="story-compoent"
 import React from 'react';
 
 export const decorators = [
@@ -17,7 +17,7 @@ export const decorators = [
 ];
 ```
 ```js filename=".storybook/preview.js" renderer="react" language="js" tabTitle="story-function"
-import React from "react";
+import React from 'react';
 
 export const decorators = [
   (Story) => (

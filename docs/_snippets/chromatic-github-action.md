@@ -1,6 +1,4 @@
-```shell renderer="common" language="js"
-# .github/workflows/chromatic.yml
-
+```shell filename=".github/workflows/chromatic.yml" renderer="common" language="js"
 # Workflow name
 name: 'Chromatic Publish'
 
@@ -24,4 +22,3 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
-

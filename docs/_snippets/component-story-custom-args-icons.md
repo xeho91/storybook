@@ -31,7 +31,6 @@ const Template: Story<Icon> = (args) => {
   };
 };
 ```
-
 ```js filename="YourComponent.stories.js" renderer="vue" language="js" tabTitle="2"
 import YourComponent from './YourComponent.vue';
 
@@ -69,7 +68,6 @@ const Template = (args, { argTypes }) => {
   };
 };
 ```
-
 ```js filename="YourComponent.stories.js" renderer="vue" language="js" tabTitle="3"
 import YourComponent from './YourComponent.vue';
 
@@ -106,4 +104,3 @@ const Template = (args) => {
   };
 };
 ```
-

@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Histogram.stories.mdx */}
-
+```md filename="Histogram.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { HistogramComponent } from './histogram.component';
@@ -29,7 +27,7 @@ import { HistogramComponent } from './histogram.component';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -53,7 +51,7 @@ import { createHistogram } from './Histogram';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -76,7 +74,7 @@ import { Histogram, HistogramProps } from './Histogram';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -100,7 +98,7 @@ import { Histogram } from './Histogram';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/preact/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -117,9 +115,7 @@ Default.args = {
   label: 'Latency distribution',
 };
 ```
-```md renderer="preact" language="mdx"
-{/* Histogram.stories.mdx */}
-
+```md filename="Histogram.stories.mdx" renderer="preact" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs/';
 
 import { Histogram } from './Histogram';
@@ -148,7 +144,7 @@ import { Histogram } from './Histogram';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -165,9 +161,7 @@ Default.args = {
   label: 'Latency distribution',
 };
 ```
-```md renderer="react" language="mdx"
-{/* Histogram.stories.mdx */}
-
+```md filename="Histogram.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Histogram } from './Histogram';
@@ -198,7 +192,7 @@ import { Histogram } from './Histogram';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -220,7 +214,7 @@ import Histogram from './Histogram.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -240,9 +234,7 @@ Default.args = {
   label: 'Latency distribution',
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* Histogram.stories.mdx */}
-
+```md filename="Histogram.stories.mdx" renderer="svelte" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Histogram from './Histogram.svelte';
@@ -272,7 +264,7 @@ import Histogram from './Histogram.vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -298,7 +290,7 @@ import Histogram from './Histogram.vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -321,9 +313,7 @@ Default.args = {
   label: 'Latency distribution',
 };
 ```
-```md renderer="vue" language="ts" tabTitle="mdx-2"
-{/* Histogram.stories.mdx */}
-
+```md filename="Histogram.stories.mdx" renderer="vue" language="ts" tabTitle="mdx-2"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Histogram from './Histogram.vue';
@@ -349,9 +339,7 @@ export const Template = (args, { argTypes }) => ({
   </Story>
 </Canvas>
 ```
-```md renderer="vue" language="ts" tabTitle="mdx-3"
-{/* Histogram.stories.mdx */}
-
+```md filename="Histogram.stories.mdx" renderer="vue" language="ts" tabTitle="mdx-3"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Histogram from './Histogram.vue';
@@ -386,7 +374,7 @@ import Histogram from './Histogram.vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -414,7 +402,7 @@ import Histogram from './Histogram.vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',
@@ -445,7 +433,7 @@ import './histogram-component';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/web-components/configure/overview
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Histogram',

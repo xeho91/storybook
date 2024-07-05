@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Checkbox } from './checkbox.component';
@@ -22,9 +20,7 @@ import { Checkbox } from './checkbox.component';
   </Story>
 </Canvas>
 ```
-```md renderer="react" language="mdx"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Checkbox } from './Checkbox';
@@ -45,10 +41,7 @@ With `MDX`, we can define a story for `Checkbox` right in the middle of our Mark
   </Story>
 </Canvas>
 ```
-
-```md renderer="vue" language="mdx"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="vue" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Checkbox from './Checkbox.vue';

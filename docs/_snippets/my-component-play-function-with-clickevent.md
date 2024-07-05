@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { fireEvent, screen, userEvent } from '@storybook/testing-library';
@@ -12,7 +10,7 @@ import { MyComponent } from './MyComponent.component';
 export const Template = (args) => ({ props: args });
 
 {/*  
- See https://storybook.js.org/docs/angular/writing-stories/play-function#working-with-the-canvas
+ See https://storybook.js.org/docs/6/configure#configure-story-loading
  to learn more about using the canvasElement to query the DOM
  */}
 <Story
@@ -20,7 +18,7 @@ export const Template = (args) => ({ props: args });
    play={ async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await userEvent.click(canvas.getByRole('button'));
   }}>
   {Template.bind({})}
@@ -31,7 +29,7 @@ export const Template = (args) => ({ props: args });
    play={ async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await fireEvent.click(canvas.getByTestId('data-testid'));
   }}>
   {Template.bind({})}
@@ -46,7 +44,7 @@ import { MyComponent } from './MyComponent.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'ClickExamples',
@@ -58,14 +56,14 @@ const Template: Story = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/angular/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const ClickExample = Template.bind({});
 ClickExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 };
 
@@ -73,7 +71,7 @@ export const FireEventExample = Template.bind({});
 FireEventExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   
-  // See https://storybook.js.org/docs/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await fireEvent.click(canvas.getByTestId('data-testid'));
 };
 ```
@@ -86,7 +84,7 @@ import { MyComponent } from './MyComponent';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'ClickExamples',
@@ -95,14 +93,14 @@ export default {
 
 const Template = (args) => <MyComponent {...args} />;
 
-/* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+/* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const ClickExample = Template.bind({});
 ClickExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 };
 
@@ -110,13 +108,11 @@ export const FireEventExample = Template.bind({});
 FireEventExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await fireEvent.click(canvas.getByTestId('data-testid'));
 };
 ```
-```md renderer="react" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { fireEvent, userEvent, within} from '@storybook/testing-library';
@@ -128,7 +124,7 @@ import { MyComponent } from './MyComponent';
 export const Template = (args) => <MyComponent {...args} />;
 
 {/*  
- See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+ See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
  to learn more about using the canvasElement to query the DOM
  */}
 <Story
@@ -136,7 +132,7 @@ export const Template = (args) => <MyComponent {...args} />;
    play={async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await userEvent.click(canvas.getByRole('button'));
   }}>
   {Template.bind({})}
@@ -147,7 +143,7 @@ export const Template = (args) => <MyComponent {...args} />;
   play={ async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await fireEvent.click(canvas.getByTestId('data-testid'));
   }}>
   {Template.bind({})}
@@ -164,7 +160,7 @@ import { MyComponent } from './MyComponent';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'ClickExamples',
@@ -174,14 +170,14 @@ export default {
 const Template: ComponentStory<typeof MyComponent> = (args) => <MyComponent {...args} />;
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const ClickExample = Template.bind({});
 ClickExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 };
 
@@ -189,7 +185,7 @@ export const FireEventExample = Template.bind({});
 FireEventExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await fireEvent.click(canvas.getByTestId('data-testid'));
 };
 ```
@@ -200,7 +196,7 @@ import MyComponent from './MyComponent.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'ClickExamples',
@@ -213,14 +209,14 @@ const Template = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const ClickExample = Template.bind({});
 ClickExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 };
 
@@ -228,13 +224,11 @@ export const FireEventExample = Template.bind({});
 FireEventExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await fireEvent.click(canvas.getByTestId('data-testid'));
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { fireEvent, userEvent, within } from '@storybook/testing-library';
@@ -249,7 +243,7 @@ export const Template = (args) => ({
 });
 
 {/*  
-  See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
+  Seehttps://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
   to learn more about using the canvasElement to query the DOM
 */}
 <Story
@@ -257,7 +251,7 @@ export const Template = (args) => ({
   play={ async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await userEvent.click(canvas.getByRole('button'));
   }}>
   {Template.bind({})}
@@ -268,7 +262,7 @@ export const Template = (args) => ({
   play={ async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await fireEvent.click(canvas.getByTestId('data-testid'));
   }}>
   {Template.bind({})}
@@ -281,7 +275,7 @@ import MyComponent from './MyComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'ClickExamples',
@@ -294,14 +288,14 @@ const Template = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const ClickExample = Template.bind({});
 ClickExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 };
 
@@ -309,13 +303,11 @@ export const FireEventExample = Template.bind({});
 FireEventExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await fireEvent.click(canvas.getByTestId('data-testid'));
 };
 ```
-```md renderer="vue" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="vue" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { fireEvent, userEvent, within } from '@storybook/testing-library';
@@ -330,15 +322,15 @@ export const Template = (args) => ({
 });
 
 {/*  
- See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+ See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
  to learn more about using the canvasElement to query the DOM
- */}
+*/}
 <Story
   name="ClickExample"
   play={ async ({ canvasElement}) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await userEvent.click(canvas.getByRole('button'));
   }}>
   {Template.bind({})}
@@ -349,7 +341,7 @@ export const Template = (args) => ({
    play={async ({ canvasElement}) => {
     const canvas = within(canvasElement);
 
-    // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await fireEvent.click(canvas.getByTestId('data-testid'));
   }}>
   {Template.bind({})}
@@ -365,7 +357,7 @@ import MyComponent from './MyComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'ClickExamples',
@@ -379,14 +371,14 @@ const Template: StoryFn<typeof MyComponent> = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const ClickExample = Template.bind({});
 ClickExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 };
 
@@ -394,7 +386,7 @@ export const FireEventExample = Template.bind({});
 FireEventExample.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await fireEvent.click(canvas.getByTestId('data-testid'));
 };
 ```

@@ -5,7 +5,7 @@ import { Checkbox } from './Checkbox.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Checkbox', 
@@ -27,7 +27,7 @@ import { Checkbox } from './Checkbox';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Checkbox',
@@ -51,7 +51,7 @@ import { Checkbox } from './Checkbox';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Checkbox', 
@@ -75,7 +75,7 @@ import { Checkbox } from './Checkbox';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Checkbox', 
@@ -90,9 +90,7 @@ export const allCheckboxes: ComponentStory<typeof Checkbox> = () => (
   </form>
 );
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* Checkbox.stories.svelte */}
-
+```html filename="Checkbox.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Story } from '@storybook/addon-svelte-csf';
 
@@ -114,7 +112,7 @@ import Checkbox from './Checkbox.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Checkbox', 

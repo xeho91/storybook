@@ -12,7 +12,7 @@ import * as HeaderStories from './Header.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -45,7 +45,7 @@ import * as HeaderStories from './Header.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -71,7 +71,7 @@ import * as HeaderStories from './Header.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -93,7 +93,7 @@ import * as HeaderStories from './Header.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -118,7 +118,7 @@ import * as HeaderStories from './Header.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -145,7 +145,7 @@ import * as HeaderStories from './Header.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',

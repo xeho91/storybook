@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { YourComponent } from './your.component';
@@ -27,7 +25,7 @@ import { YourComponent } from './your.component';
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -50,7 +48,7 @@ import { createYourComponent } from './YourComponent';
 // 👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'YourComponent',
@@ -64,7 +62,6 @@ FirstStory.args = {
   // 👇 The args you need here will depend on your component
 };
 ```
-
 ```ts filename="YourComponent.stories.ts" renderer="html" language="ts"
 import { Meta, StoryFn } from '@storybook/html';
 import { createYourComponent } from './YourComponent';
@@ -72,7 +69,7 @@ import { createYourComponent } from './YourComponent';
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'YourComponent',
@@ -86,7 +83,6 @@ FirstStory.args = {
   //👇 The args you need here will depend on your component
 };
 ```
-
 ```js filename="YourComponent.stories.js|jsx" renderer="preact" language="js"
 /** @jsx h */
 import { h } from 'preact';
@@ -96,7 +92,7 @@ import { YourComponent } from './YourComponent';
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/preact/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -117,7 +113,7 @@ import { YourComponent } from './YourComponent';
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -133,10 +129,7 @@ export const FirstStory = {
   },
 };
 ```
-
-```md renderer="react" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { YourComponent } from './YourComponent';
@@ -164,7 +157,7 @@ import { YourComponent } from './YourComponent';
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -186,7 +179,7 @@ import YourComponent from './YourComponent.svelte';
 //👇This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -203,9 +196,7 @@ FirstStory.args= {
  //👇 The args you need here will depend on your component
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import YourComponent from './YourComponent.svelte';
@@ -227,9 +218,7 @@ export const Template = (args) => ({
   {Template.bind({})}
 </Story>
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* YourComponent.stories.svelte */}
-
+```html filename="YourComponent.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
   
@@ -256,14 +245,13 @@ export const Template = (args) => ({
   }}
 />
 ```
-
 ```js filename="YourComponent.stories.js" renderer="vue" language="js" tabTitle="2"
 import YourComponent from './YourComponent.vue';
 
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -288,7 +276,7 @@ import YourComponent from './YourComponent.vue';
 //👇 This default export determines where your story goes in the story list
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -311,9 +299,7 @@ FirstStory.args = {
   /* 👇 The args you need here will depend on your component */
 };
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-2"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-2"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import YourComponent from './YourComponent.vue';
@@ -335,9 +321,7 @@ export const Template = (args, { argTypes }) => ({
   {Template.bind({})}
 </Story>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import YourComponent from './YourComponent.vue';

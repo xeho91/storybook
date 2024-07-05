@@ -1,6 +1,4 @@
-```md renderer="common" language="mdx"
-{/* Iconography.stories.mdx */}
-
+```md filename="Iconography.stories.mdx" renderer="common" language="mdx"
 import { Meta, Title, IconGallery, IconItem } from '@storybook/addon-docs/';
 
 import { Icon as IconExample } from './Icon';

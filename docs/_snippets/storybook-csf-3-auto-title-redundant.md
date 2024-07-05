@@ -11,5 +11,4 @@ export const Default = {
     something: 'Something else',
   },
 };
-
 ```

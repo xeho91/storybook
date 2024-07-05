@@ -18,4 +18,3 @@ const withThemeProvider=(Story,context)=>{
 }
 export const decorators = [withThemeProvider];
 ```
-

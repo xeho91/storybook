@@ -7,7 +7,7 @@ import { MyComponent } from './MyComponent.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'MyComponent',
@@ -19,7 +19,7 @@ const Template: Story = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/angular/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FirstStory = Template.bind({});
@@ -53,7 +53,7 @@ import { MyComponent } from './MyComponent';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'MyComponent',
@@ -63,7 +63,7 @@ export default {
 const Template = (args) => <MyComponent {...args} />;
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FirstStory = Template.bind({});
@@ -101,7 +101,7 @@ import { MyComponent } from './MyComponent';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/eact/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'MyComponent',
@@ -111,7 +111,7 @@ export default {
 const Template: ComponentStory<typeof MyComponent> = (args) => <MyComponent {...args} />;
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FirstStory = Template.bind({});
@@ -145,7 +145,7 @@ import MyComponent from './MyComponent.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'MyComponent',
@@ -158,7 +158,7 @@ const Template = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FirstStory = Template.bind({});
@@ -192,7 +192,7 @@ import MyComponent from './MyComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'MyComponent',
@@ -205,7 +205,7 @@ const Template = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FirstStory = Template.bind({});
@@ -242,7 +242,7 @@ import MyComponent from './MyComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'MyComponent',
@@ -256,7 +256,7 @@ const Template: StoryFn<typeof MyComponent> = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FirstStory = Template.bind({});

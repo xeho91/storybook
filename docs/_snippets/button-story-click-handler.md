@@ -7,7 +7,7 @@ import { action } from '@storybook/addon-actions';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button', 
@@ -30,7 +30,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button', 
@@ -50,7 +50,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button', 
@@ -66,7 +66,7 @@ import { action } from '@storybook/addon-actions';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -83,9 +83,7 @@ export const Text = () => ({
   },
 });
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* Button.stories.svelte */}
-
+```html filename="Button.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Story } from '@storybook/addon-svelte-csf';
 
@@ -107,7 +105,7 @@ import { action } from '@storybook/addon-actions';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -129,7 +127,7 @@ import { action } from '@storybook/addon-actions';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',

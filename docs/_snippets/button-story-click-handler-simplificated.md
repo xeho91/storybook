@@ -5,7 +5,7 @@ import { Button } from './button.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -21,7 +21,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -30,16 +30,14 @@ export default {
 
 export const Text = (args) => <Button {...args} />;
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* Button.stories.svelte */}
-
+```html filename="Button.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import Button from './Button.svelte';
 </script>
 
 {/* 
-  See https://storybook.js.org/docs/svelte/essentials/actions#action-argtype-annotation
+  See https://storybook.js.org/docs/6/essentials/actions#action-argtype-annotation
   to learn how to set up argTypes for actions
 */} 
 
@@ -62,13 +60,13 @@ import Button from './Button.vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',
   component: Button,
   /*
-   * See https://storybook.js.org/docs/vue/essentials/actions#action-argtype-annotation
+   * See https://storybook.js.org/docs/6/essentials/actions#action-argtype-annotation
    * to learn how to set up argTypes for actions
    */
   argTypes: {

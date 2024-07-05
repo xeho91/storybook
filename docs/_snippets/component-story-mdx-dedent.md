@@ -1,6 +1,4 @@
-```md renderer="common" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="common" language="mdx"
 import { Source } from '@storybook/addon-docs';
 
 import dedent from 'ts-dedent';
@@ -22,4 +20,3 @@ import dedent from 'ts-dedent';
 
 <Source id="example-mycomponent--starter" />
 ```
-

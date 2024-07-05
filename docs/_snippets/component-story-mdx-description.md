@@ -1,6 +1,4 @@
-```md renderer="common" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="common" language="mdx"
 import { Description } from '@storybook/addon-docs';
 
 import dedent from 'ts-dedent';

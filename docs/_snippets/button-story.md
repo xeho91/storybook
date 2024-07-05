@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Button.stories.mdx*/}
-
+```md filename="Button.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './button.component.ts';
@@ -25,7 +23,7 @@ import { Button } from './button.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -42,7 +40,7 @@ export const Primary: Story = () => ({
 ```js filename="Button.stories.js" renderer="html" language="js"
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',
@@ -61,13 +59,12 @@ export const Primary = () => {
   return btn;
 };
 ```
-
 ```ts filename="Button.stories.ts" renderer="html" language="ts"
 import { Meta, StoryFn } from '@storybook/html';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',
@@ -86,7 +83,6 @@ export const Primary: StoryFn = (): HTMLButtonElement => {
   return btn;
 };
 ```
-
 ```js filename="Button.stories.js|jsx" renderer="preact" language="js"
 /** @jsx h */
 import { h } from 'preact';
@@ -94,7 +90,7 @@ import { Button } from './Button';
 
 export default {
    /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/preact/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -110,7 +106,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -119,9 +115,7 @@ export default {
 
 export const Primary = () => <Button primary>Button</Button>;
 ```
-```md renderer="react" language="mdx" tabTitle="mdx-with-hooks"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="react" language="mdx" tabTitle="mdx-with-hooks"
 import { useState } from 'react';
 
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
@@ -149,9 +143,7 @@ import { Button } from './Button';
   </Story>
 </Canvas>
 ```
-```md renderer="react" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './Button';
@@ -164,7 +156,6 @@ import { Button } from './Button';
   <Button primary>Button</Button>
 </Story>
 ```
-
 ```ts filename="Button.stories.ts|tsx" renderer="react" language="ts"
 import React from 'react';
 
@@ -174,7 +165,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -190,7 +181,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -221,7 +212,7 @@ import Button from './Button.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -236,9 +227,7 @@ export const Primary = () => ({
   },
 });
 ```
-```md renderer="svelte" language="mdx"
-{/* Button.stories.mdx*/}
-
+```md filename="Button.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.svelte';
@@ -256,9 +245,7 @@ import Button from './Button.svelte';
   }}
 </Story>
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* Button.stories.svelte */}
-
+```html filename="Button.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Story } from '@storybook/addon-svelte-csf';
 
@@ -276,7 +263,7 @@ import Button from './Button.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -288,9 +275,7 @@ export const Primary = () => ({
   template: '<Button primary label="Button" />',
 });
 ```
-```md renderer="vue" language="mdx"
-{/* Button.stories.mdx*/}
-
+```md filename="Button.stories.mdx" renderer="vue" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.vue';
@@ -315,7 +300,7 @@ import { Meta, StoryFn } from '@storybook/vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',
@@ -334,7 +319,7 @@ import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',

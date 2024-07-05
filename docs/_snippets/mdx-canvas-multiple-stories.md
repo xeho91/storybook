@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Badge } from './badge.component';
@@ -36,10 +34,7 @@ export const Template = (args) => ({ props: args });
   </Story>
 </Canvas>
 ```
-
-```md renderer="react" language="mdx"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Badge } from './Badge';
@@ -75,10 +70,7 @@ export const Template = (args) => <Badge {...args } />;
   </Story>
 </Canvas>
 ```
-
-```md renderer="svelte" language="mdx"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="svelte" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Badge from './Badge.svelte';
@@ -117,10 +109,7 @@ export const Template = (args) => ({
   </Story>
 </Canvas>
 ```
-
-```md renderer="vue" language="mdx" tabTitle="mdx-2"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-2"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Badge from './Badge.vue';
@@ -160,9 +149,7 @@ export const Template = (args, { argTypes }) => ({
   </Story>
 </Canvas>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Badge from './Badge.vue';
