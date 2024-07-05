@@ -83,15 +83,17 @@ To test your screen with the mocked data, you could write a similar set of stori
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 This example details how you can mock the REST request with fetch. Similar HTTP clients such as <a href="https://axios-http.com/">axios</a> can be used as well.
-</div>
+<Callout variant="info" icon="💡">
+
+This example details how you can mock the REST request with fetch. Similar HTTP clients such as [axios](https://axios-http.com/) can be used as well.
+
+</Callout>
 
 The mocked data (i.e., `TestData`) will be injected via [parameters](./parameters.mdx), enabling you to configure it per-story basis.
 
 #### Mocking GraphQL queries with MSW addon
 
-In addition to mocking RESTful requests, the other noteworthy feature of the [MSW addon](https://msw-sb.vercel.app/?path=/story/guides-introduction--page) is the ability to mock incoming data from any of the mainstream [GraphQL](https://www.apollographql.com/docs/react/integrations/integrations/) clients (e.g., [Apollo Client](https://www.apollographql.com/docs/), [URQL](https://formidable.com/open-source/urql/) or [React Query](https://react-query.tanstack.com/)). For instance, if your screen retrieves the user's information and a list of documents based on a query result, you could have a similar implementation:
+In addition to mocking RESTful requests, the other noteworthy feature of the [MSW addon](https://msw-sb.vercel.app/?path=/docs/guides-introduction--docs) is the ability to mock incoming data from any of the mainstream [GraphQL](https://www.apollographql.com/docs/react/integrations/integrations/) clients (e.g., [Apollo Client](https://www.apollographql.com/docs/), [URQL](https://formidable.com/open-source/urql/) or [React Query](https://react-query.tanstack.com/)). For instance, if your screen retrieves the user's information and a list of documents based on a query result, you could have a similar implementation:
 
 {/* prettier-ignore-start */}
 
@@ -152,7 +154,9 @@ Finally, we can set the mock values in a specific story. Let's borrow an example
 
 Another mocking approach is to use libraries that intercept calls at a lower level. For instance, you can use [`fetch-mock`](https://www.npmjs.com/package/fetch-mock) to mock fetch requests specifically.
 
-Like the [import mocking](##mocking-imports) above, once you have a mock, you’ll still want to set the return value of the mock per-story basis. Do this in Storybook with a [decorator](./decorators.mdx) that reads the story's [parameters](./parameters.mdx).
+Like the [import mocking](#mocking-imports) above, once you have a mock, you’ll still want to set the return value of the mock per-story basis. Do this in Storybook with a [decorator](./decorators.mdx) that reads the story's [parameters](./parameters.mdx).
+
+<IfRenderer renderer="react">
 
 ### Avoiding mocking dependencies
 
@@ -171,9 +175,11 @@ ProfilePageContainer.js
 ProfilePageContext.js
 ```
 
-<div class="aside">
-  It’s also often helpful to set up a “global” container context (perhaps named `GlobalContainerContext`) for container components that may be rendered on every page of your app and adding them to the top level of your application. While it’s possible to place every container within this global context, it should only provide globally required containers.
-</div>
+<Callout variant="info" icon="💡">
+
+It’s also often helpful to set up a “global” container context (perhaps named `GlobalContainerContext`) for container components that may be rendered on every page of your app and adding them to the top level of your application. While it’s possible to place every container within this global context, it should only provide globally required containers.
+
+</Callout>
 
 Let’s look at an example implementation of this approach.
 
@@ -203,9 +209,11 @@ In the context of Storybook, instead of providing container components through c
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  If the same context applies to all `ProfilePage` stories, we can also use a [decorator](./decorators.mdx).
-</div>
+<Callout variant="info">
+
+If the same context applies to all `ProfilePage` stories, we can also use a [decorator](./decorators.mdx).
+
+</Callout>
 
 #### Providing containers to your application
 
@@ -228,3 +236,5 @@ If you’ve set up `GlobalContainerContext`, you’ll need to set up a decorator
 <CodeSnippets path="mock-context-container-global.md" />
 
 {/* prettier-ignore-end */}
+
+</IfRenderer>

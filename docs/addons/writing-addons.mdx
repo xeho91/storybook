@@ -67,9 +67,11 @@ Initialize a local Storybook instance to allow you to test your addon.
 npx storybook init
 ```
 
-<div class="aside">
-  💡 Initializing Storybook adds the building blocks for our addon. If you're building a standalone Storybook addon, set the React and Storybook packages as peer dependencies. It prevents the addon from breaking Storybook when there are different versions available.
-</div>
+<Callout variant="info" icon="💡">
+
+  Initializing Storybook adds the building blocks for our addon. If you're building a standalone Storybook addon, set the React and Storybook packages as peer dependencies. It prevents the addon from breaking Storybook when there are different versions available.
+  
+</Callout>
 
 Next, create a `.babelrc.js` file in the root directory with the following:
 
@@ -79,9 +81,11 @@ Next, create a `.babelrc.js` file in the root directory with the following:
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
+<Callout variant="info">
+
   Babel configuration is required because our addon uses ES6 and JSX.
-</div>
+
+</Callout>
 
 Change your `package.json` and add the following script to build the addon:
 
@@ -93,9 +97,11 @@ Change your `package.json` and add the following script to build the addon:
 }
 ```
 
-<div class="aside">
-  💡 Running `yarn build` at this stage will output the code into the <code>dist</code> directory, transpiled into a ES5 module ready to be installed into any Storybook.
-</div>
+<Callout variant="info" icon="💡">
+
+  Running `yarn build` at this stage will output the code into the `dist` directory, transpiled into a ES5 module ready to be installed into any Storybook.
+
+</Callout>
 
 Finally, create a new directory called `src` and inside a new file called `preset.js` with the following:
 
@@ -123,9 +129,11 @@ Now let’s add a panel to Storybook. Inside the `src` directory, create a new f
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 Make sure to include the <code>key</code> when you register the addon. It will prevent any issues when the addon renders.
-</div>
+<Callout variant="info" icon="💡">
+
+  Make sure to include the `key` when you register the addon. It will prevent any issues when the addon renders.
+
+</Callout>
 
 Going over the code snippet in more detail. When Storybook starts up:
 
@@ -143,9 +151,11 @@ Finally, let’s hook it all up. Change `.storybook/main.js` to the following:
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 When you register a Storybook addon, it will look for either `register.js` or `preset.js` as the entry points.
-</div>
+<Callout variant="info" icon="💡">
+  
+  When you register a Storybook addon, it will look for either `register.js` or `preset.js` as the entry points.
+
+</Callout>
 
 Run `yarn storybook` and you should see something similar to:
 
@@ -205,13 +215,13 @@ Now that you've seen how to create a bare-bones addon let's see how to share it 
 
 Reference the [storybook-addon-outline](https://www.npmjs.com/package/storybook-addon-outline) to see a project that meets these requirements.
 
-Learn how to [add to the addon catalog](../addons/integration-catalog.mdx#addons).
+Learn how to [add to the addon catalog](./integration-catalog.mdx#addons).
 
 ### More guides and tutorials
 
 In the previous example, we introduced the structure of an addon but barely scratched the surface of what addons can do.
 
-To dive deeper, we recommend Storybook's [creating an addon](https://storybook.js.org/tutorials/create-an-addon/) tutorial. It’s an excellent walkthrough covering the same ground as the above introduction but goes further and leads you through the entire process of creating a realistic addon.
+To dive deeper, we recommend Storybook's [creating an addon](https://storybook.js.org/docs/addons/writing-addons) tutorial. It’s an excellent walkthrough covering the same ground as the above introduction but goes further and leads you through the entire process of creating a realistic addon.
 
 ### Addon kit
 

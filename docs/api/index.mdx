@@ -1,6 +1,33 @@
 ---
 title: API
+hideRendererSelector: true
 sidebar:
   order: 10
   title: API
 ---
+
+An overview of all available API references for Storybook.
+
+## Configuration
+
+* **[`main.js|ts`](../configure/index.mdx)**: Storybook's primary configuration file, which specifies your Storybook project's behavior, including the location of your stories, the addons you use, feature flags and other project-specific settings.
+
+* **[`preview.js|ts`](../configure/index.mdx#configure-story-rendering)**: This configuration file controls the way stories are rendered. You can also use it to run code that applies to all stories.
+
+* **[`manager.js|ts`](../configure/index.mdx#configure-storybooks-ui)**: This configuration file controls the behavior of Storybook's UI, the manager.
+
+* **[CLI](./cli-options.mdx)**: Storybook is a CLI tool. You can start Storybook in development mode or build a static version of your Storybook.
+
+
+## Stories
+
+* **[`CSF`](./stories/csf.mdx)**: Component Story Format (CSF) is the API for writing stories. It's an [open standard](https://github.com/ComponentDriven/csf) ased on ES6 modules that is portable beyond Storybook.
+
+* **[`ArgTypes`](./stories/argtypes.mdx)**: ArgTypes specify the behavior of [args](../writing-stories/args.mdx). By specifying the type of an arg, you constrain the values that it can accept and provide information about args that are not explicitly set.
+
+* **[`Parameters`](../writing-stories/parameters.mdx)**: Parameters are static metadata used to configure your [stories](../writing-stories/index.mdx), [addons](../addons/index.mdx) and other Storybook's features. They are specified at the story, meta (component), and project (global) levels.
+
+## Docs
+
+* **[MDX](../writing-docs/mdx.mdx)**: is an authorable format that lets you write JSX in your Markdown documents. Combine it with Storybook's Doc Blocks to create interactive documentation.
+

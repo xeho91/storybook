@@ -12,26 +12,26 @@ In Storybook Docs, stories are rendered in the `Story` block.
 
 ## Working with the DocsPage
 
-With each story you write, Storybook will automatically generate a new `Story` Doc Block, wrapped inside a [`Canvas`](./doc-block-canvas.mdx)(with a toolbar if it's the first "primary" story) alongside a [source code ](./doc-block-source.mdx) preview underneath it. Below is a condensed table of the available configuration options.
+With each story you write, Storybook will automatically generate a new `Story` Doc Block, wrapped inside a [`Canvas`](./doc-block-canvas.mdx) (with a toolbar if it's the first "primary" story) alongside a [source code ](./doc-block-source.mdx) preview underneath it. Below is a condensed table of the available configuration options.
 
-| Option          | Description                                                                                                                                                                                                    |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `inlineStories` | Configures Storybook to render stories inline. <br /> `docs: { inlineStories: false }` <br /> Read the [documentation](../docs-page.mdx#inline-stories-vs-iframe-stories) for inline rendering framework support. |
+| Option          | Description                                                                                                                                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `inlineStories` | Configures Storybook to render stories inline. <br /> Read the [documentation](../docs-page.mdx#inline-stories-vs-iframe-stories) for inline rendering framework support. <br /> `docs: { inlineStories: false }` |
 
 ## Working with MDX
 
 With MDX, the `Story` block is not only a way of rendering stories, but how you define them. Internally, Storybook looks for named `Story` instances located at the top of your document, or inside a [Canvas](./doc-block-canvas.mdx). Below is an abridged example and table featuring all the available options.
 
-| Option       | Description                                                                                                                                                                                                                                                         |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `args`       | Provide the required component inputs (e.g., props). <br /> `<Story args={{ text: 'Button' }}/>` <br /> Read the [documentation](../../writing-stories/args.mdx) to learn more.                                                                                          |
-| `decorators` | Provide additional markup or mock a data provider to allow proper story rendering. <br /> `<Story decorators={[(Story) => ( <div style={{ margin: '3em' }}><Story/></div>)]}/>` <br /> Read the [documentation](../../writing-stories/decorators.mdx) to learn more.     |
-| `id`         | Storybook's internal story identifier. Used for embedding Storybook stories inside Docs. <br /> `<Story id="example-mycomponent--starter"/>` <br /> Read the [documentation](../../api/mdx.mdx#embedding-stories) to learn more.                                         |
-| `inline`     | Enables Storybook's inline renderer. <br /> `<Story inline={false}/>` <br /> Read the [documentation](../docs-page.mdx#inline-stories-vs-iframe-stories) to learn more.                                                                                                |
-| `loaders`    | (Experimental) Asynchronous function for data fetching with stories. <br /> `<Story loaders={[async () => ({ data: await (await fetch('your-endpoint'))}) ]}/>` <br /> Read the [documentation](../../writing-stories/loaders.mdx) to learn more.                        |
+| Option       | Description                                                                                                                                                                                                                                                          |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `args`       | Provide the required component inputs (e.g., props). <br /> Read the [documentation](../../writing-stories/args.mdx) to learn more. <br /> `<Story args={{ text: 'Button' }}/>`                                                                                      |
+| `decorators` | Provide additional markup or mock a data provider to allow proper story rendering. <br /> Read the [documentation](../../writing-stories/decorators.mdx) to learn more. <br /> `<Story decorators={[(Story) => ( <div style={{ margin: '3em' }}><Story/></div>)]}/>` |
+| `id`         | Storybook's internal story identifier. Used for embedding Storybook stories inside Docs. <br /> Read the [documentation](../../api/stories/mdx.mdx#embedding-stories) to learn more. <br /> `<Story id="example-mycomponent--starter"/>`                             |
+| `inline`     | Enables Storybook's inline renderer. <br /> Read the [documentation](../docs-page.mdx#inline-stories-vs-iframe-stories) to learn more. <br /> `<Story inline={false}/>`                                                                                              |
+| `loaders`    | (Experimental) Asynchronous function for data fetching with stories. <br /> Read the [documentation](../../writing-stories/loaders.mdx) to learn more. <br /> `<Story loaders={[async () => ({ data: await (await fetch('your-endpoint'))}) ]}/>`                    |
 | `name`       | Adds a name to the component story. <br /> `<Story name="Example"/>` .                                                                                                                                                                                               |
-| `parameters` | Provides the necessary static named metadata related to the story. <br /> `Story parameters={{ backgrounds: { values: [{ name:'red', value:'#f00' }] } }} />` <br /> Read the [documentation](../../writing-stories/parameters.mdx) to learn more.                       |
-| `play`       | Generate component interactions. <br /> `<Story play={async () => { await userEvent.click(screen.getByRole('button')) }}/>` <br /> Read the [documentation](../../writing-stories/play-function.mdx) to learn more.                                                      |
+| `parameters` | Provides the necessary static named metadata related to the story. <br /> Read the [documentation](../../writing-stories/parameters.mdx) to learn more. <br /> `Story parameters={{ backgrounds: { values: [{ name:'red', value:'#f00' }] } }} />`                   |
+| `play`       | Generate component interactions. <br /> Read the [documentation](../../writing-stories/play-function.mdx) to learn more. <br /> `<Story play={async () => { await userEvent.click(screen.getByRole('button')) }}/>`                                                  |
 
 {/* prettier-ignore-start */}
 
@@ -41,4 +41,4 @@ With MDX, the `Story` block is not only a way of rendering stories, but how you 
 
 ### Inline rendering
 
-All stories are rendered in the Preview iframe for isolated development in Storybook's Canvas. With Docs, if your framework supports [inline rendering](./docs-page.mdx#inline-stories-vs-iframe-stories), it will be used by default for both performance and convenience. However, you can force this feature by providing the required configuration option (see tables above).
+All stories are rendered in the Preview iframe for isolated development in Storybook's Canvas. With Docs, if your framework supports [inline rendering](../docs-page.mdx#inline-stories-vs-iframe-stories), it will be used by default for both performance and convenience. However, you can force this feature by providing the required configuration option (see tables above).

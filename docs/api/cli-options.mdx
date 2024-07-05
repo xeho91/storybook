@@ -7,9 +7,11 @@ sidebar:
 
 Storybook comes with two CLI utilities: [`start-storybook`](#start-storybook) and [`build-storybook`](#build-storybook).
 
-<div class="aside">
+<Callout variant="info">
+
   Storybook collects completely anonymous data to help us improve user experience. Participation is optional, and you may [opt-out](../configure/telemetry.mdx#how-to-opt-out) if you'd not like to share any information.
-</div>
+
+</Callout>
 
 Pass these commands the following options to alter Storybook's behavior.
 
@@ -19,8 +21,8 @@ Pass these commands the following options to alter Storybook's behavior.
 Usage: start-storybook [options]
 ```
 
-| Options                         | Description                                                                                                                                                                  |
-| ------------------------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Options                         | Description                                                                                                                                                                   |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `--help`                        | Output usage information <br />`start-storybook --help`                                                                                                                       |
 | `-V`, `--version`               | Output the version number <br />`start-storybook -V`                                                                                                                          |
 | `-p`, `--port [number]`         | Port to run Storybook <br />`start-storybook -p 9009`                                                                                                                         |
@@ -42,13 +44,17 @@ Usage: start-storybook [options]
 | `--no-manager-cache`            | Disables Storybook's manager caching mechanism. See note below<br />`start-storybook --no-manager-cache`                                                                      |
 | `--disable-telemetry`           | Disables Storybook's telemetry. Learn more about it [here](../configure/telemetry.mdx)<br />`start-storybook --disable-telemetry`                                             |
 
-<div class="aside">
-  💡 The flag <code>--no-manager-cache</code> disables the internal caching of Storybook and can severely impact your Storybook loading time, so only use it when you need to refresh Storybook's UI, such as when editing themes.
-</div>
+<Callout variant="info" icon="💡">
 
-<div class="aside" id="static-dir-deprecation">
-  💡 Starting in 6.4 the `-s` flag is deprecated. Instead, use a configuration object in your `.storybook/main.js` file. See the [images and assets documentation](../configure/images-and-assets.mdx#serving-static-files-via-storybook-configuration) for more information.
-</div>
+  The flag `--no-manager-cache` disables the internal caching of Storybook and can severely impact your Storybook loading time, so only use it when you need to refresh Storybook's UI, such as when editing themes.
+
+</Callout>
+
+<Callout variant="warning" id="static-dir-deprecation">
+
+  Starting in 6.4 the `-s` flag is deprecated. Instead, use a configuration object in your `.storybook/main.js` file. See the [images and assets documentation](../configure/integration/images-and-assets.mdx#serving-static-files-via-storybook-configuration) for more information.
+
+</Callout>
 
 ## build-storybook
 
@@ -56,21 +62,23 @@ Usage: start-storybook [options]
 Usage: build-storybook [options]
 ```
 
-| Options                         | Description                                                                                                                                                                  |
-| ------------------------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-h`, `--help`                  | Output usage information<br />`build-storybook --help`                                                                                                                        |
-| `-V`, `--version`               | Output the version number<br />`build-storybook -V`                                                                                                                           |
+| Options                         | Description                                                                                                                                                                    | 
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `-h`, `--help`                  | Output usage information<br />`build-storybook --help`                                                                                                                         |
+| `-V`, `--version`               | Output the version number<br />`build-storybook -V`                                                                                                                            |
 | `-s`, `--static-dir`            | **Deprecated** [see note](#static-dir-deprecation).<br /> Directory where to load static files from, comma-separated list<br />`build-storybook -s public`                     |
-| `-o`, `--output-dir [dir-name]` | Directory where to store built files<br />`build-storybook -o /my-deployed-storybook`                                                                                         |
-| `-c`, `--config-dir [dir-name]` | Directory where to load Storybook configurations from<br />`build-storybook -c .storybook`                                                                                    |
+| `-o`, `--output-dir [dir-name]` | Directory where to store built files<br />`build-storybook -o /my-deployed-storybook`                                                                                          |
+| `-c`, `--config-dir [dir-name]` | Directory where to load Storybook configurations from<br />`build-storybook -c .storybook`                                                                                     |
 | `--loglevel [level]`            | Controls level of logging during build.<br /> Available options: `silly`, `verbose`, `info` (default), `warn`, `error`, `silent`<br />`build-storybook --loglevel warn`        |
-| `--quiet`                       | Suppress verbose build output<br />`build-storybook --quiet`                                                                                                                  |
-| `--no-dll`                      | Do not use dll reference (no-op)<br />`build-storybook --no-dll`                                                                                                              |
-| `--debug-webpack`               | Display final webpack configurations for debugging purposes<br />`build-storybook --debug-webpack`                                                                            |
-| `--webpack-stats-json`          | Write Webpack Stats JSON to disk<br />`build-storybook --webpack-stats-json /my-storybook/webpack-stats`                                                                      |
-| `--docs`                        | Builds Storybook in documentation mode. Learn more about it in [here](../writing-docs/build-documentation.mdx#publish-storybooks-documentation)<br />`build-storybook --docs` |
-| `--disable-telemetry`           | Disables Storybook's telemetry. Learn more about it [here](../configure/telemetry.mdx).<br />`build-storybook --disable-telemetry`                                            |
+| `--quiet`                       | Suppress verbose build output<br />`build-storybook --quiet`                                                                                                                   |
+| `--no-dll`                      | Do not use dll reference (no-op)<br />`build-storybook --no-dll`                                                                                                               |
+| `--debug-webpack`               | Display final webpack configurations for debugging purposes<br />`build-storybook --debug-webpack`                                                                             |
+| `--webpack-stats-json`          | Write Webpack Stats JSON to disk<br />`build-storybook --webpack-stats-json /my-storybook/webpack-stats`                                                                       |
+| `--docs`                        | Builds Storybook in documentation mode. Learn more about it in [here](../writing-docs/build-documentation.mdx#publish-storybooks-documentation)<br />`build-storybook --docs`  |
+| `--disable-telemetry`           | Disables Storybook's telemetry. Learn more about it [here](../configure/telemetry.mdx).<br />`build-storybook --disable-telemetry`                                             |
 
-<div class="aside">
-  💡  If you're using npm instead of yarn to publish Storybook, the commands work slightly different. For example, <code>npm run build-storybook -- -o ./path/to/build</code>.
-</div>
+<Callout>
+
+  If you're using npm instead of yarn to publish Storybook, the commands work slightly different. For example, `npm run build-storybook -- -o ./path/to/build`.
+
+</Callout>

@@ -37,7 +37,7 @@ Specifically, we track the following information in our telemetry events:
   * Supported view layers (e.g., React, Vue, Angular, Svelte).
   * Builder (e.g., Webpack4, Webpack5, Vite).
   * Meta framework (e.g., [Next](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.com/), [CRA](https://create-react-app.dev/)).
-  * [Addons](https://storybook.js.org/addons/) (e.g., [Essentials](../essentials/index.mdx), [Accessibility](https://storybook.js.org/addons/@storybook/addon-a11y/)).
+  * [Addons](https://storybook.js.org/addons/) (e.g., [Essentials](../essentials/index.mdx), [Accessibility](../writing-tests/accessibility-testing.mdx)).
   * [Feature flags](./index.mdx#feature-flags) (e.g., `buildStoriesJson`).
 * Package manager information (e.g., `npm`, `yarn`).
 * Monorepo information (e.g., [NX](https://nx.dev/), [Turborepo](https://turborepo.org/)).
@@ -132,7 +132,7 @@ In the future, we plan to share relevant data with the community through public 
 
 ## How to opt-out
 
-You may opt-out of the telemetry by setting Storybook's configuration element `disableTelemetry` to `true`, using the `--disable-telemetry` flag, or setting the environment variable`STORYBOOK_DISABLE_TELEMETRY` to `1`. For example:
+You may opt-out of the telemetry within your Storybook configuration by setting the `disableTelemetry` configuration element to `true`. For example:
 
 {/* prettier-ignore-start */}
 
@@ -140,13 +140,30 @@ You may opt-out of the telemetry by setting Storybook's configuration element `d
 
 {/* prettier-ignore-end */}
 
+Or via the command line with the `--disable-telemetry` flag or the `STORYBOOK_DISABLE_TELEMETRY` environment variable:
+
+{/* prettier-ignore-start */}
+
+<CodeSnippets path="storybook-disable-telemetry-cli.md" />
+
+{/* prettier-ignore-end */}
+
+
 ## Crash reports (disabled by default)
 
-In addition to general usage telemetry, you may also choose to share crash reports. Storybook will then sanitize the error object (removing all user paths) and append it to the telemetry event. To enable crash reporting, you can set the `enableCrashReports` configuration element to `true`, using the `--enable-crash-reports` flag, or set the `STORYBOOK_ENABLE_CRASH_REPORTS` environment variable to `1`. For example:
+In addition to general usage telemetry, you may also choose to share crash reports. Storybook will then sanitize the error object (removing all user paths) and append it to the telemetry event. To enable crash reporting, you can set the `enableCrashReports` configuration element to `true`. For example:
 
 {/* prettier-ignore-start */}
 
 <CodeSnippets path="storybook-telemetry-main-enable-crash-reports.md" />
+
+{/* prettier-ignore-end */}
+
+Additionally, you can enable crash reports via the command line with the `--enable-crash-reports` flag or the `STORYBOOK_ENABLE_CRASH_REPORTS` environment variable.
+
+{/* prettier-ignore-start */}
+
+<CodeSnippets path="storybook-telemetry-storybook-enable-crash-reports.md" />
 
 {/* prettier-ignore-end */}
 

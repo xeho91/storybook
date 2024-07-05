@@ -62,8 +62,8 @@ Under the hood, Storybook’s interaction addon mirrors Testing Library’s [`us
 
 Below is an abridged API for user-event. For more, check out the [official user-event docs](https://testing-library.com/docs/user-event/utility/).
 
-| User events       | Description                                                                                                                                              |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| User events       | Description                                                                                                                                               |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `clear`           | Selects the text inside inputs, or textareas and deletes it <br />`userEvent.clear(await within(canvasElement).getByRole('myinput'));`                    |
 | `click`           | Clicks the element, calling a click() function <br />`userEvent.click(await within(canvasElement).getByText('mycheckbox'));`                              |
 | `dblClick`        | Clicks the element twice <br />`userEvent.dblClick(await within(canvasElement).getByText('mycheckbox'));`                                                 |
@@ -102,9 +102,11 @@ Storybook only runs the interaction test when you're viewing a story. Therefore,
 
 ![Interaction test with test runner](../_assets/writing-tests/storybook-interaction-test-runner-loginform-optimized.png)
 
-<div class="aside">
-  💡 If you need, you can provide additional flags to the test-runner. Read the [documentation](./test-runner.mdx#cli-options) to learn more.
-</div>
+<Callout variant="info" icon="💡">
+
+  If you need, you can provide additional flags to the test-runner. Read the [documentation](./test-runner.mdx#cli-options) to learn more.
+  
+</Callout>
 
 ## Automate
 

@@ -37,9 +37,11 @@ Once the tests finish, check if the examples are working with the following comm
 cd examples/cra-ts-essentials && yarn storybook
 ```
 
-<div class="aside">
-  💡 The Storybook monorepo contains various example projects, each corresponding to a different framework and environment, and they are commonly used as additional tooling to test new features.
-</div>
+<Callout variant="info">
+
+  The Storybook monorepo contains various example projects, each corresponding to a different framework and environment, and they are commonly used as additional tooling to test new features.
+
+</Callout>
 
 If everything is working as it should, you should see the `example/cra-ts-essentials` Storybook running.
 
@@ -47,7 +49,7 @@ If everything is working as it should, you should see the `example/cra-ts-essent
 
 ## Start developing
 
-Now that you've [verified your setup](#sanity-check), it's time to jump into code. The simplest way to do this is to run one of the examples in one terminal window and the interactive build process in a separate terminal.
+Now that you've verified your setup, it's time to jump into code. The simplest way to do this is to run one of the examples in one terminal window and the interactive build process in a separate terminal.
 
 Assuming you're still running the `examples/cra-ts-essentials` from the previous step, open a new terminal and navigate to the root of the Storybook monorepo. Then, create a new branch with the following command:
 
@@ -63,9 +65,11 @@ yarn build
 
 When asked if you want to start the build in `watch` mode, answer **yes** to develop in interactive mode. Afterward, choose which packages you want to build. For example, if you're going to work on a feature for `@storybook/addon-docs`, you might want to select `@storybook/addon-docs` and `@storybook/components`.
 
-<div class="aside">
-  💡 Build's `watch` mode is great for interactive development. However, for performance reasons it only transpiles your code and doesn't execute the TypeScript compiler. If something isn't working as expected, try running `build` <b>WITHOUT</b> watch mode: it will re-generate TypeScript types and also perform type checking for you.
-</div>
+<Callout variant="info">
+
+  Build's `watch` mode is great for interactive development. However, for performance reasons it only transpiles your code and doesn't execute the TypeScript compiler. If something isn't working as expected, try running `build` **WITHOUT** watch mode: it will re-generate TypeScript types and also perform type checking for you.
+
+</Callout>
 
 ![Storybook package selector](../_assets/contribute/storybook-build-packages-selection-optimized.png)
 
@@ -83,9 +87,9 @@ When you're done coding, add documentation and tests as appropriate. That simpli
 
 Adding a story or set of stories to our suite of example apps helps you test your work.
 
-If you're modifying part of Storybook's core, or one of the essential addons, there's probably an existing set of stories in the [`official-storybook`](../../examples/official-storybook) that documents how the feature is supposed to work. Add your stories there.
+If you're modifying part of Storybook's core, or one of the essential addons, there's probably an existing set of stories in the [`official-storybook`](https://github.com/storybookjs/storybook/tree/release-6-5/examples/official-storybook) that documents how the feature is supposed to work. Add your stories there.
 
-If you're modifying something related to a specific framework, the framework will have its own examples in the monorepo. For instance, [`examples/vue-kitchen-sink`](../../examples/vue-kitchen-sink) is a natural place to add stories for `@storybook/vue` while [`examples/angular-cli`](../../examples/angular-cli) is the place for `@storybook/angular`.
+If you're modifying something related to a specific framework, the framework will have its own examples in the monorepo. For instance, [`examples/vue-kitchen-sink`](https://github.com/storybookjs/storybook/tree/release-6-5/examples/vue-kitchen-sink) is a natural place to add stories for `@storybook/vue` while [`examples/angular-cli`](https://github.com/storybookjs/storybook/tree/release-6-5/examples/angular-cli) is the place for `@storybook/angular`.
 
 ### Add tests
 
@@ -113,9 +117,11 @@ Before submitting your contribution, run the test suite one last time with:
 yarn test
 ```
 
-<div class="aside">
-  💡  Storybook uses [jest](https://jestjs.io/) as part of the testing suite, if you notice that the snapshot tests fail you can re-run and update them with `yarn test -u`.
-</div>
+<Callout variant="info" icon="💡">
+
+  Storybook uses [jest](https://jestjs.io/) as part of the testing suite, if you notice that the snapshot tests fail you can re-run and update them with `yarn test -u`.
+
+</Callout>
 
 Doing this prevents last-minute bugs and is also a great way to get your contribution merged faster once you submit your pull request. Failing to do so will lead to one of the maintainers mark the pull request with the **Work in Progress** label until all tests pass.
 
@@ -148,9 +154,11 @@ If you already have a reproduction on your local machine, you can similarly link
 npx storybook@next link --local /path/to/local-repro-directory
 ```
 
-<div class="aside">
-  💡  The <code>storybook link</code> command relies on <code>yarn 2</code> linking under the hood. It requires that the local repro is using <code>yarn 2</code>, which will be the case if you're using the [<code>storybook repro</code> command](./how-to-reproduce) per our contributing guidelines. If you are trying to link to a non-<code>yarn 2</code> project, linking will fail.
-</div>
+<Callout variant="info" icon="💡">
+
+  The `storybook link` command relies on `yarn 2` linking under the hood. It requires that the local repro is using `yarn 2`, which will be the case if you're using the [`storybook repro` command](./how-to-reproduce.mdx) per our contributing guidelines. If you are trying to link to a non-`yarn 2` project, linking will fail.
+  
+</Callout>
 
 ## Troubleshooting
 

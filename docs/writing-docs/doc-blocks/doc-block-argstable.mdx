@@ -33,8 +33,8 @@ To use the `ArgsTable` in [DocsPage](../docs-page.mdx#component-parameter), expo
 
 If you need, you can also include the `ArgsTable` block in your MDX stories. Below is a condensed table of available options and examples:
 
-| Option  | Description                                                                                         |
-| ------- | --------------------------------------------------------------------------------------------------- |
+| Option  | Description                                                                                          |
+| ------- | -----------------------------------------------------------------------------------------------------|
 | `of`    | Infers the args table from the component. <br /> `<ArgsTable of={MyComponent} />`                    |
 | `story` | Infers the args table based on a story. <br /> `<ArgsTable story="example-mycomponent--my-story" />` |
 
@@ -44,23 +44,23 @@ If you need, you can also include the `ArgsTable` block in your MDX stories. Bel
 
 ### Customizing
 
-`ArgsTables` are generated based on an internal data structure called [ArgTypes](../../api/argtypes.mdx). When you define the component's metadata element in your story, Storybook's Docs will automatically extract the ArgTypes based on available properties.
+`ArgsTables` are generated based on an internal data structure called [ArgTypes](../../api/stories/argtypes.mdx). When you define the component's metadata element in your story, Storybook's Docs will automatically extract the ArgTypes based on available properties.
 
 If you need, you can customize what is displayed in the `ArgsTable` by extending the `ArgTypes` data, unless you're using the `ArgsTable of={component} />`. In this case, Storybook will infer the data automatically from the component.
 
 Below is an abridged table and example featuring the available options.
 
-| Field                          | Description                                                                                                                                                                                             |
-|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                         | The name of the property. <br /> `argTypes: { label: { name: 'Something' } }`                                                                                                                            |
-| `type.name`                    | Sets a type for the property. <br /> `argTypes: { label: { type: { name: 'number' } } }`                                                                                                                 |
-| `type.required`                | Sets the property as optional or required. <br /> `argTypes: { label: { type: { required: true } }`                                                                                                      |
-| `description`                  | Sets a Markdown description for the property. <br /> `argTypes: { label: { description: 'Something' } }`                                                                                                 |
-| `table.type.summary`           | Provide a  short version of the type. <br /> `argTypes: { label: { table: { type: { summary: 'a short summary' } }}}`                                                                                    |
-| `table.type.detail`            | Provides an extended version of the type. <br /> `argTypes: { label: { table: { type: { detail: 'something' } }}}`                                                                                       |
-| `table.defaultValue.summary`   | Provide a short version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { summary: 'Hello World' } }}}`                                                                        |
-| `table.defaultValue.detail`    | Provides a longer version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { detail: 'Something' } }}}`                                                                         |
-| `control`                      | Associates a control for the property. <br /> `argTypes: { label: { control: { type: 'text'} } }` <br />Read the [Essentials documentation](../../essentials/controls.mdx) to learn more about controls.     |
+| Field                          | Description                                                                                                                                                                                                   |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                         | The name of the property. <br /> `argTypes: { label: { name: 'Something' } }`                                                                                                                                 |
+| `type.name`                    | Sets a type for the property. <br /> `argTypes: { label: { type: { name: 'number' } } }`                                                                                                                      |
+| `type.required`                | Sets the property as optional or required. <br /> `argTypes: { label: { type: { required: true } }`                                                                                                           |
+| `description`                  | Sets a Markdown description for the property. <br /> `argTypes: { label: { description: 'Something' } }`                                                                                                      |
+| `table.type.summary`           | Provide a  short version of the type. <br /> `argTypes: { label: { table: { type: { summary: 'a short summary' } }}}`                                                                                         |
+| `table.type.detail`            | Provides an extended version of the type. <br /> `argTypes: { label: { table: { type: { detail: 'something' } }}}`                                                                                            |
+| `table.defaultValue.summary`   | Provide a short version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { summary: 'Hello World' } }}}`                                                                             |
+| `table.defaultValue.detail`    | Provides a longer version of the default value. <br /> `argTypes: { label: { table: { defaultValue: { detail: 'Something' } }}}`                                                                              |
+| `control`                      | Associates a control for the property. <br /> Read the [Essentials documentation](../../essentials/controls.mdx) to learn more about controls. <br /> `argTypes: { label: { control: { type: 'text'} } }`     |
 
 {/* prettier-ignore-start */}
 
@@ -68,9 +68,11 @@ Below is an abridged table and example featuring the available options.
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 This API is experimental and may change outside the typical semver release cycle. Read the documentation to learn more about [ArgTypes](../../api/argtypes.mdx).
-</div>
+<Callout variant="info" icon="💡">
+
+  This API is experimental and may change outside the typical semver release cycle. Read the documentation to learn more about [ArgTypes](../../api/stories/argtypes.mdx).
+
+</Callout>
 
 This would render a row with a modified description, a type display with a dropdown that shows the detail, and no control.
 
@@ -78,9 +80,9 @@ This would render a row with a modified description, a type display with a dropd
 
 To reduce the boilerplate code you have to write, Storybook provides some convenient shorthands to help you streamline your work. Below are some of the available shorthands.
 
-| Type           | Shorthand                                                                                  |
-| -------------- | ------------------------------------------------------------------------------------------ |
-| `type.name`    | Assigns the type to a number property. <br /> `argTypes: { label: { type: number }`         |
+| Type           | Shorthand                                                                                   |
+| -------------- | --------------------------------------------------------------------------------------------|
+| `type.name`    | Assigns the type to a number property. <br /> `argTypes: { label: { type: number } }`       |
 | `control.type` | Assigns a radio control for the property. <br /> `argTypes: { size: { control: 'radio' } }` |
 
 ### Grouping
@@ -96,7 +98,7 @@ You can also extend the ArgsTable's customization by grouping related `argTypes`
 You could group similar properties for better organization and structure. Using the table below as a reference:
 
 | Field               | Category |
-| :------------------ | :------: |
+| ------------------- | -------- |
 | **backgroundColor** |  Colors  |
 | **primary**         |  Colors  |
 | **label**           |   Text   |
@@ -116,7 +118,7 @@ Results in the following change into your story and UI.
 You can also extend the formula above and introduce subcategories, allowing better structuring and organization. Using the table below as a reference leads to the following change to your story and UI:
 
 | Field               | Category |   Subcategory   |
-| :------------------ | :------: | :-------------: |
+| ------------------- | -------- | --------------- |
 | **backgroundColor** |  Colors  |  Button colors  |
 | **primary**         |  Colors  |  Button style   |
 | **label**           |   Text   | Button contents |
