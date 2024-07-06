@@ -7,13 +7,7 @@ import invariant from 'tiny-invariant';
 
 import { logger } from '@storybook/core/node-logger';
 import { addToGlobalContext, telemetry } from '@storybook/core/telemetry';
-import {
-  parseList,
-  getEnvConfig,
-  JsPackageManagerFactory,
-  versions,
-  removeAddon as remove,
-} from '@storybook/core/common';
+import { JsPackageManagerFactory, removeAddon as remove, versions } from '@storybook/core/common';
 import { withTelemetry } from '@storybook/core/core-server';
 
 import type { CommandOptions } from './generators/types';
@@ -24,8 +18,6 @@ import { upgrade, type UpgradeOptions } from './upgrade';
 import { sandbox } from './sandbox';
 import { link } from './link';
 import { doAutomigrate } from './automigrate';
-import { dev } from './dev';
-import { build } from './build';
 import { doctor } from './doctor';
 
 addToGlobalContext('cliVersion', versions.storybook);
@@ -211,103 +203,6 @@ command('doctor')
       logger.error(e);
       process.exit(1);
     });
-  });
-
-command('dev')
-  .option('-p, --port <number>', 'Port to run Storybook', (str) => parseInt(str, 10))
-  .option('-h, --host <string>', 'Host to run Storybook')
-  .option('-c, --config-dir <dir-name>', 'Directory where to load Storybook configurations from')
-  .option(
-    '--https',
-    'Serve Storybook over HTTPS. Note: You must provide your own certificate information.'
-  )
-  .option(
-    '--ssl-ca <ca>',
-    'Provide an SSL certificate authority. (Optional with --https, required if using a self-signed certificate)',
-    parseList
-  )
-  .option('--ssl-cert <cert>', 'Provide an SSL certificate. (Required with --https)')
-  .option('--ssl-key <key>', 'Provide an SSL key. (Required with --https)')
-  .option('--smoke-test', 'Exit after successful start')
-  .option('--ci', "CI mode (skip interactive prompts, don't open browser)")
-  .option('--no-open', 'Do not open Storybook automatically in the browser')
-  .option('--loglevel <level>', 'Control level of logging during build')
-  .option('--quiet', 'Suppress verbose build output')
-  .option('--no-version-updates', 'Suppress update check', true)
-  .option('--debug-webpack', 'Display final webpack configurations for debugging purposes')
-  .option(
-    '--webpack-stats-json [directory]',
-    'Write Webpack stats JSON to disk (synonym for `--stats-json`)'
-  )
-  .option('--stats-json [directory]', 'Write stats JSON to disk')
-  .option(
-    '--preview-url <string>',
-    'Disables the default storybook preview and lets your use your own'
-  )
-  .option('--force-build-preview', 'Build the preview iframe even if you are using --preview-url')
-  .option('--docs', 'Build a documentation-only site using addon-docs')
-  .option('--exact-port', 'Exit early if the desired port is not available')
-  .option(
-    '--initial-path [path]',
-    'URL path to be appended when visiting Storybook for the first time'
-  )
-  .action(async (options) => {
-    logger.setLevel(program.loglevel);
-    consoleLogger.log(chalk.bold(`${pkg.name} v${pkg.version}`) + chalk.reset('\n'));
-
-    // The key is the field created in `options` variable for
-    // each command line argument. Value is the env variable.
-    getEnvConfig(options, {
-      port: 'SBCONFIG_PORT',
-      host: 'SBCONFIG_HOSTNAME',
-      staticDir: 'SBCONFIG_STATIC_DIR',
-      configDir: 'SBCONFIG_CONFIG_DIR',
-      ci: 'CI',
-    });
-
-    if (parseInt(`${options.port}`, 10)) {
-      options.port = parseInt(`${options.port}`, 10);
-    }
-
-    await dev({ ...options, packageJson: pkg }).catch(() => process.exit(1));
-  });
-
-command('build')
-  .option('-o, --output-dir <dir-name>', 'Directory where to store built files')
-  .option('-c, --config-dir <dir-name>', 'Directory where to load Storybook configurations from')
-  .option('--quiet', 'Suppress verbose build output')
-  .option('--loglevel <level>', 'Control level of logging during build')
-  .option('--debug-webpack', 'Display final webpack configurations for debugging purposes')
-  .option(
-    '--webpack-stats-json [directory]',
-    'Write Webpack stats JSON to disk (synonym for `--stats-json`)'
-  )
-  .option('--stats-json [directory]', 'Write stats JSON to disk')
-  .option(
-    '--preview-url <string>',
-    'Disables the default storybook preview and lets your use your own'
-  )
-  .option('--force-build-preview', 'Build the preview iframe even if you are using --preview-url')
-  .option('--docs', 'Build a documentation-only site using addon-docs')
-  .option('--test', 'Build stories optimized for testing purposes.')
-  .action(async (options) => {
-    process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-    logger.setLevel(program.loglevel);
-    consoleLogger.log(chalk.bold(`${pkg.name} v${pkg.version}\n`));
-
-    // The key is the field created in `options` variable for
-    // each command line argument. Value is the env variable.
-    getEnvConfig(options, {
-      staticDir: 'SBCONFIG_STATIC_DIR',
-      outputDir: 'SBCONFIG_OUTPUT_DIR',
-      configDir: 'SBCONFIG_CONFIG_DIR',
-    });
-
-    await build({
-      ...options,
-      packageJson: pkg,
-      test: !!options.test || process.env.SB_TESTBUILD === 'true',
-    }).catch(() => process.exit(1));
   });
 
 program.on('command:*', ([invalidCmd]) => {
