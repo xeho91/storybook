@@ -29,6 +29,8 @@
   "files": [
     "bin/**/*",
     "dist/**/*",
+    "rendererAssets/**/*",
+    "templates/**/*",
     "README.md",
     "!src/**/*"
   ],
