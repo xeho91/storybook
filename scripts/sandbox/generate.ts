@@ -9,7 +9,7 @@ import { esMain } from '../utils/esmain';
 
 import type { OptionValues } from '../utils/options';
 import { createOptions } from '../utils/options';
-import { allTemplates as sandboxTemplates } from '../../code/lib/cli/src/sandbox-templates';
+import { allTemplates as sandboxTemplates } from '../../code/lib/toolbox/src/sandbox-templates';
 import storybookVersions from '../../code/core/src/common/versions';
 import { JsPackageManagerFactory } from '../../code/core/src/common/js-package-manager/JsPackageManagerFactory';
 
@@ -38,7 +38,7 @@ const sbInit = async (
   flags?: string[],
   debug?: boolean
 ) => {
-  const sbCliBinaryPath = join(__dirname, `../../code/lib/cli/bin/index.cjs`);
+  const sbCliBinaryPath = join(__dirname, `../../code/lib/toolbox/bin/index.cjs`);
   console.log(`🎁 Installing storybook`);
   const env = { STORYBOOK_DISABLE_TELEMETRY: 'true', ...envVars };
   const fullFlags = ['--yes', ...(flags || [])];
