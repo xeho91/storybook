@@ -12,7 +12,10 @@ import { SupportedLanguage, externalFrameworks } from '../project_types';
 import { copyTemplateFiles } from '../helpers';
 import { configureMain, configurePreview } from './configure';
 import type { FrameworkOptions, GeneratorOptions } from './types';
-import { configureEslintPlugin, extractEslintInfo } from '../automigrate/helpers/eslintPlugin';
+import {
+  configureEslintPlugin,
+  extractEslintInfo,
+} from '../../../toolbox/src/automigrate/helpers/eslintPlugin';
 import { detectBuilder } from '../detect';
 
 const logger = console;

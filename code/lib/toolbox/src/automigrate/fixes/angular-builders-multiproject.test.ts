@@ -3,7 +3,7 @@ import type { StorybookConfig } from '@storybook/core/types';
 import type { JsPackageManager } from '@storybook/core/common';
 import { angularBuildersMultiproject } from './angular-builders-multiproject';
 import * as helpers from '../../helpers';
-import * as angularHelpers from '../../generators/ANGULAR/helpers';
+import * as angularHelpers from '../../../../create-storybook/src/generators/ANGULAR/helpers';
 
 const checkAngularBuilders = async ({
   packageManager,
@@ -25,7 +25,9 @@ vi.mock('../../helpers', async (importOriginal) => ({
 }));
 
 vi.mock('../../generators/ANGULAR/helpers', async (importOriginal) => ({
-  ...(await importOriginal<typeof import('../../generators/ANGULAR/helpers')>()),
+  ...(await importOriginal<
+    typeof import('../../../../create-storybook/src/generators/ANGULAR/helpers')
+  >()),
   AngularJSON: vi.fn(),
 }));
 

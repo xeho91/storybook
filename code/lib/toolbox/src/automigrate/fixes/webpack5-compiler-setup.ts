@@ -9,13 +9,13 @@ import {
   getFrameworkPackageName,
   updateMainConfig,
 } from '../helpers/mainConfigFile';
-import { frameworkToDefaultBuilder } from '../../helpers';
+import { frameworkToDefaultBuilder } from '../../../../create-storybook/src/helpers';
 import {
   CoreBuilder,
   CoreWebpackCompilers,
   builderNameToCoreBuilder,
   compilerNameToCoreCompiler,
-} from '../../project_types';
+} from '../../../../create-storybook/src/project_types';
 import { dedent } from 'ts-dedent';
 import chalk from 'chalk';
 import { add } from '../../add';

@@ -1,10 +1,10 @@
 import type { MockInstance } from 'vitest';
 import { describe, it, expect, vi } from 'vitest';
 import { wrapRequire } from './wrap-require';
-import * as detect from '../../detect';
+import * as detect from '../../../../create-storybook/src/detect';
 
 vi.mock('../../detect', async (importOriginal) => ({
-  ...(await importOriginal<typeof import('../../detect')>()),
+  ...(await importOriginal<typeof import('../../../../create-storybook/src/detect')>()),
   detectPnp: vi.fn(),
 }));
 

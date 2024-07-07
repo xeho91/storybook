@@ -3,7 +3,7 @@ import semver from 'semver';
 import chalk from 'chalk';
 import type { Fix } from '../types';
 import { isNxProject } from '../../helpers';
-import { AngularJSON } from '../../generators/ANGULAR/helpers';
+import { AngularJSON } from '../../../../create-storybook/src/generators/ANGULAR/helpers';
 import { getFrameworkPackageName } from '../helpers/mainConfigFile';
 
 interface AngularBuildersMultiprojectRunOptions {}

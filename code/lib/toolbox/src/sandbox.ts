@@ -13,7 +13,7 @@ import { allTemplates as TEMPLATES } from './sandbox-templates';
 import type { PackageManagerName } from '@storybook/core/common';
 import { JsPackageManagerFactory } from '@storybook/core/common';
 import { versions } from '@storybook/core/common';
-import { doInitiate } from './initiate';
+import { doInitiate } from '../../create-storybook/src/initiate';
 
 const logger = console;
 

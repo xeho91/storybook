@@ -10,8 +10,6 @@ import { addToGlobalContext, telemetry } from '@storybook/core/telemetry';
 import { JsPackageManagerFactory, removeAddon as remove, versions } from '@storybook/core/common';
 import { withTelemetry } from '@storybook/core/core-server';
 
-import type { CommandOptions } from './generators/types';
-import { initiate } from './initiate';
 import { add } from './add';
 import { migrate } from './migrate';
 import { upgrade, type UpgradeOptions } from './upgrade';
@@ -37,32 +35,6 @@ const command = (name: string) =>
     )
     .option('--debug', 'Get more logs in debug mode', false)
     .option('--enable-crash-reports', 'Enable sending crash reports to telemetry data');
-
-command('init')
-  .description('Initialize Storybook into your project.')
-  .option('-f --force', 'Force add Storybook')
-  .option('-s --skip-install', 'Skip installing deps')
-  .option('--package-manager <npm|pnpm|yarn1|yarn2>', 'Force package manager for installing deps')
-  .option('--use-pnp', 'Enable pnp mode for Yarn 2+')
-  .option('-p --parser <babel | babylon | flow | ts | tsx>', 'jscodeshift parser')
-  .option('-t --type <type>', 'Add Storybook for a specific project type')
-  .option('-y --yes', 'Answer yes to all prompts')
-  .option('-b --builder <webpack5 | vite>', 'Builder library')
-  .option('-l --linkable', 'Prepare installation for link (contributor helper)')
-  // due to how Commander handles default values and negated options, we have to elevate the default into Commander, and we have to specify `--dev`
-  // alongside `--no-dev` even if we are unlikely to directly use `--dev`. https://github.com/tj/commander.js/issues/2068#issuecomment-1804524585
-  .option(
-    '--dev',
-    'Launch the development server after completing initialization. Enabled by default',
-    process.env.CI !== 'true' && process.env.IN_STORYBOOK_SANDBOX !== 'true'
-  )
-  .option(
-    '--no-dev',
-    'Complete the initialization of Storybook without launching the Storybook development server'
-  )
-  .action((options: CommandOptions) => {
-    initiate(options).catch(() => process.exit(1));
-  });
 
 command('add <addon>')
   .description('Add an addon to your Storybook')
