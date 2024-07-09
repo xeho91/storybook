@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* TodoItem.stories.mdx */}
-
+```md filename="TodoItem.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { TodoItem } from './TodoItem';
@@ -36,7 +34,7 @@ import { TodoItem } from './TodoItem';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Examples/Loader',
@@ -73,7 +71,7 @@ import { TodoItem } from './TodoItem';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Examples/Loader'
@@ -87,9 +85,7 @@ Primary.loaders = [
     }),
 ];
 ```
-```md renderer="react" language="mdx"
-{/* TodoItem.stories.mdx */}
-
+```md filename="TodoItem.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import fetch from 'node-fetch';
@@ -119,7 +115,7 @@ import TodoItem from './TodoItem.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Examples/Loader',
@@ -137,9 +133,7 @@ Primary.loaders = [
   }),
 ];
 ```
-```md renderer="svelte" language="mdx"
-{/* TodoItem.stories.mdx */}
-
+```md filename="TodoItem.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import TodoItem from './TodoItem.svelte';
@@ -173,7 +167,7 @@ import fetch from 'node-fetch';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Examples/Loader',
@@ -196,9 +190,7 @@ Primary.loaders = [
   }),
 ];
 ```
-```md renderer="vue" language="mdx"
-{/* TodoItem.stories.mdx */}
-
+```md filename="TodoItem.stories.mdx" renderer="vue" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import TodoItem from './TodoItem.vue';

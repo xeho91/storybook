@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Page.stories.mdx */}
-
+```md filename="Page.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Page } from './page.component';
@@ -31,7 +29,7 @@ import { Page } from './page.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -59,7 +57,7 @@ import { Page } from './Page';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -77,10 +75,7 @@ CustomFooter.args = {
   footer: 'Built with Storybook',
 };
 ```
-
-```md renderer="react" language="mdx"
-{/* Page.stories.mdx */}
-
+```md filename="Page.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Page } from './Page';
@@ -111,7 +106,7 @@ import { Page } from './Page';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -129,9 +124,7 @@ CustomFooter.args = {
   footer: 'Built with Storybook',
 };
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* Page.stories.svelte */}
-
+```html filename="Page.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
   
@@ -158,7 +151,7 @@ import Page from './Page.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -187,7 +180,7 @@ import Page from './Page.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Page',
@@ -213,9 +206,7 @@ CustomFooter.args = {
   footer: '<a href="https://storybook.js.org/">Built with Storybook</a>',
 };
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-2"
-{/* Page.stories.mdx */}
-
+```md filename="Page.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-2"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Page from './Page.vue';
@@ -242,9 +233,7 @@ export const Template = (args, { argTypes }) => ({
   {Template.bind({})}
 </Story>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* Page.stories.mdx */}
-
+```md filename="Page.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Page from './Page.vue';

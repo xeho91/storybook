@@ -16,7 +16,6 @@ test('Checks if the form is valid ', async () => {
   expect(isFormValid).toBeInTheDocument();
 });
 ```
-
 ```js filename="Form.test.js" renderer="preact" language="js"
 import '@testing-library/jest-dom/extend-expect';
 
@@ -35,7 +34,6 @@ it('Checks if the form is valid', () => {
   expect(isFormValid).toBeInTheDocument();
 });
 ```
-
 ```js filename="Form.test.js" renderer="react" language="js"
 import { render, fireEvent } from '@testing-library/react';
 
@@ -68,7 +66,6 @@ it('Checks if the form is valid', async () => {
   expect(isFormValid).toBeInTheDocument();
 });
 ```
-
 ```js filename="tests/unit/Form.spec.js" renderer="vue" language="js"
 import { render, fireEvent } from '@testing-library/vue';
 

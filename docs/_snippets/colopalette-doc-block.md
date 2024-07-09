@@ -1,6 +1,5 @@
-```md renderer="common" language="mdx" tabTitle="advanced-example"
-{/* Colors.stories.mdx */}
-
+<!-- to delete  -->
+```md filename="Colors.stories.mdx" renderer="common" language="mdx" tabTitle="advanced-example"
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
 
 import { themes, ThemeProvider, convert, ensure } from '@storybook/theming';

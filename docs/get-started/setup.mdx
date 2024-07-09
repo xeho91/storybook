@@ -31,7 +31,7 @@ Your project may have additional requirements before components can be rendered 
   If you see errors on the CLI when you run the `yarn storybook` command, you likely need to make changes to Storybook’s build configuration. Here are some things to try:
 
   * [Presets](../addons/addon-types.mdx) bundle common configurations for various technologies into Storybook. In particular, presets exist for Create React App, SCSS and Ant Design.
-  * Specify a custom [Babel configuration](../configure/babel.mdx#custom-babel-config) for Storybook. Storybook automatically tries to use your project’s config if it can.
+  * Specify a custom [Babel configuration](../configure/integration/babel.mdx#custom-babel-config) for Storybook. Storybook automatically tries to use your project’s config if it can.
   * Adjust the [Webpack configuration](../builders/webpack.mdx) that Storybook uses. Try patching in your own configuration if needed.
 </details>
 
@@ -72,7 +72,7 @@ You may have to configure your CSS tooling for Storybook’s rendering environme
 <details>
   <summary>@import CSS into components</summary>
 
-  Storybook allows you to import CSS files in your components directly. But in some cases you may need to [tweak its Webpack configuration](../builders/webpack.mdx#extendingstorybooks-webpack-config). Angular components require [a special import](../configure/styling-and-css.mdx#importing-css-files).
+  Storybook allows you to import CSS files in your components directly. But in some cases you may need to [tweak its Webpack configuration](../builders/webpack.mdx#extendingstorybooks-webpack-config). Angular components require [a special import](../configure/integration/styling-and-css.mdx#importing-css-files).
 </details>
 
 <details>
@@ -90,11 +90,11 @@ You may have to configure your CSS tooling for Storybook’s rendering environme
 <details>
   <summary>Load fonts or images from a local directory</summary>
 
-  If you're referencing fonts or images from a local directory, you'll need to configure the Storybook script to [serve the static files](../configure/images-and-assets.mdx).
+  If you're referencing fonts or images from a local directory, you'll need to configure the Storybook script to [serve the static files](../configure/integration/images-and-assets.mdx).
 </details>
 
 ## Load assets and resources
 
-If you want to [link to static files](../configure/images-and-assets.mdx) in your project or stories (e.g., `/fonts/XYZ.woff`), use the `-s path/to/folder` flag to specify a static folder to serve from when you start up Storybook. To do so, edit the `storybook` and `build-storybook` scripts in `package.json`.
+If you want to [link to static files](../configure/integration/images-and-assets.mdx) in your project or stories (e.g., `/fonts/XYZ.woff`), use the `-s path/to/folder` flag to specify a static folder to serve from when you start up Storybook. To do so, edit the `storybook` and `build-storybook` scripts in `package.json`.
 
 We recommend serving external resources and assets requested in your components statically with Storybook. It ensures that assets are always available to your stories.

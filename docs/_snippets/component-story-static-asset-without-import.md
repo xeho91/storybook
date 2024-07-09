@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { MyComponent } from './MyComponent.component';
@@ -25,7 +23,7 @@ import { MyComponent } from './MyComponent.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'img',
@@ -45,7 +43,7 @@ import React from 'react';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'img',
@@ -54,9 +52,7 @@ export default {
 // Assume image.png is located in the "public" directory.
 export const WithAnImage = () => <img src="/image.png" alt="my image" />;
 ```
-```md renderer="react" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { MyComponent } from './MyComponent';
@@ -81,7 +77,7 @@ import { Meta } from '@storybook/react';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'img',
@@ -99,7 +95,7 @@ import MyComponent from './MyComponent.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'img',
@@ -115,9 +111,7 @@ export const WithAnImage = () => ({
     },
 });
 ```
-```md renderer="svelte" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import MyComponent from './MyComponent.svelte0;
@@ -138,9 +132,7 @@ import MyComponent from './MyComponent.svelte0;
   }}
 </Story>
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* MyComponent.stories.svelte */}
-
+```html filename="MyComponent.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
 
@@ -161,7 +153,7 @@ import MyComponent from './MyComponent.svelte0;
 ```js filename="MyComponent.stories.js" renderer="vue" language="js"
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'img',
@@ -172,9 +164,7 @@ export const WithAnImage = () => ({
   template: '<img src="image.png" alt="my image" />',
 });
 ```
-```md renderer="vue" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="vue" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 <Meta title="img" component={MyComponent}/>

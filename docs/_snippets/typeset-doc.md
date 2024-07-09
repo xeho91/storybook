@@ -1,6 +1,4 @@
-```md renderer="common" language="mdx" tabTitle="block"
-{/* Typography.stories.mdx */}
-
+```md filename="Typography.stories.mdx" renderer="common" language="mdx" tabTitle="block"
 import { Meta, Typeset } from '@storybook/addon-docs/blocks';
 
 <Meta title="Typography" />

@@ -4,10 +4,8 @@ module.exports = {
   extension: ['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue'],
 };
 ```
-
 ```json renderer="common" language="json"
 {
   "extension": [".js", ".cjs", ".mjs", ".ts", ".tsx", ".jsx", ".vue"]
 }
 ```
-

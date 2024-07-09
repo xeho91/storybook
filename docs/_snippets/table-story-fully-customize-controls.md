@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Table.stories.mdx */}
-
+```md filename="Table.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Table } from './Table.component';
@@ -41,7 +39,7 @@ import { Table } from './Table.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Custom Table',
@@ -83,7 +81,7 @@ import { TR } from './TableRow';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Custom Table',
@@ -110,9 +108,7 @@ Numeric.args = {
   size: 'large',
 };
 ```
-```md renderer="react" language="mdx"
-{/* Table.stories.mdx */}
-
+```md filename="Table.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Table } from './Table';
@@ -136,9 +132,7 @@ export const TableStory = ({ data, ...args }) => (
   {TableStory.bind({})}
 </Story>
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/*Table.stories.svelte */}
-
+```html filename="Table.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
   
@@ -181,13 +175,12 @@ export const TableStory = ({ data, ...args }) => (
   }}
 />
 ```
-
 ```js filename="Table.stories.js" renderer="vue" language="js" tabTitle="2"
 import Table from './Table.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Custom Table',
@@ -223,7 +216,7 @@ import Table from './Table.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Custom Table',
@@ -257,9 +250,7 @@ Numeric.args = {
   size: 'large',
 };
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-2"
-{/* Table.stories.mdx */}
-
+```md filename="Table.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-2"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Table from './Table.vue';
@@ -291,9 +282,7 @@ export const TableStory = (args, { argTypes }) => ({
   {TableStory.bind({})}
 </Story>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* Table.stories.mdx */}
-
+```md filename="Table.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Table from './Table.vue';

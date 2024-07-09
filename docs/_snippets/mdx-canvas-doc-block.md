@@ -1,16 +1,14 @@
-```md renderer="common" language="mdx"
-{/* ExampleStory.stories.mdx */}
-
+```md filename="ExampleStory.stories.mdx" renderer="common" language="mdx"
 import { Canvas, Meta } from '@storybook/addon-docs';
 
 import { ExampleComponent} from './ExampleComponent';
 
 export const Template = (args) => (
-  /*
+  {/* 
   *  Your template implementation goes here.
   * Read more about Storybook templates at:
-  * https://storybook.js.org/docs/react/get-started/whats-a-story
-  */
+  * https://storybook.js.org/docs/6/get-started/whats-a-story
+  */}
 );
 
 <Meta title="SampleComponent" component={ ExampleComponent } />

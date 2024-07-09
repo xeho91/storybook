@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './button.component';
@@ -41,7 +39,7 @@ import { Button } from './button.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -54,7 +52,6 @@ export const Primary: Story = () => ({
     backgroundColor: '#ff0',
   },
 });
-
 
 export const Secondary: Story = () => ({
   props: {
@@ -75,7 +72,7 @@ import { createButton } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',
@@ -84,14 +81,13 @@ export const Primary = () => createButton({ backgroundColor: "#ff0", label: "But
 export const Secondary = () => createButton({ backgroundColor: "#ff0", label: "😄👍😍💯"});
 export const Tertiary = () => createButton({ backgroundColor: "#ff0", label: "📚📕📈🤓"});
 ```
-
 ```ts filename="Button.stories.ts" renderer="html" language="ts"
 import { Meta, StoryFn } from '@storybook/html';
 import { createButton, ButtonArgs } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/html/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',
@@ -100,7 +96,6 @@ export const Primary: StoryFn<ButtonArgs> = () => createButton({ backgroundColor
 export const Secondary: StoryFn<ButtonArgs> = () => createButton({ backgroundColor: "#ff0", label: "😄👍😍💯"});
 export const Tertiary: StoryFn<ButtonArgs> = () => createButton({ backgroundColor: "#ff0", label: "📚📕📈🤓"});
 ```
-
 ```ts filename="Button.stories.js|jsx" renderer="react" language="js"
 import React from 'react';
 
@@ -108,7 +103,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -118,9 +113,7 @@ export const Primary = () => <Button backgroundColor="#ff0" label="Button" />;
 export const Secondary = () => <Button backgroundColor="#ff0" label="😄👍😍💯" />;
 export const Tertiary = () => <Button backgroundColor="#ff0" label="📚📕📈🤓" />;
 ```
-```md renderer="react" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './Button';
@@ -148,7 +141,7 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -172,7 +165,7 @@ import Button from './Button.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -203,9 +196,7 @@ export const Tertiary = () => ({
   },
 });
 ```
-```md renderer="svelte" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.svelte';
@@ -240,7 +231,7 @@ import Button from './Button.svelte';
   }}
 </Story>
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
+```html filename="Button.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Story } from '@storybook/addon-svelte-csf';
   
@@ -266,7 +257,7 @@ import Button from './Button.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Button',
@@ -288,9 +279,7 @@ export const Tertiary = () => ({
   template: '<Button background="#ff0" label="📚📕📈🤓" />',
 });
 ```
-```md renderer="vue" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="vue" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.vue';
@@ -333,7 +322,7 @@ import { Meta, StoryFn } from '@storybook/vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',
@@ -362,7 +351,7 @@ import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Button',

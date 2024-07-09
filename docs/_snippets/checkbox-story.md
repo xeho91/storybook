@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Checkbox } from './checkbox.component';
@@ -43,9 +41,7 @@ Markdown documentation.
   </Story>
 </Canvas>
 ```
-```md renderer="react" language="mdx"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Checkbox } from './Checkbox';
@@ -88,9 +84,7 @@ Markdown documentation.
    </Story>
 </Canvas>
 ```
-```md renderer="svelte" language="mdx"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="svelte" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Checkbox from './Checkbox.svelte';
@@ -136,9 +130,7 @@ export const Template = (args) => ({
    </Story>
 </Canvas>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-2"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-2"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Checkbox from './Checkbox.vue';
@@ -185,9 +177,7 @@ Markdown documentation.
    </Story>
 </Canvas>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* Checkbox.stories.mdx */}
-
+```md filename="Checkbox.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Checkbox from './Checkbox.vue';
@@ -201,6 +191,7 @@ export const Template = (args) => ({
   },
   template: '<Checkbox v-bind="args" />',
 });
+
 # Checkbox
 
 With `MDX`, we can define a story for `Checkbox` right in the middle of our

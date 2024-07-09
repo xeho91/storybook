@@ -15,7 +15,7 @@ import * as DocumentListStories from './DocumentList.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -52,7 +52,7 @@ import * as DocumentList from './DocumentList.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -81,7 +81,7 @@ import DocumentList from './DocumentList.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -98,7 +98,6 @@ Simple.args = {
   subdocuments: DocumentList.Simple.args.documents,
 };
 ```
-
 ```js filename="YourPage.stories.js" renderer="svelte" language="js"
 import DocumentScreen from './YourPage.svelte';
 
@@ -109,7 +108,7 @@ import * as DocumentListStories from './DocumentList.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -139,7 +138,7 @@ import * as DocumentListStories from './DocumentList.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -169,7 +168,7 @@ import * as DocumentListStories from './DocumentList.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',

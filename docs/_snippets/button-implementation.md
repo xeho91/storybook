@@ -113,9 +113,7 @@ export const Button: React.FC<ButtonProps> = ({
   // the component implementation
 };
 ```
-```html renderer="svelte" language="js"
-{/* Button.svelte */}
-
+```html filename="Button.svelte" renderer="svelte" language="js"
 <script>
   import { createEventDispatcher } from 'svelte';
   /**
@@ -150,9 +148,7 @@ export const Button: React.FC<ButtonProps> = ({
 
 <button type="button" {style} on:click="{onClick}">{label}</button>
 ```
-```html renderer="vue" language="js" tabTitle="2"
-{/* Button.vue */}
-
+```html filename="Button.vue" renderer="vue" language="js" tabTitle="2"
 <template>
   {/* the component markup implementation */}
 </template>
@@ -203,9 +199,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 </script>
 ```
-```html renderer="vue" language="js" tabTitle="3"
-{/* Button.vue */}
-
+```html filename="Button.vue renderer="vue" language="js" tabTitle="3"
 <template>
   {/* the component markup implementation */}
 </template>

@@ -3,7 +3,7 @@ import { MyComponent } from './MyComponent';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'MyComponent',
@@ -19,9 +19,7 @@ Default.args = {
   exampleProp: process.env.EXAMPLE_VAR,
 };
 ```
-```md renderer="common" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="common" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { MyComponent } from './MyComponent';

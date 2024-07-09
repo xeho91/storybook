@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './Button.component';
@@ -48,7 +46,8 @@ import { Button } from './Button.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading to learn how to generate automatic titles
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
+  * to learn how to generate automatic titles
   */
   title: 'Accessibility testing',
   component: Button,
@@ -80,7 +79,8 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading to learn how to generate automatic titles
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
+  * to learn how to generate automatic titles
   */
   title: 'Accessibility testing',
   component: Button,
@@ -105,9 +105,7 @@ Inaccessible.args = {
   backgroundColor: 'red',
 };
 ```
-```md renderer="react" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './Button';
@@ -148,7 +146,6 @@ export const Template = (args) => <Button {...args} />;
   {Template.bind({})}
 </Story>
 ```
-
 ```ts filename="Button.stories.ts|tsx" renderer="react" language="ts"
 import React from 'react';
 
@@ -158,7 +155,8 @@ import { Button } from './Button';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading to learn how to generate automatic titles
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
+  * to learn how to generate automatic titles
   */
   title: 'Accessibility testing',
   component: Button,
@@ -189,7 +187,7 @@ import Button from './Button.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Accessibility testing',
@@ -218,9 +216,7 @@ Inaccessible.args = {
   backgroundColor: 'red',
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.svelte';
@@ -269,7 +265,7 @@ import Button from './Button.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Accessibility testing',
@@ -304,7 +300,7 @@ import Button from './Button.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading 
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Accessibility testing',
@@ -336,9 +332,7 @@ Inaccessible.args = {
   backgroundColor: 'red',
 };
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-2"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-2"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.vue';
@@ -383,9 +377,7 @@ export const Template = (args, { argTypes }) => ({
   {Template.bind({})}
 </Story>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.vue';

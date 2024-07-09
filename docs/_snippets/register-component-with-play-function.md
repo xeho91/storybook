@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* RegistrationForm.stories.mdx */}
-
+```md filename="RegistrationForm.stories.mdx" renderer="angular" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { userEvent, within } from '@storybook/testing-library';
@@ -12,7 +10,7 @@ import { RegistrationForm } from './RegistrationForm.component';
 export const Template = (args) => ({ props: args });
 
 {/*  
- See https://storybook.js.org/docs/angular/writing-stories/play-function#working-with-the-canvas
+ See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
  to learn more about using the canvasElement to query the DOM
 */}
 <Story
@@ -36,7 +34,7 @@ export const Template = (args) => ({ props: args });
       delay: 100,
     });
 
-    // See https://storybook.js.org/docs/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     const submitButton = canvas.getByRole('button');
 
     await userEvent.click(submitButton);
@@ -53,7 +51,7 @@ import { RegistrationForm } from './RegistrationForm.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'RegistrationForm',
@@ -65,7 +63,7 @@ const Template: Story = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/angular/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -96,7 +94,7 @@ import { RegistrationForm } from './RegistrationForm';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'RegistrationForm',
@@ -106,7 +104,7 @@ export default {
 const Template = (args) => <RegistrationForm {...args} />;
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -128,15 +126,13 @@ FilledForm.play = async ({ canvasElement }) => {
   await userEvent.type(passwordInput, 'ExamplePassword', {
     delay: 100,
   });
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   const submitButton = canvas.getByRole('button');
 
   await userEvent.click(submitButton);
 };
 ```
-```md renderer="react" language="mdx"
-{/* RegistrationForm.stories.mdx */}
-
+```md filename="RegistrationForm.stories.mdx" renderer="react" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { within, userEvent } from '@storybook/testing-library';
@@ -148,7 +144,7 @@ import { RegistrationForm } from './RegistrationForm';
 export const Template = (args) => <RegistrationForm {...args} />;
 
 {/*  
- See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+ See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
  to learn more about using the canvasElement to query the DOM
 */}
 <Story
@@ -171,7 +167,7 @@ export const Template = (args) => <RegistrationForm {...args} />;
     await userEvent.type(passwordInput, 'ExamplePassword', {
       delay: 100,
     });
-    // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     const submitButton = canvas.getByRole('button');
 
     await userEvent.click(submitButton);
@@ -190,7 +186,7 @@ import { RegistrationForm } from './RegistrationForm';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'RegistrationForm',
@@ -200,7 +196,7 @@ export default {
 const Template: ComponentStory<typeof RegistrationForm> = (args) => <RegistrationForm {...args} />;
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -222,7 +218,7 @@ FilledForm.play = async ({ canvasElement }) => {
   await userEvent.type(passwordInput, 'ExamplePassword', {
     delay: 100,
   });
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   const submitButton = canvas.getByRole('button');
 
   await userEvent.click(submitButton);
@@ -235,7 +231,7 @@ import RegistrationForm from './RegistrationForm.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'RegistrationForm',
@@ -248,7 +244,7 @@ const Template = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -270,15 +266,13 @@ FilledForm.play = async ({ canvasElement }) => {
   await userEvent.type(passwordInput, 'ExamplePassword', {
     delay: 100,
   });
-  // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   const submitButton = canvas.getByRole('button');
 
   await userEvent.click(submitButton);
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* RegistrationForm.stories.mdx */}
-
+```md filename="RegistrationForm.stories.mdx" renderer="svelte" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { userEvent, within } from '@storybook/testing-library';
@@ -293,7 +287,7 @@ export const Template = (args) => ({
 });
 
 {/*  
-  See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
+  See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
   to learn more about using the canvasElement to query the DOM
 */}
 <Story
@@ -315,7 +309,7 @@ export const Template = (args) => ({
     await userEvent.type(passwordInput, 'ExamplePassword', {
       delay: 100,
     });
-    // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     const submitButton = canvas.getByRole('button');
     await userEvent.click(submitButton);
   }}>
@@ -329,7 +323,7 @@ import RegistrationForm from './RegistrationForm.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'RegistrationForm',
@@ -342,7 +336,7 @@ const Template = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -365,14 +359,12 @@ FilledForm.play = async ({ canvasElement }) => {
     delay: 100,
   });
     
-    // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   const Submit = canvas.getByRole('button');
   await userEvent.click(Submit);
 };
 ```
-```md renderer="vue" language="mdx"
-{/* RegistrationForm.stories.mdx */}
-
+```md filename="RegistrationForm.stories.mdx" renderer="vue" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { userEvent, within } from '@storybook/testing-library';
@@ -387,7 +379,7 @@ export const Template = (args) => ({
 });
 
 {/*  
- See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+ See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
  to learn more about using the canvasElement to query the DOM
  */}
 <Story
@@ -411,7 +403,7 @@ export const Template = (args) => ({
       delay: 100,
     });
     
-    // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     const Submit = canvas.getByRole('button');
     await userEvent.click(Submit);
   }}>
@@ -428,7 +420,7 @@ import RegistrationForm from './RegistrationForm.vue';
 
 export default {
  /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'RegistrationForm',
@@ -441,7 +433,7 @@ const Template: StoryFn<typeof RegistrationForm> = (args) => ({
 });
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -464,7 +456,7 @@ FilledForm.play = async ({ canvasElement }) => {
     delay: 100,
   });
     
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   const submitButton = canvas.getByRole('button');
   await userEvent.click(submitButton);
 };

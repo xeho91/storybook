@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* LoginForm.stories.mdx */}
-
+```md filename="LoginForm.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { within, userEvent } from '@storybook/testing-library';
@@ -18,7 +16,7 @@ export const Template = (args) => ({ props: args });
     {Template.bind({})}
   </Story>
   {/*  
-  See https://storybook.js.org/docs/angular/writing-stories/play-function#working-with-the-canvas
+  See https://storybook.js.org/docs/6/configure#configure-story-loading
   to learn more about using the canvasElement to query the DOM
   */}
   <Story
@@ -32,7 +30,7 @@ export const Template = (args) => ({ props: args });
 
       await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-      // See https://storybook.js.org/docs/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+      // See hhttps://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
       await userEvent.click(canvas.getByRole('button'));
 
       // 👇 Assert DOM structure
@@ -57,7 +55,7 @@ import { LoginForm } from './LoginForm.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Form',
@@ -71,7 +69,7 @@ const Template: Story = (args) => ({
 export const EmptyForm: Story = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/angular/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm: Story = Template.bind({});
@@ -83,7 +81,7 @@ FilledForm.play = async ({ canvasElement }) => {
 
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure
@@ -94,7 +92,7 @@ FilledForm.play = async ({ canvasElement }) => {
   ).toBeInTheDocument();
 };
 ```
-```js filename="LoginForm.stories.jsx | LoginForm.stories.js | LoginForm.stories.ts | LoginForm.stories.tsx" renderer="common" language="js"
+```js filename="LoginForm.stories.js|jsx|ts|tsx" renderer="common" language="js"
 import { userEvent, within } from '@storybook/testing-library';
 
 import { LoginForm } from './LoginForm';
@@ -114,15 +112,12 @@ export const Example = {
     await userEvent.type(canvas.getByTestId('password'), 'a-random-password'{
       delay: 100,
     });
-    // See https://storybook.js.org/docs/7.0/angular/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await userEvent.click(canvas.getByRole('button'));
   },
 };
 ```
-
-```md renderer="common" language="mdx"
-{/* LoginForm.stories.mdx */}
-
+```md filename="LoginForm.stories.mdx" renderer="common" language="mdx"
 import { Meta, Story} from '@storybook/addon-docs';
 
 import { userEvent, within } from '@storybook/testing-library';
@@ -145,11 +140,10 @@ import { LoginForm } from './LoginForm';
       delay: 100,
     });
     
-    // See https://storybook.js.org/docs/7.0/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await userEvent.click(canvas.getByRole('button'));
 }} />
 ```
-
 ```js filename="LoginForm.stories.js|jsx" renderer="react" language="js"
 import React from 'react';
 
@@ -161,7 +155,7 @@ import { LoginForm } from './LoginForm';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Form',
@@ -173,7 +167,7 @@ const Template = (args) => <LoginForm {...args} />;
 export const EmptyForm = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -185,7 +179,7 @@ FilledForm.play = async ({ canvasElement }) => {
   
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure
@@ -196,9 +190,7 @@ FilledForm.play = async ({ canvasElement }) => {
   ).toBeInTheDocument();
 };
 ```
-```md renderer="react" language="mdx"
-{/* LoginForm.stories.mdx */}
-
+```md filename="LoginForm.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { within, userEvent } from '@storybook/testing-library';
@@ -216,7 +208,7 @@ export const Template = (args) => <LoginForm {...args} />;
     {Template.bind({})}
   </Story>
   {/*  
-   See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+   See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
    to learn more about using the canvasElement to query the DOM
   */}
   <Story
@@ -229,7 +221,7 @@ export const Template = (args) => <LoginForm {...args} />;
 
       await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-      // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+      // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
       await userEvent.click(canvas.getByRole('button'));
 
       // 👇 Assert DOM structure
@@ -256,7 +248,7 @@ import { LoginForm } from './LoginForm';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Form',
@@ -268,7 +260,7 @@ const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args
 export const EmptyForm = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -280,7 +272,7 @@ FilledForm.play = async ({ canvasElement }) => {
   
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure
@@ -300,7 +292,7 @@ import LoginForm from './LoginForm.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Form',
@@ -315,7 +307,7 @@ const Template = (args) => ({
 export const EmptyForm = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -327,7 +319,7 @@ FilledForm.play = async ({ canvasElement }) => {
 
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure
@@ -338,9 +330,7 @@ FilledForm.play = async ({ canvasElement }) => {
   ).toBeInTheDocument();
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* LoginForm.stories.mdx */}
-
+```md filename="LoginForm.stories.mdx" renderer="svelte" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { within, userEvent } from '@storybook/testing-library';
@@ -361,7 +351,7 @@ export const Template = (args) => ({
     {Template.bind({})}
   </Story>
   {/*  
-  See https://storybook.js.org/docs/svelte/writing-stories/play-function#working-with-the-canvas
+  See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
   to learn more about using the canvasElement to query the DOM
   */}
   <Story
@@ -374,7 +364,7 @@ export const Template = (args) => ({
       
       await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-      // See https://storybook.js.org/docs/svelte/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+      // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
       await userEvent.click(canvas.getByRole('button'));
 
       // 👇 Assert DOM structure
@@ -397,7 +387,7 @@ import LoginForm from './LoginForm.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Form',
@@ -413,7 +403,7 @@ const Template = (args, { argTypes }) => ({
 export const EmptyForm = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -425,7 +415,7 @@ FilledForm.play = async ({ canvasElement }) => {
 
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure
@@ -445,7 +435,7 @@ import LoginForm from './LoginForm.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'Form',
@@ -463,7 +453,7 @@ const Template = (args) => ({
 export const EmptyForm = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -475,7 +465,7 @@ FilledForm.play = async ({ canvasElement }) => {
 
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure
@@ -486,9 +476,7 @@ FilledForm.play = async ({ canvasElement }) => {
   ).toBeInTheDocument();
 };
 ```
-```md renderer="vue" language="ts" tabTitle="mdx-2"
-{/* LoginForm.stories.mdx */}
-
+```md filename="LoginForm.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-2"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { userEvent, within } from '@storybook/testing-library';
@@ -502,7 +490,7 @@ import LoginForm from './LoginForm.vue';
 export const Template = (args, { argTypes }) => ({
   components: { LoginForm },
   props: Object.keys(argTypes),
-  template: `<LoginForm v-bind="$props" v-on="$props" />`,
+  template: '<LoginForm v-bind="$props" v-on="$props" />',
 });
 
 <Canvas>
@@ -510,7 +498,7 @@ export const Template = (args, { argTypes }) => ({
     {Template.bind({})}
   </Story>
   {/*  
-   See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+   See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
    to learn more about using the canvasElement to query the DOM
   */}
   <Story
@@ -523,7 +511,7 @@ export const Template = (args, { argTypes }) => ({
 
       await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-      // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+      // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
       await userEvent.click(canvas.getByRole('button'));
 
       // 👇 Assert DOM structure
@@ -537,9 +525,7 @@ export const Template = (args, { argTypes }) => ({
   </Story>
 </Canvas>
 ```
-```md renderer="vue" language="ts" tabTitle="mdx-3"
-{/* LoginForm.stories.mdx */}
-
+```md filename="LoginForm.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { userEvent, within } from '@storybook/testing-library';
@@ -563,7 +549,7 @@ export const Template = (args) => ({
     {Template.bind({})}
   </Story>
   {/*  
-   See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+   See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
    to learn more about using the canvasElement to query the DOM
   */}
   <Story
@@ -576,7 +562,7 @@ export const Template = (args) => ({
 
       await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-      // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+      // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
       await userEvent.click(canvas.getByRole('button'));
 
       // 👇 Assert DOM structure
@@ -601,7 +587,7 @@ import { Meta, StoryFn } from '@storybook/vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Form',
@@ -617,7 +603,7 @@ const Template: StoryFn<typeof LoginForm> = (args) => ({
 export const EmptyForm = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -629,7 +615,7 @@ FilledForm.play = async ({ canvasElement }) => {
 
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure
@@ -651,7 +637,7 @@ import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Form',
@@ -669,7 +655,7 @@ const Template: StoryFn<typeof LoginForm> = (args) => ({
 export const EmptyForm = Template.bind({});
 
 /*
-* See https://storybook.js.org/docs/vue/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const FilledForm = Template.bind({});
@@ -681,7 +667,7 @@ FilledForm.play = async ({ canvasElement }) => {
 
   await userEvent.type(canvas.getByTestId('password'), 'a-random-password');
 
-  // See https://storybook.js.org/docs/vue/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+  // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
   await userEvent.click(canvas.getByRole('button'));
 
   // 👇 Assert DOM structure

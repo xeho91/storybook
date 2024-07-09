@@ -5,9 +5,11 @@ sidebar:
   title: MDX
 ---
 
-<div class="aside">
-  💡 Currently, there's an issue using MDX stories with IE11, which **doesn't affect** the [Docs page](./docs-page.mdx). It's a known MDX issue, and once it's solved, Storybook's MDX implementation will be updated accordingly.
-</div>
+<Callout variant="info" icon="💡">
+
+  Currently, there's an issue using MDX stories with IE11, which **doesn't affect** the [Docs page](./docs-page.mdx). It's a known MDX issue, and once it's solved, Storybook's MDX implementation will be updated accordingly.
+  
+</Callout>
 
 MDX is a [standard file format](https://mdxjs.com/) that combines Markdown with JSX. It means you can use Markdown’s terse syntax (such as # heading) for your documentation, write stories that compile to our component story format, and freely embed JSX component blocks at any point in the file. All at once.
 
@@ -35,7 +37,7 @@ Let's break it down.
 
 ## MDX-flavored CSF
 
-MDX-flavored [Component Story Format (CSF)](../api/csf.mdx) includes a collection of components called "Doc Blocks", that allow Storybook to translate MDX files into Storybook stories. MDX-defined stories are identical to regular Storybook stories, so they can be used with Storybook's entire ecosystem of addons and view layers.
+MDX-flavored [Component Story Format (CSF)](../api/stories/csf.mdx) includes a collection of components called "Doc Blocks", that allow Storybook to translate MDX files into Storybook stories. MDX-defined stories are identical to regular Storybook stories, so they can be used with Storybook's entire ecosystem of addons and view layers.
 
 For example, here's the first story from the Checkbox example above, rewritten in CSF:
 
@@ -85,9 +87,11 @@ And here's how that gets rendered in Storybook:
 
 <Video src="../_assets/writing-docs/custom-argTypes-mdx-optimized.mp4" />
 
-<div class="aside">
-  If you find yourself with a considerably sized <code>argTypes</code> implementation. You can extract them into a variable and pass them as a prop.
-</div>
+<Callout variant="info" icon="💡">
+
+  If you find yourself with a considerably sized `argTypes` implementation. You can extract them into a variable and pass them as a prop.
+
+</Callout>
 
 ## Embedding stories
 
@@ -119,7 +123,7 @@ Typically, when you use Storybook MDX, you define stories in the MDX, and docume
 
 Suppose you don't define stories in your MDX. In that case, you can write MDX documentation and associate it with an existing story or embed that MDX as its own documentation node in your Storybook's navigation.
 
-If you don't define a Meta, you can write Markdown and associate with an existing story. See ["CSF Stories with MDX Docs"](../../addons/docs/docs/recipes.md#csf-stories-with-mdx-docs).
+If you don't define a Meta, you can write Markdown and associate with an existing story. See ["CSF Stories with MDX Docs"](https://github.com/storybookjs/storybook/blob/release-6-5/addons/docs/docs/recipes.md#csf-stories-with-mdx-docs).
 
 To get a "documentation-only story" in your UI, define a `<Meta>` as you normally would, but don't define any stories. It will show up in your UI as a documentation node:
 
@@ -135,9 +139,11 @@ When writing your documentation with Storybook and MDX, you get syntax highlight
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 For a list of available languages, check <code>react-syntax-highlighter</code>'s <a href="https://github.com/react-syntax-highlighter/react-syntax-highlighter">documentation</a>.
-</div>
+<Callout variant="info">
+
+  For a list of available languages, check `react-syntax-highlighter`'s [documentation](https://github.com/react-syntax-highlighter/react-syntax-highlighter). 
+
+</Callout>
 
 Once you've updated your documentation, you'll see the code block properly highlighted. You can also apply the same principle to other unsupported formats (i.e., `diff`, `hbs`).
 
@@ -179,9 +185,11 @@ You can also use anchors to target a specific section of a page:
 [Go to the conclusion of the documentation page](?path=/docs/some--id#conclusion)
 ```
 
-<div class="aside">
-  💡 By applying this pattern with the Controls addon, all anchors will be ignored in Canvas based on how Storybook handles URLs to track the args values.
-</div>
+<Callout variant="info" icon="💡">
+
+  By applying this pattern with the Controls addon, all anchors will be ignored in Canvas based on how Storybook handles URLs to track the args values.
+
+</Callout>
 
 ![MDX anchor example](./mdx-anchor.webp)
 
@@ -189,9 +197,11 @@ You can also use anchors to target a specific section of a page:
 
 Unless you use a custom [Webpack configuration](../builders/webpack.mdx#extending-storybooks-webpack-config), all of your MDX files should have the suffix `*.stories.mdx`. This tells Storybook to apply its special processing to the `<Meta>` and `<Story>` elements in the file.
 
-<div class="aside">
+<Callout variant="info">
+
   Be sure to update [.storybook/main.js](../configure/index.mdx#configure-story-rendering) file to load `.stories.mdx` stories, as per the addon-docs installation instructions.
-</div>
+  
+</Callout>
 
 ## MDX 2
 

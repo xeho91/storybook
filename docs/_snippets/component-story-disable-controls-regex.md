@@ -3,7 +3,7 @@ import { YourComponent } from './YourComponent';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -27,9 +27,7 @@ ArrayExclude.parameters = { controls: { exclude: ['foo', 'bar'] } };
 RegexExclude = Template.bind({})
 RegexExclude.parameters = { controls: { exclude: /^hello*/ } };
 ```
-```md renderer="common" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="common" language="mdx"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { YourComponent } from './YourComponent';

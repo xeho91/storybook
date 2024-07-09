@@ -17,7 +17,7 @@ export const ExampleStory = {
     await userEvent.type(canvas.getByTestId('email'), 'email@email-provider.com');
     await userEvent.type(canvas.getByTestId('password'), 'randompassword');
 
-    // See https://storybook.js.org/docs/7.0/react/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    // See https://storybook.js.org/docs/6/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
     await userEvent.click(canvas.getByTestId('submit'));
 
     await waitFor(async () => {
@@ -30,4 +30,3 @@ export const ExampleStory = {
   },
 };
 ```
-

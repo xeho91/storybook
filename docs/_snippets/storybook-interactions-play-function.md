@@ -7,7 +7,7 @@ import { MyForm } from './MyForm'
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'MyForm',
@@ -22,7 +22,7 @@ const Template = (args) => (
 );
 
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 const Submitted = Template.bind({});
@@ -36,10 +36,7 @@ Submitted.play = async ({ args, canvasElement }) => {
   await waitFor(() => expect(args.onSubmit).toHaveBeenCalled());
 };
 ```
-
-```md renderer="common" language="mdx"
-{/* MyForm.stories.mdx */}
-
+```md filename="MyForm.stories.mdx" renderer="common" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { userEvent, waitFor, within } from '@storybook/testing-library';
@@ -55,7 +52,7 @@ export const Template = (args) => (
 );
 
 {/*  
- See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+ See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
  to learn more about using the canvasElement to query the DOM
  */}
 <Canvas>
@@ -87,7 +84,7 @@ import { MyForm } from './MyForm';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'MyForm',
@@ -100,7 +97,7 @@ const Template: Story = (args) => (
  // 👇 Your story template goes here
 );
 /*
-* See https://storybook.js.org/docs/react/writing-stories/play-function#working-with-the-canvas
+* See https://storybook.js.org/docs/6/writing-stories/play-function#working-with-the-canvas
 * to learn more about using the canvasElement to query the DOM
 */
 export const Submitted = Template.bind({});

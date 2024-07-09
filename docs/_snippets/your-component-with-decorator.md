@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="angular" language="mdx"
 import { Meta } from '@storybook/addon-docs';
 
 import { componentWrapperDecorator } from '@storybook/angular';
@@ -20,7 +18,7 @@ import { YourComponent } from './your.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -28,12 +26,15 @@ export default {
   decorators: [componentWrapperDecorator((story) => `<div style="margin: 3em">${story}</div>`)],
 } as Meta;
 ```
-```js filename="YourComponent.stories.js|jsx" renderer="react" language="js"
+```js filename="YourComponent.stories.js|jsx" renderer="react" language="js" tabTitle="story-component-js"
 import { YourComponent } from './YourComponent';
+
+// Replacing the <Story/> element with a Story function is also a good way of writing decorators.
+// Useful to prevent the full remount of the component's story.
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -47,9 +48,7 @@ export default {
   ],
 };
 ```
-```md renderer="react" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="react" language="mdx"
 import { Meta } from '@storybook/addon-docs';
 
 import { YourComponent } from './YourComponent';
@@ -68,13 +67,9 @@ import { YourComponent } from './YourComponent';
 ```
 ```js filename="YourComponent.stories.js|jsx" renderer="react" language="js" tabTitle="story-function-js"
 import { YourComponent } from './YourComponent';
-
-// Replacing the <Story/> element with a Story function is also a good way of writing decorators.
-// Useful to prevent the full remount of the component's story.
-
 export default {
    /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -87,11 +82,9 @@ import { ComponentMeta } from '@storybook/react';
 
 import { YourComponent } from './YourComponent';
 
-// Replacing the <Story/> element with a Story function is also a good way of writing decorators.
-// Useful to prevent the full remount of the component's story.
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -105,14 +98,17 @@ export default {
   ],
 } as ComponentMeta<typeof YourComponent>;
 ```
-```ts filename="YourComponent.stories.ts|tsx" renderer="react" language="ts"
+```ts filename="YourComponent.stories.ts|tsx" renderer="react" language="ts" tabTitle="story-component-ts"
 import { ComponentMeta } from '@storybook/react';
 
 import { YourComponent } from './YourComponent';
 
+// Replacing the <Story/> element with a Story function is also a good way of writing decorators.
+// Useful to prevent the full remount of the component's story.
+
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -126,14 +122,14 @@ export default {
   ],
 } as ComponentMeta<typeof YourComponent>;
 ```
-```js filename="YourComponent.stories.js" renderer="svelte" language="js"
+```js filename="YourComponent.stories.js" renderer="svelte" language="js" tabTitle="story"
 import YourComponent from './YourComponent.svelte';
 
 import MarginDecorator from './MarginDecorator.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -143,12 +139,8 @@ export default {
 
 // Your templates and stories here. 
 // Don't forget to use the component you're testing and not the MarginDecorator component
-
 ```
-
-```html
-{/* MarginDecorator.svelte */}
-
+```html filename="MarginDecorator.svelte" renderer="svelte" language="js" tabTitle="decorator-component"
 <div>
   <slot/>
 </div>
@@ -159,9 +151,7 @@ export default {
   }
 </style>
 ```
-```md renderer="svelte" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="svelte" language="mdx" tabTitle="story"
 import { Meta } from '@storybook/addon-docs';
 
 import YourComponent from './YourComponent.svelte';
@@ -172,9 +162,18 @@ import MarginDecorator from './MarginDecorator.svelte';
   component={YourComponent} 
   decorators={[() => MarginDecorator]}/>
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* YourComponent.stories.svelte */}
+```html filename="MarginDecorator.svelte" renderer="svelte" language="mdx" tabTitle="decorator-component"
+<div>
+  <slot/>
+</div>
 
+<style>
+  div { 
+    margin: 3em;
+  }
+</style>
+```
+```html filename="YourComponent.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template } from '@storybook/addon-svelte-csf';
   
@@ -194,12 +193,23 @@ import MarginDecorator from './MarginDecorator.svelte';
   </MarginDecorator>
 </Template>
 ```
+```html filename="MarginDecorator.svelte" renderer="svelte" language="ts" tabTitle="decorator-component"
+<div>
+  <slot/>
+</div>
+
+<style>
+  div { 
+    margin: 3em;
+  }
+</style>
+```
 ```js filename="YourComponent.stories.js" renderer="vue" language="js"
 import YourComponent from './YourComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -207,9 +217,7 @@ export default {
   decorators: [() => ({ template: '<div style="margin: 3em;"><story/></div>' })],
 };
 ```
-```md renderer="vue" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="vue" language="mdx"
 import { Meta } from '@storybook/addon-docs';
 
 import YourComponent from './YourComponent.vue';

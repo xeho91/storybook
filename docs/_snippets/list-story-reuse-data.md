@@ -11,7 +11,7 @@ import { Selected, Unselected } from './ListItem.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -40,10 +40,7 @@ ManyItems.args= {
   Unselected: Unselected.args.isSelected,
 };
 ```
- renderer="html" language="js"
-```js
-// List.stories.js
-
+```js filename="List.stories.js" renderer="html" language="js"
 import { createList } from  './List';
 import { createListItem } from './ListItem';
 
@@ -62,11 +59,7 @@ export const ManyItems = (args) => {
   return list;
 };
 ```
-
- renderer="html" language="ts"
-```ts
-// List.stories.ts
-
+```ts filename="List.stories.ts" renderer="html" language="ts"
 import { Meta, StoryFn } from '@storybook/html';
 
 import { createList, ListArgs } from  './List';
@@ -95,7 +88,6 @@ export const ManyItems: StoryFn<ListArgs> = (args) => {
   return list;
 };
 ```
-
 ```js filename="List.stories.js|jsx" renderer="react" language="js"
 import React from 'react';
 
@@ -107,7 +99,7 @@ import { Selected, Unselected } from './ListItem.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -135,7 +127,7 @@ import * as ListItemStories from './ListItemStories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -159,7 +151,7 @@ import { Selected, Unselected } from './ListItem.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -191,7 +183,7 @@ import { Selected, Unselected } from './ListItem.stories';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -228,7 +220,7 @@ import { Selected, Unselected } from './ListItem.stories';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'List',
@@ -262,7 +254,7 @@ import { Selected, Unselected } from './ListItem.stories';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'List',

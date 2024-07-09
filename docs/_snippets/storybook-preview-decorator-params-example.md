@@ -6,5 +6,4 @@ export const decorators = [
 export const parameters = {
   // Your parameters go here
 };
-
 ```

@@ -122,9 +122,7 @@ export function DocumentScreen() {
   );
 }
 ```
-```html renderer="vue" language="js" tabTitle="3"
-{/* YourPage.vue */}
-
+```html filename="YourPage.vue" renderer="vue" language="js" tabTitle="3"
 <template>
   <div v-if="loading">Loading...</div>
 
@@ -179,4 +177,48 @@ export function DocumentScreen() {
     },
   };
 </script>
+```
+```html filename="YourPage.svelte" renderer="svelte" language="js"
+<script>
+  import gql from 'graphql-tag';
+  import { query } from 'svelte-apollo';
+  import PageLayout from './PageLayout.svelte';
+  import DocumentHeader from './DocumentHeader.svelte';
+  import DocumentList from './DocumentList.svelte';
+
+  const AllInfoQuery = gql`
+    query AllInfoQuery {
+      user {
+        userID
+        name
+      }
+      document {
+        id
+        userID
+        title
+        brief
+        status
+      }
+      subdocuments {
+        id
+        userID
+        title
+        content
+        status
+      }
+    }
+  `;
+  const infoResult = query(AllInfoQuery);
+</script>
+
+{#if $infoResult.loading} 
+  <p>Loading...</p>
+{:else if $infoResult.error} 
+  <p>There was an error fetching the data!</p> 
+{:else}
+  <PageLayout {$infoResult.data.user}>
+    <DocumentHeader {$infoResult.data.document} />
+    <DocumentList {$infoResult.data.subdocuments} />
+  </PageLayout>
+{/if}
 ```

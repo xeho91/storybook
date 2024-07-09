@@ -61,9 +61,7 @@ function DocumentScreen({ user, document, subdocuments }) {
   );
 }
 ```
-```html renderer="svelte" language="js"
-{/* YourPage.svelte */}
-
+```html filename="YourPage.svelte" renderer="svelte" language="js"
 <script>
   import PageLayout from './PageLayout.svelte';
   import DocumentHeader from './DocumentHeader.svelte';
@@ -81,9 +79,7 @@ function DocumentScreen({ user, document, subdocuments }) {
   </PageLayout>
 </div>
 ```
-```html renderer="vue" language="js" tabTitle="2"
-{/* YourPage.vue */}
-
+```html filename="YourPage.vue" renderer="vue" language="js" tabTitle="2"
 <template>
   <PageLayout :user="user">
     <DocumentHeader :document="document" />
@@ -120,9 +116,7 @@ function DocumentScreen({ user, document, subdocuments }) {
   };
 </script>
 ```
-```html renderer="vue" language="js" tabTitle="3"
-{/* YourPage.vue */}
-
+```html filename="YourPage.vue" renderer="vue" language="js" tabTitle="3"
 <template>
   <PageLayout :user="user">
     <DocumentHeader :document="document" />

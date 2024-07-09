@@ -3,7 +3,7 @@ import { Gizmo } from './Gizmo';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Gizmo',
@@ -59,9 +59,7 @@ export default {
   },
 };
 ```
-```md renderer="common" language="mdx"
-{/* Gizmo.stories.mdx */}
-
+```md filename="Gizmo.stories.mdx" renderer="common" language="mdx"
 import { Meta } from '@storybook/addon-docs';
 
 import { Gizmo } from './Gizmo';

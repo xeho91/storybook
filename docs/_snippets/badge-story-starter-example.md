@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { moduleMetadata } from '@storybook/angular';
@@ -71,10 +69,7 @@ with unique URLs and isolated snapshot tests.
   </Story>
 </Canvas>
 ```
-
-```md renderer="react" language="mdx"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { Badge } from './Badge';
@@ -120,10 +115,7 @@ with unique URLs and isolated snapshot tests.
   </Story>
 </Canvas>
 ```
-
-```md renderer="vue" language="mdx"
-{/* Badge.stories.mdx */}
-
+```md filename="Badge.stories.mdx" renderer="vue" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import Badge from './Badge.vue';

@@ -7,13 +7,15 @@ sidebar:
 
 Component Story Format (CSF) is the recommended way to [write stories](../../writing-stories/index.mdx). It's an [open standard](https://github.com/ComponentDriven/csf) based on ES6 modules that is portable beyond Storybook.
 
-<div class="aside">
-  💡 If you are writing stories in the older `storiesOf()` syntax, you can find documentation in an [advanced README](../../lib/core/docs/storiesOf.md).
-</div>
+<Callout variant="info" icon="💡">
+
+  If you are writing stories in the older `storiesOf()` syntax, you can find documentation in an [advanced README](https://github.com/storybookjs/storybook/blob/release-6-5/lib/core/docs/storiesOf.md).
+  
+</Callout>
 
 In CSF, stories and component metadata are defined as ES Modules. Every component story file consists of a required [default export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#Using_the_default_export) and one or more [named exports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
 
-CSF is supported in all frameworks except React Native, where you should use the [storiesOf API](../../lib/core/docs/storiesOf.md) instead.
+CSF is supported in all frameworks except React Native, where you should use the [storiesOf API](https://github.com/storybookjs/storybook/blob/release-6-5/lib/core/docs/storiesOf.md) instead.
 
 ## Default export
 
@@ -41,13 +43,13 @@ With CSF, every named export in the file represents a story object by default.
 
 The exported identifiers will be converted to "start case" using Lodash's [startCase](https://lodash.com/docs/#startCase) function. For example:
 
-| Identifier       |  Transformation   |
-| ---------------- | :---------------: |
-| name             |       Name        |
-| someName         |     Some Name     |
-| someNAME         |     Some NAME     |
+| Identifier         |  Transformation   |
+| ------------------ | ---------------   |
+| name               |       Name        |
+| someName           |     Some Name     |
+| someNAME           |     Some NAME     |
 | some\_custom\_NAME | Some Custom NAME  |
-| someName1234     | Some Name 1 2 3 4 |
+| someName1234       | Some Name 1 2 3 4 |
 
 We recommend that all export names to start with a capital letter.
 

@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { withDesign } from 'storybook-addon-designs';
@@ -32,14 +30,14 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { MyComponent } from './MyComponent.component';
 
-// More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
+// More on default export: https://storybook.js.org/docs/6/writing-stories#default-export
 export default {
   title: 'FigmaExample',
   component: MyComponent,
   decorators: [withDesign],
 } as Meta;
 
-// More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
+// More on component templates: https://storybook.js.org/docs/6/writing-stories#using-args
 const Template: Story = () => ({
   props: {},
 });
@@ -59,14 +57,14 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { MyComponent } from './MyComponent';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+// More on default export: https://storybook.js.org/docs/6/writing-stories#default-export
 export default {
   title: 'FigmaExample',
   component: MyComponent,
   decorators: [withDesign],
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+// More on component templates: https://storybook.js.org/docs/6/writing-stories#using-args
 const Template = () => <MyComponent />;
 
 export const Example = Template.bind({});
@@ -77,9 +75,7 @@ Example.parameters = {
   },
 };
 ```
-```md renderer="react" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { withDesign } from 'storybook-addon-designs';
@@ -113,14 +109,14 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { MyComponent } from './MyComponent';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+// More on default export: https://storybook.js.org/docs/6/writing-stories#default-export
 export default {
   title: 'FigmaExample',
   component: MyComponent,
   decorators: [withDesign],
 } as ComponentMeta<typeof YourComponent>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+// More on component templates: https://storybook.js.org/docs/6/writing-stories#using-args
 const Template: ComponentStory<typeof MyComponent> = () => <MyComponent />;
 
 export const Example = Template.bind({});
@@ -136,14 +132,14 @@ import { withDesign } from 'storybook-addon-designs';
 
 import MyComponent from './MyComponent.svelte';
 
-// More on default export: https://storybook.js.org/docs/svelte/writing-stories/introduction#default-export
+// More on default export: https://storybook.js.org/docs/6/writing-stories#default-export
 export default {
   title: 'FigmaExample',
   component: { MyComponent },
   decorators: [withDesign],
 };
 
-// More on component templates: https://storybook.js.org/docs/svelte/writing-stories/introduction#using-args
+// More on component templates: https://storybook.js.org/docs/6/writing-stories#using-args
 const Template = () => ({
   props: {},
   Component: MyComponent,
@@ -157,9 +153,7 @@ Example.parameters = {
   },
 };
 ```
-```md renderer="svelte" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="svelte" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { withDesign } from 'storybook-addon-designs';
@@ -196,14 +190,14 @@ import { withDesign } from 'storybook-addon-designs';
 
 import MyComponent from './MyComponent.vue';
 
-// More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
+// More on default export: https://storybook.js.org/docs/6/writing-stories#default-export
 export default {
   title: 'FigmaExample',
   component: MyComponent,
   decorators: [withDesign],
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
+// More on component templates: https://storybook.js.org/docs/6/writing-stories#using-args
 const Template = () => ({
   components: { MyComponent },
   template: '<MyComponent />',
@@ -217,9 +211,7 @@ Example.parameters = {
   },
 };
 ```
-```md renderer="vue" language="mdx"
-{/* MyComponent.stories.mdx */}
-
+```md filename="MyComponent.stories.mdx" renderer="vue" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { withDesign } from 'storybook-addon-designs';
@@ -255,14 +247,14 @@ import { withDesign } from 'storybook-addon-designs';
 
 import MyComponent from './MyComponent.vue';
 
-// More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
+// More on default export: https://storybook.js.org/docs/6/writing-stories#default-export
 export default {
   title: 'FigmaExample',
   component: MyComponent,
   decorators: [withDesign],
 } as Meta<typeof MyComponent>;
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
+// More on component templates: https://storybook.js.org/docs/6/writing-stories#using-args
 const Template: StoryFn<typeof MyComponent> = () => ({
   components: { MyComponent },
   template: '<MyComponent />',

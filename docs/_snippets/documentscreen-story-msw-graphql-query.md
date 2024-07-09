@@ -1,4 +1,4 @@
-```ts filename="YourPage.stories.ts" renderer="angular" language="ts"
+```ts filename="YourPage.stories.ts" renderer="angular" language="ts" tabTitle="story"
 import { Meta, Story } from '@storybook/angular'; 
 
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ import { MockGraphQLModule } from './mock-graphql.module';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -108,6 +108,43 @@ MockedError.parameters = {
   ],
 };
 ```
+```ts filename="mock-graphql.module.ts" renderer="angular" language="ts" tabTitle="mock-apollo-module"
+import { NgModule } from '@angular/core';
+import { APOLLO_OPTIONS } from 'apollo-angular';
+import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
+import { HttpLink } from 'apollo-angular/http';
+
+// See here for docs https://apollo-angular.com/docs/get-started
+
+const uri = 'https://your-graphql-endpoint';
+export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+  return {
+    link: httpLink.create({ uri }),
+    cache: new InMemoryCache(),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    },
+  };
+}
+
+@NgModule({
+  providers: [
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: createApollo,
+      deps: [HttpLink],
+    },
+  ],
+})
+export class MockGraphQLModule {}
+```
 ```js filename="YourPage.stories.js|jsx|ts|tsx" renderer="react" language="js"
 import React from 'react';
 
@@ -119,7 +156,7 @@ import { DocumentScreen } from './YourPage';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -221,7 +258,7 @@ MockedError.parameters = {
   ],
 };
 ```
-```js filename="YourPage.stories.js" renderer="svelte" language="js"
+```js filename="YourPage.stories.js" renderer="svelte" language="js" tabTitle="story"
 import { graphql } from 'msw';
 
 import DocumentScreen from './YourPage.svelte';
@@ -229,7 +266,7 @@ import MockApolloWrapperClient from './MockApolloWrapperClient.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -314,7 +351,34 @@ MockedError.parameters = {
   ],
 };
 ```
-```js filename="YourPage.stories.js" renderer="vue" language="js" tabTitle="3"
+```html filename="MockApolloWrapperClient.svelte" renderer="svelte" language="js" tabTitle="with-mock-implementation"
+<script>
+  import { ApolloClient, InMemoryCache } from '@apollo/client';
+
+  import { setClient } from 'svelte-apollo';
+
+  const mockedClient = new ApolloClient({
+    uri: 'https://your-graphql-endpoint',
+    cache: new InMemoryCache(),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    },
+  });
+  setClient(mockedClient);
+</script>
+
+<div>
+  <slot />
+</div>
+```
+```js filename="YourPage.stories.js" renderer="vue" language="js" tabTitle="vue 3 story"
 import DocumentScreen from './YourPage.vue';
 
 import WrapperComponent from './ApolloWrapperClient.vue';
@@ -323,7 +387,7 @@ import { graphql } from 'msw';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'DocumentScreen',
@@ -412,4 +476,43 @@ MockedError.parameters = {
     }),
   ],
 };
+```
+```html filename="MockApolloWrapperClient.vue" renderer="vue" language="js" tabTitle="vue-3-mock-implementation"
+<template>
+  <div><slot /></div>
+</template>
+
+<script>
+  import { defineComponent, provide } from 'vue';
+  import { DefaultApolloClient } from '@vue/apollo-composable';
+  import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
+
+  // Apollo client wrapper component that can be used within your app and Storybook
+  export default defineComponent({
+    name: 'WrapperComponent',
+    setup() {
+      const httpLink = createHttpLink({
+        // You should use an absolute URL here
+        uri: 'https://your-graphql-endpoint',
+      });
+      const cache = new InMemoryCache();
+
+      const mockedClient = new ApolloClient({
+        link: httpLink,
+        cache,
+        defaultOptions: {
+          watchQuery: {
+            fetchPolicy: 'no-cache',
+            errorPolicy: 'all',
+          },
+          query: {
+            fetchPolicy: 'no-cache',
+            errorPolicy: 'all',
+          },
+        },
+      });
+      provide(DefaultApolloClient, mockedClient);
+    },
+  });
+</script>
 ```

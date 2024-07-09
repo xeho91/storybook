@@ -50,6 +50,8 @@ You can also override the builder's configuration based on the environment. For 
 
 {/* prettier-ignore-end */}
 
+<IfRenderer renderer="svelte">
+
 ### Svelte configuration
 
 If you're working with Svelte's Vite plugin ([`vite-plugin-svelte`](https://github.com/sveltejs/vite-plugin-svelte/tree/main/packages/vite-plugin-svelte)), you can extend your existing configuration and include an additional `SvelteOptions` object to customize it. For example:
@@ -59,6 +61,8 @@ If you're working with Svelte's Vite plugin ([`vite-plugin-svelte`](https://gith
 <CodeSnippets path="storybook-vite-builder-svelte-plugin.md" />
 
 {/* prettier-ignore-end */}
+
+</IfRenderer>
 
 ### TypeScript
 
@@ -81,7 +85,7 @@ If you need to override it, you can use the `viteFinal` function and adjust it.
 
 ### ArgTypes are not generated automatically
 
-Currently, [automatic argType inference](../api/argtypes.mdx#automatic-argtype-inference) is only available for React and Vue3. With React, the Vite builder defaults to `react-docgen-typescript` if TypeScript is listed as a dependency. If you run into any issues, you can revert to `react-docgen` by updating your Storybook configuration file as follows:
+Currently, [automatic argType inference](../api/stories/argtypes.mdx#automatic-argtype-inference) is only available for React and Vue3. With React, the Vite builder defaults to `react-docgen-typescript` if TypeScript is listed as a dependency. If you run into any issues, you can revert to `react-docgen` by updating your Storybook configuration file as follows:
 
 {/* prettier-ignore-start */}
 

@@ -15,13 +15,15 @@ First, we'll need to build Storybook as a static web application. The functional
 
 {/* prettier-ignore-start */}
 
-<CodeSnippets path="custom-build-script-production.md" />
+<CodeSnippets path="build-storybook-production-mode.md" />
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 You can provide additional flags to customize the command. Read more about the flag options [here](../api/cli-options.mdx).
-</div>
+<Callout variant="info" icon="💡">
+
+  You can provide additional flags to customize the command. Read more about the flag options [here](../api/cli-options.mdx).
+
+</Callout>
 
 Storybook will create a static web application capable of being served by any web server. Preview it locally by running the following command:
 
@@ -73,9 +75,11 @@ In your project's root directory, add a new file called `chromatic.yml` inside t
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 Secrets are secure environment variables provided by GitHub so that you don't need to hard code your `project-token`. Read the [official documentation](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) to learn how to configure them.
-</div>
+<Callout variant="info" icon="💡">
+
+  Secrets are secure environment variables provided by GitHub so that you don't need to hard code your `project-token`. Read the [official documentation](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) to learn how to configure them.
+
+</Callout>
 
 Commit and push the file. Congratulations, you've successfully automated publishing your Storybook. Now whenever you open a PR you’ll get a handy link to your published Storybook in your PR checks.
 
@@ -104,7 +108,7 @@ You can publish the static Storybook web app to many hosts. We maintain [`storyb
 But features like [Composition](./storybook-composition.mdx), [embed](./embed.mdx), history, and versioning require tighter integration with Storybook APIs and secure authentication. Your hosting provider may not be capable of supporting these features. Learn about the Component Publishing Protocol (CPP) to see what.
 
 <details>
-  <summary><h2>Component Publishing Protocol (CPP)</h2></summary>
+  <summary><h3>Component Publishing Protocol (CPP)</h3></summary>
 
   Storybook can communicate with services that host built Storybooks online. This enables features such as [Composition](./storybook-composition.mdx). We categorize services via compliance with the "Component Publishing Protocol" (CPP) with various levels of support in Storybook.
 
@@ -139,13 +143,15 @@ You can provide a description for search engines to display in the results listi
 
 {/* prettier-ignore-end */}
 
-<div class="aside">
-  💡 You cannot also define <code>\<title></code> in this file, because Storybook generates the document title for you to include information about the currently-viewed component and story.
-</div>
+<Callout variant="info">
+
+  You cannot also define <code>\<title></code> in this file, because Storybook generates the document title for you to include information about the currently-viewed component and story.
+
+</Callout>
 
 ### Preventing your Storybook from being crawled
 
-You can prevent your published Storybook from appearing in search engine results by including a noindex meta tag, which you can do by adding the following to the `manager-head.html` file in your config directory:
+You can prevent your published Storybook from appearing in search engine results by including a `noindex` meta tag, which you can do by adding the following to the `manager-head.html` file in your config directory:
 
 {/* prettier-ignore-start */}
 

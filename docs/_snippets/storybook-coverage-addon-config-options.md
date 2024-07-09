@@ -16,7 +16,6 @@ module.exports = {
   ],
 };
 ```
-
 ```ts filename=".storybook/main.ts" renderer="common" language="ts"
 // For Vite support add the following import
 // import type { AddonOptionsVite } from '@storybook/addon-coverage';
@@ -49,4 +48,3 @@ const config: StorybookConfig = {
 
 export default config;
 ```
-

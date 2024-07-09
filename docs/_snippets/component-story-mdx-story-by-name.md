@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="angular" language="mdx" tabTitle="mdx-storyname"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './button.component';
@@ -13,9 +11,7 @@ export const Template = (args) => ({ props: args });
   {Template.bind({})}
 </Story>
 ```
-```md renderer="react" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="react" language="mdx" tabTitle="mdx-storyname"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import { Button } from './Button';
@@ -32,9 +28,7 @@ export const Template = (args) => <Button {...args} />;
   {Template.bind({})}
 <Story>
 ```
-```md renderer="svelte" language="mdx"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="svelte" language="mdx" tabTitle="mdx-storyname"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.svelte';
@@ -50,9 +44,7 @@ export const Template = (args) => ({
   {Template.bind({})}
 </Story>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-2"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-storyname-2"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.vue';
@@ -69,9 +61,7 @@ export const Template = (args, { argTypes }) => ({
   {Template.bind({})}
 </Story>
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* Button.stories.mdx */}
-
+```md filename="Button.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-storyname-3"
 import { Meta, Story } from '@storybook/addon-docs';
 
 import Button from './Button.vue';
@@ -89,4 +79,9 @@ export const Template = (args) => ({
 <Story name="Basic" args={{ label: 'hello' }}>
   {Template.bind({})}
 </Story>
+```
+```md filename="MyComponent.stories.mdx" renderer="common" language="mdx" tabTitle="mdx-story-id"
+import { Story } from '@storybook/addon-docs';
+
+<Story id="some-component--some-name" />
 ```

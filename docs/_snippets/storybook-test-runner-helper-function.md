@@ -25,7 +25,6 @@ module.exports = {
   },
 };
 ```
-
 ```ts filename=".storybook/test-runner.ts" renderer="common" language="ts"
 import type { TestRunnerConfig } from '@storybook/test-runner';
 
@@ -57,4 +56,3 @@ const config: TestRunnerConfig = {
 
 module.exports = config;
 ```
-

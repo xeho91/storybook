@@ -1,6 +1,4 @@
-```md renderer="angular" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="angular" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { YourComponent } from './your-component.component';
@@ -62,7 +60,7 @@ import { YourComponent } from './your-component.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -111,7 +109,7 @@ import { YourComponent } from './your-component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -146,9 +144,7 @@ ExampleStory.args= {
   propertyB: 'Another Item One',
 };
 ```
-```md renderer="react" language="mdx"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="react" language="mdx"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { YourComponent } from './your-component';
@@ -209,7 +205,7 @@ const someFunction = (valuePropertyA, valuePropertyB) => {
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -243,7 +239,7 @@ import YourComponent from './YourComponent.svelte';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/svelte/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -285,9 +281,7 @@ ExampleStory.args= {
   propertyB: 'Another Item One',
 };
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* YourComponent.stories.svelte */}
-
+```html filename="YourComponent.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
   
@@ -324,7 +318,7 @@ import YourComponent from './YourComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'YourComponent',
@@ -371,9 +365,7 @@ ExampleStory.args= {
   propertyB: 'Another Item One',
 };
 ```
-```md renderer="vue" language="mdx" tabTitle="mdx-3"
-{/* YourComponent.stories.mdx */}
-
+```md filename="YourComponent.stories.mdx" renderer="vue" language="mdx" tabTitle="mdx-3"
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import YourComponent from './YourComponent.vue';

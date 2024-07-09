@@ -5,7 +5,7 @@ sidebar:
   title: Stories for multiple components
 ---
 
-It's useful to write stories that [render two or more components](../writing-stories/index.mdx#stories-for-two-or-more-components) at once if those components are designed to work together. For example, `ButtonGroups`, `Lists`, and `Page` components. Here's an example with `List` and `ListItem` components:
+It's useful to write stories that [render two or more components](./index.mdx#stories-for-two-or-more-components) at once if those components are designed to work together. For example, `ButtonGroups`, `Lists`, and `Page` components. Here's an example with `List` and `ListItem` components:
 
 {/* prettier-ignore-start */}
 
@@ -17,10 +17,10 @@ Note that by adding `subcomponents` to the default export, we get an extra panel
 
 ![Storybook story with subcomponent argstable](../_assets/writing-stories/argstable-subcomponents.png)
 
-The downside of the approach used above, where each story creates its own combination of components, is that it does not take advantage of Storybook [Args](../writing-stories/args.mdx) meaning:
+The downside of the approach used above, where each story creates its own combination of components, is that it does not take advantage of Storybook [Args](./args.mdx) meaning:
 
 1. You cannot change the stories via the controls panel
-2. There is no [args reuse](../writing-stories/index.mdx#using-args) possible, which makes the stories harder to maintain.
+2. There is no [args reuse](./index.mdx#using-args) possible, which makes the stories harder to maintain.
 
 Let's talk about some techniques you can use to mitigate the above, which are especially useful in more complicated situations.
 
@@ -37,6 +37,8 @@ The simplest change we can make to the above is to reuse the stories of the `Lis
 By rendering the `Unchecked` story with its args, we are able to reuse the input data from the `ListItem` stories in the `List`.
 
 However, we still aren’t using args to control the `ListItem` stories, which means we cannot change them with controls and we cannot reuse them in other, more complex component stories.
+
+<IfRenderer renderer="react">
 
 ## Using children as an arg
 
@@ -59,9 +61,13 @@ The `children` `args` as any other arg needs to be JSON serializable. It means t
 
 As they could lead into errors with your Storybook.
 
-<div class="aside">
+<Callout variant="info">
+
   We're currently working on improving the overall experience for the children arg and allow you to edit children arg in a control and allow you to use other types of components in the near future. But for now you need to factor in this caveat when you're implementing your stories.
-</div>
+  
+</Callout>
+
+</IfRenderer>
 
 ## Creating a Template Component
 

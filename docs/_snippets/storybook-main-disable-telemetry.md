@@ -1,4 +1,4 @@
-```js filename=".storybook/main.js" renderer="common" language="js" tabTitle="main-js"
+```js filename=".storybook/main.js" renderer="common" language="js"
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -14,7 +14,7 @@ module.exports = {
   },
 };
 ```
-```ts filename=".storybook/main.ts" renderer="common" language="ts" tabTitle="main-ts"
+```ts filename=".storybook/main.ts" renderer="common" language="ts"
 // Imports Storybook's configuration API
 import type { StorybookConfig } from '@storybook/core-common';
 

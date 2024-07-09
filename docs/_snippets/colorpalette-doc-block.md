@@ -1,6 +1,4 @@
-```md renderer="common" language="mdx" tabTitle="starter-example"
-{/* Colors.stories.mdx */}
-
+```md filename="Colors.stories.mdx" renderer="common" language="mdx" tabTitle="starter-example"
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
 
 <Meta title="Colors" />
@@ -32,4 +30,79 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
     }}
   />
 </ColorPalette>
+```
+```md filename="Colors.stories.mdx" renderer="common" language="mdx" tabTitle="advanced-example"
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+
+import { themes, ThemeProvider, convert, ensure } from '@storybook/theming';
+
+<Meta title="Complex Colors" />
+
+# Dark color scheme
+
+<div style={{ background: '#202020' }}>
+  <ThemeProvider theme={ensure(themes.dark)}>
+    <ColorPalette>
+      {Object.entries(convert(themes.dark).color).map(([k, v]) => {
+        if (
+          typeof v === 'string' &&
+          (v.match(/^#/) || v.match(/^rgb/) || k.match(/color/i))
+        ) {
+          return <ColorItem key={k} title={k} colors={{ [k]: v }} />;
+        } else if (typeof v === 'object') {
+          return (
+            <ColorItem
+              key={k}
+              title={k}
+              colors={Object.entries(v).reduce(
+                (acc, [key, value]) =>
+                  typeof value === 'string' &&
+                  (value.match(/^#/) ||
+                    value.match(/^rgb/) ||
+                    key.match(/color/i))
+                    ? { ...acc, [key]: value }
+                    : acc,
+                {}
+              )}
+            />
+          );
+        }
+        return null;
+      })}
+    </ColorPalette>
+  </ThemeProvider>
+</div>
+
+# Light color scheme
+
+<div styles={{ background: '#eeeeee' }}>
+  <ColorPalette>
+    {Object.entries(convert(themes.light).color).map(([k, v]) => {
+      if (
+        typeof v === 'string' &&
+        (v.match(/^#/) || v.match(/^rgb/) || k.match(/color/i))
+      ) {
+        return <ColorItem key={k} title={k} colors={{ [k]: v }} />;
+      } else if (typeof v === 'object') {
+        return (
+          <ColorItem
+            key={k}
+            title={k}
+            colors={Object.entries(v).reduce(
+              (acc, [key, value]) =>
+                typeof value === 'string' &&
+                (value.match(/^#/) ||
+                  value.match(/^rgb/) ||
+                  key.match(/color/i))
+                  ? { ...acc, [key]: value }
+                  : acc,
+              {}
+            )}
+          />
+        );
+      }
+      return null;
+    })}
+  </ColorPalette>
+</div>
 ```

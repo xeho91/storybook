@@ -7,7 +7,7 @@ import { List } from './list.component';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   component: List,
@@ -35,7 +35,6 @@ export default {
 // Always an empty list, not super interesting
 const Template = (args) => createList(args);
 ```
-
 ```ts filename="List.stories.ts" renderer="html" language="ts"
 import { Meta, StoryFn } from '@storybook/html';
 
@@ -48,7 +47,6 @@ export default {
 // Always an empty list, not super interesting
 const Template: StoryFn<ListArgs> = (args) => createList(args);
 ```
-
 ```js filename="List.stories.js|jsx" renderer="react" language="js"
 import React from 'react';
 
@@ -56,7 +54,7 @@ import { List } from './List';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -75,7 +73,7 @@ import { List } from './List';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -85,9 +83,7 @@ export default {
 //👇 Always an empty list, not super interesting
 const Template: ComponentStory<typeof List> = (args) => <List {...args} />;
 ```
-```html renderer="svelte" language="ts" tabTitle="native-format"
-{/* List.stories.svelte */}
-
+```html filename="List.stories.svelte" renderer="svelte" language="ts" tabTitle="native-format"
 <script>
   import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
   
@@ -109,7 +105,7 @@ import List from './ListComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -128,7 +124,7 @@ import List from './ListComponent.vue';
 
 export default {
   /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+  * See https://storybook.js.org/docs/6/configure#configure-story-loading
   * to learn how to generate automatic titles
   */
   title: 'List',
@@ -151,7 +147,7 @@ import { Meta, StoryFn } from '@storybook/vue';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'List',
@@ -172,7 +168,7 @@ import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
   /* 👇 The title prop is optional.
-   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
+   * See https://storybook.js.org/docs/6/configure#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'List',
