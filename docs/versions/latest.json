@@ -1,1 +1,1 @@
-{"version":"8.2.0","info":{"plain":""}}
+{"version":"8.2.1","info":{"plain":"- CPC: Fix type generation - [#28507](https://github.com/storybookjs/storybook/pull/28507), thanks @ndelangen!\n- Types: Update type signatures of objects and functions - [#28503](https://github.com/storybookjs/storybook/pull/28503), thanks @valentinpalkovic!"}}
