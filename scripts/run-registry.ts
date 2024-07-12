@@ -24,7 +24,7 @@ program.parse(process.argv);
 const logger = console;
 
 const dirname = path.dirname(new URL(import.meta.url).pathname);
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(dirname, '..');
 
 const startVerdaccio = async () => {
   const ready = {
