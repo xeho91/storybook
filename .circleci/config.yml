@@ -140,7 +140,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - node/install
       - restore_cache:
           name: Restore Yarn cache
@@ -204,7 +204,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - node/install
       - attach_workspace:
           at: .
@@ -225,7 +225,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -290,7 +290,7 @@ jobs:
       # switched this to the CircleCI helper to get the full git history for TurboSnap
       - checkout
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -313,7 +313,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -342,7 +342,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -364,7 +364,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - node/install
       - attach_workspace:
           at: .
@@ -408,7 +408,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -430,7 +430,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -451,7 +451,7 @@ jobs:
     steps:
       - checkout
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -473,7 +473,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -498,7 +498,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -523,7 +523,7 @@ jobs:
       - git-shallow-clone/checkout_advanced:
           clone_options: "--depth 1 --verbose"
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - attach_workspace:
           at: .
       - run:
@@ -549,7 +549,7 @@ jobs:
       - attach_workspace:
           at: .
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - when:
           condition:
             equal: ["npm", << parameters.packageManager >>]
@@ -644,7 +644,7 @@ jobs:
           name: Install unzip
           command: sudo apt install unzip
       - bun-orb/setup:
-          version: 1.1.17
+          version: 1.1.18
       - run:
           name: Install dependencies
           command: yarn install --no-immutable

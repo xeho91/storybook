@@ -1755,7 +1755,7 @@ __metadata:
   version: 1.1.6
   resolution: "@types/bun@npm:1.1.6"
   dependencies:
-    bun-types: "npm:1.1.17"
+    bun-types: "npm:1.1.18"
   checksum: 10c0/bbee1e56e03d9323f9476ba88ab78d98a7aa49e1996b36e18fc1529959666b21a264e61ff26a6584d0cb0702ee29df1a70354a83ad0113849727b7ec10ad91b7
   languageName: node
   linkType: hard
@@ -3766,9 +3766,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bun-types@npm:1.1.17":
-  version: 1.1.17
-  resolution: "bun-types@npm:1.1.17"
+"bun-types@npm:1.1.18":
+  version: 1.1.18
+  resolution: "bun-types@npm:1.1.18"
   dependencies:
     "@types/node": "npm:~20.12.8"
     "@types/ws": "npm:~8.5.10"
