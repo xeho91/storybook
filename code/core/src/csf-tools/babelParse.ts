@@ -37,18 +37,10 @@ export const babelParse = (code: string): t.File => {
   });
 };
 
-export interface BabelFile {
-  // ast: t.File;
-  metadata: object;
-  path: babel.NodePath<t.Program>;
-  inputMap: object | null;
-  code: string;
-}
-
 /**
  * Using new babel.File is more powerful and give access to API such as buildCodeFrameError
  */
-export const babelParseFile = (code: string, filename: string): BabelFile => {
+export const babelParseFile = (code: string, filename: string): babel.BabelFile => {
   // @ts-expect-error File is not yet exposed, see https://github.com/babel/babel/issues/11350#issuecomment-644118606
   return new babel.File({ filename }, { code, ast: babelParse(code) });
 };
