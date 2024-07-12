@@ -305,7 +305,7 @@ async function generateDistFiles() {
       console.log(`compiled ${chalk.cyan(filename)}`);
     });
   } else {
-    let i = 0;
+    const i = 0;
     await Promise.all(
       compile.map(async (context) => {
         const out = await context.rebuild();
@@ -317,14 +317,14 @@ async function generateDistFiles() {
          * I didn't have the project-scope to make that happen now, but I want expose this very rich useful data accessible, for the next person investigating bundle size issues.
          */
 
-        if (out.metafile) {
-          await Bun.write(`report/${i++}/meta.json`, JSON.stringify(out.metafile, null, 2));
-          await Bun.write(
-            'report/meta.txt',
-            await esbuild.analyzeMetafile(out.metafile, { color: false, verbose: false })
-          );
-          console.log(await esbuild.analyzeMetafile(out.metafile, { color: true }));
-        }
+        // if (out.metafile) {
+        //   await Bun.write(`report/${i++}/meta.json`, JSON.stringify(out.metafile, null, 2));
+        //   await Bun.write(
+        //     'report/meta.txt',
+        //     await esbuild.analyzeMetafile(out.metafile, { color: false, verbose: false })
+        //   );
+        //   console.log(await esbuild.analyzeMetafile(out.metafile, { color: true }));
+        // }
       })
     );
   }
