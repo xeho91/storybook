@@ -211,8 +211,10 @@ const run = async () => {
     if (!program.open) {
       verdaccioServer.close(() => {
         res();
+        process.exit();
       });
     } else {
+      console.log('🚪 keeping verdaccio open');
       res();
     }
   });
