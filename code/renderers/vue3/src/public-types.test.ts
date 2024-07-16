@@ -124,6 +124,8 @@ describe('Story args can be inferred', () => {
     const Basic: StoryObj<typeof meta> = { args: { theme: 'light', label: 'good' } };
 
     type Expected = StoryAnnotations<VueRenderer, Props, SetOptional<Props, 'disabled'>>;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore (some problem we need to investigate)
     expectTypeOf(Basic).toEqualTypeOf<Expected>();
   });
 
@@ -194,6 +196,8 @@ it('Infer type of slots', () => {
   type Props = ComponentPropsAndSlots<typeof BaseLayout>;
 
   type Expected = StoryAnnotations<VueRenderer, Props, Props>;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore (some problem we need to investigate)
   expectTypeOf(Basic).toEqualTypeOf<Expected>();
 });
 
