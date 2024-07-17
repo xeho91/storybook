@@ -642,7 +642,7 @@ jobs:
           at: .
       - run:
           name: Install unzip
-          command: apt install unzip
+          command: apt install zip
       - bun-orb/setup:
           version: 1.1.18
       - run:
