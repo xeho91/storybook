@@ -223,17 +223,24 @@ export class Yarn2Proxy extends JsPackageManager {
         stdio: process.env.CI ? 'inherit' : ['ignore', logStream, logStream],
       });
     } catch (err) {
-      const stdout = await readLogFile();
+      console.log(err);
 
-      const errorMessage = this.parseErrorFromLogs(stdout);
+      if (!process.env.CI) {
+        console.log('NOT CI');
+        const stdout = await readLogFile();
 
-      await moveLogFile();
-
-      throw new Error(
-        dedent`${errorMessage}
+        const errorMessage = this.parseErrorFromLogs(stdout);
+        await moveLogFile();
+        throw new Error(
+          dedent`
+          ${errorMessage}
         
-        Please check the logfile generated at ./storybook.log for troubleshooting and try again.`
-      );
+          Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+        `.toString()
+        );
+      }
+
+      throw err;
     }
 
     await removeLogFile();
