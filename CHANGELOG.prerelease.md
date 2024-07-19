@@ -1,3 +1,8 @@
+## 8.3.0-alpha.3
+
+- Telemetry: Add mount, beforeEach, moduleMock stats - [#28624](https://github.com/storybookjs/storybook/pull/28624), thanks @shilman!
+- Telemetry: CSF feature usage - [#28622](https://github.com/storybookjs/storybook/pull/28622), thanks @shilman!
+
 ## 8.3.0-alpha.2
 
 - Addon-Interactions: Fix status in panel tab - [#28580](https://github.com/storybookjs/storybook/pull/28580), thanks @yannbf!
