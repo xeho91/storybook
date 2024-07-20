@@ -1,4 +1,4 @@
-import { deepmerge } from 'deepmerge-ts';
+import { deepmerge } from "deepmerge-ts";
 
 import { logger } from '@storybook/core/client-logger';
 

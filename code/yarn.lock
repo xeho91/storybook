@@ -5808,6 +5808,7 @@ __metadata:
     cross-spawn: "npm:^7.0.3"
     css: "npm:^3.0.0"
     deep-object-diff: "npm:^1.1.0"
+    deepmerge-ts: "npm:^7.0.3"
     dequal: "npm:^2.0.2"
     detect-package-manager: "npm:^3.0.2"
     detect-port: "npm:^1.3.0"
@@ -12516,6 +12517,13 @@ __metadata:
   version: 1.1.9
   resolution: "deep-object-diff@npm:1.1.9"
   checksum: 10c0/12cfd1b000d16c9192fc649923c972f8aac2ddca4f71a292f8f2c1e2d5cf3c9c16c85e73ab3e7d8a89a5ec6918d6460677d0b05bd160f7bd50bb4816d496dc24
+  languageName: node
+  linkType: hard
+
+"deepmerge-ts@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "deepmerge-ts@npm:7.0.3"
+  checksum: 10c0/2b7b3f4ec685ec9c3024bf42f3af4fd81acd0c782e17d45a2836e72e0b5f12bc3952b78b5013cfd2e8c0244c8ab6f7adff483bb4c0d63435e01e0274d998764e
   languageName: node
   linkType: hard
 
