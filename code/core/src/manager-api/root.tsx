@@ -9,7 +9,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import mergeWith from 'lodash/mergeWith.js';
+import { deepmerge } from 'deepmerge-ts';
 import type {
   Args,
   ArgTypes,
@@ -139,14 +139,7 @@ export type ManagerProviderProps = RouterData &
     children: ReactNode | FC<Combo>;
   };
 
-// This is duplicated from @storybook/preview-api for the reasons mentioned in lib-addons/types.js
-export const combineParameters = (...parameterSets: Parameters[]) =>
-  mergeWith({}, ...parameterSets, (objValue: any, srcValue: any) => {
-    // Treat arrays as scalars:
-    if (Array.isArray(srcValue)) return srcValue;
-
-    return undefined;
-  });
+export const combineParameters = (...parameterSets: Parameters[]) => deepmerge(...parameterSets);
 
 class ManagerProvider extends Component<ManagerProviderProps, State> {
   api: API = {} as API;
